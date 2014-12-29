@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'tu1978'
 SITENAME = u'思いつきメモ'
-SITEURL = ''
+SITEURL = 'https://formalism.github.io/blog/'
 
 PATH = 'content'
 
