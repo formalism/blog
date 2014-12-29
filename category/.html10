@@ -48,6 +48,7 @@
 			<ul>
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -83,6 +84,19 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>CLSQL実験(2)</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2008/05/clsqlhunchentoot/">2008-05-28 10:16:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL</a> </div>
+	<div class="summary"><p>CLSQLを使って、Webアプリを作るという計画。hunchentoot, common-coldというライブラリを使ってみる。</p>
+
+<p>何となくできそうだが、うまく動かない。コードは次のような感じ。<br /></p>
+
+<pre>-----top.lisp-----<br />(require :asdf)<br />(push #P"/home/aaaa/bin/" asdf:*central-registry*)<br />(asdf:oos 'asdf:load-op 'common-cold)<br />(asdf:operate 'asdf:load-op 'clsql)<br />(asdf:operate 'asdf:load-op 'clsql-mysql)<br />(asdf:operate 'asdf:load-op 'clsql-sqlite3)<br />(load "kaimonoweb.lisp")<br />(hunchentoot:start-server :port 9877)<br /><br />-----------kaimonoweb.lisp----------<br />(cl:in-package "COMMON-COLD ...</pre> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2008/05/clsqlhunchentoot/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>CLSQL実験(1)</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2008/05/clsql1/">2008-05-02 06:50:00+09:00</a>

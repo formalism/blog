@@ -48,6 +48,7 @@
 			<ul>
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -83,6 +84,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>MacBook Pro</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/06/macbook-pro/">2011-06-10 14:02:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/mac.html">Mac</a> <a href="https://formalism.github.io/blog/tag/pc.html">PC</a> </div>
+	<div class="summary"><p>Mac OS Xになって、これまでも2回Macを購入したことがあったのだが、結局使いこなすには至らなかった。確か、初めてのMacはiBook G4(白いやつ)で、次がMacBook(2ではないCore Duo)だった。特に2代目は使い始めて1週間くらいで調子が悪くなり、ロジックボードの交換をした。迅速に無料で修理をしてもらったものの、普段使いには耐えないかと思い、下取りに出してしまった。<br /><br />それ以降Macとも離れていたのだが、Sandy Bridge搭載パソコンを物色しているうちに、また懲りずにMacを購入してしまった。買ったのは<a href="http://www.amazon.co.jp/gp/product/B004PEHDPW/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;tag=formalism-22&amp;linkCode=as2&amp;camp=247&amp;creative=1211&amp;creativeASIN=B004PEHDPW">MacBook Pro (MC700J/A)</a>。メモリを増設し8GBにした。<br /><br /><b>良い点</b><br /><ul><li>格好良い。</li><ul><li>フラットデザイン。最近は国内メーカもまねをしているようだ。</li></ul><li>トラックパッドの操作感がとても良い。2本指でスクロールする感覚が非常に良い。ぴったりと意図通りにスクロールする感じ。この感覚に慣れてしまうとWindowsのスクロールは野暮ったく感じる。</li></ul><b>良くない点</b><br /><ul><li>パームレストの角が手に当たって痛い。これは机の高さがちょっと高すぎるのが問題なのだけれど、もう少し丸みがあった方が良いと思う。</li><ul><li>2011/9/3 追記：やはりそれなりの時間使用するときには、これは結構気になる。こればかりはデザインを改善した方が良いと思うのだが...</li></ul><li>重い。国内メーカだったら同じサイズで500gくらいは軽くなりそう ...</li></ul></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/06/macbook-pro/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>MySQL + cl-mysql によるPrepared Statement</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/05/mysql-cl-mysql-prepared-statement/">2011-05-30 14:14:00+09:00</a>
@@ -166,15 +176,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p>Create or Import Peripheralで生成されるuser_logic.vhdでは、データバスがstd_logic_vector(0 to 31)で宣言されている。これはMSBがbit0でLSBがbit31となるというMicroBlazeの仕様のため。<a href="http://www.vhdl-online.de/tutorial/englisch/t_58.htm#pgfId-1016798">http://www.vhdl-online.de/tutorial/englisch/t_58.htm#pgfId-1016798</a>を読んで分かったのは、VHDLでインスタンスを宣言するときの配列ポートは、<u>ビット番号ではなく、ビット並びの順番</u>で接続されるということ。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/microblaze-ip-endian/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>XPS IPコアでのVerilogモジュールの使用</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/edk-ip/">2011-03-14 03:51:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p>EDKで自作IPコアの使用を試している。Create or Import Peripheralを使用し、VHDLでuser_logic.vhdを作成する。user_logic.vhdからVerilogで記述された回路を使用したい。PAOファイルにVerilogファイルを記述したり、MPDファイルにVerilogも使用する設定の記述などを行ったが、どうやってもISEでコンパイルできなかった。<br /><br />結局、IPコアとして埋め込むのはあきらめて、MicroBlazeのxmpがISEでトップレベルファイルになっていたのをやめて、MicroBlazeのstubファイルをトップレベルにし、普通にISEプロジェクトにVerilogのファイルを追加したらOKになった。<br /><br /><b>後日記</b><br /><b><br /></b><br />上記の方法でまたおかしくなってしまったのが、もう一度挑戦したら、最初に試みた方法でできるようになった。ただし、verilogのソースを変更したときは、implementationフォルダにあるngcファイルと、その中のcacheフォルダにあるファイルを削除してからgenerate netlistしないと、変更が反映されない。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/edk-ip/">more…</a>
 	</div>
 </div>	
 

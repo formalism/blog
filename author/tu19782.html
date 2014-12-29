@@ -48,6 +48,7 @@
 			<ul>
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -83,6 +84,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>WinUSBのinfファイル</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/04/winusbinf/">2014-04-30 05:21:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>ZynqのUSBデバイス機能を試すためにWinUSBを使用するための備忘録。<br /><br />WinUSBのドライバファイルはWDKに含まれているので、<a href="http://msdn.microsoft.com/en-us/windows/hardware/gg454513.aspx">このあたり</a>からインストールする。 WDK8.1からはVisual Studio 2013を<b>先に</b>インストールしてからWDKをインストールしないといけない、と書いてある。サボって後で面倒になるのも嫌なので、手順に従う。<br /><br />フォルダを作って、次に示すような感じでinfファイルを作成する。同じフォルダにamd64(64bit Windows7の例)というフォルダを作成し、その中にC:\Program Files (x86)\Windows Kits\8.1\Redist\wdf\x64からWdfCoInstaller01011.dll, winusbcoinstaller2.dll, WUDFUpdate_01011.dllをコピーする。<br /><br />infファイルの内容(例)。GUID, VID, PIDは適当に修正<br /><br />[Version]<br />Signature = "$Windows NT$"<br />Class = ZynqDeviceClass<br />ClassGuid={23AEE0D0-4E4B-4B03-8360-1FB07C0C3338}<br />Provider = %ProviderName ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/04/winusbinf/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>ZYBOの実験</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/04/zybo/">2014-04-27 01:50:00+09:00</a>
@@ -163,17 +173,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
 	<div class="summary"><p>これまではスマホでない方の携帯をずっと使用してきたけれど、利便性を考えて現代の便利品を揃えてみることにした。<br /><br />ただ、スマホは、まだ月額使用料が(自分が感じる価値からして)高いので、SIMフリー端末とMVNOのSIMを試してみよう、ということになった。<br /><br />いろいろ検討したのだけれど、<a href="http://www.expansys.jp/">EXPANSYS</a>というのが日本でSIMフリー端末を購入する店舗として有名らしい。ただ、こちらで販売されている端末は、基本的には技適マークがないものがほとんど。つまり、MVNOのSIMを差して、日本国内で使用するのは、厳密には違法行為ということになるらしい。もちろん、FCCの認可はあったりするので、米国で使用するのは問題ないだろう。<br /><br />---- ここは少し脱線 -----<br />もっとも、海外からの旅行者が、海外で販売されているSIMフリー端末を日本国内で使用するのは例外として認められているっぽい。SIMフリー端末もいろいろな周波数に対応しているわけだけれど、日本国内の電波と干渉してしまう、ということは無いのだろうか？全バンドが国内で使える訳ではないと思う(詳しくは未調査)。それとも、携帯は、基地局からの電波に周波数を合わせて、拾えた場合だけ電波を発信するという仕組みなのだろうか？<br />-------------------------------<br /><br />ということで、法的にも問題ない方法としては、技適マーク付きSIMフリー端末を使用することになる。SIMフリー端末を使用するには、自分でスマホを契約するか、SIMフリーになっているスマホを中古で購入する、(種類は少ないが)国内で販売されている技適あり新品SIMフリー端末を購入する、という方法が考えられる。さんざん考えた末、まずはお手軽に試すことにして、AWR-100TKというWiFIルータにした。端末は、手持ちのNexus7でしのぐ予定。<br /><br /><iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm-fe.amazon-adsystem.com/e/cm?t=formalism-22&amp;o=9&amp;p=8&amp;l=as1&amp;asins=B00AEGM1WK&amp;ref=qf_sp_asin_til&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="height: 240px; width: 120px;"></iframe> <br /><br />そして ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/08/wan/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>CycloneVがやばい??</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/07/cyclonev/">2013-07-11 13:38:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p>twitter経由で、CycloneVに重大な欠陥がある、というようなものを見つけた。<a href="http://www.altera.co.jp/literature/es/es_cyclone_v.pdf">Errata Sheet for CycloneV Devices</a>によると、重大な問題というのは、2番目のFractional PLL Phase Alignment Errorのようだ。PLLの位相が設定値よりもずれてしまう場合がある、というようなことらしい。影響を受ける事例としてLVDSが挙げられている。例えば、受信クロックをPLLでロックさせてnビットデシリアライズする、といったときに影響するのかも知れない。確かに、ここに問題があるとすれば、用途によっては使い物にならなくなってしまうかも知れない。</p>
-
-<p><p>PLLの詳しい仕組みには詳しくないが、PLLだけでも<a href="http://www.amazon.co.jp/gp/product/4789830233/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=4789830233&linkCode=as2&tag=formalism-22">本</a>が何冊も書けるくらいだから、アナログ回路の真骨頂なのだろう。それだけに問題も起きやすいところかも知れない。</p> <p>いずれにせよ、しばらくはXilinx優位ということになりそうだ。</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/07/cyclonev/">more…</a>
 	</div>
 </div>	
 

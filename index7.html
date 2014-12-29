@@ -48,6 +48,7 @@
 			<ul>
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -83,6 +84,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>XPS IPコアでのVerilogモジュールの使用</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/edk-ip/">2011-03-14 03:51:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>EDKで自作IPコアの使用を試している。Create or Import Peripheralを使用し、VHDLでuser_logic.vhdを作成する。user_logic.vhdからVerilogで記述された回路を使用したい。PAOファイルにVerilogファイルを記述したり、MPDファイルにVerilogも使用する設定の記述などを行ったが、どうやってもISEでコンパイルできなかった。<br /><br />結局、IPコアとして埋め込むのはあきらめて、MicroBlazeのxmpがISEでトップレベルファイルになっていたのをやめて、MicroBlazeのstubファイルをトップレベルにし、普通にISEプロジェクトにVerilogのファイルを追加したらOKになった。<br /><br /><b>後日記</b><br /><b><br /></b><br />上記の方法でまたおかしくなってしまったのが、もう一度挑戦したら、最初に試みた方法でできるようになった。ただし、verilogのソースを変更したときは、implementationフォルダにあるngcファイルと、その中のcacheフォルダにあるファイルを削除してからgenerate netlistしないと、変更が反映されない。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/edk-ip/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>PLB slave single</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/plv-slave-single/">2011-03-11 01:33:00+09:00</a>
@@ -162,15 +172,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p><a href="http://blog.mysyncpad.com/post/2073441622/node-js-vs-erlang-syncpads-experience">Node.js vs Erlang: SyncPad’s Experience</a>&nbsp;になかなか興味深い結果が掲載されている。node.jsを長時間サーバとして動かしていると、徐々にメモリ使用量が増えてしまうという問題に遭遇したので、同じ機能のサーバをErlangで作成してみた、という記事。node.jsと比較して、CPU, Memory両方とも使用量が少なくて済んだ、という結果。またErlangブームが起きるか？ただ自分としてはErlangはあまり構文が好きになれない。まだJavaScriptの方がきれいにまとまっているように感じる。<br /><br /><a href="http://amix.dk/blog/post/19577">Is node.js best for Comet?</a>&nbsp;この記事も参考になる。V8は現状の所サーバに使用するにはあまり良いアーキテクチャではない、という指摘。全部は読んでいないけれど、コメントも参考になりそう。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/01/nodejs-vs-erlang/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>最近のJava騒動</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/11/java/">2010-11-08 13:34:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>最近、Appleが<a href="http://japan.zdnet.com/news/software/story/0,2000056195,20421824,00.htm">Javaの公式サポートを打ち切る</a>、というのが話題になったので、色々調べていて気づいたのだけれど、OracleがSunを買収してからというもの、Java界隈の動向が怪しくなっているように思った。AppleとしてはiOSへの囲い込みというのもあるのかも知れないが、将来性が不透明になってきているJavaへの投資をやめようという動機もあるのかもしれない。もしそうだとすると、ZFSの場合と同じ理由といえるかも。<br /><br />そう思うと、1ベンダーが広める言語というのは、そのベンダーが無くなってしまったようなときに言語の存在価値が減じることもあるかもしれない。その点、C, C++, Lispなどベンダーとは(少なくとも仕様としては)関係ない言語の生存期間は、より長いと言えるかも知れない。<br /><br />もしJavaが廃れてしまったら、マイブームのclojureも危うくなるなぁ。そうなると今度は<a href="http://nodejs.org/">node.js</a>あたりになるのかな。JavaScript自体も一応ベンダー非依存の言語だし。<a href="http://common-lisp.net/project/parenscript/">Lisp-&gt;JavaScriptトランスレータ</a>もあるので、Lispでサーバサイドプログラミングというのは一応できるはず。<br /><br />やれやれ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/11/java/">more…</a>
 	</div>
 </div>	
 

@@ -84,12 +84,28 @@
 	  </div>
 	  <div class="content">
 	<div class='article'>
-		<div class="page-header"><h1>高速ビットマップ描画方法を調査</h1></div>
-		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/10/fast-bitmap-drawing-in-windows/">2013-10-19 14:56:00+09:00</a>
+		<div class="page-header"><h1>GitHub Pagesに移行しました</h1></div>
+		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/12/moved-to-github-pages/">2014-12-30 05:50:00+09:00</a>
 by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
  in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/windows.html">Windows</a> </div>
-		<div><p>高速にメモリ上のデータをWindowsで表示する方法について調査してみた。<br /><br />経験上OpenCVは余り高速ではない。OpenGLでテクスチャに貼り付ける、という方法は高速で、プラットフォームにもあまり依存しない方法なのだが、カメラと対象物との位置関係で、勝手に変形されてしまう(これはOpenGLの目的からして当然であるが、ちゃんとデータを1対1で画像ピクセルに反映させたい、というような場合には問題となる)、という問題がある。<br /><br />また、OpenGLを使用する場合、ウィンドウ管理はGLUTに任せてしまうと、自分で作成するWindows上のウィンドウに描画するときに問題になる(理論上は可能なはずだが、面倒なのであまり調べていない)。<br /><b><br /></b><b>目標としては、Windowsで、自分で管理するウィンドウの内部に、高速にメモリ上のデータを表示したい。</b><br /><br />少し調べてみた結果、Vista以降のWindowsであれば、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd370990(v=vs.85).aspx">Direct2D</a>を使用するのが目的にかなっているようだ。もちろんWindowsにべったりになってしまうのだが、仕方がない。<br /><br />なんとなく、ID2D1HwndRenderTargetでBitmapを作成し、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd371155(v=vs.85).aspx">CopyFromMemory</a>を行って<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd742844(v=vs.85).aspx">DrawBitmap</a>という流れで出来そうな気がしてきた。これだとオフスクリーンではないかも知れない。でも、この応用で何とかなりそうな気がする。<br /><br />今度実験してみよう。<br /><br />===================<br />ちなみに、調べてみると、MacではOpenGLの<a href="https://developer.apple.com/library/mac/documentation/graphicsimaging/conceptual/opengl-macprogguide/opengl_offscreen/opengl_offscreen.html">Framebuffer object</a>という方法があるようだ。自分がWindows上のOpenGLで試したときには、FBOはそれほどパフォーマンスが良くなかった印象がある。Macだとまた違うかも知れないが。 </p></div>
+tags: <a href="https://formalism.github.io/blog/tag/blogging.html">Blogging</a> </div>
+		<div><p>これまでBloggerを使用していたけれど、ずっとWebベースのUIがいまいち
+好きになれなかった。また、カスタマイズも結構面倒だった。</p>
+<p>色々調査した結果、<a href="https://pages.github.com/" title="GitHub Pages">GitHub Pages</a>が
+便利そうだ、ということが分かったので、なんとか色々駆使することで
+Bloggerのデータを移行できたと思う。</p>
+<p>最初は静的サイトの生成に<a href="http://jaspervdj.be/hakyll/" title="hakyll">hakyll</a>を使おうと
+したけれど、なかなかカスタマイズが面倒になってしまった。実はこれだけでも
+暇なときに2,3週格闘していた。</p>
+<p>結局<a href="http://blog.getpelican.com/" title="Pelican">Pelican</a>を使用することで、最低限の
+状態にはなったと思う。また、GitHub Pagesの場合、gh-pagesというブランチに
+コミットしなければいけない、というルールがあるので、そのために
+<a href="https://github.com/davisp/ghp-import">ghp-import</a>を使用した。
+これで少しはまったのは、ghp-import outputとすると、とくに何もコンソールには
+表示されずにコミットまでされてしまうので、それに気付かずに何回も
+コミットしてしまったこと。基本的にはghp-import -m 'message' -p outputのように
+使用するのが良さそうだ。</p>
+<p>これでMarkdownも使えるようになった。コードのハイライトなども楽に書けて嬉しい。</p></div>
 		<div>
 			<h2>Comments</h2>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>

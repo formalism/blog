@@ -48,6 +48,7 @@
 			<ul>
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -83,6 +84,17 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>CycloneVがやばい??</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/07/cyclonev/">2013-07-11 13:38:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>twitter経由で、CycloneVに重大な欠陥がある、というようなものを見つけた。<a href="http://www.altera.co.jp/literature/es/es_cyclone_v.pdf">Errata Sheet for CycloneV Devices</a>によると、重大な問題というのは、2番目のFractional PLL Phase Alignment Errorのようだ。PLLの位相が設定値よりもずれてしまう場合がある、というようなことらしい。影響を受ける事例としてLVDSが挙げられている。例えば、受信クロックをPLLでロックさせてnビットデシリアライズする、といったときに影響するのかも知れない。確かに、ここに問題があるとすれば、用途によっては使い物にならなくなってしまうかも知れない。</p>
+
+<p><p>PLLの詳しい仕組みには詳しくないが、PLLだけでも<a href="http://www.amazon.co.jp/gp/product/4789830233/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=4789830233&linkCode=as2&tag=formalism-22">本</a>が何冊も書けるくらいだから、アナログ回路の真骨頂なのだろう。それだけに問題も起きやすいところかも知れない。</p> <p>いずれにせよ、しばらくはXilinx優位ということになりそうだ。</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/07/cyclonev/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>AlteraがOpenCL SDKの一般提供を開始</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/06/alteraopencl-sdk/">2013-06-30 11:26:00+09:00</a>
@@ -170,17 +182,6 @@ tags: <a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exa
 	<div class="summary"><p>昨日(もう一昨日か)センター試験二日目が実施されました。<a href="http://www.toshin.com/center/sugaku-1a_mondai_0.html">リンク</a></p>
 
 <p><p>私も1X年前にセンター試験を受けました。それ以来、新聞に掲載される問題を取っておくことはあったのですが、実際に解くことはしていませんでした。今年は何を思ったか少しだけ解いてみました。数学I/Aです。しかも問1,2だけ。</p> <p>いやはや、これだけでも結構大変でした。時間は正確に計りませんでしたが、多分30分くらいは掛かってしまった。問題自体はそれほど難しくはなかったものの、計算ミス1つと、引っかけにはまったミスが1つありました。間違えたのは、第一問<a href="3">2</a>と第二問(1)ケコサシのところ。後者は計算ミス。前者は考えが足りなかった。しかし、第一問<a href="3">2</a>は結構良問ではないかと思いました。私はまんまと罠にはまったわけですが。よーく考えればわかります。悔しいので以下に記します。</p> <p>「rは(pまたはq)であるための必要条件なのか、十分条件なのか」、という問いです。 これを確認するには、まずr=&gt;p\/qが成立するか、を確認する必要があります。成立するならrは「十分条件」でpまたはqは「必要条件」となります ...</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/01/1x/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>nasneを使ってみてSonyの企業力に関心した</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/12/nasnesony/">2012-12-29 03:32:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
-	<div class="summary"><p>ふと思い立って、パソコンでテレビを視聴するために、<a href="http://www.nasne.com/">nasne</a>を購入した。これで何ができて何ができないか、ということについては各所によくまとめられているので、ここではあまり触れない。</p>
-
-<p><p>この商品の一番の感想は、「よくこれだけのものをこの値段で販売できるな」というもの。HDDをはじめとして、トランスコーダ, DDR3メモリ、Ethernet PHYなどのハードウェア部品を揃えるだけでも、最低でも7000円か8000円くらいはかかるのではないか(分解記事は<a href="http://av.watch.impress.co.jp/docs/topic/20120719_547799.html">ここ</a>)。もちろん、組み立てや梱包のコストもある。販売価格が15,000円程度であるが、一体小売店への卸価格はどれほどなのだろうか。原価割れしてしまわないのか、とさえ心配になる。</p> <p>また、nasneはソフトウェアの出来が使い勝手の大部分を占める(ハードウェアで操作できる部分は無いに等しいので)。VAIO TV with nasne, torneといったソフトウェアも作成しサポートしなければならない。また、nasneの設定画面となるWebベースの画面も作成しなければならない。また、<a href="https://tv.so-net.ne.jp/chan-toru/#home">インターネットを介した予約サービス</a>のための作り込みも必要である。</p> <p>これらを設計/開発/生産/サポートするのに必要なコストはちょっと自分の経験からは想像できないが、よほど大量に販売できないと設計分のコストさえ捻出できないのではないか、と思う。あるいは製品単体ではなく、これを足がかりとして他の製品/サービスを購入してもらうという計画なのだろうか？</p> <p>いずれにせよ、大企業に蓄積されている高いノウハウを垣間見ることが出来ると感じる商品だった。</p> <p>以下は蛇足 ...</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/12/nasnesony/">more…</a>
 	</div>
 </div>	
 

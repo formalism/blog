@@ -48,6 +48,7 @@
 			<ul>
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -83,6 +84,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>最近のJava騒動</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/11/java/">2010-11-08 13:34:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>最近、Appleが<a href="http://japan.zdnet.com/news/software/story/0,2000056195,20421824,00.htm">Javaの公式サポートを打ち切る</a>、というのが話題になったので、色々調べていて気づいたのだけれど、OracleがSunを買収してからというもの、Java界隈の動向が怪しくなっているように思った。AppleとしてはiOSへの囲い込みというのもあるのかも知れないが、将来性が不透明になってきているJavaへの投資をやめようという動機もあるのかもしれない。もしそうだとすると、ZFSの場合と同じ理由といえるかも。<br /><br />そう思うと、1ベンダーが広める言語というのは、そのベンダーが無くなってしまったようなときに言語の存在価値が減じることもあるかもしれない。その点、C, C++, Lispなどベンダーとは(少なくとも仕様としては)関係ない言語の生存期間は、より長いと言えるかも知れない。<br /><br />もしJavaが廃れてしまったら、マイブームのclojureも危うくなるなぁ。そうなると今度は<a href="http://nodejs.org/">node.js</a>あたりになるのかな。JavaScript自体も一応ベンダー非依存の言語だし。<a href="http://common-lisp.net/project/parenscript/">Lisp-&gt;JavaScriptトランスレータ</a>もあるので、Lispでサーバサイドプログラミングというのは一応できるはず。<br /><br />やれやれ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/11/java/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>NIOS+DDR2</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/10/niosddr2/">2010-10-18 05:50:00+09:00</a>
@@ -164,15 +174,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/printer.html">Printer</a> </div>
 	<div class="summary"><p>久々にレーザプリンタを購入した。購入したのは<a href="http://www.amazon.co.jp/gp/product/B00194T818?ie=UTF8&amp;tag=formalism-22&amp;linkCode=as2&amp;camp=247&amp;creative=1211&amp;creativeASIN=B00194T818">HL-2170W</a><img alt="" border="0" height="1" src="http://www.assoc-amazon.jp/e/ir?t=formalism-22&amp;l=as2&amp;o=9&amp;a=B00194T818" style="border: medium none ! important; margin: 0px ! important;" width="1" />。前の機種はCanonで、4,5年間は使ったと思う。ただ、Windows Vista 64bitに対応したドライバを提供してくれなかったので、仕方なく買い換えることにした。印刷速度もかなり高速になっているのには驚いた。数年間で、意識できるほど早くなるとは。5年後には100ppm位いくかも(たぶんない)。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/03/blog-post_04/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>リモートデスクトップ</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/remotedesktop-realvnc/">2010-03-04 06:41:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/software.html">Software</a> </div>
-	<div class="summary"><p>Windowsを遠隔から操作しようとしたが、やり方が悪いのかもしれないが、リモートデスクトップでは、どうしても"コンソールセッション"に接続できなかった。接続先がXPだから??<br /><br />結局、リモートデスクトップはあきらめて、<a href="http://www.realvnc.com/">RealVNC</a>を使うことにした。これだとちゃんとコンソールセッションに接続できた。そして、Windowsの起動時に<a href="http://www.nanshiki.co.jp/software/index.html?sexe">sexe</a>を使用して、VMWare Playerをサービスとして起動し、LinuxサーバにSSHログインできるようにした。SSHのポートフォワードを使用して、VNCに遠隔から接続できるようになった。<br /><br />でも速度的にはリモートデスクトップの方が軽快...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/03/remotedesktop-realvnc/">more…</a>
 	</div>
 </div>	
 

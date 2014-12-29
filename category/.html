@@ -48,6 +48,7 @@
 			<ul>
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -83,6 +84,31 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>GitHub Pagesに移行しました</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/12/moved-to-github-pages/">2014-12-30 05:50:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/blogging.html">Blogging</a> </div>
+	<div class="summary"><p>これまでBloggerを使用していたけれど、ずっとWebベースのUIがいまいち
+好きになれなかった。また、カスタマイズも結構面倒だった。</p>
+<p>色々調査した結果、<a href="https://pages.github.com/" title="GitHub Pages">GitHub Pages</a>が
+便利そうだ、ということが分かったので、なんとか色々駆使することで
+Bloggerのデータを移行できたと思う。</p>
+<p>最初は静的サイトの生成に<a href="http://jaspervdj.be/hakyll/" title="hakyll">hakyll</a>を使おうと
+したけれど、なかなかカスタマイズが面倒になってしまった。実はこれだけでも
+暇なときに2,3週格闘していた。</p>
+<p>結局<a href="http://blog.getpelican.com/" title="Pelican">Pelican</a>を使用することで、最低限の
+状態にはなったと思う。また、GitHub Pagesの場合、gh-pagesというブランチに
+コミットしなければいけない、というルールがあるので、そのために
+<a href="https://github.com/davisp/ghp-import">ghp-import</a>を使用した。
+これで少しはまったのは、ghp-import outputとすると、とくに何もコンソールには
+表示されずにコミットまでされてしまうので、それに気付かずに何回も
+コミットしてしまったこと。基本的にはghp-import -m 'message' -p outputのように
+使用するのが良さそうだ。</p>
+<p>これでMarkdownも使えるようになった。コードのハイライトなども楽に書けて嬉しい。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/12/moved-to-github-pages/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>ZYBOのSDカードブート</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/zybosd/">2014-05-21 14:47:00+09:00</a>
@@ -225,15 +251,6 @@ tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programmin
 
 <span class="c1">// {9F68AD5A-84E0-4E0F-8EF3-11139532FD22}</span>
 <span class="n">GUID</span> <span class="n">GUID_DEVINTERFACE_OSRUSBFX2</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0x9F68AD5AUL</span><span class="p">,</span> <span class="mh">0x84E0</span><span class="p">,</span> <span class="mh">0x4E0F</span><span class="p">,</span> <span class="p">{</span> <span class="mh">0x8E</span><span class="p">,</span> <span class="mh">0xF3 ...</span></pre></div> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/04/zynqusb/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>WinUSBのinfファイル</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/04/winusbinf/">2014-04-30 05:21:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>ZynqのUSBデバイス機能を試すためにWinUSBを使用するための備忘録。<br /><br />WinUSBのドライバファイルはWDKに含まれているので、<a href="http://msdn.microsoft.com/en-us/windows/hardware/gg454513.aspx">このあたり</a>からインストールする。 WDK8.1からはVisual Studio 2013を<b>先に</b>インストールしてからWDKをインストールしないといけない、と書いてある。サボって後で面倒になるのも嫌なので、手順に従う。<br /><br />フォルダを作って、次に示すような感じでinfファイルを作成する。同じフォルダにamd64(64bit Windows7の例)というフォルダを作成し、その中にC:\Program Files (x86)\Windows Kits\8.1\Redist\wdf\x64からWdfCoInstaller01011.dll, winusbcoinstaller2.dll, WUDFUpdate_01011.dllをコピーする。<br /><br />infファイルの内容(例)。GUID, VID, PIDは適当に修正<br /><br />[Version]<br />Signature = "$Windows NT$"<br />Class = ZynqDeviceClass<br />ClassGuid={23AEE0D0-4E4B-4B03-8360-1FB07C0C3338}<br />Provider = %ProviderName ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/04/winusbinf/">more…</a>
 	</div>
 </div>	
 
