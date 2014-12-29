@@ -1,0 +1,7 @@
+Title: Mac OS XでGHCのコンパイルエラー
+Date: 2012-02-07 14:41:00
+Category: 
+Tags: Programming,Haskell
+Slug: mac-os-xghc
+
+あるプログラムをMac OS X(10.6)上のGHC7.0.4(Haskell Platform 2011.04でインストールした)でコンパイルしようとしたら、<br /><br />Linking main ...<br />Undefined symbols:<br />&nbsp; "_locale_charset", referenced from:<br />&nbsp; &nbsp; &nbsp; _localeEncoding in libHSbase-4.3.1.0.a(PrelIOUtils.o)<br />&nbsp; "_iconv_close", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv_close in libHSbase-4.3.1.0.a(iconv.o)<br />&nbsp; &nbsp; &nbsp;(maybe you meant: _hs_iconv_close)<br />&nbsp; "_iconv", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv in libHSbase-4.3.1.0.a(iconv.o)<br />&nbsp; &nbsp; &nbsp;(maybe you meant: _hs_iconv_open, _hs_iconv , _hs_iconv_close )<br />&nbsp; "_iconv_open", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv_open in libHSbase-4.3.1.0.a(iconv.o)<br />&nbsp; &nbsp; &nbsp;(maybe you meant: _hs_iconv_open)<br />ld: symbol(s) not found<br />collect2: ld returned 1 exit status<br /><div><br /></div><div>のようなエラーがでてしまった。検索してみたら、そのものずばりが見つかった。<a href="http://blog.omega-prime.co.uk/?p=96">Solving GHC iconv problems on OS X 10.6</a>。ここには3つの解決策が提示されているが、自分の場合上の2つは無理そうだ。でもMac Portsによるインストールだと、GHCのバージョンが古いので避けたい。別の方法がないかもう少し調べてみたい。<br /><br />2012/2/11追記<br /><a href="http://stackoverflow.com/questions/2726248/ghc-6-12-and-macports">http://stackoverflow.com/questions/2726248/ghc-6-12-and-macports</a>の方法でひとまずリンクは通った。とりあえずghc -L/usr/lib -threaded Main.hsでリンクされた。</div>

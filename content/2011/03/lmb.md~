@@ -1,0 +1,7 @@
+Title: LMBの使い方
+Date: 2011-03-03 09:09:00
+Category: 
+Tags: 
+Slug: lmb
+
+Xilinx Platform StudioでLMBのサイズを変更するには、dlmb_cntlr, ilmb_cntlrを右クリックし、Configure IP....を選択 &gt; LMBのアドレスレンジを設定。このレンジの幅でメモリサイズが決まるようだ。LMBバス幅が32bitの場合は、lmb_bramの最大サイズは256Kbytes(Virtex-5の場合)。

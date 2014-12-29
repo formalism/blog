@@ -1,0 +1,7 @@
+Title: プリンタ購入
+Date: 2010-03-04 07:06:00
+Category: 
+Tags: Printer
+Slug: blog-post_04
+
+久々にレーザプリンタを購入した。購入したのは<a href="http://www.amazon.co.jp/gp/product/B00194T818?ie=UTF8&amp;tag=formalism-22&amp;linkCode=as2&amp;camp=247&amp;creative=1211&amp;creativeASIN=B00194T818">HL-2170W</a><img alt="" border="0" height="1" src="http://www.assoc-amazon.jp/e/ir?t=formalism-22&amp;l=as2&amp;o=9&amp;a=B00194T818" style="border: medium none ! important; margin: 0px ! important;" width="1" />。前の機種はCanonで、4,5年間は使ったと思う。ただ、Windows Vista 64bitに対応したドライバを提供してくれなかったので、仕方なく買い換えることにした。印刷速度もかなり高速になっているのには驚いた。数年間で、意識できるほど早くなるとは。5年後には100ppm位いくかも(たぶんない)。

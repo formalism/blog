@@ -1,0 +1,7 @@
+Title: 今日の実験 - Media Foundationを使ってWebCamキャプチャ
+Date: 2013-10-13 15:25:00
+Category: 
+Tags: Programming
+Slug: media-foundationwebcam
+
+いわゆるWebCamというものを、自分で作成するプログラムはどうすれば作成できるのか、というのを調査している。<br /><br />一番手っ取り早いのは、多分OpenCVを使用してcvQueryFrameで取ってくる方法だと思われるが、USB Video Classの機能をもっと使用することを考えているので(<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560772(v=vs.85).aspx">Extension Units</a>というのを使いたい)、cvQueryFrameは高レベルすぎる。<br /><br />Windows VistaからMedia FoundationというAPIが提供されており、これを使用するのが推奨のようだ。とりあえず<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd743690(v=vs.85).aspx">MFCaptureD3D Sample</a>のページから、サンプルプログラムをダウンロード(<a href="http://go.microsoft.com/fwlink/p/?linkid=163613" style="-webkit-text-stroke-width: 0px; color: #00188f; font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 1.429em; orphans: auto; text-align: start; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px;">Download from MSDN Code Gallery</a>というリンク)し、VS Express for Desktopでビルドして実行したら、正常にWebCamから動画をキャプチャ、表示できることが確認できた。試したカメラはYUV2形式のデータだった。<br /><br /><b>追記:</b> どうやらExtension Unitsは、DirectShowのAPIのようだ。果たしてMedia Foundationを使ったプログラムでも使用できるのか？よく分からない。さっぱりMedia Foundationは諦めて、DirectShowのサンプルでも探した方が良いかも知れない... <br /><br />DirectShowのプログラミングには、良い情報源(体系的な資料)が無いような気がする。知っている人は知っているが、一種の業界人の知識になっているのではなかろうか... 断片的な情報をつなげて理解していくのは大変だ。

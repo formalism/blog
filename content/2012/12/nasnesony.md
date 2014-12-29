@@ -1,0 +1,7 @@
+Title: nasneを使ってみてSonyの企業力に関心した
+Date: 2012-12-29 03:32:00
+Category: 
+Tags: Gadgets
+Slug: nasnesony
+
+<p>ふと思い立って、パソコンでテレビを視聴するために、<a href="http://www.nasne.com/">nasne</a>を購入した。これで何ができて何ができないか、ということについては各所によくまとめられているので、ここではあまり触れない。</p> <p>この商品の一番の感想は、「よくこれだけのものをこの値段で販売できるな」というもの。HDDをはじめとして、トランスコーダ, DDR3メモリ、Ethernet PHYなどのハードウェア部品を揃えるだけでも、最低でも7000円か8000円くらいはかかるのではないか(分解記事は<a href="http://av.watch.impress.co.jp/docs/topic/20120719_547799.html">ここ</a>)。もちろん、組み立てや梱包のコストもある。販売価格が15,000円程度であるが、一体小売店への卸価格はどれほどなのだろうか。原価割れしてしまわないのか、とさえ心配になる。</p> <p>また、nasneはソフトウェアの出来が使い勝手の大部分を占める(ハードウェアで操作できる部分は無いに等しいので)。VAIO TV with nasne, torneといったソフトウェアも作成しサポートしなければならない。また、nasneの設定画面となるWebベースの画面も作成しなければならない。また、<a href="https://tv.so-net.ne.jp/chan-toru/#home">インターネットを介した予約サービス</a>のための作り込みも必要である。</p> <p>これらを設計/開発/生産/サポートするのに必要なコストはちょっと自分の経験からは想像できないが、よほど大量に販売できないと設計分のコストさえ捻出できないのではないか、と思う。あるいは製品単体ではなく、これを足がかりとして他の製品/サービスを購入してもらうという計画なのだろうか？</p> <p>いずれにせよ、大企業に蓄積されている高いノウハウを垣間見ることが出来ると感じる商品だった。</p> <p>以下は蛇足：改善して欲しい機能もある。 <ul><li>CMスキップを可能にして欲しい <li>VAIO TV with nasneの動作をもっと速くして欲しい <li>VAIO TV with nasneで、番組視聴中もテレビ予定表が見えるようにして欲しい(現在の番組表しか見ることが出来ないので) </ul></p> <iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm-jp.amazon.co.jp/e/cm?t=formalism-22&amp;o=9&amp;p=8&amp;l=as1&amp;asins=B007V9T9ZK&amp;ref=qf_sp_asin_til&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="height: 240px; width: 120px;"></iframe>

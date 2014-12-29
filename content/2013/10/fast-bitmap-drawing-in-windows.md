@@ -1,0 +1,7 @@
+Title: 高速ビットマップ描画方法を調査
+Date: 2013-10-19 14:56:00
+Category: 
+Tags: Programming,Windows
+Slug: fast-bitmap-drawing-in-windows
+
+高速にメモリ上のデータをWindowsで表示する方法について調査してみた。<br /><br />経験上OpenCVは余り高速ではない。OpenGLでテクスチャに貼り付ける、という方法は高速で、プラットフォームにもあまり依存しない方法なのだが、カメラと対象物との位置関係で、勝手に変形されてしまう(これはOpenGLの目的からして当然であるが、ちゃんとデータを1対1で画像ピクセルに反映させたい、というような場合には問題となる)、という問題がある。<br /><br />また、OpenGLを使用する場合、ウィンドウ管理はGLUTに任せてしまうと、自分で作成するWindows上のウィンドウに描画するときに問題になる(理論上は可能なはずだが、面倒なのであまり調べていない)。<br /><b><br /></b><b>目標としては、Windowsで、自分で管理するウィンドウの内部に、高速にメモリ上のデータを表示したい。</b><br /><br />少し調べてみた結果、Vista以降のWindowsであれば、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd370990(v=vs.85).aspx">Direct2D</a>を使用するのが目的にかなっているようだ。もちろんWindowsにべったりになってしまうのだが、仕方がない。<br /><br />なんとなく、ID2D1HwndRenderTargetでBitmapを作成し、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd371155(v=vs.85).aspx">CopyFromMemory</a>を行って<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd742844(v=vs.85).aspx">DrawBitmap</a>という流れで出来そうな気がしてきた。これだとオフスクリーンではないかも知れない。でも、この応用で何とかなりそうな気がする。<br /><br />今度実験してみよう。<br /><br />===================<br />ちなみに、調べてみると、MacではOpenGLの<a href="https://developer.apple.com/library/mac/documentation/graphicsimaging/conceptual/opengl-macprogguide/opengl_offscreen/opengl_offscreen.html">Framebuffer object</a>という方法があるようだ。自分がWindows上のOpenGLで試したときには、FBOはそれほどパフォーマンスが良くなかった印象がある。Macだとまた違うかも知れないが。 

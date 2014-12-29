@@ -1,0 +1,7 @@
+Title: 「歩く歩道」は駄洒落では無い
+Date: 2013-04-14 14:09:00
+Category: 
+Tags: Uncategorized
+Slug: walking-sidewalk
+
+つい先日、「動く歩道」、つまり下のようなものがある町で、ゆっくり自転車を走らせていたら、数m離れたところにいた数名の人たちのうちの一名が「歩く歩道」という言葉を発した。もちろん自分はそこを平常心で通り過ぎたのだが、「え、"歩く歩道"って...。動く歩道のことやろ！歩道は歩くためのものなので、なんという同義反復。これこそトートロジー。」と思って内心笑っていた。が、しかし、<a href="http://netallica.yahoo.co.jp/news/20130207-00000032-cobs">地方あるある・大阪編</a>を読んで、実は大阪では、関東でいう「動く歩道」は「歩く歩道」と呼ばれている、という驚愕の事実を人生初めて知った。いやはや、これが単なる駄洒落や間違いではなかったとは...。かなり衝撃を受けた。 <br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="240" src="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" width="320" /></a></div><br />
