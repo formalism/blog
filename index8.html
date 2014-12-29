@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+<div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>NIOS+DDR2</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/10/niosddr2/">2010-10-18 05:50:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>これまでNIOS2を使ったシステムでDDR2コントローラを使うときには、コントローラはAvalonバスに接続せずに、CPU外に置いていた。今回、ちょっと思い立ってAvalonバスに接続して試してみることにした。<br /><br />しかしはまった点がある。インプリメントしたSOFをボードにダウンロードするまでは良いのだが、Nios II IDEからファームをダウンロードして実行しようとしても、target processor not responding(正確ではないかも)のようなメッセージが出て、CPUが動作しない。いろいろ試して検索してみた結果、DDR2コントローラのポートglobal_reset_n_to_the_altmemddr_0をCPUからPIOで操作しようとしているのが悪さをしているらしいと分かった。これをFPGA端子に入力されているRSTnピンにしたら、ファームのダウンロードもできるようになった。これで半日つぶれてしまった。</p> <a class="btn primary xsmall" href="/posts/2010/10/niosddr2/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>compojureなどの実験(その2)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/09/compojure2/">2010-09-30 06:14:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p><span class="Apple-style-span" style="font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif; font-size: 13px;">H2データベースとJSONを使用するために必要な、<a href="http://github.com/technomancy/leiningen" style="color: #de7008;">Leiningen</a>を使ったプロジェクトファイルは結局次のようになりました。</span><div><span class="Apple-style-span" style="font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif; font-size: 13px;"><div><br /></div><div>(defproject myproject "1.0.0-SNAPSHOT"</div><div>&nbsp;&nbsp;:description "FIXME: write"</div><div>&nbsp;&nbsp;:dependencies [[org.clojure/clojure "1.2.0"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [org.clojure/clojure-contrib "1.2.0"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ring "0.3.0"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [com.h2database/h2 "1.2.142"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [org.danlarkin/clojure-json "1.1"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [compojure "0.4.1"]])</div><div><br /></div><div>JSONを使うには、<a href="http://techbehindtech.com/2010/08/24/compojure-demystified-with-an-example-part-4/" style="color: #de7008;">Compojure Demystified with an example</a>でも説明されていますが ...</div></span></div></p> <a class="btn primary xsmall" href="/posts/2010/09/compojure2/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>compojureなどの実験</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/09/compojure/">2010-09-20 05:54:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>以前のエントリで、clojure+compojure+h2は最強の組み合わせではないか、と書きましたが、また最近この組み合わせでお手軽アプリを作成しようかと考えました。<br /><br />以前にインストールしたバージョンで作成しても良かったのですが、いろいろと新しくなっているだろうと思い、最新版で試してみました。そうしたら、相当以前とはインストールの仕方なども異なっているようです。まず、<a href="http://github.com/technomancy/leiningen">Leiningen</a>をインストールします。そして、プロジェクトを作成し、project.cljを編集して必要なライブラリをインストールするよう指示します。次のような感じになりました。<br /><br /><br />(defproject myproject "1.0.0-SNAPSHOT"<br />&nbsp;&nbsp;:description "FIXME: write"<br />&nbsp;&nbsp;:dependencies [[org.clojure/clojure "1.2.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [org.clojure/clojure-contrib "1.2.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ring "0.3.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [com.h2database/h2 "1.2.142 ...</p> <a class="btn primary xsmall" href="/posts/2010/09/compojure/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>Wi2解約</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/09/finish-wi2/">2010-09-18 13:19:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/wi2.html">Wi2</a> </div>
+	<div class="summary"><p>以前Wi2という無線LANによる接続サービスを使用していることを書いたが、結局やめてしまいました。近所のマクドナルドがどんどん無くなっているのと、マックに行くこと自体が少なくなっているので。サービス自体には不満はなかったのですけれど。このサービスはいつでも加入/解約できるので、そのあたりは嬉しい。</p> <a class="btn primary xsmall" href="/posts/2010/09/finish-wi2/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>再びプリンタ購入</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/09/pixus-mp270/">2010-09-18 13:15:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/gadgets.html">Gadgets</a> </div>
+	<div class="summary"><p>今年二台目のプリンタを購入した。<a href="http://www.amazon.co.jp/gp/product/B002OB3OE2?ie=UTF8&amp;tag=formalism-22&amp;linkCode=as2&amp;camp=247&amp;creative=1211&amp;creativeASIN=B002OB3OE2">Canon PIXUS インクジェット複合機 MP270</a><img alt="" border="0" height="1" src="http://www.assoc-amazon.jp/e/ir?t=formalism-22&amp;l=as2&amp;o=9&amp;a=B002OB3OE2" style="border: none !important; margin: 0px !important;" width="1" />。個人的にはレーザプリンタで十分なのだけれど、レーザだと薄い用紙に印刷することはできない。紙を巻き込んでしまう。それで仕方なくインクジェットを購入。この機種は安い上にスキャナの機能もついているので、自分にとっては役だった。手書きの文書をスキャンしたりしたいときもあるので。</p> <a class="btn primary xsmall" href="/posts/2010/09/pixus-mp270/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>Clojureが素敵な件</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/03/clojure/">2010-03-26 07:00:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>最近、ちょっとしたWeb+DBアプリケーションを書きたいと思った。数年前は、Java+Struts+MySQLのような組み合わせがはやっていたと思う。その後もJavaのフレームワークはSpringやらSeasarやらたくさん提案されてきたし、自分もSeasarは一時期使って便利だと思った。でもやっぱり記述量が多く、面倒くさい。<br /><br />近頃はLLブームということもあって、Ruby on Railsに始まるLL言語系フレームワークがある。RoRは自分で使ってみて、家計簿のWebアプリを作成し、今でも現役で使っている。ただ、個人的にはバージョンアップなどが手間で、あまり好きではない。<br /><br />自分の中での最近はやりの言語はCommon Lispである。その実装としてSBCLなどがあり、SBCL+MySQLでも簡単なWebアプリを作ってみた。が、Lisp系言語はライブラリをいちいちインストールするのが面倒に思う。特にWindowsは弱い。Linux, Windows, Solarisなどの環境で、ひとつのものから別のものへすぐに移行するのは難しい。あるいは、最近であればGoogle App Engineを使って、環境の管理は全部Google様におまかせ、というのが流行なのであろうか。でもGAEは基本的にはRDBは使えないし、Lispも使えない。 <br /><br />以上のような遍歴を経て、現状において最善の折衷案として自分的に浮上しているのは、<a href="http://clojure.org/">clojure</a>である。Lispとまではいかないが、Lisp風味であり、<a href="http://github.com/weavejester/compojure">compojure</a>というWebフレームワークもある。これに ...</p> <a class="btn primary xsmall" href="/posts/2010/03/clojure/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>思考の整理学</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/03/blog-post_26/">2010-03-26 06:06:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/shu-ping.html">書評</a> </div>
+	<div class="summary"><iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm-jp.amazon.co.jp/e/cm?t=formalism-22&amp;o=9&amp;p=8&amp;l=as1&amp;asins=4480020470&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="height: 240px; width: 120px;"></iframe>
+
+<p>「思考の整理学」という本を買ってみた。まだ読み始めたばかり。Amazonのレビューの批判で、「朝飯前」というのが単なる思い付きだと批判されているが、これは間違っていると思う。なぜなら、著者自ら実践して効果があると判断された上での文章だから。自分がこの手の本に期待するのは、単なる思い付きではなくて、本当に役立つかどうか、ということ。その点で判断すれば、少なくとも著者の場合は役立っているのだから、「単なる思い付き」と片付けるのは早計である。自分でやってみて、役に立たないのであれば、それは指摘すればよい。<br /><br />本書の指摘する「グライダー人間」ということについては自分も耳が痛い。</p> <a class="btn primary xsmall" href="/posts/2010/03/blog-post_26/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>Wi2</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/03/wi2/">2010-03-11 08:10:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/wi2.html">Wi2</a> </div>
+	<div class="summary"><p>最近になって<a href="http://www.wi2.co.jp/">Wi2</a>を契約した。ビックカメラからの契約で月々380円でマクドナルドなどで無線LANによるインターネット接続ができるというもの。近くのマクドナルドで試してみたところ、10Mbps以上出ていた。以前自宅のADSLでは12Mの契約でも4,5Mbpsだったから、速度的には十分。ただ、これまで4,5回ためした中で、一回だけwi2のログインページが表示されず、使用できないときがあった。<br /><br />基本的には全国で使えるようなので、しばらくは契約しておくことになりそう。</p> <a class="btn primary xsmall" href="/posts/2010/03/wi2/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>プリンタ購入</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/03/blog-post_04/">2010-03-04 07:06:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/printer.html">Printer</a> </div>
+	<div class="summary"><p>久々にレーザプリンタを購入した。購入したのは<a href="http://www.amazon.co.jp/gp/product/B00194T818?ie=UTF8&amp;tag=formalism-22&amp;linkCode=as2&amp;camp=247&amp;creative=1211&amp;creativeASIN=B00194T818">HL-2170W</a><img alt="" border="0" height="1" src="http://www.assoc-amazon.jp/e/ir?t=formalism-22&amp;l=as2&amp;o=9&amp;a=B00194T818" style="border: medium none ! important; margin: 0px ! important;" width="1" />。前の機種はCanonで、4,5年間は使ったと思う。ただ、Windows Vista 64bitに対応したドライバを提供してくれなかったので、仕方なく買い換えることにした。印刷速度もかなり高速になっているのには驚いた。数年間で、意識できるほど早くなるとは。5年後には100ppm位いくかも(たぶんない)。</p> <a class="btn primary xsmall" href="/posts/2010/03/blog-post_04/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>リモートデスクトップ</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/03/remotedesktop-realvnc/">2010-03-04 06:41:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/software.html">Software</a> </div>
+	<div class="summary"><p>Windowsを遠隔から操作しようとしたが、やり方が悪いのかもしれないが、リモートデスクトップでは、どうしても"コンソールセッション"に接続できなかった。接続先がXPだから??<br /><br />結局、リモートデスクトップはあきらめて、<a href="http://www.realvnc.com/">RealVNC</a>を使うことにした。これだとちゃんとコンソールセッションに接続できた。そして、Windowsの起動時に<a href="http://www.nanshiki.co.jp/software/index.html?sexe">sexe</a>を使用して、VMWare Playerをサービスとして起動し、LinuxサーバにSSHログインできるようにした。SSHのポートフォワードを使用して、VNCに遠隔から接続できるようになった。<br /><br />でも速度的にはリモートデスクトップの方が軽快...</p> <a class="btn primary xsmall" href="/posts/2010/03/remotedesktop-realvnc/">more…</a>
+	</div>
+</div>	
+
+<div class="pagination">
+<ul>
+		<li class="prev"><a href="/index7.html">&larr; Previous</a></li>
+		<li class=""><a href="/index.html">1</a></li>
+		<li class=""><a href="/index2.html">2</a></li>
+		<li class=""><a href="/index3.html">3</a></li>
+		<li class=""><a href="/index4.html">4</a></li>
+		<li class=""><a href="/index5.html">5</a></li>
+		<li class=""><a href="/index6.html">6</a></li>
+		<li class=""><a href="/index7.html">7</a></li>
+		<li class="active"><a href="/index8.html">8</a></li>
+		<li class=""><a href="/index9.html">9</a></li>
+		<li class=""><a href="/index10.html">10</a></li>
+		<li class="next"><a href="/index9.html">Next &rarr;</a></li>
+</ul>
+</div>
+
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

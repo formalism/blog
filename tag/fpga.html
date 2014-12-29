@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+<div class="page-header"><h1>思いつきメモ <small>FPGA</small></h1></div>
+<div class='article'>
+	<h2>Linux on Zynq (ZYBO)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/05/linux-on-zynq-zybo/">2014-05-06 09:39:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/linux.html">Linux</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>今度はZYBOにてLinuxを動作させてみようと挑戦した備忘録。<br /><br />まとまった情報がなかなか見つからなくて苦労したが、基本はMasahiro Yamadaさんの、"<a href="http://masahir0y.blogspot.jp/2014/01/u-boot-linux-kernel-zynq.html">U-Boot と Linux Kernel のメインラインで Zynq を動かす</a>"を参考にした。<br /><br />STEP0: DTCの準備 はそのまま実施した。<br /><br />STEP1: U-Bootのビルド ではまった。結論としては、ARMのクロスコンパイラとして<a href="http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/">CodeSourcery Lite</a>を使用した(単にXilinxからgccをダウンロードするのが面倒だったので。Xilinxのgccで動くかは試していないため不明)。<br /><br />最初は<a href="http://www.linaro.org/downloads/">LinaroのGCC</a>でU-Bootをビルドしていたが、どうしても動作しなかった。U-Bootはlibcにも依存しているようで、LinaroのGCCだとダメだと思われる。<br /><br />さらに、肝心のU-Bootは、オリジナルのものだと動かなかったので、<a href="https://github.com/Digilent/u-boot-Digilent-Dev">DigilentのU-Boot</a>を使用した。この手順は、Ryuzさんの"<a href="http://ryuz.txt-nifty.com/blog/2014/04/zybozynqu-boot-.html">ZYBO(Zynq)のu-bootのビルドまで</a>"に従った。CROSS_COMPILEのところは、(CodeSourceryなので)arm-none-eabi-にした。makeでu-boot.binができた(上記手順だとDTBはできないが、Linuxのブートは可能)。<br /><br />STEP2 ...</p> <a class="btn primary xsmall" href="/posts/2014/05/linux-on-zynq-zybo/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>Zynq USBデバイステスト (ファームウェア)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/04/zynq-usb/">2014-04-30 09:33:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p><a href="/posts/2014/04/zynqusb/">Zynq USBデバイステスト (PC側ソフトウェア)</a>の続き。</p>
+<p>C:\Xilinx\SDK\2014.1\data\embeddedsw\XilinxProcessorIPLib\drivers\usbps_v2_0 のexamplesに対するパッチ。
+usbMain関数を呼び出すと動作開始。examplesのファイル達はusbフォルダにコピーされたものとする。</p>
+<p>概要としては、examplesはUSB mass storageとして動作するので、バルク転送のTX/RX割り込みがかかるところを
+横取り(XUsbPs_HandleStorageReqをコメントにする)して、所望のデータ処理に置き換える。
+また、サンプルはTX割り込みがかからないようになっているので、TXのビットをorして有効にする。</p>
+<hr />
+<p>diff -cr examples/xusbps_ch9_storage.c usb/xusbps_ch9_storage.c</p>
+<div class="highlight"><pre>examples/xusbps_ch9_storage.c    2014-04-16 23:53:27.579740500 +0900
+<span class="gd">--- usb/xusbps_ch9_storage.c ...</span></pre></div> <a class="btn primary xsmall" href="/posts/2014/04/zynq-usb/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>ZYBOの実験</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/04/zybo/">2014-04-27 01:50:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>先日digilentに注文しておいた<a href="http://www.digilentinc.com/Products/Detail.cfm?NavPath=2,719,1197&amp;Prod=ZYBO">ZYBO</a>が届いた。<br /><br />いきなり確認不足だった点：<br />- VGAポートは抵抗分割のFPGA直結だった。しかもRGB565(計16bit)階調しかない。<br />-水晶はPSの50MHzが接続されているだけ？と思ったが、マニュアルを読んでみると、ethernet PHYから125MHzが出ていて、それがPL(pin L16)に接続されているみたいだ。こちらは、PHYRSTBをHighにしないと出力されない。<br /><br />早速、4/25付けで上記ページにアップロードされているZYBO Base System Designをダウンロードし、Vivado 2014.1で合成してSDKで動かしてみた(IPのアップグレードは薦められるままでOKだった)。main.cのAudoInitializeを実行すると、デバッガが止まってしまったので、とりあえず後回しにし、コメントアウトして実行すると、UARTでメニュー操作ができるようになった。<br /><br />HDMIを選択し、1920x1080@60pを選択すると、ちゃんとFull HD解像度で動作した。<br /><br />Zynq7010は、デバイスとしては公式には1.5Gbpsはサポートしていないはずだけれど、安定して動作しているっぽいな。Zynq恐るべし。<br /><br />HDMI出力のところは自分で作ろうかと思っていたのだが、サンプルがこんなに簡単に動いてしまうと、自作する気力は一気に萎えた。別のことに労力を使うことにしよう。<br /><br /><a href="http://marsee101.blog19.fc2.com/blog-entry-2803.html">marseeさん ...</a></p> <a class="btn primary xsmall" href="/posts/2014/04/zybo/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>最近更新していないので何か書きますよ - AlteraとXilinxのIOについて</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/02/altera/">2014-02-15 15:36:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>XilinxとAlteraのFPGAで、特に外部との高速信号をやりとりをするときの考え方の違いについてまとめてみる。ただしGTPなどのGigabit Transceiverは考えない(まだ使ったことがないので)。<br /><br />Xilinxは、基本的にはIOモジュールにあるI(O)DELAYや、I(O)DDR, I(O)SERDESなどを自分でインスタンス化して使用するのが一般的な方法に思われる。これらを使用することで、動作時に信号のタイミングを動かすことができる。また、これらを使用するとシリアライズ/デシリアライズ部分の回路のタイミングはコンパイル毎にほぼ変化しないので、実際に動作させて、ちょうど良いタップを見つける、ということが可能である。<br /><br />また、ツールとしても、入出力のタイミング制約は、たとえ掛けたとしても、これらのモジュールの配置制約の方が優先される。したがって、あくまでもタイミング制約は、指示した配置をしたうえで、条件を満たすかどうかの確認の意味しかない。<br /><br />一方Alteraの場合は、タイミング制約ドリブンで配置配線が可能である。クロックとデータとの関係をちゃんと制約すれば、それを(入力の場合)内部のレジスタで正しくラッチできるようにレジスタを配置配線してくれる。レジスタはIOにあるものを使用するかもしれないし、そうでないかも知れない。また、動作時にIOのタイミングを変化させることはできないようだ(少なくともCycloneは)。ちなみに、AlteraのIOにも、スタティックに遅延量が決定する遅延ブロックが存在する。この遅延量もタイミング制約を満たせるようにツールが自動設定してくれる。<br /><br />以上から、自分の印象としては、静的にタイミング制約をすることで動作可能な場合はAlteraが便利で ...</p> <a class="btn primary xsmall" href="/posts/2014/02/altera/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>CycloneVがやばい??</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2013/07/cyclonev/">2013-07-11 13:38:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>twitter経由で、CycloneVに重大な欠陥がある、というようなものを見つけた。<a href="http://www.altera.co.jp/literature/es/es_cyclone_v.pdf">Errata Sheet for CycloneV Devices</a>によると、重大な問題というのは、2番目のFractional PLL Phase Alignment Errorのようだ。PLLの位相が設定値よりもずれてしまう場合がある、というようなことらしい。影響を受ける事例としてLVDSが挙げられている。例えば、受信クロックをPLLでロックさせてnビットデシリアライズする、といったときに影響するのかも知れない。確かに、ここに問題があるとすれば、用途によっては使い物にならなくなってしまうかも知れない。</p>
+
+<p><p>PLLの詳しい仕組みには詳しくないが、PLLだけでも<a href="http://www.amazon.co.jp/gp/product/4789830233/ref=as_li_qf_sp_asin_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=4789830233&linkCode=as2&tag=formalism-22">本</a>が何冊も書けるくらいだから、アナログ回路の真骨頂なのだろう。それだけに問題も起きやすいところかも知れない。</p> <p>いずれにせよ、しばらくはXilinx優位ということになりそうだ。</p></p> <a class="btn primary xsmall" href="/posts/2013/07/cyclonev/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>AlteraがOpenCL SDKの一般提供を開始</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2013/06/alteraopencl-sdk/">2013-06-30 11:26:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p><a href="http://www.altera.co.jp/corporate/news_room/releases/2013/products/nr-opencl-sdk-13.0.html">アルテラ、ソフトウェア・プログラマの FPGA 利用を可能にする OpenCL 向け SDK と市販ボードの一般提供を開始</a></p>
+
+<p><p>SDKについて詳しく調和したわけではないが、OpenCLではそれほどFPGAのメリットが引き出せないのではないか、と思う。OpenCLは基本的に、メモリとデータを何度かやりとりしながら処理を進めるプログラミングモデルが利用されていると思う。一方、FPGAを用いて処理を高速化したいという場合、一般的にはメモリから一気に回路パイプラインに流し込んで、パイプラインから出てきた結果をまたメモリに書き戻す、というイメージではないかと思う。メモリとのやりとりが多くなると、結局演算よりもそちらがボトルネックになってくるはず。それに、メモリ帯域という事で言えば、ほとんどのFPGAを載せたボードでは、最新のGPUボードのメモリ帯域には太刀打ちできないだろう。</p> <p>ということで、OpenCLのプログラミングモデルはFPGAの高速化に向くものではない、ということである。それよりは、普通に高位合成でパイプライン処理を合成し、必要なメモリとのやりとりをくっつければ良いのではないだろうか。</p></p> <a class="btn primary xsmall" href="/posts/2013/06/alteraopencl-sdk/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>FPGA+HFT</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2013/03/fpgahft/">2013-03-29 14:53:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>最近モチベーションが下がっている。ネットを徘徊していたら、ちょっと面白いネタを見つけた：<br /><br /><a href="http://d.hatena.ne.jp/kazunori_279/20130107/1357521548">文字通り「ネットワークがコンピューター」な金融HFTでのFPGAの使われ方</a><br /><br />ここ数年HFTの分野では、FPGAで処理を実装するのがはやってきている、ということ。リンク先の記事からもリンクされている、<a href="http://cufp.org/videos/parallel-scientific-awesome-haskell-fpga-compiler">Parallel Scientific: The Awesome Haskell FPGA Compiler</a>は以前すこし眺めていたが、今回の記事を読んで全体像の理解が少し進んだ。なるほど、こんなところでも回路設計をしてしまう時代になったのね、という感じ。<br /><br />10Gbpsのネットワークスイッチに入れてしまうというのであれば、当然Alteraで言えばStratixクラスの1個何十万もするFPGAを使うのだろう。外付けメモリもDDRみたいなレイテンシの大きいものではなく、RLDRAMやQDRといった、個人的には使用しているのをあまり見聞きしないタイプのメモリを使っているのではなかろうか。<br /><br />もしこういったものがTCP/IPで通信をしているとすれば、Ethernet MACのIPから出てくるパケットをステートマシンでTCP/IP部分をデコードしてやり、中身のデータに基づいてガリガリ計算し、その結果に基づいてこれまたステートマシンでEthernet MAC IPに売買パケットを流し込む、というような流れになっているのだろう。そして売買の結果は、メモリに書き込んでおき、ログとして保存。これでソフトウェアは一切介在せずに株式やら為替の売買を実行する、と。もちろん、売買条件の設定などの初期化操作はソフトウェアで行うはずだが。<br /><br />妄想するとなかなか面白そうな分野だなぁ。クオンツの元でブイブイ(死語)いわせるプログラマのイメージが。なるほど、金融業界は計算機分野でも ...</p> <a class="btn primary xsmall" href="/posts/2013/03/fpgahft/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>Xilinx Flashコンフィグレーション</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/03/xilinx-flash/">2011-03-29 10:01:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>自分のメモ。<br /><br /><b>回路</b><br />Slave Serialモード。XCF32クロックを接続。<br /><br /><b>ソフトウェア</b><br />ISEプロジェクトにELFファイルを追加すると、bitファイルにELFが埋め込まれる。Generate Programming Fileのプロパティで圧縮オプションを有効にする。iMPACTで、Create PROM Fileでbitからmcsファイルを生成。できたmcsファイルをxcf32pにアサインしてProgram。</p> <a class="btn primary xsmall" href="/posts/2011/03/xilinx-flash/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>MicroBlaze + IPコア(続き)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/03/microblaze-ip-endian/">2011-03-18 05:30:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>Create or Import Peripheralで生成されるuser_logic.vhdでは、データバスがstd_logic_vector(0 to 31)で宣言されている。これはMSBがbit0でLSBがbit31となるというMicroBlazeの仕様のため。<a href="http://www.vhdl-online.de/tutorial/englisch/t_58.htm#pgfId-1016798">http://www.vhdl-online.de/tutorial/englisch/t_58.htm#pgfId-1016798</a>を読んで分かったのは、VHDLでインスタンスを宣言するときの配列ポートは、<u>ビット番号ではなく、ビット並びの順番</u>で接続されるということ。</p> <a class="btn primary xsmall" href="/posts/2011/03/microblaze-ip-endian/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>XPS IPコアでのVerilogモジュールの使用</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/03/edk-ip/">2011-03-14 03:51:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>EDKで自作IPコアの使用を試している。Create or Import Peripheralを使用し、VHDLでuser_logic.vhdを作成する。user_logic.vhdからVerilogで記述された回路を使用したい。PAOファイルにVerilogファイルを記述したり、MPDファイルにVerilogも使用する設定の記述などを行ったが、どうやってもISEでコンパイルできなかった。<br /><br />結局、IPコアとして埋め込むのはあきらめて、MicroBlazeのxmpがISEでトップレベルファイルになっていたのをやめて、MicroBlazeのstubファイルをトップレベルにし、普通にISEプロジェクトにVerilogのファイルを追加したらOKになった。<br /><br /><b>後日記</b><br /><b><br /></b><br />上記の方法でまたおかしくなってしまったのが、もう一度挑戦したら、最初に試みた方法でできるようになった。ただし、verilogのソースを変更したときは、implementationフォルダにあるngcファイルと、その中のcacheフォルダにあるファイルを削除してからgenerate netlistしないと、変更が反映されない。</p> <a class="btn primary xsmall" href="/posts/2011/03/edk-ip/">more…</a>
+	</div>
+</div>	
+
+<div class="pagination">
+<ul>
+		<li class="prev disabled"><a href="#">&larr; Previous</a></li>
+		<li class="active"><a href="/tag/fpga.html">1</a></li>
+		<li class=""><a href="/tag/fpga2.html">2</a></li>
+		<li class="next"><a href="/tag/fpga2.html">Next &rarr;</a></li>
+</ul>
+</div>
+
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

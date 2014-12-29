@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+<div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>Avalonバスのメモ</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/03/avalon/">2010-03-04 06:31:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p><b>Avalon-MMのバス幅</b><br /><br />マスターが32bitでスレーブが16bitの場合、マスター側で32bit readを行うと、スレーブ側では16bit readが2回発行される。このようになるので、マスター側から見ると、スレーブのデータ空間のアドレスは連続して見える。(Avalon Interface Specifications 3.6.1)</p> <a class="btn primary xsmall" href="/posts/2010/03/avalon/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>ZFSでのCIFS共有(2)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2009/12/zfscifs2/">2009-12-25 05:04:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/opensolaris.html">OpenSolaris</a> </div>
+	<div class="summary"><p>以前<a href="/posts/2009/09/zfscifs/">ZFSでのCIFS共有</a>にて、zfsのプロパティで共有する方法を紹介しましたが、
+どうやらOpenSolaris 2009.6ではまだCIFSが不安定です。自分の環境はOpenSolarisはVMWareで動かしているの
+ですが、サスペンドから復帰すると再接続できなくなることが何度かありました。</p>
+<p>それで、結局現在はSambaを入れて共有しています。</p>
+<p>最近は、<a href="http://zfs-fuse.net/">ZFS for Linux</a>もあるようですので、無料でセキュリティパッチが
+提供されていない(?)OpenSolarisの優位性が自分にとっては少なくなってきてしまいました。ちなみに、
+ZFS for Linuxは、Ubuntu 8.04で簡単にコンパイルできました。まだdaemonを動かしただけでディスクを
+使った実験はしていないので、性能などについては何ともいえませんが。</p> <a class="btn primary xsmall" href="/posts/2009/12/zfscifs2/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>3Dのリンク</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2009/11/3d/">2009-11-05 07:10:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>またメモ。<br /><br /><span style="font-weight: bold;">一般</span><br />http://www.ceres.dti.ne.jp/~ykuroda/oyaj/bone/basic3d.html<br />http://www012.upp.so-net.ne.jp/flab/3d/<br />http://www.mech.tohoku-gakuin.ac.jp/rde/contents/course/robotics/coordtrans.html<br /><br /><span style="font-weight: bold;">OpenGL</span><br />http://verygood.aid.design.kyushu-u.ac.jp/opengl2005/index.html</p> <a class="btn primary xsmall" href="/posts/2009/11/3d/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>Cプログラムのコールグラフ作成</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2009/11/c/">2009-11-02 02:15:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p><span>Cのライブラリの動作の解析のため</span><span>のメモ</span><span style="font-weight: bold;"><span style="font-weight: bold;"><br /><br /></span>参考リンク<br /><br /></span><a href="http://docs.sun.com/app/docs/doc/819-0391/chapter4-49922?l=ja&amp;a=view">共有オブジェクトのプロファイリング<span style="font-weight: bold;"></span><br /></a><a href="http://d.hatena.ne.jp/ousttrue/20091017/1255754733">gprofでコールグラフ</a></p> <a class="btn primary xsmall" href="/posts/2009/11/c/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>デジタルズーム(2)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2009/10/2/">2009-10-30 04:55:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>前回の続き<br /><br />前回はバイキュービック関数から、画素補間に使用する係数をどのように求めるのかということを記述しました。<br /><br />今回は、「画素補間に使用する元画素をどのように求めるのか」ということについて記述します。前回と同じように、ズーム前の画素がd0,d1,d2,d3,...と並んでいるとします。すると、ズームのために参照する画素としては、1倍(ズームなし)の場合は、最初はd0,d1,d2,d3、次はd1,d2,d3,d4、その次はd2,d3,d4,d5、...以下同様となります。これは当たり前ですね。<br /><br />次に<span style="font-weight: bold;">2倍</span>の場合は、最初はd0,d1,d2,d3、次もd0,d1,d2,d3、その次はd1,d2,d3,d4、その次もd1,d2,d3,d4 ...</p> <a class="btn primary xsmall" href="/posts/2009/10/2/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>デジタルズーム</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2009/10/digital-zoom-bicubic/">2009-10-22 08:49:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p><span style="font-weight: bold;">画像のデジタルズームの方法について<br /><br /></span>きれいに画像を拡大するためのアルゴリズムとしてよく用いられるのはバイキュービック法というものです。それを実際に実装しようとしたときのメモです。<br /><br /><span style="font-weight: bold;">バイキュービックの係数の使い方</span><br /><br /><a href="http://yoffy.dyndns.org/2006/02/lanczos.html">ここ</a>を初めとしていろいろな場所でバイキュービック関数というのが取り上げられていますが、関数だけ見せられても??となってしまいます。説明を試みてみたいと思います。<br /><br />まず、ここでは、バイキュービック法でズームをするという場合、4x4のオリジナル画像を使用し、その16画素を元にして、新しいズーム後の画素値を計算する、ということを前提とします。そのとき、ズーム後の画素値は、要するに4x4の画素のそれぞれに重みを乗じて加えることによって得られます。その重みの係数をバイキュービック関数というのが決定しています。<br /><br />まず、1次元だけを考えてみます。例として、2倍のズームをするとします。補間元となるオリジナル画像が、左から順にd0,d1,d2,d3と並んでいるとします。すると、d1,d2の間で2つの補間画素を求めることになります。初めの補間画素は、実質d1となります。2番目の補間画素はd1とd2のちょうど真ん中にあると考えるわけです。すると、その画素からd0までの距離は1.5、d1までの距離は0.5、d2までの距離は0.5、d3までの距離は1.5となります。それで、これらの距離を<a href="http://yoffy.dyndns.org/2006/02/lanczos.html">先ほどの</a><a href="http://yoffy.dyndns.org/2006/02/lanczos.html">URL</a>にあるグラフのx座標とし、対応するyの値を係数とするわけです ...</p> <a class="btn primary xsmall" href="/posts/2009/10/digital-zoom-bicubic/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>ZFSでのCIFS共有</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2009/09/zfscifs/">2009-09-07 04:26:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/opensolaris.html">OpenSolaris</a> </div>
+	<div class="summary"><p>Windowsで使用するファイルなども含めて、すべてのデータはこれまでLinuxで管理<br />してきたが、Solarisに心惹かれるものがあるので、数年ぶりに環境を移行した。<br /><br />使用したのはOpenSolaris 2009.06で、もちろんZFS!最近ファイルシステムが一杯になってきていたので、これで一安心。いくらでもディスク追加ができるのは素晴らしい。<br /><br />でも早速CIFSでWindowsからファイルを共有するのにつまづいた。共有を有効にすること自体は、<br /><a href="http://blogs.sun.com/timthomas/ja/entry/opensolaris_cifs_%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E6%A7%8B%E6%88%90">http://blogs.sun.com/timthomas/ja/entry/opensolaris_cifs_%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B0%E3 ...</a></p> <a class="btn primary xsmall" href="/posts/2009/09/zfscifs/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>SOPC BuilderにてSRAMを使う</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2009/06/sopc-buildersram/">2009-06-11 05:49:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>めも。<br /><br />QuartusIIのSOPC BuilderでSRAMを使いたい。QuartusIIにはCypressのコンポーネントが付いているが、ビット幅などが使用したいものと違うので、コンポーネントを作成する必要があった。<br /><br />Component Editorを起動してAvalon-MM Tristate Slaveをテンプレートから作成すると、とりあえずコンポーネントはできるものの、NIOSIIのメモリとして使用できない。調べた結果、<span style="font-weight: bold;">(コンポーネント名)_hw.tcl</span>にある、<span style="font-weight: bold;">isMemoryDevice</span>というのを、"false"から"true"にすればOKであると分かった。</p> <a class="btn primary xsmall" href="/posts/2009/06/sopc-buildersram/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>CLSQL実験(3)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2008/06/clsql3/">2008-06-05 07:11:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>CLSQLを使ったWebアプリの実験の続き。<br /><br />前回で、なんとなくCLSQLのリーダマクロが動作していないのでは??ということで終わってしまったが、結論からすると、リーダマクロは動作していた。<br />(setf hunchentoot:<em>catch-errors-p</em> nil)<br />をtop.lispに追加して実験してみたら、<br /><br />debugger invoked on a FLEXI-STREAMS:FLEXI-STREAM-ENCODING-ERROR in thread #<thread>:<br />#\KATAKANA_LETTER_SI is not a LATIN-1 character.<br /><br />というようなエラーがブラウザからのアクセス時に表示されたので、FLEXI-STREAM-ENCODING-ERRORあたりでググってみたら、<br /><br />(setf hunchentoot:<em>hunchentoot-default-external-format</em> :UTF-8)<br /><br />すると良い、という情報を発見。これをtop.lispに追加してみたら、見事に動作した。<br /><br />まだCommon Coldの継続機能は動作していないものの、とりあえず一安心。<br /><br /></thread></p> <a class="btn primary xsmall" href="/posts/2008/06/clsql3/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>CLSQL実験(2)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2008/05/clsqlhunchentoot/">2008-05-28 10:16:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/clsql.html">CLSQL</a> </div>
+	<div class="summary"><p>CLSQLを使って、Webアプリを作るという計画。hunchentoot, common-coldというライブラリを使ってみる。</p>
+
+<p>何となくできそうだが、うまく動かない。コードは次のような感じ。<br /></p>
+
+<pre>-----top.lisp-----<br />(require :asdf)<br />(push #P"/home/aaaa/bin/" asdf:*central-registry*)<br />(asdf:oos 'asdf:load-op 'common-cold)<br />(asdf:operate 'asdf:load-op 'clsql)<br />(asdf:operate 'asdf:load-op 'clsql-mysql)<br />(asdf:operate 'asdf:load-op 'clsql-sqlite3)<br />(load "kaimonoweb.lisp")<br />(hunchentoot:start-server :port 9877)<br /><br />-----------kaimonoweb.lisp----------<br />(cl:in-package "COMMON-COLD ...</pre> <a class="btn primary xsmall" href="/posts/2008/05/clsqlhunchentoot/">more…</a>
+	</div>
+</div>	
+
+<div class="pagination">
+<ul>
+		<li class="prev"><a href="/index8.html">&larr; Previous</a></li>
+		<li class=""><a href="/index.html">1</a></li>
+		<li class=""><a href="/index2.html">2</a></li>
+		<li class=""><a href="/index3.html">3</a></li>
+		<li class=""><a href="/index4.html">4</a></li>
+		<li class=""><a href="/index5.html">5</a></li>
+		<li class=""><a href="/index6.html">6</a></li>
+		<li class=""><a href="/index7.html">7</a></li>
+		<li class=""><a href="/index8.html">8</a></li>
+		<li class="active"><a href="/index9.html">9</a></li>
+		<li class=""><a href="/index10.html">10</a></li>
+		<li class="next"><a href="/index10.html">Next &rarr;</a></li>
+</ul>
+</div>
+
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

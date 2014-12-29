@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>OpenCL & GPGPUメモ</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/posts/2012/11/opencl-gpgpu/">2012-11-30 14:58:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/opencl.html">OpenCL</a> <a href="/tag/c-amp.html">C++ AMP</a> </div>
+		<div><p>さらにOpenCLやGPGPUの実験をしているが、そのメモ。<br /><ul><li>&nbsp;PCIeを介して、Device to Host, Host to Deviceの双方向転送が同時に実行されない。NVIDIAのGPUだと、Compute Capabilityが1.Xのものだと双方向の同時通信は無理のようなので、AMDもデバイスの制限があるのかも知れない。 これは、複数のコマンドキューを使用して、できるだけコマンドのオーバーラップを試みても、まだ未解決。 カーネルの実行中にデバイスメモリへの転送はできていることは確認できた。 </li></ul><ul><li>&nbsp;カーネルが使用するメモリを転送し終わってから、実際にカーネルが動作するまでに100ms以上のディレイが発生することがある。clEnqueueNDRangeKernelを呼び出して、直ちにclFlushを実行しているのだが...(このディレイはAMDの場合のみ。NVIDIAではそれほど遅くはない)</li></ul><ul><li>OpenCLは、単にカーネルを呼び出すにも、カーネル引数をsetKernelArgで一つずつ積み上げなければいけない。しかも、引数のサイズまで指定する必要がある。さらに調査してみたら、GPGPUとしては、<a href="http://msdn.microsoft.com/ja-jp/library/vstudio/hh265137.aspx">C++ AMP</a>という方法もある(ちなみに、リンク先は機械翻訳なので日本語が少し変)らしい。しかも、Visual C++ 2012だと標準で実装されており、<amp .h=".h">をインクルードするだけで使用できる。Microsoftの実装だと、Direct X 11のシェーダとしてカーネルが実行されるようだ。だが、C++ AMPの仕様自体は、Direct Xに依存しているわけではない。少し試してみた範囲では、OpenCLより遙かにお手軽に使用できる(まだパフォーマンスは測定していない)。<a href="http://llvm.org/devmtg/2012-11/Sharlet-ShevlinPark.pdf">IntelもC++ AMPからOpenCLへのトランスレータをClang/LLVMで実装している</a>らしい。C++のラムダ式でカーネルへの引数をキャプチャできるので、わざわざsetKernelArgのようなことをする必要もない。利点/欠点は、<a href="http://codedivine.org/2012/07/11/c-amp-first-impressions/">ここ</a>にもまとめられている。Visual C++ 2012にはプロファイラがある、とのことだが、どうやらExpressには付属していない模様。GPUベンダ提供のプロファイラでいけるのか？</amp></li></ul><ul><li>C言語だと、どうしてもOpenCLのようなAPIになってしまうのも仕方ないと思うが、C++のように強力な言語機能をうまく使えば、ユーザにとって非常に見通しの良いGPGPU実装も可能である、という良い手本になっていると思う。</li></ul></p></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

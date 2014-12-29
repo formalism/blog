@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>ZynqのPLを操作するLinuxドライバ (ユーザプログラム編)</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/posts/2014/05/zynqpllinux/">2014-05-14 08:52:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/linux.html">Linux</a> </div>
+		<div><p><a href="/posts/2014/05/zynqpllinux-dts/">ZynqのPLを操作するLinuxドライバ (DTS設定編)</a>の続き。これは見た方が早いと思うので、コードを示す。</p>
+<hr />
+<div class="highlight"><pre><span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;unistd.h&gt;</span>
+<span class="cp">#include &lt;sys/types.h&gt;</span>
+<span class="cp">#include &lt;sys/stat.h&gt;</span>
+<span class="cp">#include &lt;sys/mman.h&gt;</span>
+<span class="cp">#include &lt;fcntl.h&gt;</span>
+<span class="cp">#include &lt;errno.h&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">uiofd</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="n">icount</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">*</span> <span class="n">map_addr</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">cnt</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">one</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">uiofd</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="s">&quot;/dev/uio0&quot;</span><span class="p">,</span> <span class="n">O_RDWR</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">uiofd</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s">&quot;uio open:&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">errno</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">map_addr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">mmap</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="mi">4096</span><span class="p">,</span> <span class="n">PROT_READ</span> <span class="o">|</span> <span class="n">PROT_WRITE</span><span class="p">,</span> <span class="n">MAP_SHARED</span><span class="p">,</span> <span class="n">uiofd</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">map_addr</span><span class="p">){</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;mmap failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">errno</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">write</span><span class="p">(</span><span class="n">uiofd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">one</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>    <span class="c1">// enable interrupt to uio_pdrv_genirq</span>
+    <span class="n">map_addr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x0BEBC200</span><span class="p">;</span>    <span class="c1">// 200M</span>
+    <span class="n">map_addr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// disable</span>
+    <span class="n">map_addr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>    <span class="c1">// clear interrupt</span>
+    <span class="n">map_addr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// enable</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/* Print out a message, for debugging. */</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Started uio test driver.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Interrupts: %d,%x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">icount</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+
+        <span class="cm">/* Wait for next interrupt. */</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">uiofd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">icount</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">perror</span><span class="p">(</span><span class="s">&quot;uio read:&quot;</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">cnt</span> <span class="o">=</span> <span class="n">map_addr</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+        <span class="n">map_addr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>    <span class="c1">// clear interrupt</span>
+        <span class="n">write</span><span class="p">(</span><span class="n">uiofd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">one</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>    <span class="c1">// enable interrupt again</span>
+    <span class="p">}</span>
+    <span class="n">munmap</span><span class="p">(</span><span class="n">map_addr</span><span class="p">,</span> <span class="mi">4096</span><span class="p">);</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">uiofd</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">errno</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<hr />
+<p>要点は次の通り：</p>
+<ol>
+<li>/dev/uio0をオープンする</li>
+<li>デバイスレジスタにアクセスするためにuiofdに対してmmapする</li>
+<li>uiofdに対するreadで割り込み待ちが可能。読み込むバイト数は4にしなければならない</li>
+<li>readが戻ったときには、ドライバが割り込み禁止にしているので、write(uiofd, &amp;one, 4)をすることで、再度割り込みを有効にする。</li>
+<li>mmapで得られた領域の先頭要素が、デバイスレジスタ領域の先頭に対応しているので、普通のメモリのように読み書きすると、デバイスレジスタを読み出し/書き込みできる。</li>
+</ol>
+<p>以上を例によってZYBOにて実験してみたところ、デバイスの割り込みがHighになってから、おおよそ75マイクロ秒程度でreadが完了した(CPU負荷はデバッガを除いてほとんど無い状態。アプリケーションはデバッグビルド)。それほど厳しい制御が必要でない場合は、この程度の応答性でも十分実用になりそうだ。</p></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

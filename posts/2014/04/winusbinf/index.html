@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>WinUSBのinfファイル</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/posts/2014/04/winusbinf/">2014-04-30 05:21:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+		<div><p>ZynqのUSBデバイス機能を試すためにWinUSBを使用するための備忘録。<br /><br />WinUSBのドライバファイルはWDKに含まれているので、<a href="http://msdn.microsoft.com/en-us/windows/hardware/gg454513.aspx">このあたり</a>からインストールする。 WDK8.1からはVisual Studio 2013を<b>先に</b>インストールしてからWDKをインストールしないといけない、と書いてある。サボって後で面倒になるのも嫌なので、手順に従う。<br /><br />フォルダを作って、次に示すような感じでinfファイルを作成する。同じフォルダにamd64(64bit Windows7の例)というフォルダを作成し、その中にC:\Program Files (x86)\Windows Kits\8.1\Redist\wdf\x64からWdfCoInstaller01011.dll, winusbcoinstaller2.dll, WUDFUpdate_01011.dllをコピーする。<br /><br />infファイルの内容(例)。GUID, VID, PIDは適当に修正<br /><br />[Version]<br />Signature = "$Windows NT$"<br />Class = ZynqDeviceClass<br />ClassGuid={23AEE0D0-4E4B-4B03-8360-1FB07C0C3338}<br />Provider = %ProviderName%<br />CatalogFile=MyCatFile.cat<br /><br />; ================== Class section ==================<br /><br />[ClassInstall32]<br />Addreg=MyDeviceClassReg<br /><br />[MyDeviceClassReg]<br />HKR,,,0,%ClassName%<br />HKR,,Icon,,-1<br /><br />; ========== Manufacturer/Models sections ===========<br /><br />[Manufacturer]<br />%ProviderName% = ZynqDevice_WinUSB,NTx86,NTamd64,NTia64<br /><br />[ZynqDevice_WinUSB.NTx86]<br />%USB\ZynqDevice.DeviceDesc% =USB_Install, USB\VID_ABCD&amp;PID_0100<br /><br />[ZynqDevice_WinUSB.NTamd64]<br />%USB\ZynqDevice.DeviceDesc% =USB_Install, USB\VID_ABCD&amp;PID_0100<br /><br />[ZynqDevice_WinUSB.NTia64]<br />%USB\ZynqDevice.DeviceDesc% =USB_Install, USB\VID_ABCD&amp;PID_0100<br />; =================== Installation ===================<br /><br />;[1]<br />[USB_Install]<br />Include=winusb.inf<br />Needs=WINUSB.NT<br /><br />;[2]<br />[USB_Install.Services]<br />Include=winusb.inf<br />AddService=WinUSB,0x00000002,WinUSB_ServiceInstall<br /><br />;[3]<br />[WinUSB_ServiceInstall]<br />DisplayName&nbsp;&nbsp;&nbsp;&nbsp; = %WinUSB_SvcDesc%<br />ServiceType&nbsp;&nbsp;&nbsp;&nbsp; = 1<br />StartType&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3<br />ErrorControl&nbsp;&nbsp;&nbsp; = 1<br />ServiceBinary&nbsp;&nbsp; = %12%\WinUSB.sys<br /><br />;[4]<br />[USB_Install.Wdf]<br />KmdfService=WINUSB, WinUsb_Install<br /><br />[WinUSB_Install]<br />KmdfLibraryVersion=1.11<br /><br />;[5]<br />[USB_Install.HW]<br />AddReg=Dev_AddReg<br /><br />[Dev_AddReg]<br />HKR,,DeviceInterfaceGUIDs,0x10000,"{9F68AD5A-84E0-4E0F-8EF3-11139532FD22}"<br /><br />;[6]<br />[USB_Install.CoInstallers]<br />AddReg=CoInstallers_AddReg<br />CopyFiles=CoInstallers_CopyFiles<br /><br />[CoInstallers_AddReg]<br />HKR,,CoInstallers32,0x00010000,"WdfCoInstaller01011.dll,WdfCoInstaller","WinUSBCoInstaller2.dll"<br /><br />[CoInstallers_CopyFiles]<br />WinUSBCoInstaller2.dll<br />WdfCoInstaller01011.dll<br />WUDFUpdate_01011.dll<br /><br />[DestinationDirs]<br />CoInstallers_CopyFiles=11<br /><br />; ================= Source Media Section =====================<br />;[7]<br /><br />[SourceDisksNames]<br />1 = %DISK_NAME%,,,\i386<br />2 = %DISK_NAME%,,,\amd64<br />3 = %DISK_NAME%,,,\ia64<br /><br />[SourceDisksFiles.x86]<br />WinUSBCoInstaller2.dll=1<br />WdfCoInstaller01011.dll=1<br />WUDFUpdate_01011.dll=1<br /><br />[SourceDisksFiles.amd64]<br />WinUSBCoInstaller2.dll=2<br />WdfCoInstaller01011.dll=2<br />WUDFUpdate_01011.dll=2<br /><br />[SourceDisksFiles.ia64]<br />WinUSBCoInstaller2.dll=3<br />WdfCoInstaller01011.dll=3<br />WUDFUpdate_01011.dll=3<br /><br />; =================== Strings ===================<br /><br />[Strings]<br />ProviderName="ZynqUsbTest"<br />USB\ZynqDevice.DeviceDesc="ZynqOTG via WinUSB"<br />WinUSB_SvcDesc="WinUSB Test"<br />DISK_NAME="My Install Disk"<br />ClassName="ZynqDeviceClass"<br /></p></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

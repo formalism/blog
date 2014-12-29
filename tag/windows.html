@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+<div class="page-header"><h1>思いつきメモ <small>Windows</small></h1></div>
+<div class='article'>
+	<h2>高速ビットマップ描画方法を調査</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2013/10/fast-bitmap-drawing-in-windows/">2013-10-19 14:56:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/windows.html">Windows</a> </div>
+	<div class="summary"><p>高速にメモリ上のデータをWindowsで表示する方法について調査してみた。<br /><br />経験上OpenCVは余り高速ではない。OpenGLでテクスチャに貼り付ける、という方法は高速で、プラットフォームにもあまり依存しない方法なのだが、カメラと対象物との位置関係で、勝手に変形されてしまう(これはOpenGLの目的からして当然であるが、ちゃんとデータを1対1で画像ピクセルに反映させたい、というような場合には問題となる)、という問題がある。<br /><br />また、OpenGLを使用する場合、ウィンドウ管理はGLUTに任せてしまうと、自分で作成するWindows上のウィンドウに描画するときに問題になる(理論上は可能なはずだが、面倒なのであまり調べていない)。<br /><b><br /></b><b>目標としては、Windowsで、自分で管理するウィンドウの内部に、高速にメモリ上のデータを表示したい。</b><br /><br />少し調べてみた結果、Vista以降のWindowsであれば、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd370990(v=vs.85).aspx">Direct2D</a>を使用するのが目的にかなっているようだ。もちろんWindowsにべったりになってしまうのだが、仕方がない。<br /><br />なんとなく、ID2D1HwndRenderTargetでBitmapを作成し、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd371155(v=vs.85).aspx">CopyFromMemory</a>を行って<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd742844(v=vs.85).aspx">DrawBitmap</a>という流れで出来そうな気がしてきた。これだとオフスクリーンではないかも知れない。でも、この応用で何とかなりそうな気がする。<br /><br />今度実験してみよう。<br /><br />===================<br />ちなみに、調べてみると、MacではOpenGLの<a href="https://developer.apple.com/library/mac/documentation/graphicsimaging/conceptual/opengl-macprogguide/opengl_offscreen/opengl_offscreen.html">Framebuffer object</a>という方法があるようだ。自分がWindows上のOpenGLで試したときには、FBOはそれほどパフォーマンスが良くなかった印象がある。Macだとまた違うかも知れないが。 </p> <a class="btn primary xsmall" href="/posts/2013/10/fast-bitmap-drawing-in-windows/">more…</a>
+	</div>
+</div>	
+
+
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

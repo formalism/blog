@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>ZynqでのUSBデバイステスト (PC側ソフトウェア)</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/posts/2014/04/zynqusb/">2014-04-30 09:15:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+		<div><p>Zynqに内蔵されているUSBポートをデバイスモードで使用できるかテスト中。</p>
+<p>とりあえず最低限のループバックでは動作したので、汚いがコードを貼っておく。</p>
+<p>まずは、WinUSBを使用したPC側のソース。ほぼMicrosoftのドキュメントをくっつけただけ。インクルードの順番だけは結構重要だったりする。winusb.lib, setupapi.libをリンクすること。</p>
+<p>ドライバはインストール済みの前提。</p>
+<hr />
+<div class="highlight"><pre><span class="cp">#include &quot;stdafx.h&quot;</span>
+<span class="c1">//#include &quot;usb.h&quot;</span>
+<span class="cp">#include &quot;windows.h&quot;</span>
+<span class="cp">#include &quot;usb100.h&quot;</span>
+<span class="cp">#include &quot;usb200.h&quot;</span>
+<span class="cp">#include &quot;SetupAPI.h&quot;</span>
+<span class="cp">#include &quot;winusb.h&quot;</span>
+<span class="cp">#include &quot;winusbio.h&quot;</span>
+<span class="cp">#include &quot;strsafe.h&quot;</span>
+
+<span class="cp">#define MAX_DEVPATH_LENGTH (1024)</span>
+
+<span class="c1">// {9F68AD5A-84E0-4E0F-8EF3-11139532FD22}</span>
+<span class="n">GUID</span> <span class="n">GUID_DEVINTERFACE_OSRUSBFX2</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0x9F68AD5AUL</span><span class="p">,</span> <span class="mh">0x84E0</span><span class="p">,</span> <span class="mh">0x4E0F</span><span class="p">,</span> <span class="p">{</span> <span class="mh">0x8E</span><span class="p">,</span> <span class="mh">0xF3</span><span class="p">,</span> <span class="mh">0x11</span><span class="p">,</span> <span class="mh">0x13</span><span class="p">,</span> <span class="mh">0x95</span><span class="p">,</span> <span class="mh">0x32</span><span class="p">,</span> <span class="mh">0xFD</span><span class="p">,</span> <span class="mh">0x22</span> <span class="p">}</span> <span class="p">};</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">_DEVINFO</span> <span class="p">{</span>
+    <span class="n">WINUSB_INTERFACE_HANDLE</span> <span class="n">winUSBHandle</span><span class="p">;</span>
+    <span class="n">UCHAR</span> <span class="n">deviceSpeed</span><span class="p">;</span>
+    <span class="n">UCHAR</span> <span class="n">bulkInPipe</span><span class="p">,</span> <span class="n">bulkOutPipe</span><span class="p">,</span> <span class="n">interruptPipe</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">DEVINFO</span><span class="p">;</span>
+<span class="k">static</span> <span class="n">DEVINFO</span> <span class="n">devInfo</span><span class="p">;</span>
+
+<span class="n">BOOL</span> <span class="nf">GetDevicePath</span><span class="p">(</span><span class="n">LPGUID</span> <span class="n">InterfaceGuid</span><span class="p">,</span> <span class="n">PCHAR</span> <span class="n">DevicePath</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">BufLen</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">BOOL</span> <span class="n">bResult</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="n">HDEVINFO</span> <span class="n">deviceInfo</span><span class="p">;</span>
+    <span class="n">SP_DEVICE_INTERFACE_DATA</span> <span class="n">interfaceData</span><span class="p">;</span>
+    <span class="n">PSP_DEVICE_INTERFACE_DETAIL_DATA</span> <span class="n">detailData</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">ULONG</span> <span class="n">length</span><span class="p">;</span>
+    <span class="n">ULONG</span> <span class="n">requiredLength</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">HRESULT</span> <span class="n">hr</span><span class="p">;</span>
+
+    <span class="c1">// [1]</span>
+    <span class="n">deviceInfo</span> <span class="o">=</span> <span class="n">SetupDiGetClassDevs</span><span class="p">(</span><span class="n">InterfaceGuid</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span>
+                                    <span class="n">DIGCF_PRESENT</span> <span class="o">|</span> <span class="n">DIGCF_DEVICEINTERFACE</span><span class="p">);</span>
+    <span class="c1">//Error handling code omitted.</span>
+
+    <span class="c1">// [2]</span>
+    <span class="n">interfaceData</span><span class="p">.</span><span class="n">cbSize</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">SP_DEVICE_INTERFACE_DATA</span><span class="p">);</span>
+
+    <span class="n">bResult</span> <span class="o">=</span> <span class="n">SetupDiEnumDeviceInterfaces</span><span class="p">(</span><span class="n">deviceInfo</span><span class="p">,</span>
+                                <span class="nb">NULL</span><span class="p">,</span> <span class="n">InterfaceGuid</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">interfaceData</span><span class="p">);</span>
+    <span class="c1">//Error handling code omitted.</span>
+
+    <span class="c1">// [3]</span>
+    <span class="n">SetupDiGetDeviceInterfaceDetail</span><span class="p">(</span><span class="n">deviceInfo</span><span class="p">,</span>
+        <span class="o">&amp;</span><span class="n">interfaceData</span><span class="p">,</span>
+        <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="o">&amp;</span><span class="n">requiredLength</span><span class="p">,</span>
+        <span class="nb">NULL</span><span class="p">);</span>
+
+    <span class="n">detailData</span> <span class="o">=</span> <span class="p">(</span><span class="n">PSP_DEVICE_INTERFACE_DETAIL_DATA</span><span class="p">)</span><span class="n">LocalAlloc</span><span class="p">(</span><span class="n">LMEM_FIXED</span><span class="p">,</span> <span class="n">requiredLength</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">NULL</span> <span class="o">==</span> <span class="n">detailData</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">SetupDiDestroyDeviceInfoList</span><span class="p">(</span><span class="n">deviceInfo</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">detailData</span><span class="o">-&gt;</span><span class="n">cbSize</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">SP_DEVICE_INTERFACE_DETAIL_DATA</span><span class="p">);</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">requiredLength</span><span class="p">;</span>
+
+    <span class="n">bResult</span> <span class="o">=</span> <span class="n">SetupDiGetDeviceInterfaceDetail</span><span class="p">(</span><span class="n">deviceInfo</span><span class="p">,</span>
+        <span class="o">&amp;</span><span class="n">interfaceData</span><span class="p">,</span>
+        <span class="n">detailData</span><span class="p">,</span>
+        <span class="n">length</span><span class="p">,</span>
+        <span class="o">&amp;</span><span class="n">requiredLength</span><span class="p">,</span>
+        <span class="nb">NULL</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">FALSE</span> <span class="o">==</span> <span class="n">bResult</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LocalFree</span><span class="p">(</span><span class="n">detailData</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// [4]</span>
+    <span class="n">hr</span> <span class="o">=</span> <span class="n">StringCchCopy</span><span class="p">((</span><span class="n">LPTSTR</span><span class="p">)</span><span class="n">DevicePath</span><span class="p">,</span> <span class="n">BufLen</span><span class="p">,</span> <span class="n">detailData</span><span class="o">-&gt;</span><span class="n">DevicePath</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">FAILED</span><span class="p">(</span><span class="n">hr</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">SetupDiDestroyDeviceInfoList</span><span class="p">(</span><span class="n">deviceInfo</span><span class="p">);</span>
+        <span class="n">LocalFree</span><span class="p">(</span><span class="n">detailData</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">LocalFree</span><span class="p">(</span><span class="n">detailData</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">bResult</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">HANDLE</span> <span class="nf">OpenDevice</span><span class="p">(</span><span class="n">BOOL</span> <span class="n">bSync</span><span class="p">){</span>
+    <span class="n">HANDLE</span> <span class="n">hDev</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">devicePath</span><span class="p">[</span><span class="n">MAX_DEVPATH_LENGTH</span><span class="p">];</span>
+    <span class="n">BOOL</span> <span class="n">retVal</span><span class="p">;</span>
+
+    <span class="n">retVal</span> <span class="o">=</span> <span class="n">GetDevicePath</span><span class="p">((</span><span class="n">LPGUID</span><span class="p">)</span><span class="o">&amp;</span><span class="n">GUID_DEVINTERFACE_OSRUSBFX2</span><span class="p">,</span>
+        <span class="n">devicePath</span><span class="p">,</span>    <span class="k">sizeof</span><span class="p">(</span><span class="n">devicePath</span><span class="p">));</span>
+    <span class="c1">//Error-handling code omitted.</span>
+
+    <span class="n">hDev</span> <span class="o">=</span> <span class="n">CreateFile</span><span class="p">((</span><span class="n">LPCWSTR</span><span class="p">)</span><span class="n">devicePath</span><span class="p">,</span>
+        <span class="n">GENERIC_WRITE</span> <span class="o">|</span> <span class="n">GENERIC_READ</span><span class="p">,</span>
+        <span class="n">FILE_SHARE_WRITE</span> <span class="o">|</span> <span class="n">FILE_SHARE_READ</span><span class="p">,</span>
+        <span class="nb">NULL</span><span class="p">,</span>
+        <span class="n">OPEN_EXISTING</span><span class="p">,</span>
+        <span class="n">FILE_ATTRIBUTE_NORMAL</span> <span class="o">|</span> <span class="n">FILE_FLAG_OVERLAPPED</span><span class="p">,</span>
+        <span class="nb">NULL</span><span class="p">);</span>
+
+    <span class="c1">//Error-handling code omitted.</span>
+    <span class="k">return</span> <span class="n">hDev</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">BOOL</span> <span class="nf">Initialize_Device</span><span class="p">(){</span>
+    <span class="n">BOOL</span> <span class="n">bResult</span><span class="p">;</span>
+    <span class="n">WINUSB_INTERFACE_HANDLE</span> <span class="n">usbHandle</span><span class="p">;</span>
+    <span class="n">USB_INTERFACE_DESCRIPTOR</span> <span class="n">ifaceDescriptor</span><span class="p">;</span>
+    <span class="n">WINUSB_PIPE_INFORMATION</span> <span class="n">pipeInfo</span><span class="p">;</span>
+    <span class="n">UCHAR</span> <span class="n">speed</span><span class="p">;</span>
+    <span class="n">ULONG</span> <span class="n">length</span><span class="p">;</span>
+
+    <span class="n">HANDLE</span> <span class="n">deviceHandle</span> <span class="o">=</span> <span class="n">OpenDevice</span><span class="p">(</span><span class="n">TRUE</span><span class="p">);</span>
+    <span class="n">bResult</span> <span class="o">=</span> <span class="n">WinUsb_Initialize</span><span class="p">(</span><span class="n">deviceHandle</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">usbHandle</span><span class="p">);</span>
+
+    <span class="c1">//[1]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bResult</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">devInfo</span><span class="p">.</span><span class="n">winUSBHandle</span> <span class="o">=</span> <span class="n">usbHandle</span><span class="p">;</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">UCHAR</span><span class="p">);</span>
+        <span class="n">bResult</span> <span class="o">=</span> <span class="n">WinUsb_QueryDeviceInformation</span><span class="p">(</span><span class="n">usbHandle</span><span class="p">,</span> <span class="n">DEVICE_SPEED</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">length</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">speed</span><span class="p">);</span>
+        <span class="n">devInfo</span><span class="p">.</span><span class="n">deviceSpeed</span> <span class="o">=</span> <span class="n">speed</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">//[2]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bResult</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">bResult</span> <span class="o">=</span> <span class="n">WinUsb_QueryInterfaceSettings</span><span class="p">(</span><span class="n">usbHandle</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ifaceDescriptor</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bResult</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span>  <span class="o">&lt;</span> <span class="n">ifaceDescriptor</span><span class="p">.</span><span class="n">bNumEndPoints</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>   <span class="p">{</span>
+            <span class="c1">//[3]</span>
+            <span class="n">bResult</span> <span class="o">=</span> <span class="n">WinUsb_QueryPipe</span><span class="p">(</span><span class="n">usbHandle</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">UCHAR</span><span class="p">)</span><span class="n">i</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pipeInfo</span><span class="p">);</span>
+            <span class="c1">//[4]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">pipeInfo</span><span class="p">.</span><span class="n">PipeType</span> <span class="o">==</span> <span class="n">UsbdPipeTypeBulk</span> <span class="o">&amp;&amp;</span>
+                <span class="n">USB_ENDPOINT_DIRECTION_IN</span><span class="p">(</span><span class="n">pipeInfo</span><span class="p">.</span><span class="n">PipeId</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">devInfo</span><span class="p">.</span><span class="n">bulkInPipe</span> <span class="o">=</span> <span class="n">pipeInfo</span><span class="p">.</span><span class="n">PipeId</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pipeInfo</span><span class="p">.</span><span class="n">PipeType</span> <span class="o">==</span> <span class="n">UsbdPipeTypeBulk</span> <span class="o">&amp;&amp;</span>
+                <span class="n">USB_ENDPOINT_DIRECTION_OUT</span><span class="p">(</span><span class="n">pipeInfo</span><span class="p">.</span><span class="n">PipeId</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">devInfo</span><span class="p">.</span><span class="n">bulkOutPipe</span> <span class="o">=</span> <span class="n">pipeInfo</span><span class="p">.</span><span class="n">PipeId</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pipeInfo</span><span class="p">.</span><span class="n">PipeType</span> <span class="o">==</span> <span class="n">UsbdPipeTypeInterrupt</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">devInfo</span><span class="p">.</span><span class="n">interruptPipe</span> <span class="o">=</span> <span class="n">pipeInfo</span><span class="p">.</span><span class="n">PipeId</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">bResult</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">bResult</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#define BUFSZ (2561024)</span>
+
+<span class="kt">int</span> <span class="nf">_tmain</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">_TCHAR</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">ULONG</span> <span class="n">bytesWritten</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">buf</span><span class="p">[</span><span class="n">BUFSZ</span> <span class="o">/</span> <span class="mi">4</span><span class="p">],</span> <span class="n">buf2</span><span class="p">[</span><span class="n">BUFSZ</span> <span class="o">/</span> <span class="mi">4</span><span class="p">];</span>
+
+    <span class="n">BOOL</span> <span class="n">result</span> <span class="o">=</span> <span class="n">Initialize_Device</span><span class="p">();</span>
+    <span class="n">srand</span><span class="p">(</span><span class="mh">0xF3ab1541</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">BUFSZ</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">rand</span><span class="p">();</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">WinUsb_WritePipe</span><span class="p">(</span><span class="n">devInfo</span><span class="p">.</span><span class="n">winUSBHandle</span><span class="p">,</span> <span class="n">devInfo</span><span class="p">.</span><span class="n">bulkOutPipe</span><span class="p">,</span> 
+                                <span class="p">(</span><span class="n">PUCHAR</span><span class="p">)</span><span class="n">buf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">bytesWritten</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">&amp;&amp;</span> <span class="n">bytesWritten</span> <span class="o">==</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">)){</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">BUFSZ</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">buf2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">WinUsb_ReadPipe</span><span class="p">(</span><span class="n">devInfo</span><span class="p">.</span><span class="n">winUSBHandle</span><span class="p">,</span> <span class="n">devInfo</span><span class="p">.</span><span class="n">bulkInPipe</span><span class="p">,</span>
+                                <span class="p">(</span><span class="n">PUCHAR</span><span class="p">)</span><span class="n">buf2</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf2</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">bytesWritten</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">&amp;&amp;</span> <span class="n">bytesWritten</span> <span class="o">==</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buf2</span><span class="p">)){</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">BUFSZ</span><span class="o">/</span><span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">buf2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Data mismatch: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Receive error</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Send error</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">FILE</span> <span class="n">fd</span><span class="p">,</span> <span class="n">fd2</span><span class="p">;</span>
+    <span class="n">fopen_s</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fd</span><span class="p">,</span> <span class="s">&quot;buf.txt&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
+    <span class="n">fopen_s</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fd2</span><span class="p">,</span> <span class="s">&quot;buf2.txt&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
+    <span class="kt">char</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">BUFSZ</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">sprintf_s</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s">&quot;0x%08X</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="n">fwrite</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fd</span><span class="p">);</span>
+        <span class="n">len</span> <span class="o">=</span> <span class="n">sprintf_s</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s">&quot;0x%08X</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buf2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="n">fwrite</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">fd2</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

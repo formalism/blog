@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+<div class="page-header"><h1>思いつきメモ <small>Android</small></h1></div>
+<div class='article'>
+	<h2>[Android] Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]の対応方法</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2013/05/android-failure-installparsefailedincon/">2013-05-20 15:15:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/android.html">Android</a> </div>
+	<div class="summary"><p>Androidのアプリケーションを開発しているときに、昨日までは普通にIDE(IntelliJ/IDEA)からUSB接続した実機にアプリケーションをダウンロードして実行できていたのに、今日になって、できなくなってしまった。エラーとして、  <pre><br />Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]<br /></pre> というのがIDEに表示されている。</p> <p>困ったので色々検索してみると、どうやらWindowsの場合、C:\Users\(ユーザ名)\.androidの下に、debug.keystoreというのが自動的に作成されるらしい。ここに、アプリケーションの署名に必要な証明書が格納されている。Androidでは、たとえデバッグであっても、アプリケーションは署名を付けないといけない。さらに、少なくとも次の場合は、一度インストールしたアプリケーションを再インストールしようとしても、上記メッセージが表示されて失敗する。</p> <ul><li>アプリケーションを異なる証明書で署名した。 <li>アプリケーションの署名に使用された証明書の期限が切れた。 </ul> <p>自動生成されるdebug.keystoreの証明書には有効期限があり、デフォルトの有効期間は1年間であるようだ。自分の場合、上記の2番目の原因でエラーが発生していた。</p> <p>いろいろ対処法があるらしいが、とりあえず怠惰なプログラマとしては、もっとも楽な方法を使用した：インストールしたアプリケーションを一度アンインストールし、再度(<b>削除後に再生成されたdebug.keystoreで署名して</b>)インストールする。</p> <p>ただ、この方法の欠点は、アプリケーションで作成されていたデータもすべて削除されてしまうことである。それが許容できれば、とりあえず一番簡単な対処法であると思う。いずれにせよ、リリースするときには正式に署名を付けるので ...</p> <a class="btn primary xsmall" href="/posts/2013/05/android-failure-installparsefailedincon/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>androidのHttpURLConnection::getInputStreamでjava.io.FileNotFoundException</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2013/05/androidhttpurlconnectiongetinputstreamj/">2013-05-15 14:39:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/android.html">Android</a> </div>
+	<div class="summary"><p>androidで、HttpURLConnectionクラスを使って、リモートサーバにGETリクエストを送り、結果を取得しようとした。だが、なぜかgetInputStreamを呼び出したところでjava.io.FileNotFoundExceptionが発生する。そのURLをブラウザでアクセスすることはできるのに。</p>
+
+<p><p>検索してみたところ、いつもの<a href="http://stackoverflow.com/questions/5178947/filenotfoundexception-when-calling-webservice">StackOverflow</a>に答えがあった。HTTPのレスポンスコードが400以上であると、HttpURLConnectionはFileNotFoundExceptionを投げる、ということが原因だった。ブラウザでアクセスできていると思っていたが、レスポンスコードを見てみると、403 Forbiddenだった。</p> <p>というわけで、同じ回答では、<a href="http://developer.android.com/reference/java/net/HttpURLConnection.html#getResponseCode%28%29">getResponseCode()</a>を使って問題を特定する、ということが勧められていた。</p></p> <a class="btn primary xsmall" href="/posts/2013/05/androidhttpurlconnectiongetinputstreamj/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>Android アプリ開発メモ</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/05/android/">2011-05-27 05:53:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/android.html">Android</a> </div>
+	<div class="summary"><p>ブックマーク<br /><br /><a href="http://yktmnb.b.sourceforge.jp/2011/01/04/android%E7%AB%AF%E6%9C%AB%E3%81%ABwifi%E7%B5%8C%E7%94%B1%E3%81%A7adb%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/">WIFI&amp;adbでの接続</a><br /><a href="http://ht03a.seesaa.net/article/132074419.html">端末IPアドレスの確認方法</a><br /><a href="http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1451737194">eclipseからadbを経由し実行する方法</a></p> <a class="btn primary xsmall" href="/posts/2011/05/android/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>[Android] ImageViewのsetImageResourceでの描画処理</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/05/android-imageviewsetimageresource/">2011-05-20 10:57:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/android.html">Android</a> </div>
+	<div class="summary"><p>ボタンが押されたときのonClickハンドラで、何回もImageView#setImageResourceを呼び出しても、画像は更新されなかった。調べてみたら、onClickのハンドラが抜けてUIスレッドに制御が渡らないと描画されないらしい。それで、結局次のようにして解決した。まず、Runnableを実装するImageControlクラスを作成する。</p>
+
+<pre class="prettyprint"><br />public class ImageControl implements Runnable{<br />    private ImageView iv;<br />    private int num = 0;<br />    ImageControl(ImageView v){ iv = v; }<br /><br />    @Override<br />    public void run() {<br />        iv.setImageResource(image[num]);<br /><br />        if (num &gt;= 48){<br />            num = 0;<br />        }else{<br />            num++;<br />            iv.postDelayed(this, 10);<br />        }<br />    }<br />}<br /></pre>
+
+<p>上記で、image配列はあらかじめ用意されているリソース。numが0-48の間は、postDelayedを呼び出すことで ...</p> <a class="btn primary xsmall" href="/posts/2011/05/android-imageviewsetimageresource/">more…</a>
+	</div>
+</div>	
+
+
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>Zynq USBデバイステスト (ファームウェア)</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/posts/2014/04/zynq-usb/">2014-04-30 09:33:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+		<div><p><a href="/posts/2014/04/zynqusb/">Zynq USBデバイステスト (PC側ソフトウェア)</a>の続き。</p>
+<p>C:\Xilinx\SDK\2014.1\data\embeddedsw\XilinxProcessorIPLib\drivers\usbps_v2_0 のexamplesに対するパッチ。
+usbMain関数を呼び出すと動作開始。examplesのファイル達はusbフォルダにコピーされたものとする。</p>
+<p>概要としては、examplesはUSB mass storageとして動作するので、バルク転送のTX/RX割り込みがかかるところを
+横取り(XUsbPs_HandleStorageReqをコメントにする)して、所望のデータ処理に置き換える。
+また、サンプルはTX割り込みがかからないようになっているので、TXのビットをorして有効にする。</p>
+<hr />
+<p>diff -cr examples/xusbps_ch9_storage.c usb/xusbps_ch9_storage.c</p>
+<div class="highlight"><pre>examples/xusbps_ch9_storage.c    2014-04-16 23:53:27.579740500 +0900
+<span class="gd">--- usb/xusbps_ch9_storage.c    2014-04-30 13:40:18.515248827 +0900</span>
+**
+171,177 *
+          0x00,                / bDeviceSubClass /
+          0x00,                / bDeviceProtocol /
+          USB_ENDPOINT0_MAXP,        / bMaxPackedSize0 /
+<span class="gs">!         be2les(0x0d7d),            / idVendor /</span>
+          be2les(0x0100),            / idProduct /
+          be2les(0x0100),            / bcdDevice /
+          0x01,                / iManufacturer /
+<span class="gd">--- 171,177 ----</span>
+          0x00,                / bDeviceSubClass /
+          0x00,                / bDeviceProtocol /
+          USB_ENDPOINT0_MAXP,        / bMaxPackedSize0 /
+<span class="gs">!         be2les(0xABCD),            / idVendor /</span>
+          be2les(0x0100),            / idProduct /
+          be2les(0x0100),            / bcdDevice /
+          0x01,                / iManufacturer */
+***
+227,235 *
+           0x00,                / bInterfaceNumber /
+           0x00,                / bAlternateSetting /
+           0x02,                / bNumEndPoints /
+<span class="gs">!          0x08,                / bInterfaceClass /</span>
+<span class="gs">!          0x06,                / bInterfaceSubClass /</span>
+<span class="gs">!          0x50,                / bInterfaceProtocol /</span>
+           0x05},                / iInterface /
+
+          / Bulk Out Endpoint Config /
+<span class="gd">--- 227,235 ----</span>
+           0x00,                / bInterfaceNumber /
+           0x00,                / bAlternateSetting /
+           0x02,                / bNumEndPoints /
+<span class="gs">!          0xFF,                / bInterfaceClass 08-&gt;FF /</span>
+<span class="gs">!          0x00,                / bInterfaceSubClass 06-&gt;00 /</span>
+<span class="gs">!          0x00,                / bInterfaceProtocol 50-&gt;00 /</span>
+           0x05},                / iInterface /
+
+          / Bulk Out Endpoint Config */
+***
+285,295 *
+
+      static char StringList[] = {
+          &quot;UNUSED&quot;,
+<span class="gs">!         &quot;Xilinx&quot;,</span>
+<span class="gs">!         &quot;EPB USB Flash Drive Disk Emulation&quot;,</span>
+          &quot;2A49876D9CC1AA4&quot;,
+          &quot;Default Configuration&quot;,
+<span class="gs">!         &quot;Default Interface&quot;,</span>
+      };
+      char String;
+      u32 StringLen;
+<span class="gd">--- 285,295 ----</span>
+
+      static char StringList[] = {
+          &quot;UNUSED&quot;,
+<span class="gs">!         &quot;abstract&quot;,</span>
+<span class="gs">!         &quot;Image Converter&quot;,</span>
+          &quot;2A49876D9CC1AA4&quot;,
+          &quot;Default Configuration&quot;,
+<span class="gs">!         &quot;Image Inteface&quot;,</span>
+      };
+      char *String;
+      u32 StringLen;
+<span class="gh">diff -cr examples/xusbps_intr_example.c usb/xusbps_intr_example.c</span>
+examples/xusbps_intr_example.c    2014-04-16 23:53:27.661745200 +0900
+<span class="gd">--- usb/xusbps_intr_example.c    2014-04-30 18:06:36.810127803 +0900</span>
+**
+122,128
+
+   ***********/
+
+<span class="gs">! int main(void)</span>
+  {
+      int Status;
+
+<span class="gd">--- 122,128 ----</span>
+
+   ***********/
+
+<span class="gs">! int usbMain(void)</span>
+  {
+      int Status;
+
+**
+290,296
+
+      / Set the handler for receiving frames. /
+      Status = XUsbPs_IntrSetHandler(UsbInstancePtr, UsbIntrHandler, NULL,
+<span class="gs">!                         XUSBPS_IXR_UE_MASK);</span>
+      if (XST_SUCCESS != Status) {
+          goto out;
+      }
+<span class="gd">--- 290,296 ----</span>
+
+      / Set the handler for receiving frames. /
+      Status = XUsbPs_IntrSetHandler(UsbInstancePtr, UsbIntrHandler, NULL,
+<span class="gs">!                         XUSBPS_IXR_UE_MASK);    // notify transaction error</span>
+      if (XST_SUCCESS != Status) {
+          goto out;
+      }
+**
+310,316 
+        been sent.
+       /
+      Status = XUsbPs_EpSetHandler(UsbInstancePtr, 1,
+<span class="gs">!                 XUSBPS_EP_DIRECTION_OUT,</span>
+                  XUsbPs_Ep1EventHandler, UsbInstancePtr);
+
+      / Enable the interrupts. /
+<span class="gd">--- 310,316 ----</span>
+        been sent.
+       /
+      Status = XUsbPs_EpSetHandler(UsbInstancePtr, 1,
+<span class="gs">!                 XUSBPS_EP_DIRECTION_OUT | XUSBPS_EP_DIRECTION_IN,    // Add XUSBPS_EP_DIRECTION_IN</span>
+                  XUsbPs_Ep1EventHandler, UsbInstancePtr);
+
+      / Enable the interrupts. /
+**
+411,417 
+      u32    BufferLen;
+      u32    Handle;
+
+<span class="gd">- </span>
+      Xil_AssertVoid(NULL != CallBackRef);
+
+      InstancePtr = (XUsbPs ) CallBackRef;
+<span class="gd">--- 411,416 ----</span>
+**
+476,485 
+      u32    BufferLen;
+      u32 InavalidateLen;
+      u32    Handle;
+<span class="gs">!</span>
+
+      Xil_AssertVoid(NULL != CallBackRef);
+<span class="gd">- </span>
+      InstancePtr = (XUsbPs ) CallBackRef;
+
+      switch (EventType) {
+<span class="gd">--- 475,484 ----</span>
+      u32    BufferLen;
+      u32 InavalidateLen;
+      u32    Handle;
+<span class="gs">!     static u8 TempBuf[2561024];</span>
+<span class="gs">!     static u32 BufPtr = 0;</span>
+
+      Xil_AssertVoid(NULL != CallBackRef);
+      InstancePtr = (XUsbPs ) CallBackRef;
+
+      switch (EventType) {
+**
+493,509 
+              InavalidateLen = (BufferLen/32) * 32 + 32;
+          }
+
+<span class="gs">!         Xil_DCacheInvalidateRange((unsigned int)BufferPtr,</span>
+<span class="gs">!                                     InavalidateLen);</span>
+          if (XST_SUCCESS == Status) {
+              / Handle the storage class request. /
+<span class="gs">!             XUsbPs_HandleStorageReq(InstancePtr, EpNum,</span>
+<span class="gs">!                             BufferPtr, BufferLen);</span>
+              / Release the buffer. /
+              XUsbPs_EpBufferRelease(Handle);
+          }
+          break;
+<span class="gd">- </span>
+      default:
+          / Unhandled event. Ignore. /
+          break;
+<span class="gd">--- 492,527 ----</span>
+              InavalidateLen = (BufferLen/32) * 32 + 32;
+          }
+
+<span class="gs">!         Xil_DCacheInvalidateRange((unsigned int)BufferPtr, InavalidateLen);</span>
+          if (XST_SUCCESS == Status) {
+              / Handle the storage class request. /
+<span class="gs">! //            XUsbPs_HandleStorageReq(InstancePtr, EpNum, BufferPtr, BufferLen);</span>
+<span class="gs">! </span>
+<span class="gs">!             memcpy(&amp;TempBuf[BufPtr], BufferPtr, BufferLen);</span>
+<span class="gs">!             BufPtr += BufferLen;</span>
+<span class="gs">!             if (BufPtr &gt;= 2561024){</span>
+<span class="gs">!                 BufPtr = 0;</span>
+<span class="gs">!                 XUsbPs_EpBufferSend(InstancePtr, 1, &amp;TempBuf[BufPtr], 512);    // loopback</span>
+<span class="gs">!                 BufPtr += 512;</span>
+<span class="gs">!             }</span>
+<span class="gs">! </span>
+              / Release the buffer. /
+              XUsbPs_EpBufferRelease(Handle);
+<span class="gi">+         }else{</span>
+<span class="gi">+             xil_printf(&quot;XUsbPs_EpBufferReceive: %X\n&quot;, Status);</span>
+<span class="gi">+         }</span>
+<span class="gi">+         break;</span>
+<span class="gi">+     case XUSBPS_EP_EVENT_DATA_TX:    // IN finish</span>
+<span class="gi">+         if (BufPtr &lt; 2561024){</span>
+<span class="gi">+             Status = XUsbPs_EpBufferSend(InstancePtr, 1, &amp;TempBuf[BufPtr], 512);</span>
+<span class="gi">+             if (Status != XST_SUCCESS){</span>
+<span class="gi">+                 xil_printf(&quot;XUsbPs_EpBufferSend: %X\n&quot;, Status);</span>
+<span class="gi">+             }</span>
+<span class="gi">+             BufPtr += 512;</span>
+<span class="gi">+         }else{</span>
+<span class="gi">+             BufPtr = 0;    // clear Pointer</span>
+          }
+          break;
+      default:
+          / Unhandled event. Ignore. /
+          break;
+</pre></div></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>Webサーバのパフォーマンス比較</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/posts/2011/04/node-vs-clozurecl/">2011-04-18 08:17:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+		<div><p>node.js(+express)とClozureCL(+hunchentoot)の速度を比較してみた。<br /><br />node.jsの環境<br />$ node -v<br />v0.2.4<br /><br />node.jsのプログラム(関係する部分だけ)<br /><br /><div><div>app.get('/hello', function(req, res){</div><div><span class="Apple-tab-span" style="white-space: pre;"> </span>res.render('hello.ejs');</div><div>&nbsp;&nbsp; &nbsp;});</div></div><div><br /></div><div>単にファイルからデータを返すだけ。abの結果：</div><div><br /></div><div><div>This is ApacheBench, Version 1.3d &lt;$Revision: 1.73 $&gt; apache-1.3</div><div>Copyright (c) 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</div><div>Copyright (c) 2006 The Apache Software Foundation, http://www.apache.org/</div><div><br /></div><div>Benchmarking 127.0.0.1 (be patient)</div><div><br /></div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div><div>Server Software: &nbsp; &nbsp; &nbsp; &nbsp;</div><div>Server Hostname: &nbsp; &nbsp; &nbsp; &nbsp;127.0.0.1</div><div>Server Port: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;8765</div><div><br /></div><div>Document Path: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/hello</div><div>Document Length: &nbsp; &nbsp; &nbsp; &nbsp;50 bytes</div><div><br /></div><div>Concurrency Level: &nbsp; &nbsp; &nbsp;100</div><div>Time taken for tests: &nbsp; 15.646 seconds</div><div>Complete requests: &nbsp; &nbsp; &nbsp;10000</div><div>Failed requests: &nbsp; &nbsp; &nbsp; &nbsp;0</div><div>Broken pipe errors: &nbsp; &nbsp; 0</div><div>Total transferred: &nbsp; &nbsp; &nbsp;1710000 bytes</div><div>HTML transferred: &nbsp; &nbsp; &nbsp; 500000 bytes</div><div>Requests per second: &nbsp; &nbsp;639.14 [#/sec] (mean)</div><div>Time per request: &nbsp; &nbsp; &nbsp; 156.46 [ms] (mean)</div><div>Time per request: &nbsp; &nbsp; &nbsp; 1.56 [ms] (mean, across all concurrent requests)</div><div>Transfer rate: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;109.29 [Kbytes/sec] received</div><div><br /></div><div>Connnection Times (ms)</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;min &nbsp;mean[+/-sd] median &nbsp; max</div><div>Connect: &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp; 1 &nbsp; &nbsp;3.7 &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp;47</div><div>Processing: &nbsp; &nbsp;23 &nbsp; 151 &nbsp; 41.2 &nbsp; &nbsp;144 &nbsp; 421</div><div>Waiting: &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; 151 &nbsp; 41.2 &nbsp; &nbsp;144 &nbsp; 420</div><div>Total: &nbsp; &nbsp; &nbsp; &nbsp; 23 &nbsp; 152 &nbsp; 40.7 &nbsp; &nbsp;144 &nbsp; 421</div><div><br /></div><div>Percentage of the requests served within a certain time (ms)</div><div>&nbsp;&nbsp;50% &nbsp; &nbsp;144</div><div>&nbsp;&nbsp;66% &nbsp; &nbsp;155</div><div>&nbsp;&nbsp;75% &nbsp; &nbsp;167</div><div>&nbsp;&nbsp;80% &nbsp; &nbsp;173</div><div>&nbsp;&nbsp;90% &nbsp; &nbsp;188</div><div>&nbsp;&nbsp;95% &nbsp; &nbsp;217</div><div>&nbsp;&nbsp;98% &nbsp; &nbsp;281</div><div>&nbsp;&nbsp;99% &nbsp; &nbsp;311</div><div>&nbsp;100% &nbsp; &nbsp;421 (last request)</div></div><div><br /></div><div>hunchentootの環境は、Clozure CL+QuickLisp</div><div>$ ./sx86cl -V</div><div>Version 1.6-RC1-r14393 &nbsp;(SolarisX8632)</div><div>なぜかOpenSolarisで実行。上記のnode.jsとマシンは同じ。<a href="http://weitz.de/html-template/">HTML-TEMPLATE</a>を使って、node.jsの場合と同じような結果を返す。</div><div>abの結果：</div><div><div>This is ApacheBench, Version 1.3d &lt;$Revision: 1.73 $&gt; apache-1.3</div><div>Copyright (c) 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/</div><div>Copyright (c) 2006 The Apache Software Foundation, http://www.apache.org/</div><div><br /></div><div>Benchmarking 127.0.0.1 (be patient)</div><div><br /></div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div><div>Server Software: &nbsp; &nbsp; &nbsp; &nbsp;Hunchentoot</div><div>Server Hostname: &nbsp; &nbsp; &nbsp; &nbsp;127.0.0.1</div><div>Server Port: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;8080</div><div><br /></div><div>Document Path: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/top</div><div>Document Length: &nbsp; &nbsp; &nbsp; &nbsp;49 bytes</div><div><br /></div><div>Concurrency Level: &nbsp; &nbsp; &nbsp;100</div><div>Time taken for tests: &nbsp; 58.857 seconds</div><div>Complete requests: &nbsp; &nbsp; &nbsp;10000</div><div>Failed requests: &nbsp; &nbsp; &nbsp; &nbsp;0</div><div>Broken pipe errors: &nbsp; &nbsp; 0</div><div>Total transferred: &nbsp; &nbsp; &nbsp;2160648 bytes</div><div>HTML transferred: &nbsp; &nbsp; &nbsp; 490147 bytes</div><div>Requests per second: &nbsp; &nbsp;169.90 [#/sec] (mean)</div><div>Time per request: &nbsp; &nbsp; &nbsp; 588.57 [ms] (mean)</div><div>Time per request: &nbsp; &nbsp; &nbsp; 5.89 [ms] (mean, across all concurrent requests)</div><div>Transfer rate: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;36.71 [Kbytes/sec] received</div><div><br /></div><div>Connnection Times (ms)</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;min &nbsp;mean[+/-sd] median &nbsp; max</div><div>Connect: &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; 470 1838.8 &nbsp; &nbsp; &nbsp;0 23744</div><div>Processing: &nbsp; &nbsp; 2 &nbsp; &nbsp;36 &nbsp; 22.7 &nbsp; &nbsp; 31 &nbsp; 248</div><div>Waiting: &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp;36 &nbsp; 22.7 &nbsp; &nbsp; 31 &nbsp; 248</div><div>Total: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2 &nbsp; 506 1842.0 &nbsp; &nbsp; 32 23783</div><div><br /></div><div>Percentage of the requests served within a certain time (ms)</div><div>&nbsp;&nbsp;50% &nbsp; &nbsp; 32</div><div>&nbsp;&nbsp;66% &nbsp; &nbsp; 37</div><div>&nbsp;&nbsp;75% &nbsp; &nbsp; 54</div><div>&nbsp;&nbsp;80% &nbsp; &nbsp; 66</div><div>&nbsp;&nbsp;90% &nbsp; &nbsp;157</div><div>&nbsp;&nbsp;95% &nbsp; 3419</div><div>&nbsp;&nbsp;98% &nbsp; 3517</div><div>&nbsp;&nbsp;99% &nbsp;10173</div><div>&nbsp;100% &nbsp;23783 (last request)</div></div><div><br /></div><div>データサイズは1バイト違うが、結果としてはnode.jsが約639req/secに対し、hunchentootが約170req/sec。この違いが大きいと見るかどうか。また、Percentage of the requests served within a certain timeの所を見ると、hunchentootの方が大部分のリクエストは早く処理しているようだ。ただし、異常に長くかかる場合があるので結果として遅い。接続時間の中央値を見てみると、node.jsが144msに対してhunchentootは32msと4倍以上高速だった。<br /><br />感想としては、ClozureCLが想像以上に高速だった。大部分の場合においてnode.jsより速い。ただしGCの問題なのか、node.jsはリクエスト処理時間がほとんど一定しているが、hunchentootは相当なばらつきがある。このあたりが使用上問題になるとしたら、さらなる調査が必要と思われる。</div></p></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

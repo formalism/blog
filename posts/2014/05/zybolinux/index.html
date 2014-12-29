@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>ZYBOでLinux (使用メモリを制限)</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/posts/2014/05/zybolinux/">2014-05-21 14:37:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/linux.html">Linux</a> </div>
+		<div><p>Zynq上でPLにロジックを自作してDMA処理を行う場合、アプリケーションからレジスタを操作するために最も手軽
+なのは、<a href="/posts/2014/05/zynqpllinux-dts/">以前書いたとおり</a> UIOを使用することだと思う。</p>
+<p>このような場合、ロジックで使用するメモリ領域はLinuxが使用する領域と完全に分けておいた方が
+(少なくとも自分のような初心者には)楽だ。このためには、実装されているメモリより少ない領域を
+使用するようにLinuxを構成しないといけない。</p>
+<p>今回は、ZYBOで512MB実装されているところを256MBだけLinuxに割り当てた。しかし、結構これにはまった。
+やり方は、以前の通りXilinx純正gitをcloneしてxilinx-v2014.1をcheckout。zynq-zed.dtsを編集し、
+ps-clk-frequencyを変更するまでは同じ。bootargsを</p>
+<div class="highlight"><pre>console=ttyPS0,115200 root=/dev/ram rw earlyprintk
+</pre></div>
+
+
+<p>となっているのを、</p>
+<div class="highlight"><pre>console=ttyPS0,115200 mem=256M root=/dev/ram rw earlyprintk
+</pre></div>
+
+
+<p>とする。また、ps7_ddr_0: memory@0をreg = &lt;0x0 0x20000000=""&gt;;からreg = &lt;0x0 0x10000000=""&gt;;に変更する。
+カーネルのコンパイルは、<a href="http://www.wiki.xilinx.com/Build+Kernel">こちら</a>に従い、 
+uImageを作成する。u-bootについては変更不要。</p>
+<p>ramdiskについては、<a href="http://www.wiki.xilinx.com/Build+and+Modify+a+Rootfs">こちら</a>の方法で
+uramdisk.image.gzにしておく。</p>
+<p>XMDからブートする場合、</p>
+<div class="highlight"><pre>connect arm hw
+rst -slcr
+fpga -f system_wrapper.bit
+source ps7_init.tcl
+ps7_init
+ps7_post_config
+source stub.tcl
+targets 64
+dow -data u-boot-Digilent-Dev/u-boot.bin 0x04000000
+#dow -data fit.itb 0x02000000 (これは以前のやり方)
+dow -data linux-xlnx/arch/arm/boot/uImage 0x03000000
+dow -data uramdisk.image.gz 0x02000000
+dow -data linux-xlnx/arch/arm/boot/dts/zynq-zed.dtb 0x02a00000
+con 0x04000000
+</pre></div>
+
+
+<p>でu-bootが起動する。bootmする前に、setenv fdt_high 0xFFFFFFFF, setenv initrd_high 0xFFFFFFFFとしておく。
+最後に、</p>
+<div class="highlight"><pre>u-boot&gt; bootm 0x3000000 0x2000000 0x2a00000
+</pre></div>
+
+
+<p>とすると、Linuxが256MBだけ使用して起動する。つまり、<a href="/posts/2014/05/linux-on-zynq-zybo/">以前の方法</a> だと
+fit.itbを作成して、それをロードしていたが、今回のやり方だとu-bootから直接それぞれのイメージアドレスを
+入力することでLinuxを起動している。</p>
+<p>fit.itbを使用する方法でもいろいろ試行錯誤してみたが、試した範囲ではカーネルパニックをおこしたり、
+デバイスツリーが読めなかったりで、どうしても思い通りにならなかった。</p></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+<div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>PLB slave single</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/03/plv-slave-single/">2011-03-11 01:33:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>plbv46_slave_singleの自分用のメモ<br /><br />ARD: Address Range Definition。アドレスデコードとチップセレクト信号を生成する。<br />C_ARD_ADDR_RANGE_ARRAY, C_ARD_NUM_CE_ARRAYは、VHDLのunconstrained arrayとして定義される。これら二つの配列のそれぞれ対応するインデックスのアドレスとチップセレクトが結び付けられる。<br /><br /><b>C_ARD_ADDR_RANGE_ARRAY</b>: 2データで1ペア。それぞれ、<b>ベースアドレス</b>と<b>ハイアドレス</b>。このアドレスは、バイトアドレスで指定する。ブロックサイズ(ハイアドレス-ベースドレス+1)は2の累乗でないといけない。ベースアドレスは、ブロックサイズの倍数のアドレスでないといけない。<br /><br /><b>C_ARD_NUM_CE_ARRAY</b>: それぞれのアドレススペースで必要なチップセレクトの数を指定する。それぞれの値は2の累乗でないといけない。各アドレススペースは、少なくとも1つのチップセレクトがないといけない。各アドレススペースは、チップセレクトの数で分割される。<br /><br />結局これらの配列の値は、Create or Import Peripheralでテンプレートを生成すると、一応genericで定義されるが、実際はXPSでインスタンスを作るときに決まる。</p> <a class="btn primary xsmall" href="/posts/2011/03/plv-slave-single/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>C to Verilog (2)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/03/c-to-verilog-2/">2011-03-10 05:35:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p><b><span class="Apple-style-span" style="font-size: large;">合成の問題(?)について</span></b><br />C to Verilogを試していると、メモリの制御信号がDon't Careになってしまうことがあると分かった。いろいろ入力となるCプログラムを変えてみたら、どうやらfor<b>ループの中にcontinueがあるとうまくいかない</b>らしい、ということが分かった。ひょっとしたらbreakもだめなのかな？<br /><br /><b><span class="Apple-style-span" style="font-size: large;">メモリ(RAM)の使用について</span></b><br />C to Verilogでは、ポインタはRAMとして生成され、テストベンチの中にはRAMの宣言もある。このRAMはポート数は可変のようだが、タイミングは固定されてしまっている。つまり、同期書き込み、<b>非同期読み出し</b>のメモリでないと、期待したタイミングとずれてしまう。そして、Xilinxの場合、BRAMは<b>同期読み出し</b>である。したがって、C to Verilogで生成されたプログラムを使用する場合は、<b>BRAMは使用できない。</b>その代わりに、分散RAMを使用する。これであればdual-portメモリもOK。でも、dual-port設定時にC to Verilogで生成されるRAMのモジュールは、Write Enable信号が2つある。分散RAMは、書き込みは1ポートだけしか使えない ...</p> <a class="btn primary xsmall" href="/posts/2011/03/c-to-verilog-2/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>LMBの使い方</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/03/lmb/">2011-03-03 09:09:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>Xilinx Platform StudioでLMBのサイズを変更するには、dlmb_cntlr, ilmb_cntlrを右クリックし、Configure IP....を選択 &gt; LMBのアドレスレンジを設定。このレンジの幅でメモリサイズが決まるようだ。LMBバス幅が32bitの場合は、lmb_bramの最大サイズは256Kbytes(Virtex-5の場合)。</p> <a class="btn primary xsmall" href="/posts/2011/03/lmb/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>MicroBlaze + IPコア</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/02/microblaze-ip/">2011-02-18 02:47:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>XilinxのMicroblazeに自作IPコアをどのように接続するかを調査中。いろいろ検索してみたが、要領よくまとまっている資料が見つからなかった。<div><br /><div>最新はAXIというARMのバスらしい。しかしこれは最新のFPGAにしか対応していないようだ。AlteraはAvalonかCustom Instructionくらいしかなかったが、Xilinxはしょっちゅうバスを入れ替えている。OPB, PLB, AXI, FSL。FSLはMicroBlazeにPoint-to-Pointで接続するので、残りとは少し違う。AlteraのCustom Instructionと同じような目的で使うために準備しているらしい。FSLのI/Fを使ってやりとりするのが一番簡単そうではある。でもこれだとCPUの介在がワードごとに必要なので、DMAで使えない。でも<a href="http://www.xilinx.com/support/documentation/ip_documentation/plb2fsl_bridge.pdf">PLB to FSL bridge</a>というのがあるので、FSL I/Fで作ったIPコアをPLBに接続することもできるっぽい。これでやってみようかと思う。ただ、PLB to FSL bridgeのデータシートは古いので、最新のISE12.4でも使えるのか、というのが少し不安。</div></div></p> <a class="btn primary xsmall" href="/posts/2011/02/microblaze-ip/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>C to Verilog</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/02/c-to-verilog/">2011-02-04 06:03:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p><a href="http://c-to-verilog.com/index.html">C to Verilog</a>というサイトを見つけた。最近はいろいろ高位合成ツールもあるようだけれど、きっと高価なものだと想像してしまう。このサイトだと、無料でCコードからVerilogコードを生成してくれる。試しに、サイトにもあるpop countのコードをverilogに変換してシミュレーションしてみた。<br /><br />ちなみに、ポップカウントというのは、変数中の1の数のこと。例えば、a=0x12だと、二進数で00010010だから、ポップカウントは2になる。<br /><br />ポップカウントを計算したいデータ(モジュールへの入力)は、mem_BというBRAMに格納されている。また、計算結果はmem_Aに格納する。<br /><br /><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">シミュレーションの様子を次に示す。まずはシミュレーション開始時。</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"><br /></div>resetをテストベンチから入力すると、rdyがLになる。生成されたモジュールがmem_B_addr0を順次カウントアップしている。mem_B_outから得るデータでモジュールが計算を行う。最初の方はmem_B_addr0が1clkごとに7になるまでカウントアップしているのに注目できる。これはこのモジュールがパイプラインで計算しているから。<br /><br />120nsでmem_A_mode0がHになる。これは最初のデータ0に対するポップカウントが計算でき、mem_Aに結果を格納するためのWrite Enable信号である。mem_Aのアドレス0に0(mem_A_in0に出力されている)をライトしている。160nsでもまたmem_A_mode0がHである。これはアドレス1にデータ1のポップカウント1をライトするための信号。<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_HtI0taDGSV0/TUuTWCcMMpI/AAAAAAAABSE/VEOmnMsRHgY/s1600/popcnt1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="198" src="http://4.bp.blogspot.com/_HtI0taDGSV0/TUuTWCcMMpI/AAAAAAAABSE/VEOmnMsRHgY/s320/popcnt1.png" width="320" /></a></div><div class="separator" style="clear: both; text-align: center;"><br /></div><div class="separator" style="clear: both; text-align: left;">次にシミュレーション最後の部分を示す。rdyがHになると終了。最後の出力は、データ0x3FFに対するポップカウント10(=0x0a)である。</div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_HtI0taDGSV0/TUuTYxbGUzI/AAAAAAAABSI/WP-gMBYACy0/s1600/popcnt2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="198" src="http://3.bp.blogspot.com/_HtI0taDGSV0/TUuTYxbGUzI/AAAAAAAABSI/WP-gMBYACy0/s320/popcnt2.png" width="320" /></a></div><br />正しく求められていることが分かる。<br /><br />少し試して見ただけだが ...</p> <a class="btn primary xsmall" href="/posts/2011/02/c-to-verilog/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>node.js+MySQLで文字化け</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/01/nodejsmysql/">2011-01-21 08:57:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>node.jsからMySQLを使用して、昔にRoRで作成したアプリと同等のものを(同じデータベースを使って)作ろうとしているが、いろいろやっても文字化けが解決できなかった。ひたすら検索し、<a href="http://www.gcd.org/blog/2009/09/177/">仙石浩明の日記  2009年9月14日 文字化けしていなくても MySQL 内の文字コードが正しくない場合がある</a>を見て、ついに原因が判明した。結局、既存のRoRで作成したアプリが、latin1でMySQLとやりとりしているのが原因だった。実際に、mysqldumpでデータベースをダンプする際に、--default-character-set=latin1を追加したら、文字化けしなかった。というわけで、根本的に解決するには、データベースのデータをちゃんとUTF8にすることだけれど、ひとまず、node.jsのプログラム側で、set names latin1というクエリを送って、RoRと同じ動作にさせたら、文字化けが直った。</p> <a class="btn primary xsmall" href="/posts/2011/01/nodejsmysql/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>C#のScrollBar</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/01/cscrollbar/">2011-01-17 07:01:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/c.html">C#</a> <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>ScrollBarの値をユーザが操作して変更すると、Scrollイベントが発生するが、プログラムコードでValueプロパティを変更するとScrollイベントは発生しない。ValueChangedイベントを使用すれば、Valueプロパティをコードで変更しても捕捉できる。分かってしまえばどうということは無いけれど、ちょっと調べる必要があった。<br /><br /># Delphiは確かコードで変更してもC#でいうところのValueChangedイベントのような動作がデフォルトだったように思った。</p> <a class="btn primary xsmall" href="/posts/2011/01/cscrollbar/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>NIOS2カスタム命令</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/01/nios2/">2011-01-06 04:44:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>NIOS2で計算を高速化するためにカスタム命令を実装してみた。最初は、レイテンシ固定で実装してみたのだが、どうやっても計算結果がおかしい。クロック数がずれているのかと思っていくつか試してみたが、だめ。それで結局、レイテンシ可変にして、START, DONE信号をモジュールで処理するようにしたら動いた。Quartus II 9.0 SP2で実験。</p> <a class="btn primary xsmall" href="/posts/2011/01/nios2/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>node.js vs Erlang</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2011/01/nodejs-vs-erlang/">2011-01-03 05:07:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p><a href="http://blog.mysyncpad.com/post/2073441622/node-js-vs-erlang-syncpads-experience">Node.js vs Erlang: SyncPad’s Experience</a>&nbsp;になかなか興味深い結果が掲載されている。node.jsを長時間サーバとして動かしていると、徐々にメモリ使用量が増えてしまうという問題に遭遇したので、同じ機能のサーバをErlangで作成してみた、という記事。node.jsと比較して、CPU, Memory両方とも使用量が少なくて済んだ、という結果。またErlangブームが起きるか？ただ自分としてはErlangはあまり構文が好きになれない。まだJavaScriptの方がきれいにまとまっているように感じる。<br /><br /><a href="http://amix.dk/blog/post/19577">Is node.js best for Comet?</a>&nbsp;この記事も参考になる。V8は現状の所サーバに使用するにはあまり良いアーキテクチャではない、という指摘。全部は読んでいないけれど、コメントも参考になりそう。</p> <a class="btn primary xsmall" href="/posts/2011/01/nodejs-vs-erlang/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>最近のJava騒動</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2010/11/java/">2010-11-08 13:34:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>最近、Appleが<a href="http://japan.zdnet.com/news/software/story/0,2000056195,20421824,00.htm">Javaの公式サポートを打ち切る</a>、というのが話題になったので、色々調べていて気づいたのだけれど、OracleがSunを買収してからというもの、Java界隈の動向が怪しくなっているように思った。AppleとしてはiOSへの囲い込みというのもあるのかも知れないが、将来性が不透明になってきているJavaへの投資をやめようという動機もあるのかもしれない。もしそうだとすると、ZFSの場合と同じ理由といえるかも。<br /><br />そう思うと、1ベンダーが広める言語というのは、そのベンダーが無くなってしまったようなときに言語の存在価値が減じることもあるかもしれない。その点、C, C++, Lispなどベンダーとは(少なくとも仕様としては)関係ない言語の生存期間は、より長いと言えるかも知れない。<br /><br />もしJavaが廃れてしまったら、マイブームのclojureも危うくなるなぁ。そうなると今度は<a href="http://nodejs.org/">node.js</a>あたりになるのかな。JavaScript自体も一応ベンダー非依存の言語だし。<a href="http://common-lisp.net/project/parenscript/">Lisp-&gt;JavaScriptトランスレータ</a>もあるので、Lispでサーバサイドプログラミングというのは一応できるはず。<br /><br />やれやれ...</p> <a class="btn primary xsmall" href="/posts/2010/11/java/">more…</a>
+	</div>
+</div>	
+
+<div class="pagination">
+<ul>
+		<li class="prev"><a href="/author/tu19786.html">&larr; Previous</a></li>
+		<li class=""><a href="/author/tu1978.html">1</a></li>
+		<li class=""><a href="/author/tu19782.html">2</a></li>
+		<li class=""><a href="/author/tu19783.html">3</a></li>
+		<li class=""><a href="/author/tu19784.html">4</a></li>
+		<li class=""><a href="/author/tu19785.html">5</a></li>
+		<li class=""><a href="/author/tu19786.html">6</a></li>
+		<li class="active"><a href="/author/tu19787.html">7</a></li>
+		<li class=""><a href="/author/tu19788.html">8</a></li>
+		<li class=""><a href="/author/tu19789.html">9</a></li>
+		<li class=""><a href="/author/tu197810.html">10</a></li>
+		<li class="next"><a href="/author/tu19788.html">Next &rarr;</a></li>
+</ul>
+</div>
+
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

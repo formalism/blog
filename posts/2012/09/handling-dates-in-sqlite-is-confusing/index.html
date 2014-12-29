@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>SQLiteで日付を扱うのって悩ましい</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/posts/2012/09/handling-dates-in-sqlite-is-confusing/">2012-09-12 14:14:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+		<div><p><p>MySQLなどとは異なり、SQLiteにはDate型が存在しない。そのため、SQLiteで日付データを扱う場合、文字列として、あるいは数値として扱うのが一般的であると思われる。</p> <p>文字列の場合、'2012-09-12'のようになるが、気をつけなくてはいけないのは、'2012-9-12'などとしてはいけないことだ。つまり、月日は、2ケタに達しない場合、0を左につけなければならない。次のような実験をしてみる：</p> <pre class="prettyprint"><br />sqlite&gt; select strftime('%Y-%m', '2012-09-12');<br />2012-09<br />sqlite&gt; select strftime('%Y-%m', '2012-9-12');<br />(何も表示されない)<br /></pre> <p>strftimeによって年月を得ようとしても、0が抜けていると思うように動作しない。また、strftimeで取得しなくても、例えば日付データでorder byをする場合、2ケタ化していないと、例えば09より1のほうが大きいとみなされてしまう。つまり、9月より1月のほうが後、とみなされてしまう。そのため、2ケタ化は必須の作業となる。<p> <p>もう一つ、数値として日付を扱う場合を考える。この場合も、どの時刻を基準とするか、という選択肢があるが、個人的にはユリウス日を使用するのが最も良いと思う。例えば、2012-09-12をinsertする場合：</p> <pre class="prettyprint"><br />sqlite&gt; insert into tbl(date) values(strftime('%J', '2012-09-12'));<br /></pre> <p>のようになる。%Jでユリウス日に変換してから書き込むことができる。ただ、ここでもstrftimeの第二引数は2ケタ化しておく必要がある。</p> <p>もちろん、strftimeを使用することで、年月日を取得することもできる：</p> <pre class="prettyprint"><br />sqlite&gt; select strftime('%Y-%m-%d', date) from tbl;<br />2012-09-12<br /></pre> <p>また、これは文字列形式、数値形式どちらでも行えるが、例えば年を指定して月別の集計を行うような場合、</p> <pre class="prettyprint"><br />sqlite&gt; select sum(cost) as c, strftime('%m',date) as m<br />             from tbl group by m where strftime('%Y',date) = "2012";<br /></pre> <p>のようにすればよい。つまり、strftimeの結果でgroup byを実行することも当然可能である。でも、ここでも気をつけなくてはいけないのは、"2012"のように、年を""で囲ってやる必要があるということである。strftimeの結果との比較は文字列での比較なので、こうする必要がある。""で囲わなくてもエラーにはならないが、思わぬ結果になってしまう(&gt;=などで試してみればわかる)。</p> <p>いずれにせよ、ちょっと工夫をすればSQLiteで日付データを扱うことは可能だが、2ケタ化はアプリケーション側で必須であり、strftimeが乱発されてしまうので、あまり美しくはない、と思う。たいていのアプリでは日付データを扱うことがあると思うので、せめてDate型は実装してほしいと皆思っていると思うのだが...</p></p></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

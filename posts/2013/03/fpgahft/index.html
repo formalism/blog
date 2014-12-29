@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>FPGA+HFT</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/posts/2013/03/fpgahft/">2013-03-29 14:53:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+		<div><p>最近モチベーションが下がっている。ネットを徘徊していたら、ちょっと面白いネタを見つけた：<br /><br /><a href="http://d.hatena.ne.jp/kazunori_279/20130107/1357521548">文字通り「ネットワークがコンピューター」な金融HFTでのFPGAの使われ方</a><br /><br />ここ数年HFTの分野では、FPGAで処理を実装するのがはやってきている、ということ。リンク先の記事からもリンクされている、<a href="http://cufp.org/videos/parallel-scientific-awesome-haskell-fpga-compiler">Parallel Scientific: The Awesome Haskell FPGA Compiler</a>は以前すこし眺めていたが、今回の記事を読んで全体像の理解が少し進んだ。なるほど、こんなところでも回路設計をしてしまう時代になったのね、という感じ。<br /><br />10Gbpsのネットワークスイッチに入れてしまうというのであれば、当然Alteraで言えばStratixクラスの1個何十万もするFPGAを使うのだろう。外付けメモリもDDRみたいなレイテンシの大きいものではなく、RLDRAMやQDRといった、個人的には使用しているのをあまり見聞きしないタイプのメモリを使っているのではなかろうか。<br /><br />もしこういったものがTCP/IPで通信をしているとすれば、Ethernet MACのIPから出てくるパケットをステートマシンでTCP/IP部分をデコードしてやり、中身のデータに基づいてガリガリ計算し、その結果に基づいてこれまたステートマシンでEthernet MAC IPに売買パケットを流し込む、というような流れになっているのだろう。そして売買の結果は、メモリに書き込んでおき、ログとして保存。これでソフトウェアは一切介在せずに株式やら為替の売買を実行する、と。もちろん、売買条件の設定などの初期化操作はソフトウェアで行うはずだが。<br /><br />妄想するとなかなか面白そうな分野だなぁ。クオンツの元でブイブイ(死語)いわせるプログラマのイメージが。なるほど、金融業界は計算機分野でも、とにかく最新の技術に貪欲なのだと思う。関数型言語を使ってみたり、FPGAを使ってみたり、と。<br /><br /># ひょっとしたらFPGAはAltera, Xilinxという大手ではなく、TabulaとかAchronixみたいな新興ベンダーを使ったりするのだろうか。<br /><br />リンク先の記事だと、高位合成でうまくいっているのは少ない、とあるが、最近はAlteraもXilinxも高位合成分野に取り組んでいるので、HFT界隈に広まるのももうすぐだろう。というより、もう既に分野によってはASICでは高位合成は結構普通に使われているようだから、HFTであまり使われていない、というほうが個人的には驚き。<br /><br />高位合成を使わず、手でHDLを書くのは、確かに熟練が要求される。初心者でも少し勉強すれば最低限は書けるようにはなると思うが、<br /><ul><li>高速かつ複雑な論理でも安定して動作して</li><li>外部モジュールとのインタフェースがしっかりしている</li></ul><div>というふうに書けるようになるには、数年かかると思う(自分の経験上)。大体何MHzで動作させるためには、1クロックで何段くらいの論理までか、といったイメージもないと、高速な回路は書けない。このあたりは結局経験して感覚をつかまないといけない。</div><div><br /></div><div>でも、繰り返しになるけれど、こういった職人的なやり方は、高位合成がもうすぐ一般化して少しずつ廃れていくのだと思うけど。</div><div><br /></div></p></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

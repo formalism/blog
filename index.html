@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+<div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>ZYBOのSDカードブート</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/05/zybosd/">2014-05-21 14:47:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/linux.html">Linux</a> </div>
+	<div class="summary"><p>引き続き、SDカードからのLinuxブートを試してみた。<br /><br /><a href="https://github.com/Digilent/u-boot-Digilent-Dev">Digilentのu-boot</a>のxilinx-v2013.4をチェックアウトしたものでは、ZYBOのu-bootはSD起動にジャンパ設定されていると、SDカード内にuImage, devicetree.dtb, uramdisk.image.gzというファイルを探して、それをメモリに展開、Linuxをブートしてくれるようになっている(printenvで確認可能)。<br /><br />したがって、BOOT.binにはカーネルやramdisk, devicetreeは必要ではなくて、FSBLと(必要であれば)FPGAのbitstream, u-bootだけが入っていればよい。BOOT.binの作り方については、基本的に<a href="http://www.wiki.xilinx.com/Prepare+Boot+Image">こちらに記載されている方法</a>に従えばよい。<br /><br />以上でSDカードからのブートが出来るようになった。<br /><br /></p> <a class="btn primary xsmall" href="/posts/2014/05/zybosd/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>ZYBOでLinux (使用メモリを制限)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/05/zybolinux/">2014-05-21 14:37:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/linux.html">Linux</a> </div>
+	<div class="summary"><p>Zynq上でPLにロジックを自作してDMA処理を行う場合、アプリケーションからレジスタを操作するために最も手軽
+なのは、<a href="/posts/2014/05/zynqpllinux-dts/">以前書いたとおり</a> UIOを使用することだと思う。</p>
+<p>このような場合、ロジックで使用するメモリ領域はLinuxが使用する領域と完全に分けておいた方が
+(少なくとも自分のような初心者には)楽だ。このためには、実装されているメモリより少ない領域を
+使用するようにLinuxを構成しないといけない。</p>
+<p>今回は、ZYBOで512MB実装されているところを256MBだけLinuxに割り当てた。しかし、結構これにはまった。
+やり方は、以前の通りXilinx純正gitをcloneしてxilinx-v2014.1をcheckout。zynq-zed.dtsを編集し、
+ps-clk-frequencyを変更するまでは同じ。bootargsを</p>
+<div class="highlight"><pre>console=ttyPS0,115200 root=/dev/ram rw earlyprintk
+</pre></div>
+
+
+<p>となっているのを、</p>
+<div class="highlight"><pre>console=ttyPS0,115200 mem=256M root=/dev/ram rw earlyprintk
+</pre></div>
+
+
+<p>とする。また、ps7_ddr_0: memory@0をreg = &lt;0x0 0x20000000=""&gt;;からreg ...</p> <a class="btn primary xsmall" href="/posts/2014/05/zybolinux/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>ZynqのPLを操作するLinuxドライバ (ユーザプログラム編)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/05/zynqpllinux/">2014-05-14 08:52:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/linux.html">Linux</a> </div>
+	<div class="summary"><p><a href="/posts/2014/05/zynqpllinux-dts/">ZynqのPLを操作するLinuxドライバ (DTS設定編)</a>の続き。これは見た方が早いと思うので、コードを示す。</p>
+<hr />
+<div class="highlight"><pre><span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;unistd.h&gt;</span>
+<span class="cp">#include &lt;sys/types.h&gt;</span>
+<span class="cp">#include &lt;sys/stat.h&gt;</span>
+<span class="cp">#include &lt;sys/mman.h&gt;</span>
+<span class="cp">#include &lt;fcntl.h&gt;</span>
+<span class="cp">#include &lt;errno.h&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">uiofd</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="n">icount</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">*</span> <span class="n">map_addr</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">cnt</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int ...</span></pre></div> <a class="btn primary xsmall" href="/posts/2014/05/zynqpllinux/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>ZynqのPLを操作するLinuxドライバ (DTS設定編)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/05/zynqpllinux-dts/">2014-05-14 08:33:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/linux.html">Linux</a> </div>
+	<div class="summary"><p>LinuxにおいてZynqのPL部に作成したレジスタを操作するための方法について調査したところ、カーネルドライバを作成する以外に、UIOという枠組みを使用することで簡易に行うことができるということが分かった。これを使用すると、ユーザプログラムでレジスタの読み書きだけではなく、割り込みの検出も行うことが出来る。<br /><br />まず、カーネルコンフィグにおいてUIOを有効にしてビルドする必要がある。<br /><br />CONFIG_UIO=y<br />CONFIG_UIO_PDRV_GENIRQ=y<br /><br />あたりが最低限必要と思われる。(自分の場合は元から有効になっていたので、カーネルの再ビルドは不要だった。)<br /><br />次に、デバイスツリーに次のような記述を追加する。自分の場合では、arch/arm/boot/dts/zynq-zed.dtsのamba@0ノードの一番下に追加した。<br /><br />foo_bar_device: foo-bar-device@44000000 {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; compatible = "generic-uio";<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reg = &lt; 0x44000000 0x4000 &gt;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interrupts = &lt; 0 29 4 &gt;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interrupt-parent = &lt;&amp;ps7_scugic_0&gt;;<br />};<br /><br />まず、compatibleでgeneric-uioと記述する。これが、あらかじめ用意されているカーネル側のUIOドライバを使用するための文字列。こうすることで、drivers/uio/uio_pdrv_genirq.cが使用される。<br /><br />次に、regにおける ...</p> <a class="btn primary xsmall" href="/posts/2014/05/zynqpllinux-dts/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>ZynqのPLロジックからARMへの割り込み実験</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/05/zynqplarm/">2014-05-13 13:32:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/progra.html">Progra</a> </div>
+	<div class="summary"><p>Zynq上のPLに作成した回路からARMへ割り込むときに、割り込みレイテンシがどれくらいになるのかを計測してみた。<br /><br />ZYBOを使用しているので、ARMは650MHzで動作。結論は次の画像：<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-h5KhqquhE_o/U3Idw7Om3vI/AAAAAAAABq8/W7L_-P4Zjhw/s1600/irq.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-h5KhqquhE_o/U3Idw7Om3vI/AAAAAAAABq8/W7L_-P4Zjhw/s1600/irq.png" height="227" width="400" /></a></div><br /><br />1クロックは10ns(100MHz)。一番下のIRQがHighになるとCPUに割り込みがかかる。AXIバスを通してレジスタをクリアするとIRQがLowになる。これを見ると、たったの<b>31クロック(=310ns)で割り込みがクリアされている</b>。<br /><br />これはStandalone(Linuxではなく、ベアメタル)で実験した。割り込みを有効にする部分だけ、参考に貼っておく。<br /><br />Status = XScuGic_Connect(IntcInstancePtr, XPS_FPGA0_INT_ID,(Xil_ExceptionHandler)IrqHandler, NULL);<br />&nbsp;&nbsp;&nbsp; if (Status != XST_SUCCESS){<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return Status;<br />&nbsp;&nbsp;&nbsp; }<br />XScuGic_Enable(IntcInstancePtr, XPS_FPGA0_INT_ID);<br /><br />これでXPS_FPGA0_INT_ID(61)番の割り込みが発生すると、 IrqHandler関数が呼ばれる。IrqHandler関数の中で、PLロジックにアクセスして、割り込みをクリアしている。<br /></p> <a class="btn primary xsmall" href="/posts/2014/05/zynqplarm/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>Zynq上でのLinuxアプリケーションのデバッグ方法</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/05/zynqlinux/">2014-05-07 14:40:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/linux.html">Linux</a> <a href="/tag/tcf.html">TCF</a> </div>
+	<div class="summary"><p>やっとZYBO上でLinuxが(Ethernetも含めて)動作するようになった。これについては別の記事でまとめることにするが、一番気になっていたのは、LinuxアプリケーションのデバッグがXilinxのSDKから簡単に可能かどうかだった。<br /><br />現在(2014.1)のSDKにはGDB, System Debuggerという2種類のデバッグ方法が用意されている。GDBでのデバッグは可能だったが、System Debuggerでは出来なかった。こちらの<a href="http://t.co/pq8oQ2lBwx">ビデオ</a>によると、System DebuggerでLinuxアプリケーションをデバッグしている。スレッド単位でブレークを掛けたりすることもできる様子で、なかなか強力だと思う。<br /><br />一方、<a href="http://t.co/VrNdQfhC09">System Debugger Limitations, Known Issues, and FAQs</a>によると、2013.4の時点ではSystem DebuggerでのLinuxアプリケーションのデバッグはできないように思われる。2014.1については情報は見つからなかった。<br /><br />上記のビデオでは実現できていることからすると、これが可能になったのはごく最近のことであると思われる。ビデオをよく見てみると、Yocto Linuxが起動しているのが分かる。また、TCF(System Debuggerが使用するフレームワークの仕様)のためのagentが最後の方で起動しているのも分かる。<br /><br />とりあえず自分の要件としてはGDBでも良いが、System Debuggerについても時間があるときに調査してみたい。<br /><br />また ...</p> <a class="btn primary xsmall" href="/posts/2014/05/zynqlinux/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>Linux on Zynq (ZYBO)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/05/linux-on-zynq-zybo/">2014-05-06 09:39:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/linux.html">Linux</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>今度はZYBOにてLinuxを動作させてみようと挑戦した備忘録。<br /><br />まとまった情報がなかなか見つからなくて苦労したが、基本はMasahiro Yamadaさんの、"<a href="http://masahir0y.blogspot.jp/2014/01/u-boot-linux-kernel-zynq.html">U-Boot と Linux Kernel のメインラインで Zynq を動かす</a>"を参考にした。<br /><br />STEP0: DTCの準備 はそのまま実施した。<br /><br />STEP1: U-Bootのビルド ではまった。結論としては、ARMのクロスコンパイラとして<a href="http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/">CodeSourcery Lite</a>を使用した(単にXilinxからgccをダウンロードするのが面倒だったので。Xilinxのgccで動くかは試していないため不明)。<br /><br />最初は<a href="http://www.linaro.org/downloads/">LinaroのGCC</a>でU-Bootをビルドしていたが、どうしても動作しなかった。U-Bootはlibcにも依存しているようで、LinaroのGCCだとダメだと思われる。<br /><br />さらに、肝心のU-Bootは、オリジナルのものだと動かなかったので、<a href="https://github.com/Digilent/u-boot-Digilent-Dev">DigilentのU-Boot</a>を使用した。この手順は、Ryuzさんの"<a href="http://ryuz.txt-nifty.com/blog/2014/04/zybozynqu-boot-.html">ZYBO(Zynq)のu-bootのビルドまで</a>"に従った。CROSS_COMPILEのところは、(CodeSourceryなので)arm-none-eabi-にした。makeでu-boot.binができた(上記手順だとDTBはできないが、Linuxのブートは可能)。<br /><br />STEP2 ...</p> <a class="btn primary xsmall" href="/posts/2014/05/linux-on-zynq-zybo/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>Zynq USBデバイステスト (ファームウェア)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/04/zynq-usb/">2014-04-30 09:33:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/zynq.html">Zynq</a> <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p><a href="/posts/2014/04/zynqusb/">Zynq USBデバイステスト (PC側ソフトウェア)</a>の続き。</p>
+<p>C:\Xilinx\SDK\2014.1\data\embeddedsw\XilinxProcessorIPLib\drivers\usbps_v2_0 のexamplesに対するパッチ。
+usbMain関数を呼び出すと動作開始。examplesのファイル達はusbフォルダにコピーされたものとする。</p>
+<p>概要としては、examplesはUSB mass storageとして動作するので、バルク転送のTX/RX割り込みがかかるところを
+横取り(XUsbPs_HandleStorageReqをコメントにする)して、所望のデータ処理に置き換える。
+また、サンプルはTX割り込みがかからないようになっているので、TXのビットをorして有効にする。</p>
+<hr />
+<p>diff -cr examples/xusbps_ch9_storage.c usb/xusbps_ch9_storage.c</p>
+<div class="highlight"><pre>examples/xusbps_ch9_storage.c    2014-04-16 23:53:27.579740500 +0900
+<span class="gd">--- usb/xusbps_ch9_storage.c ...</span></pre></div> <a class="btn primary xsmall" href="/posts/2014/04/zynq-usb/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>ZynqでのUSBデバイステスト (PC側ソフトウェア)</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/04/zynqusb/">2014-04-30 09:15:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>Zynqに内蔵されているUSBポートをデバイスモードで使用できるかテスト中。</p>
+<p>とりあえず最低限のループバックでは動作したので、汚いがコードを貼っておく。</p>
+<p>まずは、WinUSBを使用したPC側のソース。ほぼMicrosoftのドキュメントをくっつけただけ。インクルードの順番だけは結構重要だったりする。winusb.lib, setupapi.libをリンクすること。</p>
+<p>ドライバはインストール済みの前提。</p>
+<hr />
+<div class="highlight"><pre><span class="cp">#include &quot;stdafx.h&quot;</span>
+<span class="c1">//#include &quot;usb.h&quot;</span>
+<span class="cp">#include &quot;windows.h&quot;</span>
+<span class="cp">#include &quot;usb100.h&quot;</span>
+<span class="cp">#include &quot;usb200.h&quot;</span>
+<span class="cp">#include &quot;SetupAPI.h&quot;</span>
+<span class="cp">#include &quot;winusb.h&quot;</span>
+<span class="cp">#include &quot;winusbio.h&quot;</span>
+<span class="cp">#include &quot;strsafe.h&quot;</span>
+
+<span class="cp">#define MAX_DEVPATH_LENGTH (1024)</span>
+
+<span class="c1">// {9F68AD5A-84E0-4E0F-8EF3-11139532FD22}</span>
+<span class="n">GUID</span> <span class="n">GUID_DEVINTERFACE_OSRUSBFX2</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0x9F68AD5AUL</span><span class="p">,</span> <span class="mh">0x84E0</span><span class="p">,</span> <span class="mh">0x4E0F</span><span class="p">,</span> <span class="p">{</span> <span class="mh">0x8E</span><span class="p">,</span> <span class="mh">0xF3 ...</span></pre></div> <a class="btn primary xsmall" href="/posts/2014/04/zynqusb/">more…</a>
+	</div>
+</div>	
+<div class='article'>
+	<h2>WinUSBのinfファイル</h2>
+	<div class="well small">Permalink: <a class="more" href="/posts/2014/04/winusbinf/">2014-04-30 05:21:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>ZynqのUSBデバイス機能を試すためにWinUSBを使用するための備忘録。<br /><br />WinUSBのドライバファイルはWDKに含まれているので、<a href="http://msdn.microsoft.com/en-us/windows/hardware/gg454513.aspx">このあたり</a>からインストールする。 WDK8.1からはVisual Studio 2013を<b>先に</b>インストールしてからWDKをインストールしないといけない、と書いてある。サボって後で面倒になるのも嫌なので、手順に従う。<br /><br />フォルダを作って、次に示すような感じでinfファイルを作成する。同じフォルダにamd64(64bit Windows7の例)というフォルダを作成し、その中にC:\Program Files (x86)\Windows Kits\8.1\Redist\wdf\x64からWdfCoInstaller01011.dll, winusbcoinstaller2.dll, WUDFUpdate_01011.dllをコピーする。<br /><br />infファイルの内容(例)。GUID, VID, PIDは適当に修正<br /><br />[Version]<br />Signature = "$Windows NT$"<br />Class = ZynqDeviceClass<br />ClassGuid={23AEE0D0-4E4B-4B03-8360-1FB07C0C3338}<br />Provider = %ProviderName ...</p> <a class="btn primary xsmall" href="/posts/2014/04/winusbinf/">more…</a>
+	</div>
+</div>	
+
+<div class="pagination">
+<ul>
+		<li class="prev disabled"><a href="#">&larr; Previous</a></li>
+		<li class="active"><a href="/index.html">1</a></li>
+		<li class=""><a href="/index2.html">2</a></li>
+		<li class=""><a href="/index3.html">3</a></li>
+		<li class=""><a href="/index4.html">4</a></li>
+		<li class=""><a href="/index5.html">5</a></li>
+		<li class=""><a href="/index6.html">6</a></li>
+		<li class=""><a href="/index7.html">7</a></li>
+		<li class=""><a href="/index8.html">8</a></li>
+		<li class=""><a href="/index9.html">9</a></li>
+		<li class=""><a href="/index10.html">10</a></li>
+		<li class="next"><a href="/index2.html">Next &rarr;</a></li>
+</ul>
+</div>
+
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>

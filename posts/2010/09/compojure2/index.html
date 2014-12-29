@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>思いつきメモ</title>
+	<meta name="description" content="">
+	<meta name="author" content="tu1978">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="/theme/html5.js"></script>
+	<![endif]-->
+
+	<!-- Styles -->
+	<link href="/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="/theme/local.css" rel="stylesheet">
+	<link href="/theme/pygments.css" rel="stylesheet">
+
+	<!-- Feeds -->
+
+
+
+
+</head>
+<body>
+	<div class="topbar">
+	  <div class="topbar-inner">
+		<div class="container-fluid">
+		  <a class="brand" href="/">思いつきメモ</a>
+			<ul class="nav">
+					<li class="active"><a href="/category/.html"></a></li>
+			</ul>
+			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container-fluid">
+	  <div class="sidebar">
+		<div class="well">
+			<div class="social">
+			<h3>Social</h3>
+			<ul>
+				<li><a href="http://twitter.com/tu1978">twitter</a></li>
+			</ul>
+			</div>
+			<h3>Tags</h3>
+			<ul>
+			  <li><a href="/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="/tag/android.html">Android (4)</a></li>
+			  <li><a href="/tag/c.html">C# (1)</a></li>
+			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="/tag/math.html">Math (1)</a></li>
+			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="/tag/pc.html">PC (4)</a></li>
+			  <li><a href="/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="/tag/software.html">Software (2)</a></li>
+			  <li><a href="/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="/tag/web.html">Web (2)</a></li>
+			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			</ul>
+		</div>
+	  </div>
+	  <div class="content">
+	<div class='article'>
+		<div class="page-header"><h1>compojureなどの実験(その2)</h1></div>
+		<div class="well small">Permalink: <a class="more" href="/posts/2010/09/compojure2/">2010-09-30 06:14:00+09:00</a>
+by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
+ in <a href="/category/.html"></a>
+tags: <a href="/tag/programming.html">Programming</a> </div>
+		<div><p><span class="Apple-style-span" style="font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif; font-size: 13px;">H2データベースとJSONを使用するために必要な、<a href="http://github.com/technomancy/leiningen" style="color: #de7008;">Leiningen</a>を使ったプロジェクトファイルは結局次のようになりました。</span><div><span class="Apple-style-span" style="font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif; font-size: 13px;"><div><br /></div><div>(defproject myproject "1.0.0-SNAPSHOT"</div><div>&nbsp;&nbsp;:description "FIXME: write"</div><div>&nbsp;&nbsp;:dependencies [[org.clojure/clojure "1.2.0"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [org.clojure/clojure-contrib "1.2.0"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ring "0.3.0"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [com.h2database/h2 "1.2.142"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [org.danlarkin/clojure-json "1.1"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [compojure "0.4.1"]])</div><div><br /></div><div>JSONを使うには、<a href="http://techbehindtech.com/2010/08/24/compojure-demystified-with-an-example-part-4/" style="color: #de7008;">Compojure Demystified with an example</a>でも説明されていますが、(:require [org.danlarkin.json :as json])して、</div><div><br /></div><div><div>(defn json-response [data &amp; [status]]</div><div>&nbsp;&nbsp;{:status (or status 200)</div><div>&nbsp;&nbsp;:headers {"Content-Type" "application/json"}</div><div>&nbsp;&nbsp;:body (json/encode-to-str data)})</div></div><div><br /></div><div>を定義し、(json-response {:id 1 :data "hoge"})のようにすればJSON形式で返せます。</div><div><br /></div><div>以前(7,8年前)仕事でJavaScriptをUIでがりがり使っていたときは、とにかく面倒だという認識しかなかったです。それで、「HTMLをJavaScriptで操作するのは邪道だ。サーバで生成するのが王道」と思い込んで(?)いました。そのためあまりjQueryなどに食指が動かなかったです。でも、今回初めて試してみました。試してみるとなかなかおもしろいと感じました。Google Chromeを使えばJavaScriptのデバッグも余裕ですしね。今後いろいろ作るときは、フロントエンドはHTML+JavaScript、バックエンドはcompojureというのでOKかと感じました。やはり技術も徐々に成熟してきていますね(当たり前か)。</div></span></div></p></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
+		<footer>
+		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
+		  <p>&copy; tu1978</p>
+		</footer>
+	  </div>
+
+	</div>
+</body>
+</html>
