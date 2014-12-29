@@ -31,6 +31,8 @@ THEME = "./pelican-themes/bootstrap"
 DISPLAY_PAGES_ON_MENU = True
 NEWEST_FIRST_ARCHIVES = True
 
+GOOGLE_ANALYTICS = True
+
 # Blogroll
 # LINKS = (('Pelican', 'http://getpelican.com/'),
 #          ('Python.org', 'http://python.org/'),
