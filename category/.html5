@@ -8,13 +8,13 @@
 
 	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
-		<script src="/theme/html5.js"></script>
+		<script src="https://formalism.github.io/blog/theme/html5.js"></script>
 	<![endif]-->
 
 	<!-- Styles -->
-	<link href="/theme/bootstrap.min.css" rel="stylesheet">
-	<link href="/theme/local.css" rel="stylesheet">
-	<link href="/theme/pygments.css" rel="stylesheet">
+	<link href="https://formalism.github.io/blog/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="https://formalism.github.io/blog/theme/local.css" rel="stylesheet">
+	<link href="https://formalism.github.io/blog/theme/pygments.css" rel="stylesheet">
 
 	<!-- Feeds -->
 
@@ -26,11 +26,11 @@
 	<div class="topbar">
 	  <div class="topbar-inner">
 		<div class="container-fluid">
-		  <a class="brand" href="/">思いつきメモ</a>
+		  <a class="brand" href="https://formalism.github.io/blog/">思いつきメモ</a>
 			<ul class="nav">
-					<li class="active"><a href="/category/.html"></a></li>
+					<li class="active"><a href="https://formalism.github.io/blog/category/.html"></a></li>
 			</ul>
-			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+			<p class="pull-right"><a href="https://formalism.github.io/blog/archives.html">[archives]</a> <a href="https://formalism.github.io/blog/tags.html">[tags]</a></p>
 		</div>
 	  </div>
 	</div>
@@ -46,38 +46,38 @@
 			</div>
 			<h3>Tags</h3>
 			<ul>
-			  <li><a href="/tag/agda.html">Agda (3)</a></li>
-			  <li><a href="/tag/android.html">Android (4)</a></li>
-			  <li><a href="/tag/c.html">C# (1)</a></li>
-			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
-			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
-			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
-			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
-			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
-			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
-			  <li><a href="/tag/linux.html">Linux (7)</a></li>
-			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
-			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
-			  <li><a href="/tag/mac.html">Mac (1)</a></li>
-			  <li><a href="/tag/math.html">Math (1)</a></li>
-			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
-			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
-			  <li><a href="/tag/pc.html">PC (4)</a></li>
-			  <li><a href="/tag/printer.html">Printer (1)</a></li>
-			  <li><a href="/tag/progra.html">Progra (1)</a></li>
-			  <li><a href="/tag/programming.html">Programming (49)</a></li>
-			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
-			  <li><a href="/tag/software.html">Software (2)</a></li>
-			  <li><a href="/tag/solr.html">Solr (1)</a></li>
-			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
-			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
-			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
-			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
-			  <li><a href="/tag/web.html">Web (2)</a></li>
-			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
-			  <li><a href="/tag/windows.html">Windows (1)</a></li>
-			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/math.html">Math (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/pc.html">PC (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/software.html">Software (2)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/zynq.html">Zynq (9)</a></li>
 			</ul>
 		</div>
 	  </div>
@@ -85,109 +85,109 @@
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
 <div class='article'>
 	<h2>Haskell雑感</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2012/02/migrating-clojure-webapp-to-haskell/">2012-02-17 14:25:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/clojure.html">clojure</a> <a href="/tag/haskell.html">Haskell</a> </div>
-	<div class="summary"><p>以前clojureで作成した自分用WebアプリをHaskell(GHC)で作ってみている。感じた点を並べてみる。<br /><br /><b><span style="font-size: large;">言語としての違い</span></b><br /><br />ソースの単純な見た目としてはclojureの方が自分好み。Haskellの方は"$, -&gt;, ., &lt;-, !"といった記号が乱発され、<b>とにかく読む気が失せる</b>。しかも一目見ただけでは関数の適用順さえ理解しにくい。Lispライクな文法にしなかったのは<b>Haskellの一番いけてない点</b>だと主張したい。<br /><pre class="prettyprint">case all of<br />    [] -&gt; res<br />    (x:rs) -&gt; case Data.Map.lookup (qname x) res of<br />                  Nothing -&gt; formatByKamoku' rs $ insert (qname x) ((V.replicate 12 0) V.// [((month x)-1, cost x)]) res<br />                  Just v -&gt; formatByKamoku' rs $ insert (qname ...</pre></p> <a class="btn primary xsmall" href="/posts/2012/02/migrating-clojure-webapp-to-haskell/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/02/migrating-clojure-webapp-to-haskell/">2012-02-17 14:25:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/clojure.html">clojure</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
+	<div class="summary"><p>以前clojureで作成した自分用WebアプリをHaskell(GHC)で作ってみている。感じた点を並べてみる。<br /><br /><b><span style="font-size: large;">言語としての違い</span></b><br /><br />ソースの単純な見た目としてはclojureの方が自分好み。Haskellの方は"$, -&gt;, ., &lt;-, !"といった記号が乱発され、<b>とにかく読む気が失せる</b>。しかも一目見ただけでは関数の適用順さえ理解しにくい。Lispライクな文法にしなかったのは<b>Haskellの一番いけてない点</b>だと主張したい。<br /><pre class="prettyprint">case all of<br />    [] -&gt; res<br />    (x:rs) -&gt; case Data.Map.lookup (qname x) res of<br />                  Nothing -&gt; formatByKamoku' rs $ insert (qname x) ((V.replicate 12 0) V.// [((month x)-1, cost x)]) res<br />                  Just v -&gt; formatByKamoku' rs $ insert (qname ...</pre></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/02/migrating-clojure-webapp-to-haskell/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>HaskellのMySQLバインディングについて調査</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2012/02/haskellmysql/">2012-02-08 14:33:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/haskell.html">Haskell</a> </div>
-	<div class="summary"><p>HaskellでMySQLを使うのにどのライブラリが良いか調べた。結果としては<a href="http://hackage.haskell.org/packages/archive/mysql-simple/0.2.2.3/doc/html/Database-MySQL-Simple.html">mysql-simple</a>が良さそうだ。<a href="http://hackage.haskell.org/package/HDBC-mysql-0.6.6.0">HDBC-mysql</a>も試して見たが、こちらは日本語が文字化けしてしまった。ソースを見る限りちゃんとUTF8の変換を行っているように思えたのだが。とりあえず使えるものが見つかったので今日の所はここまで。<br /><br />2012/2/14 追記<br /><br />Mac OS Xの方でmysql-simpleをインストールしたが、コンパイル/リンクされたファイルを実行しようとしたら、libmysqlclient.18.dylibが見つからないというエラーが発生した。このファイルがあるディレクトリをDYLD_LIBRARY_PATH環境変数で指定してみたが、なぜか解決しなかったので、<a href="http://d.hatena.ne.jp/yinkyweb/20111108/1320725744">"Library not loaded: libmysqlclient.18.dylib"の解消方法</a>にあった方法を使って、/usr/libにシンボリックリンクを作成して逃げた。<br /><br />どうにもMac OS XはLinuxと比べて面倒に遭遇する場合が多いと感じる。</p> <a class="btn primary xsmall" href="/posts/2012/02/haskellmysql/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/02/haskellmysql/">2012-02-08 14:33:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
+	<div class="summary"><p>HaskellでMySQLを使うのにどのライブラリが良いか調べた。結果としては<a href="http://hackage.haskell.org/packages/archive/mysql-simple/0.2.2.3/doc/html/Database-MySQL-Simple.html">mysql-simple</a>が良さそうだ。<a href="http://hackage.haskell.org/package/HDBC-mysql-0.6.6.0">HDBC-mysql</a>も試して見たが、こちらは日本語が文字化けしてしまった。ソースを見る限りちゃんとUTF8の変換を行っているように思えたのだが。とりあえず使えるものが見つかったので今日の所はここまで。<br /><br />2012/2/14 追記<br /><br />Mac OS Xの方でmysql-simpleをインストールしたが、コンパイル/リンクされたファイルを実行しようとしたら、libmysqlclient.18.dylibが見つからないというエラーが発生した。このファイルがあるディレクトリをDYLD_LIBRARY_PATH環境変数で指定してみたが、なぜか解決しなかったので、<a href="http://d.hatena.ne.jp/yinkyweb/20111108/1320725744">"Library not loaded: libmysqlclient.18.dylib"の解消方法</a>にあった方法を使って、/usr/libにシンボリックリンクを作成して逃げた。<br /><br />どうにもMac OS XはLinuxと比べて面倒に遭遇する場合が多いと感じる。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/02/haskellmysql/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>Mac OS XでGHCのコンパイルエラー</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2012/02/mac-os-xghc/">2012-02-07 14:41:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/haskell.html">Haskell</a> </div>
-	<div class="summary"><p>あるプログラムをMac OS X(10.6)上のGHC7.0.4(Haskell Platform 2011.04でインストールした)でコンパイルしようとしたら、<br /><br />Linking main ...<br />Undefined symbols:<br />&nbsp; "_locale_charset", referenced from:<br />&nbsp; &nbsp; &nbsp; _localeEncoding in libHSbase-4.3.1.0.a(PrelIOUtils.o)<br />&nbsp; "_iconv_close", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv_close in libHSbase-4.3.1.0.a(iconv.o)<br />&nbsp; &nbsp; &nbsp;(maybe you meant: _hs_iconv_close)<br />&nbsp; "_iconv", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv in ...</p> <a class="btn primary xsmall" href="/posts/2012/02/mac-os-xghc/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/02/mac-os-xghc/">2012-02-07 14:41:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
+	<div class="summary"><p>あるプログラムをMac OS X(10.6)上のGHC7.0.4(Haskell Platform 2011.04でインストールした)でコンパイルしようとしたら、<br /><br />Linking main ...<br />Undefined symbols:<br />&nbsp; "_locale_charset", referenced from:<br />&nbsp; &nbsp; &nbsp; _localeEncoding in libHSbase-4.3.1.0.a(PrelIOUtils.o)<br />&nbsp; "_iconv_close", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv_close in libHSbase-4.3.1.0.a(iconv.o)<br />&nbsp; &nbsp; &nbsp;(maybe you meant: _hs_iconv_close)<br />&nbsp; "_iconv", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv in ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/02/mac-os-xghc/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>JINS PC購入</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2012/02/jins-pc/">2012-02-02 15:06:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/gadgets.html">Gadgets</a> </div>
-	<div class="summary"><p>パソコンなどから出るブルーライトから目を守るという触れ込みの<a href="http://hb.afl.rakuten.co.jp/hgc/0f21cc00.c519976b.0f21cc01.54e6319a/?pc=http%3a%2f%2fitem.rakuten.co.jp%2fjins-ec%2fpc-01%2f%3fscid%3daf_ich_link_txt&amp;m=http%3a%2f%2fm.rakuten.co.jp%2fjins-ec%2fi%2f10001835%2f">JINS PC</a>を購入した。以前購入したMacBook Proの画面を長時間見ていると、どうも目が疲れるように感じていたので。<br /><br />意外だったのは、これを掛けると画面が少しよく(くっきりと)見えるようになること。このレンズは度なしだが、青い波長の光がカットされることで、目の焦点が合わせやすくなったからだと想像する。光は波長が異なると屈折率が異なるので、色によって焦点が合う位置が微妙に違う。だから一色でも波長が抜けると、ぼけた感じが軽減されるのだと思う。<br /><br />また、当然目に進入する光量が減るので、眠くなる。よく言えば落ち着く。<br /><br />効果は「まぁあるのかな」という感じだけれども、少なくともサングラスとしても機能するので、しばらく使い続けてみようと思う。</p> <a class="btn primary xsmall" href="/posts/2012/02/jins-pc/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/02/jins-pc/">2012-02-02 15:06:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
+	<div class="summary"><p>パソコンなどから出るブルーライトから目を守るという触れ込みの<a href="http://hb.afl.rakuten.co.jp/hgc/0f21cc00.c519976b.0f21cc01.54e6319a/?pc=http%3a%2f%2fitem.rakuten.co.jp%2fjins-ec%2fpc-01%2f%3fscid%3daf_ich_link_txt&amp;m=http%3a%2f%2fm.rakuten.co.jp%2fjins-ec%2fi%2f10001835%2f">JINS PC</a>を購入した。以前購入したMacBook Proの画面を長時間見ていると、どうも目が疲れるように感じていたので。<br /><br />意外だったのは、これを掛けると画面が少しよく(くっきりと)見えるようになること。このレンズは度なしだが、青い波長の光がカットされることで、目の焦点が合わせやすくなったからだと想像する。光は波長が異なると屈折率が異なるので、色によって焦点が合う位置が微妙に違う。だから一色でも波長が抜けると、ぼけた感じが軽減されるのだと思う。<br /><br />また、当然目に進入する光量が減るので、眠くなる。よく言えば落ち着く。<br /><br />効果は「まぁあるのかな」という感じだけれども、少なくともサングラスとしても機能するので、しばらく使い続けてみようと思う。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/02/jins-pc/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>H2クエリを少し最適化</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2012/01/h2/">2012-01-22 09:21:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>H2データベース(バージョンは1.3.161)で、selectクエリを実行するときに、予想より時間がかかっていると思われた。それで、explainを使って、どのようにクエリが実行されているのか調べてみたら、案の定インデックスが使われないで全レコードサーチになっていた。<br /><br />問題となったのは、select * from tbl where YEAR(date)=2012のように、日付型を持つフィールドにYEAR演算を施し、その結果が定数になるレコードを取得するクエリ。それで、このクエリを、select * from tbl where date&gt;='2012-1-1' and date&lt;='2012/12/31'と書き換えた。そうしたらちゃんとdateフィールドに設定してあるインデックスを使用するようになり、速度も改善された。<br /><br />これくらいの最適化は自動的にやってくれると思っていたが、そうでもないらしい。確かに、YEARではなくて、select * from tbl where MONTH(date)=1のように、MONTH演算であれば、単純にdateフィールドでインデックスを持っていても検索は簡単ではない ...</p> <a class="btn primary xsmall" href="/posts/2012/01/h2/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/01/h2/">2012-01-22 09:21:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>H2データベース(バージョンは1.3.161)で、selectクエリを実行するときに、予想より時間がかかっていると思われた。それで、explainを使って、どのようにクエリが実行されているのか調べてみたら、案の定インデックスが使われないで全レコードサーチになっていた。<br /><br />問題となったのは、select * from tbl where YEAR(date)=2012のように、日付型を持つフィールドにYEAR演算を施し、その結果が定数になるレコードを取得するクエリ。それで、このクエリを、select * from tbl where date&gt;='2012-1-1' and date&lt;='2012/12/31'と書き換えた。そうしたらちゃんとdateフィールドに設定してあるインデックスを使用するようになり、速度も改善された。<br /><br />これくらいの最適化は自動的にやってくれると思っていたが、そうでもないらしい。確かに、YEARではなくて、select * from tbl where MONTH(date)=1のように、MONTH演算であれば、単純にdateフィールドでインデックスを持っていても検索は簡単ではない ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/01/h2/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>継続ベースWebアプリについて少し考えた</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2011/11/web/">2011-11-27 13:51:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>Webアプリにおいてセッション管理を行うときに、昔からJSPなどで行われている、セッションIDを何らかのデータに結びつける手法がある。一方、例えば<a href="http://www.ogis-ri.co.jp/otc/hiroba/technical/seaside/seaside1/index.html">Seaside</a>のように、継続を使用してセッション管理を行うという方法もある。継続ベースというのは技術的にもおもしろいし、上のURLでも指摘しているように、二度押しなどの対策もしやすい、というメリットがある。<br /><br />しかし、単純に実装してしまうと、URLがユーザにとって意味不明の文字列になってしまう。セッションと強く結びついているので、ブックマークをすることができない。もちろん、「ログインが必要な画面など、セッション内のページについてはブックマークができなくても良い」という考え方もあるが、「どうせ継続で制御できるのだから、リクエストURLはいつも固定でいい」などという安直な考えを推し進め、ログインが不要なページまで継続で実装してしまうと、意味不明なURLが大量生産されることになってしまう。<br /><br />そう考えると、JSPスタイルで実装するのも悪くない。ユーザ(主語)が、ある「対象」にある「操作」を行う、というのを実装するのであれば、リクエストURLは「動作」と「対象」を表し、認証情報(「主語」)のためにセッションを用いる、というのが良い解ではないかと考えた。</p> <a class="btn primary xsmall" href="/posts/2011/11/web/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/11/web/">2011-11-27 13:51:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>Webアプリにおいてセッション管理を行うときに、昔からJSPなどで行われている、セッションIDを何らかのデータに結びつける手法がある。一方、例えば<a href="http://www.ogis-ri.co.jp/otc/hiroba/technical/seaside/seaside1/index.html">Seaside</a>のように、継続を使用してセッション管理を行うという方法もある。継続ベースというのは技術的にもおもしろいし、上のURLでも指摘しているように、二度押しなどの対策もしやすい、というメリットがある。<br /><br />しかし、単純に実装してしまうと、URLがユーザにとって意味不明の文字列になってしまう。セッションと強く結びついているので、ブックマークをすることができない。もちろん、「ログインが必要な画面など、セッション内のページについてはブックマークができなくても良い」という考え方もあるが、「どうせ継続で制御できるのだから、リクエストURLはいつも固定でいい」などという安直な考えを推し進め、ログインが不要なページまで継続で実装してしまうと、意味不明なURLが大量生産されることになってしまう。<br /><br />そう考えると、JSPスタイルで実装するのも悪くない。ユーザ(主語)が、ある「対象」にある「操作」を行う、というのを実装するのであれば、リクエストURLは「動作」と「対象」を表し、認証情報(「主語」)のためにセッションを用いる、というのが良い解ではないかと考えた。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/11/web/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>fleet (clojureによるテンプレートシステム)</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2011/11/fleet-clojure/">2011-11-19 16:06:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/clojure.html">clojure</a> </div>
-	<div class="summary"><p>また久しぶりにclojureをいじり始めた。またWebシステムの実装に用いる予定。どうやってJSPやASPのように動的にWebページを生成するのが良いのか、最近の流行を少し調べてみた。<br /><br />結果として、自分には<a href="https://github.com/Flamefork/fleet">fleet</a>が現状良さそうという結論に達した。若干悩んだ点と調べて分かったことのメモ。<br /><br /><ul><li>fleet-nsでテンプレートを生成するときに、引数で指定したディレクトリにあるファイルを 走査して、それぞれの<b>テンプレートファイルに対応するテンプレート関数</b>が作られる。例えば、post.html.fleetというファイルが存在すれば、postという関数が、(同じく引数で指定した名前空間に)作られる。</li><li>post関数の内部(つまり、テンプレートファイルの中)では、dataという名前でテンプレート関数への<b>実引数</b>を参照できる。すなわち、&lt;(:hoge data)&gt;とpost.html.fleetに記述すれば、このテンプレート関数が実行されるときに、実引数として渡されたmapにあるhogeキーの値を出力する。</li></ul></p> <a class="btn primary xsmall" href="/posts/2011/11/fleet-clojure/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/11/fleet-clojure/">2011-11-19 16:06:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/clojure.html">clojure</a> </div>
+	<div class="summary"><p>また久しぶりにclojureをいじり始めた。またWebシステムの実装に用いる予定。どうやってJSPやASPのように動的にWebページを生成するのが良いのか、最近の流行を少し調べてみた。<br /><br />結果として、自分には<a href="https://github.com/Flamefork/fleet">fleet</a>が現状良さそうという結論に達した。若干悩んだ点と調べて分かったことのメモ。<br /><br /><ul><li>fleet-nsでテンプレートを生成するときに、引数で指定したディレクトリにあるファイルを 走査して、それぞれの<b>テンプレートファイルに対応するテンプレート関数</b>が作られる。例えば、post.html.fleetというファイルが存在すれば、postという関数が、(同じく引数で指定した名前空間に)作られる。</li><li>post関数の内部(つまり、テンプレートファイルの中)では、dataという名前でテンプレート関数への<b>実引数</b>を参照できる。すなわち、&lt;(:hoge data)&gt;とpost.html.fleetに記述すれば、このテンプレート関数が実行されるときに、実引数として渡されたmapにあるhogeキーの値を出力する。</li></ul></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/11/fleet-clojure/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>SolrをJSONで使うときにはまったことのメモ</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2011/09/solrjson/">2011-09-17 12:06:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/web.html">Web</a> <a href="/tag/programming.html">Programming</a> <a href="/tag/solr.html">Solr</a> <a href="/tag/lisp.html">Lisp</a> </div>
-	<div class="summary"><p><a href="http://lucene.apache.org/solr/">Apache Solr</a>の検索機能を試してみた。自作Lispアプリから<a href="http://weitz.de/drakma/">drakma</a>を使用してJSONによりデータを追加しようとした。<br /><br /><b>結論からすると、Solrは、JSONの文字列は、シングルクオートではなく、ダブルクオートでないとエラーになる。</b><br /><b><br /></b><br />自分の調べた範囲では、JSONとしてはシングルクオートでもダブルクオートでも文字列としてvalidである(らしい)ので、これはSolr側の問題であると思う。<br /><b><br /></b><br /><a href="http://common-lisp.net/project/parenscript/">Parenscript</a>を使用して文字列を作ると、シングルクオートで囲われてしまう。代わりに、<a href="http://common-lisp.net/project/cl-json/">CL-JSON</a>を使用することにした。こちらはなかなか使い方が難しかったが、<br /><br /><br />(defun get-insert-answer-json (id uid qid ans)<br />&nbsp; (with-output-to-string (stream)<br />&nbsp; &nbsp; &nbsp;(json:with-object (stream)<br />&nbsp; &nbsp; &nbsp; &nbsp;(json:as-object-member (:add stream)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span> (json:with-object (stream)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span> &nbsp; (json:encode-object-member "doc"<br /><span class="Apple-tab-span" style="white-space: pre;">    </span> &nbsp; &nbsp; &nbsp;`((id . ,id) (uid_i . ,uid) (tp_i . 2 ...</p> <a class="btn primary xsmall" href="/posts/2011/09/solrjson/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/09/solrjson/">2011-09-17 12:06:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/web.html">Web</a> <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/solr.html">Solr</a> <a href="https://formalism.github.io/blog/tag/lisp.html">Lisp</a> </div>
+	<div class="summary"><p><a href="http://lucene.apache.org/solr/">Apache Solr</a>の検索機能を試してみた。自作Lispアプリから<a href="http://weitz.de/drakma/">drakma</a>を使用してJSONによりデータを追加しようとした。<br /><br /><b>結論からすると、Solrは、JSONの文字列は、シングルクオートではなく、ダブルクオートでないとエラーになる。</b><br /><b><br /></b><br />自分の調べた範囲では、JSONとしてはシングルクオートでもダブルクオートでも文字列としてvalidである(らしい)ので、これはSolr側の問題であると思う。<br /><b><br /></b><br /><a href="http://common-lisp.net/project/parenscript/">Parenscript</a>を使用して文字列を作ると、シングルクオートで囲われてしまう。代わりに、<a href="http://common-lisp.net/project/cl-json/">CL-JSON</a>を使用することにした。こちらはなかなか使い方が難しかったが、<br /><br /><br />(defun get-insert-answer-json (id uid qid ans)<br />&nbsp; (with-output-to-string (stream)<br />&nbsp; &nbsp; &nbsp;(json:with-object (stream)<br />&nbsp; &nbsp; &nbsp; &nbsp;(json:as-object-member (:add stream)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span> (json:with-object (stream)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span> &nbsp; (json:encode-object-member "doc"<br /><span class="Apple-tab-span" style="white-space: pre;">    </span> &nbsp; &nbsp; &nbsp;`((id . ,id) (uid_i . ,uid) (tp_i . 2 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/09/solrjson/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>OpenSolaris -> Ubuntu Linux</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2011/08/opensolaris-ubuntu-linux/">2011-08-27 14:53:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/linux.html">Linux</a> <a href="/tag/opensolaris.html">OpenSolaris</a> </div>
-	<div class="summary"><p>これまでメインのデータストレージはVM上のOpenSolaris 2009.6のZFSファイルシステムであったが、Solarisの今後を考えると少し不安なので(FreeBSD+ZFSという手もあるが)、Ubuntu Linux 10.04LTS上のLVM2+ext4に移行した。ZFSの先進性からすると、ファイルストレージとしては後退した感はあるが、いろいろなオープンソースソフトウェアは、なんだかんだいってLinuxが主なターゲットになっているのが現実であるので、メリットもある。<br /><br />btrfsは安定性を考慮して、今のところ見送り。FreeBSD+ZFSもメモリを食うという情報が多かったので見送り。<br /><br />なかなか現状オープンソースで満足のゆく解はなさそうだ。</p> <a class="btn primary xsmall" href="/posts/2011/08/opensolaris-ubuntu-linux/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/08/opensolaris-ubuntu-linux/">2011-08-27 14:53:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> <a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris</a> </div>
+	<div class="summary"><p>これまでメインのデータストレージはVM上のOpenSolaris 2009.6のZFSファイルシステムであったが、Solarisの今後を考えると少し不安なので(FreeBSD+ZFSという手もあるが)、Ubuntu Linux 10.04LTS上のLVM2+ext4に移行した。ZFSの先進性からすると、ファイルストレージとしては後退した感はあるが、いろいろなオープンソースソフトウェアは、なんだかんだいってLinuxが主なターゲットになっているのが現実であるので、メリットもある。<br /><br />btrfsは安定性を考慮して、今のところ見送り。FreeBSD+ZFSもメモリを食うという情報が多かったので見送り。<br /><br />なかなか現状オープンソースで満足のゆく解はなさそうだ。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/08/opensolaris-ubuntu-linux/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>MacBook Pro</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2011/06/macbook-pro/">2011-06-10 14:02:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/mac.html">Mac</a> <a href="/tag/pc.html">PC</a> </div>
-	<div class="summary"><p>Mac OS Xになって、これまでも2回Macを購入したことがあったのだが、結局使いこなすには至らなかった。確か、初めてのMacはiBook G4(白いやつ)で、次がMacBook(2ではないCore Duo)だった。特に2代目は使い始めて1週間くらいで調子が悪くなり、ロジックボードの交換をした。迅速に無料で修理をしてもらったものの、普段使いには耐えないかと思い、下取りに出してしまった。<br /><br />それ以降Macとも離れていたのだが、Sandy Bridge搭載パソコンを物色しているうちに、また懲りずにMacを購入してしまった。買ったのは<a href="http://www.amazon.co.jp/gp/product/B004PEHDPW/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;tag=formalism-22&amp;linkCode=as2&amp;camp=247&amp;creative=1211&amp;creativeASIN=B004PEHDPW">MacBook Pro (MC700J/A)</a>。メモリを増設し8GBにした。<br /><br /><b>良い点</b><br /><ul><li>格好良い。</li><ul><li>フラットデザイン。最近は国内メーカもまねをしているようだ。</li></ul><li>トラックパッドの操作感がとても良い。2本指でスクロールする感覚が非常に良い。ぴったりと意図通りにスクロールする感じ。この感覚に慣れてしまうとWindowsのスクロールは野暮ったく感じる。</li></ul><b>良くない点</b><br /><ul><li>パームレストの角が手に当たって痛い。これは机の高さがちょっと高すぎるのが問題なのだけれど、もう少し丸みがあった方が良いと思う。</li><ul><li>2011/9/3 追記：やはりそれなりの時間使用するときには、これは結構気になる。こればかりはデザインを改善した方が良いと思うのだが...</li></ul><li>重い。国内メーカだったら同じサイズで500gくらいは軽くなりそう ...</li></ul></p> <a class="btn primary xsmall" href="/posts/2011/06/macbook-pro/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/06/macbook-pro/">2011-06-10 14:02:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/mac.html">Mac</a> <a href="https://formalism.github.io/blog/tag/pc.html">PC</a> </div>
+	<div class="summary"><p>Mac OS Xになって、これまでも2回Macを購入したことがあったのだが、結局使いこなすには至らなかった。確か、初めてのMacはiBook G4(白いやつ)で、次がMacBook(2ではないCore Duo)だった。特に2代目は使い始めて1週間くらいで調子が悪くなり、ロジックボードの交換をした。迅速に無料で修理をしてもらったものの、普段使いには耐えないかと思い、下取りに出してしまった。<br /><br />それ以降Macとも離れていたのだが、Sandy Bridge搭載パソコンを物色しているうちに、また懲りずにMacを購入してしまった。買ったのは<a href="http://www.amazon.co.jp/gp/product/B004PEHDPW/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;tag=formalism-22&amp;linkCode=as2&amp;camp=247&amp;creative=1211&amp;creativeASIN=B004PEHDPW">MacBook Pro (MC700J/A)</a>。メモリを増設し8GBにした。<br /><br /><b>良い点</b><br /><ul><li>格好良い。</li><ul><li>フラットデザイン。最近は国内メーカもまねをしているようだ。</li></ul><li>トラックパッドの操作感がとても良い。2本指でスクロールする感覚が非常に良い。ぴったりと意図通りにスクロールする感じ。この感覚に慣れてしまうとWindowsのスクロールは野暮ったく感じる。</li></ul><b>良くない点</b><br /><ul><li>パームレストの角が手に当たって痛い。これは机の高さがちょっと高すぎるのが問題なのだけれど、もう少し丸みがあった方が良いと思う。</li><ul><li>2011/9/3 追記：やはりそれなりの時間使用するときには、これは結構気になる。こればかりはデザインを改善した方が良いと思うのだが...</li></ul><li>重い。国内メーカだったら同じサイズで500gくらいは軽くなりそう ...</li></ul></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/06/macbook-pro/">more…</a>
 	</div>
 </div>	
 
 <div class="pagination">
 <ul>
-		<li class="prev"><a href="/category/4.html">&larr; Previous</a></li>
-		<li class=""><a href="/category/.html">1</a></li>
-		<li class=""><a href="/category/2.html">2</a></li>
-		<li class=""><a href="/category/3.html">3</a></li>
-		<li class=""><a href="/category/4.html">4</a></li>
-		<li class="active"><a href="/category/5.html">5</a></li>
-		<li class=""><a href="/category/6.html">6</a></li>
-		<li class=""><a href="/category/7.html">7</a></li>
-		<li class=""><a href="/category/8.html">8</a></li>
-		<li class=""><a href="/category/9.html">9</a></li>
-		<li class=""><a href="/category/10.html">10</a></li>
-		<li class="next"><a href="/category/6.html">Next &rarr;</a></li>
+		<li class="prev"><a href="https://formalism.github.io/blog/category/4.html">&larr; Previous</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/.html">1</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/2.html">2</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/3.html">3</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/4.html">4</a></li>
+		<li class="active"><a href="https://formalism.github.io/blog/category/5.html">5</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/6.html">6</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/7.html">7</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/8.html">8</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/9.html">9</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/10.html">10</a></li>
+		<li class="next"><a href="https://formalism.github.io/blog/category/6.html">Next &rarr;</a></li>
 </ul>
 </div>
 

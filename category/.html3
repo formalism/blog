@@ -8,13 +8,13 @@
 
 	<!-- HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
-		<script src="/theme/html5.js"></script>
+		<script src="https://formalism.github.io/blog/theme/html5.js"></script>
 	<![endif]-->
 
 	<!-- Styles -->
-	<link href="/theme/bootstrap.min.css" rel="stylesheet">
-	<link href="/theme/local.css" rel="stylesheet">
-	<link href="/theme/pygments.css" rel="stylesheet">
+	<link href="https://formalism.github.io/blog/theme/bootstrap.min.css" rel="stylesheet">
+	<link href="https://formalism.github.io/blog/theme/local.css" rel="stylesheet">
+	<link href="https://formalism.github.io/blog/theme/pygments.css" rel="stylesheet">
 
 	<!-- Feeds -->
 
@@ -26,11 +26,11 @@
 	<div class="topbar">
 	  <div class="topbar-inner">
 		<div class="container-fluid">
-		  <a class="brand" href="/">思いつきメモ</a>
+		  <a class="brand" href="https://formalism.github.io/blog/">思いつきメモ</a>
 			<ul class="nav">
-					<li class="active"><a href="/category/.html"></a></li>
+					<li class="active"><a href="https://formalism.github.io/blog/category/.html"></a></li>
 			</ul>
-			<p class="pull-right"><a href="/archives.html">[archives]</a> <a href="/tags.html">[tags]</a></p>
+			<p class="pull-right"><a href="https://formalism.github.io/blog/archives.html">[archives]</a> <a href="https://formalism.github.io/blog/tags.html">[tags]</a></p>
 		</div>
 	  </div>
 	</div>
@@ -46,38 +46,38 @@
 			</div>
 			<h3>Tags</h3>
 			<ul>
-			  <li><a href="/tag/agda.html">Agda (3)</a></li>
-			  <li><a href="/tag/android.html">Android (4)</a></li>
-			  <li><a href="/tag/c.html">C# (1)</a></li>
-			  <li><a href="/tag/c-amp.html">C++ AMP (1)</a></li>
-			  <li><a href="/tag/center-exam.html">Center Exam (1)</a></li>
-			  <li><a href="/tag/clojure.html">clojure (2)</a></li>
-			  <li><a href="/tag/clsql.html">CLSQL (2)</a></li>
-			  <li><a href="/tag/fpga.html">FPGA (20)</a></li>
-			  <li><a href="/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="/tag/haskell.html">Haskell (5)</a></li>
-			  <li><a href="/tag/linux.html">Linux (7)</a></li>
-			  <li><a href="/tag/liquor.html">Liquor (1)</a></li>
-			  <li><a href="/tag/lisp.html">Lisp (3)</a></li>
-			  <li><a href="/tag/mac.html">Mac (1)</a></li>
-			  <li><a href="/tag/math.html">Math (1)</a></li>
-			  <li><a href="/tag/opencl.html">OpenCL (3)</a></li>
-			  <li><a href="/tag/opensolaris.html">OpenSolaris (3)</a></li>
-			  <li><a href="/tag/pc.html">PC (4)</a></li>
-			  <li><a href="/tag/printer.html">Printer (1)</a></li>
-			  <li><a href="/tag/progra.html">Progra (1)</a></li>
-			  <li><a href="/tag/programming.html">Programming (49)</a></li>
-			  <li><a href="/tag/shu-ping.html">書評 (1)</a></li>
-			  <li><a href="/tag/software.html">Software (2)</a></li>
-			  <li><a href="/tag/solr.html">Solr (1)</a></li>
-			  <li><a href="/tag/sqlite3.html">SQLite3 (1)</a></li>
-			  <li><a href="/tag/starbucks.html">Starbucks (1)</a></li>
-			  <li><a href="/tag/tcf.html">TCF (1)</a></li>
-			  <li><a href="/tag/uncategorized.html">Uncategorized (1)</a></li>
-			  <li><a href="/tag/web.html">Web (2)</a></li>
-			  <li><a href="/tag/wi2.html">Wi2 (2)</a></li>
-			  <li><a href="/tag/windows.html">Windows (1)</a></li>
-			  <li><a href="/tag/zynq.html">Zynq (9)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/clojure.html">clojure (2)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/mac.html">Mac (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/math.html">Math (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL (3)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris (3)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/pc.html">PC (4)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/printer.html">Printer (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/progra.html">Progra (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/programming.html">Programming (49)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/shu-ping.html">書評 (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/software.html">Software (2)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/solr.html">Solr (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/windows.html">Windows (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/zynq.html">Zynq (9)</a></li>
 			</ul>
 		</div>
 	  </div>
@@ -85,119 +85,119 @@
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
 <div class='article'>
 	<h2>AlteraがOpenCL SDKの一般提供を開始</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2013/06/alteraopencl-sdk/">2013-06-30 11:26:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/fpga.html">FPGA</a> </div>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/06/alteraopencl-sdk/">2013-06-30 11:26:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p><a href="http://www.altera.co.jp/corporate/news_room/releases/2013/products/nr-opencl-sdk-13.0.html">アルテラ、ソフトウェア・プログラマの FPGA 利用を可能にする OpenCL 向け SDK と市販ボードの一般提供を開始</a></p>
 
-<p><p>SDKについて詳しく調和したわけではないが、OpenCLではそれほどFPGAのメリットが引き出せないのではないか、と思う。OpenCLは基本的に、メモリとデータを何度かやりとりしながら処理を進めるプログラミングモデルが利用されていると思う。一方、FPGAを用いて処理を高速化したいという場合、一般的にはメモリから一気に回路パイプラインに流し込んで、パイプラインから出てきた結果をまたメモリに書き戻す、というイメージではないかと思う。メモリとのやりとりが多くなると、結局演算よりもそちらがボトルネックになってくるはず。それに、メモリ帯域という事で言えば、ほとんどのFPGAを載せたボードでは、最新のGPUボードのメモリ帯域には太刀打ちできないだろう。</p> <p>ということで、OpenCLのプログラミングモデルはFPGAの高速化に向くものではない、ということである。それよりは、普通に高位合成でパイプライン処理を合成し、必要なメモリとのやりとりをくっつければ良いのではないだろうか。</p></p> <a class="btn primary xsmall" href="/posts/2013/06/alteraopencl-sdk/">more…</a>
+<p><p>SDKについて詳しく調和したわけではないが、OpenCLではそれほどFPGAのメリットが引き出せないのではないか、と思う。OpenCLは基本的に、メモリとデータを何度かやりとりしながら処理を進めるプログラミングモデルが利用されていると思う。一方、FPGAを用いて処理を高速化したいという場合、一般的にはメモリから一気に回路パイプラインに流し込んで、パイプラインから出てきた結果をまたメモリに書き戻す、というイメージではないかと思う。メモリとのやりとりが多くなると、結局演算よりもそちらがボトルネックになってくるはず。それに、メモリ帯域という事で言えば、ほとんどのFPGAを載せたボードでは、最新のGPUボードのメモリ帯域には太刀打ちできないだろう。</p> <p>ということで、OpenCLのプログラミングモデルはFPGAの高速化に向くものではない、ということである。それよりは、普通に高位合成でパイプライン処理を合成し、必要なメモリとのやりとりをくっつければ良いのではないだろうか。</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/06/alteraopencl-sdk/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>[Android] Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]の対応方法</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2013/05/android-failure-installparsefailedincon/">2013-05-20 15:15:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/android.html">Android</a> </div>
-	<div class="summary"><p>Androidのアプリケーションを開発しているときに、昨日までは普通にIDE(IntelliJ/IDEA)からUSB接続した実機にアプリケーションをダウンロードして実行できていたのに、今日になって、できなくなってしまった。エラーとして、  <pre><br />Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]<br /></pre> というのがIDEに表示されている。</p> <p>困ったので色々検索してみると、どうやらWindowsの場合、C:\Users\(ユーザ名)\.androidの下に、debug.keystoreというのが自動的に作成されるらしい。ここに、アプリケーションの署名に必要な証明書が格納されている。Androidでは、たとえデバッグであっても、アプリケーションは署名を付けないといけない。さらに、少なくとも次の場合は、一度インストールしたアプリケーションを再インストールしようとしても、上記メッセージが表示されて失敗する。</p> <ul><li>アプリケーションを異なる証明書で署名した。 <li>アプリケーションの署名に使用された証明書の期限が切れた。 </ul> <p>自動生成されるdebug.keystoreの証明書には有効期限があり、デフォルトの有効期間は1年間であるようだ。自分の場合、上記の2番目の原因でエラーが発生していた。</p> <p>いろいろ対処法があるらしいが、とりあえず怠惰なプログラマとしては、もっとも楽な方法を使用した：インストールしたアプリケーションを一度アンインストールし、再度(<b>削除後に再生成されたdebug.keystoreで署名して</b>)インストールする。</p> <p>ただ、この方法の欠点は、アプリケーションで作成されていたデータもすべて削除されてしまうことである。それが許容できれば、とりあえず一番簡単な対処法であると思う。いずれにせよ、リリースするときには正式に署名を付けるので ...</p> <a class="btn primary xsmall" href="/posts/2013/05/android-failure-installparsefailedincon/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/05/android-failure-installparsefailedincon/">2013-05-20 15:15:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/android.html">Android</a> </div>
+	<div class="summary"><p>Androidのアプリケーションを開発しているときに、昨日までは普通にIDE(IntelliJ/IDEA)からUSB接続した実機にアプリケーションをダウンロードして実行できていたのに、今日になって、できなくなってしまった。エラーとして、  <pre><br />Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]<br /></pre> というのがIDEに表示されている。</p> <p>困ったので色々検索してみると、どうやらWindowsの場合、C:\Users\(ユーザ名)\.androidの下に、debug.keystoreというのが自動的に作成されるらしい。ここに、アプリケーションの署名に必要な証明書が格納されている。Androidでは、たとえデバッグであっても、アプリケーションは署名を付けないといけない。さらに、少なくとも次の場合は、一度インストールしたアプリケーションを再インストールしようとしても、上記メッセージが表示されて失敗する。</p> <ul><li>アプリケーションを異なる証明書で署名した。 <li>アプリケーションの署名に使用された証明書の期限が切れた。 </ul> <p>自動生成されるdebug.keystoreの証明書には有効期限があり、デフォルトの有効期間は1年間であるようだ。自分の場合、上記の2番目の原因でエラーが発生していた。</p> <p>いろいろ対処法があるらしいが、とりあえず怠惰なプログラマとしては、もっとも楽な方法を使用した：インストールしたアプリケーションを一度アンインストールし、再度(<b>削除後に再生成されたdebug.keystoreで署名して</b>)インストールする。</p> <p>ただ、この方法の欠点は、アプリケーションで作成されていたデータもすべて削除されてしまうことである。それが許容できれば、とりあえず一番簡単な対処法であると思う。いずれにせよ、リリースするときには正式に署名を付けるので ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/05/android-failure-installparsefailedincon/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>androidのHttpURLConnection::getInputStreamでjava.io.FileNotFoundException</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2013/05/androidhttpurlconnectiongetinputstreamj/">2013-05-15 14:39:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/android.html">Android</a> </div>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/05/androidhttpurlconnectiongetinputstreamj/">2013-05-15 14:39:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/android.html">Android</a> </div>
 	<div class="summary"><p>androidで、HttpURLConnectionクラスを使って、リモートサーバにGETリクエストを送り、結果を取得しようとした。だが、なぜかgetInputStreamを呼び出したところでjava.io.FileNotFoundExceptionが発生する。そのURLをブラウザでアクセスすることはできるのに。</p>
 
-<p><p>検索してみたところ、いつもの<a href="http://stackoverflow.com/questions/5178947/filenotfoundexception-when-calling-webservice">StackOverflow</a>に答えがあった。HTTPのレスポンスコードが400以上であると、HttpURLConnectionはFileNotFoundExceptionを投げる、ということが原因だった。ブラウザでアクセスできていると思っていたが、レスポンスコードを見てみると、403 Forbiddenだった。</p> <p>というわけで、同じ回答では、<a href="http://developer.android.com/reference/java/net/HttpURLConnection.html#getResponseCode%28%29">getResponseCode()</a>を使って問題を特定する、ということが勧められていた。</p></p> <a class="btn primary xsmall" href="/posts/2013/05/androidhttpurlconnectiongetinputstreamj/">more…</a>
+<p><p>検索してみたところ、いつもの<a href="http://stackoverflow.com/questions/5178947/filenotfoundexception-when-calling-webservice">StackOverflow</a>に答えがあった。HTTPのレスポンスコードが400以上であると、HttpURLConnectionはFileNotFoundExceptionを投げる、ということが原因だった。ブラウザでアクセスできていると思っていたが、レスポンスコードを見てみると、403 Forbiddenだった。</p> <p>というわけで、同じ回答では、<a href="http://developer.android.com/reference/java/net/HttpURLConnection.html#getResponseCode%28%29">getResponseCode()</a>を使って問題を特定する、ということが勧められていた。</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/05/androidhttpurlconnectiongetinputstreamj/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>SQLiteの時刻取得精度について調査した</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2013/05/sqlite/">2013-05-01 09:32:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/programming.html">Programming</a> </div>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/05/sqlite/">2013-05-01 09:32:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p>SQLiteでselect julianday('now')とすると、整数部と小数部からなる値が表示される。これはユリウス日と言われる値になるそうだが、この小数部の精度がどうなっているのか気になったので調査した。</p>
 
-<p><p><span style="font-size: large;"><u>結論からすると、x86アーキテクチャのLinuxで動作している場合、<b>ミリ秒単位</b>が限界となりそうだ。</u></span></p> <p>SQLiteのソースだと、unixCurrentTimeInt64という関数で現在時刻を取得するようだ。この関数のコメントには、</p><br />/<em><br /><strong> Find the current time (in Universal Coordinated Time). &nbsp;Write into *piNow<br /></strong> the current time and date as a Julian Day number times 86_400_000. &nbsp;In<br /><strong> other words, write into *piNow the number of milliseconds since the Julian ...</strong></em></p> <a class="btn primary xsmall" href="/posts/2013/05/sqlite/">more…</a>
+<p><p><span style="font-size: large;"><u>結論からすると、x86アーキテクチャのLinuxで動作している場合、<b>ミリ秒単位</b>が限界となりそうだ。</u></span></p> <p>SQLiteのソースだと、unixCurrentTimeInt64という関数で現在時刻を取得するようだ。この関数のコメントには、</p><br />/<em><br /><strong> Find the current time (in Universal Coordinated Time). &nbsp;Write into *piNow<br /></strong> the current time and date as a Julian Day number times 86_400_000. &nbsp;In<br /><strong> other words, write into *piNow the number of milliseconds since the Julian ...</strong></em></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/05/sqlite/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>「歩く歩道」は駄洒落では無い</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2013/04/walking-sidewalk/">2013-04-14 14:09:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/uncategorized.html">Uncategorized</a> </div>
-	<div class="summary"><p>つい先日、「動く歩道」、つまり下のようなものがある町で、ゆっくり自転車を走らせていたら、数m離れたところにいた数名の人たちのうちの一名が「歩く歩道」という言葉を発した。もちろん自分はそこを平常心で通り過ぎたのだが、「え、"歩く歩道"って...。動く歩道のことやろ！歩道は歩くためのものなので、なんという同義反復。これこそトートロジー。」と思って内心笑っていた。が、しかし、<a href="http://netallica.yahoo.co.jp/news/20130207-00000032-cobs">地方あるある・大阪編</a>を読んで、実は大阪では、関東でいう「動く歩道」は「歩く歩道」と呼ばれている、という驚愕の事実を人生初めて知った。いやはや、これが単なる駄洒落や間違いではなかったとは...。かなり衝撃を受けた。 <br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="240" src="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" width="320" /></a></div><br /></p> <a class="btn primary xsmall" href="/posts/2013/04/walking-sidewalk/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/04/walking-sidewalk/">2013-04-14 14:09:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized</a> </div>
+	<div class="summary"><p>つい先日、「動く歩道」、つまり下のようなものがある町で、ゆっくり自転車を走らせていたら、数m離れたところにいた数名の人たちのうちの一名が「歩く歩道」という言葉を発した。もちろん自分はそこを平常心で通り過ぎたのだが、「え、"歩く歩道"って...。動く歩道のことやろ！歩道は歩くためのものなので、なんという同義反復。これこそトートロジー。」と思って内心笑っていた。が、しかし、<a href="http://netallica.yahoo.co.jp/news/20130207-00000032-cobs">地方あるある・大阪編</a>を読んで、実は大阪では、関東でいう「動く歩道」は「歩く歩道」と呼ばれている、という驚愕の事実を人生初めて知った。いやはや、これが単なる駄洒落や間違いではなかったとは...。かなり衝撃を受けた。 <br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="240" src="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" width="320" /></a></div><br /></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/04/walking-sidewalk/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>FPGA+HFT</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2013/03/fpgahft/">2013-03-29 14:53:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/programming.html">Programming</a> <a href="/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p>最近モチベーションが下がっている。ネットを徘徊していたら、ちょっと面白いネタを見つけた：<br /><br /><a href="http://d.hatena.ne.jp/kazunori_279/20130107/1357521548">文字通り「ネットワークがコンピューター」な金融HFTでのFPGAの使われ方</a><br /><br />ここ数年HFTの分野では、FPGAで処理を実装するのがはやってきている、ということ。リンク先の記事からもリンクされている、<a href="http://cufp.org/videos/parallel-scientific-awesome-haskell-fpga-compiler">Parallel Scientific: The Awesome Haskell FPGA Compiler</a>は以前すこし眺めていたが、今回の記事を読んで全体像の理解が少し進んだ。なるほど、こんなところでも回路設計をしてしまう時代になったのね、という感じ。<br /><br />10Gbpsのネットワークスイッチに入れてしまうというのであれば、当然Alteraで言えばStratixクラスの1個何十万もするFPGAを使うのだろう。外付けメモリもDDRみたいなレイテンシの大きいものではなく、RLDRAMやQDRといった、個人的には使用しているのをあまり見聞きしないタイプのメモリを使っているのではなかろうか。<br /><br />もしこういったものがTCP/IPで通信をしているとすれば、Ethernet MACのIPから出てくるパケットをステートマシンでTCP/IP部分をデコードしてやり、中身のデータに基づいてガリガリ計算し、その結果に基づいてこれまたステートマシンでEthernet MAC IPに売買パケットを流し込む、というような流れになっているのだろう。そして売買の結果は、メモリに書き込んでおき、ログとして保存。これでソフトウェアは一切介在せずに株式やら為替の売買を実行する、と。もちろん、売買条件の設定などの初期化操作はソフトウェアで行うはずだが。<br /><br />妄想するとなかなか面白そうな分野だなぁ。クオンツの元でブイブイ(死語)いわせるプログラマのイメージが。なるほど、金融業界は計算機分野でも ...</p> <a class="btn primary xsmall" href="/posts/2013/03/fpgahft/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/03/fpgahft/">2013-03-29 14:53:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>最近モチベーションが下がっている。ネットを徘徊していたら、ちょっと面白いネタを見つけた：<br /><br /><a href="http://d.hatena.ne.jp/kazunori_279/20130107/1357521548">文字通り「ネットワークがコンピューター」な金融HFTでのFPGAの使われ方</a><br /><br />ここ数年HFTの分野では、FPGAで処理を実装するのがはやってきている、ということ。リンク先の記事からもリンクされている、<a href="http://cufp.org/videos/parallel-scientific-awesome-haskell-fpga-compiler">Parallel Scientific: The Awesome Haskell FPGA Compiler</a>は以前すこし眺めていたが、今回の記事を読んで全体像の理解が少し進んだ。なるほど、こんなところでも回路設計をしてしまう時代になったのね、という感じ。<br /><br />10Gbpsのネットワークスイッチに入れてしまうというのであれば、当然Alteraで言えばStratixクラスの1個何十万もするFPGAを使うのだろう。外付けメモリもDDRみたいなレイテンシの大きいものではなく、RLDRAMやQDRといった、個人的には使用しているのをあまり見聞きしないタイプのメモリを使っているのではなかろうか。<br /><br />もしこういったものがTCP/IPで通信をしているとすれば、Ethernet MACのIPから出てくるパケットをステートマシンでTCP/IP部分をデコードしてやり、中身のデータに基づいてガリガリ計算し、その結果に基づいてこれまたステートマシンでEthernet MAC IPに売買パケットを流し込む、というような流れになっているのだろう。そして売買の結果は、メモリに書き込んでおき、ログとして保存。これでソフトウェアは一切介在せずに株式やら為替の売買を実行する、と。もちろん、売買条件の設定などの初期化操作はソフトウェアで行うはずだが。<br /><br />妄想するとなかなか面白そうな分野だなぁ。クオンツの元でブイブイ(死語)いわせるプログラマのイメージが。なるほど、金融業界は計算機分野でも ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/03/fpgahft/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>OpenCLの参考書籍</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2013/03/opencl-reference-docs/">2013-03-11 14:43:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/opencl.html">OpenCL</a> </div>
-	<div class="summary"><p>最近自分で技術的な文章を書く気力が減退気味。googleで"OpenCL 入門"とかで検索してみても、和書に関連するページがヒットするものの、OpenCLの入門的なページはほとんどヒットしない。なので、参考までに：<a href="http://it-ebooks.info/book/1620/">OpenCL in Action</a>のリンク。ざっと眺めてみた感じでは、OpenCLの入門にふさわしい内容になっていると思う。データ型、カーネル記述方法、実例など、まんべんなく扱っている。ちなみに、リンク先サイトはすごい充実している。<div><br /></div><div>気が向いたらもう少しOpenCLについて取り上げたいと思うけれど、いつになることやら。はっきり言って、ここまでCPUが早くなってしまった現在、映像処理やシミュレーション、データマイニングといった分野でしかGPGPUは必要ないのではなかろうか？</div></p> <a class="btn primary xsmall" href="/posts/2013/03/opencl-reference-docs/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/03/opencl-reference-docs/">2013-03-11 14:43:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL</a> </div>
+	<div class="summary"><p>最近自分で技術的な文章を書く気力が減退気味。googleで"OpenCL 入門"とかで検索してみても、和書に関連するページがヒットするものの、OpenCLの入門的なページはほとんどヒットしない。なので、参考までに：<a href="http://it-ebooks.info/book/1620/">OpenCL in Action</a>のリンク。ざっと眺めてみた感じでは、OpenCLの入門にふさわしい内容になっていると思う。データ型、カーネル記述方法、実例など、まんべんなく扱っている。ちなみに、リンク先サイトはすごい充実している。<div><br /></div><div>気が向いたらもう少しOpenCLについて取り上げたいと思うけれど、いつになることやら。はっきり言って、ここまでCPUが早くなってしまった現在、映像処理やシミュレーション、データマイニングといった分野でしかGPGPUは必要ないのではなかろうか？</div></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/03/opencl-reference-docs/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>焼酎の麹の違い</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2013/02/shira-shin-ken/">2013-02-19 11:59:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/liquor.html">Liquor</a> </div>
-	<div class="summary"><p>先日酒屋で焼酎を探した。入手しやすい価格帯のものは、かなり試したことのあるものばかりになってきたな...と思ったが、<a href="http://shirashinken.jp/intro/index.html">知心剣</a>というのはまだだった。最近CMで良くやっているので、印象に残っていた。というわけでこれを購入した。結果としてCMの効果性に貢献した。<br /><br />飲んでみると、「あれ、芋焼酎？」と感じた。いや、ラベルを確認しても、やはり麦焼酎。でも以前飲んだことのある<b>芋</b>焼酎<a href="http://www.kirishima.co.jp/products/imo/kuro-kirishima.html">黒霧島</a>と味が似ている？何が「普通の焼酎」と違うのか。調べてみたところ、どうやら、どちらも黒麹を使っていることが、味が似ていると感じた原因だと思われる。どちらも独特の甘みがある。では麦と芋の味の違いは何か？とういう疑問が出てきてしまった。黒霧島を飲んだのはずいぶん前なので、もう違いが分かるほど覚えていない...。自分が「普通の焼酎」と思っていたのは、白麹を使ったものだったのだと思う。<br /><br />こんなことは焼酎が好きな人にとっては常識だろう。機会があったら同じ黒麹の芋と麦で飲み比べてみたい。 </p> <a class="btn primary xsmall" href="/posts/2013/02/shira-shin-ken/">more…</a>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/02/shira-shin-ken/">2013-02-19 11:59:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/liquor.html">Liquor</a> </div>
+	<div class="summary"><p>先日酒屋で焼酎を探した。入手しやすい価格帯のものは、かなり試したことのあるものばかりになってきたな...と思ったが、<a href="http://shirashinken.jp/intro/index.html">知心剣</a>というのはまだだった。最近CMで良くやっているので、印象に残っていた。というわけでこれを購入した。結果としてCMの効果性に貢献した。<br /><br />飲んでみると、「あれ、芋焼酎？」と感じた。いや、ラベルを確認しても、やはり麦焼酎。でも以前飲んだことのある<b>芋</b>焼酎<a href="http://www.kirishima.co.jp/products/imo/kuro-kirishima.html">黒霧島</a>と味が似ている？何が「普通の焼酎」と違うのか。調べてみたところ、どうやら、どちらも黒麹を使っていることが、味が似ていると感じた原因だと思われる。どちらも独特の甘みがある。では麦と芋の味の違いは何か？とういう疑問が出てきてしまった。黒霧島を飲んだのはずいぶん前なので、もう違いが分かるほど覚えていない...。自分が「普通の焼酎」と思っていたのは、白麹を使ったものだったのだと思う。<br /><br />こんなことは焼酎が好きな人にとっては常識だろう。機会があったら同じ黒麹の芋と麦で飲み比べてみたい。 </p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/02/shira-shin-ken/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>センター試験を1X年ぶりに解いてみた</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2013/01/1x/">2013-01-21 15:33:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/center-exam.html">Center Exam</a> </div>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/01/1x/">2013-01-21 15:33:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam</a> </div>
 	<div class="summary"><p>昨日(もう一昨日か)センター試験二日目が実施されました。<a href="http://www.toshin.com/center/sugaku-1a_mondai_0.html">リンク</a></p>
 
-<p><p>私も1X年前にセンター試験を受けました。それ以来、新聞に掲載される問題を取っておくことはあったのですが、実際に解くことはしていませんでした。今年は何を思ったか少しだけ解いてみました。数学I/Aです。しかも問1,2だけ。</p> <p>いやはや、これだけでも結構大変でした。時間は正確に計りませんでしたが、多分30分くらいは掛かってしまった。問題自体はそれほど難しくはなかったものの、計算ミス1つと、引っかけにはまったミスが1つありました。間違えたのは、第一問<a href="3">2</a>と第二問(1)ケコサシのところ。後者は計算ミス。前者は考えが足りなかった。しかし、第一問<a href="3">2</a>は結構良問ではないかと思いました。私はまんまと罠にはまったわけですが。よーく考えればわかります。悔しいので以下に記します。</p> <p>「rは(pまたはq)であるための必要条件なのか、十分条件なのか」、という問いです。 これを確認するには、まずr=&gt;p\/qが成立するか、を確認する必要があります。成立するならrは「十分条件」でpまたはqは「必要条件」となります ...</p></p> <a class="btn primary xsmall" href="/posts/2013/01/1x/">more…</a>
+<p><p>私も1X年前にセンター試験を受けました。それ以来、新聞に掲載される問題を取っておくことはあったのですが、実際に解くことはしていませんでした。今年は何を思ったか少しだけ解いてみました。数学I/Aです。しかも問1,2だけ。</p> <p>いやはや、これだけでも結構大変でした。時間は正確に計りませんでしたが、多分30分くらいは掛かってしまった。問題自体はそれほど難しくはなかったものの、計算ミス1つと、引っかけにはまったミスが1つありました。間違えたのは、第一問<a href="3">2</a>と第二問(1)ケコサシのところ。後者は計算ミス。前者は考えが足りなかった。しかし、第一問<a href="3">2</a>は結構良問ではないかと思いました。私はまんまと罠にはまったわけですが。よーく考えればわかります。悔しいので以下に記します。</p> <p>「rは(pまたはq)であるための必要条件なのか、十分条件なのか」、という問いです。 これを確認するには、まずr=&gt;p\/qが成立するか、を確認する必要があります。成立するならrは「十分条件」でpまたはqは「必要条件」となります ...</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/01/1x/">more…</a>
 	</div>
 </div>	
 <div class='article'>
 	<h2>nasneを使ってみてSonyの企業力に関心した</h2>
-	<div class="well small">Permalink: <a class="more" href="/posts/2012/12/nasnesony/">2012-12-29 03:32:00+09:00</a>
-by <a class="url fn" href="/author/tu1978.html">tu1978 </a>
- in <a href="/category/.html"></a>
-tags: <a href="/tag/gadgets.html">Gadgets</a> </div>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/12/nasnesony/">2012-12-29 03:32:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
 	<div class="summary"><p>ふと思い立って、パソコンでテレビを視聴するために、<a href="http://www.nasne.com/">nasne</a>を購入した。これで何ができて何ができないか、ということについては各所によくまとめられているので、ここではあまり触れない。</p>
 
-<p><p>この商品の一番の感想は、「よくこれだけのものをこの値段で販売できるな」というもの。HDDをはじめとして、トランスコーダ, DDR3メモリ、Ethernet PHYなどのハードウェア部品を揃えるだけでも、最低でも7000円か8000円くらいはかかるのではないか(分解記事は<a href="http://av.watch.impress.co.jp/docs/topic/20120719_547799.html">ここ</a>)。もちろん、組み立てや梱包のコストもある。販売価格が15,000円程度であるが、一体小売店への卸価格はどれほどなのだろうか。原価割れしてしまわないのか、とさえ心配になる。</p> <p>また、nasneはソフトウェアの出来が使い勝手の大部分を占める(ハードウェアで操作できる部分は無いに等しいので)。VAIO TV with nasne, torneといったソフトウェアも作成しサポートしなければならない。また、nasneの設定画面となるWebベースの画面も作成しなければならない。また、<a href="https://tv.so-net.ne.jp/chan-toru/#home">インターネットを介した予約サービス</a>のための作り込みも必要である。</p> <p>これらを設計/開発/生産/サポートするのに必要なコストはちょっと自分の経験からは想像できないが、よほど大量に販売できないと設計分のコストさえ捻出できないのではないか、と思う。あるいは製品単体ではなく、これを足がかりとして他の製品/サービスを購入してもらうという計画なのだろうか？</p> <p>いずれにせよ、大企業に蓄積されている高いノウハウを垣間見ることが出来ると感じる商品だった。</p> <p>以下は蛇足 ...</p></p> <a class="btn primary xsmall" href="/posts/2012/12/nasnesony/">more…</a>
+<p><p>この商品の一番の感想は、「よくこれだけのものをこの値段で販売できるな」というもの。HDDをはじめとして、トランスコーダ, DDR3メモリ、Ethernet PHYなどのハードウェア部品を揃えるだけでも、最低でも7000円か8000円くらいはかかるのではないか(分解記事は<a href="http://av.watch.impress.co.jp/docs/topic/20120719_547799.html">ここ</a>)。もちろん、組み立てや梱包のコストもある。販売価格が15,000円程度であるが、一体小売店への卸価格はどれほどなのだろうか。原価割れしてしまわないのか、とさえ心配になる。</p> <p>また、nasneはソフトウェアの出来が使い勝手の大部分を占める(ハードウェアで操作できる部分は無いに等しいので)。VAIO TV with nasne, torneといったソフトウェアも作成しサポートしなければならない。また、nasneの設定画面となるWebベースの画面も作成しなければならない。また、<a href="https://tv.so-net.ne.jp/chan-toru/#home">インターネットを介した予約サービス</a>のための作り込みも必要である。</p> <p>これらを設計/開発/生産/サポートするのに必要なコストはちょっと自分の経験からは想像できないが、よほど大量に販売できないと設計分のコストさえ捻出できないのではないか、と思う。あるいは製品単体ではなく、これを足がかりとして他の製品/サービスを購入してもらうという計画なのだろうか？</p> <p>いずれにせよ、大企業に蓄積されている高いノウハウを垣間見ることが出来ると感じる商品だった。</p> <p>以下は蛇足 ...</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/12/nasnesony/">more…</a>
 	</div>
 </div>	
 
 <div class="pagination">
 <ul>
-		<li class="prev"><a href="/category/2.html">&larr; Previous</a></li>
-		<li class=""><a href="/category/.html">1</a></li>
-		<li class=""><a href="/category/2.html">2</a></li>
-		<li class="active"><a href="/category/3.html">3</a></li>
-		<li class=""><a href="/category/4.html">4</a></li>
-		<li class=""><a href="/category/5.html">5</a></li>
-		<li class=""><a href="/category/6.html">6</a></li>
-		<li class=""><a href="/category/7.html">7</a></li>
-		<li class=""><a href="/category/8.html">8</a></li>
-		<li class=""><a href="/category/9.html">9</a></li>
-		<li class=""><a href="/category/10.html">10</a></li>
-		<li class="next"><a href="/category/4.html">Next &rarr;</a></li>
+		<li class="prev"><a href="https://formalism.github.io/blog/category/2.html">&larr; Previous</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/.html">1</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/2.html">2</a></li>
+		<li class="active"><a href="https://formalism.github.io/blog/category/3.html">3</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/4.html">4</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/5.html">5</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/6.html">6</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/7.html">7</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/8.html">8</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/9.html">9</a></li>
+		<li class=""><a href="https://formalism.github.io/blog/category/10.html">10</a></li>
+		<li class="next"><a href="https://formalism.github.io/blog/category/4.html">Next &rarr;</a></li>
 </ul>
 </div>
 
