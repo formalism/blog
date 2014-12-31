@@ -83,7 +83,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/windows.html">Windows (1)</a></li>
@@ -93,6 +93,39 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>2014年のまとめ</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/12/done-in-2014.md/">2014-12-31 21:02:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized</a> </div>
+	<div class="summary"><p>今年コンピュータ関連でやったことの一部を振り返ってみた。</p>
+<ul>
+<li>Zynqまわり<ul>
+<li>VivadoでAXI Master/Slave IP作成</li>
+<li>Vivado HLSの実戦投入<ul>
+<li>これは一度使ってしまうと、手RTLでパイプラインを作成するのが億劫になってしまうという効果があった。ただし、データパスの生成はあまり賢くない(というか思い通りになかなか生成されない)ので、hls::streamでモジュールを分離して合成するなどした方が良さそうに思われた。</li>
+</ul>
+</li>
+<li>Yocto Linux</li>
+<li>IPからDMAするためのドライバ作成<ul>
+<li>dma_alloc_coherentではなく、kmallocとか__get_free_pagesで確保するようにした。これをuser spaceにmmapできるようにもした。少なくとも4MBまでは確保できることを確認した。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Linuxの動くSoCをZynq以外で二つほど使ってみた</li>
+<li>libsvmで画像認識の実験<ul>
+<li>あまり精度が出ないように感じた。このあたりのチューニングはあまり突っ込まなかった。</li>
+<li>DNでは、特徴量の抽出も自動的に行えるというのがウリとよく言われるが、適応領域によって適切なネットワーク構造が変わってくるとしたら、結局そのあたりのチューニングが必要なのでは? このあたりは要調査。</li>
+</ul>
+</li>
+</ul>
+<p>全体としてはZynqをいろいろいじってみた、という印象か。
+最近勉強する気力が衰えていると感じる。どちらかというと実践よりの
+新しい知識は少しだけ増えた気がする。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/12/done-in-2014.md/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>GitHub Pagesに移行しました</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/12/moved-to-github-pages/">2014-12-30 05:50:00+09:00</a>
@@ -233,33 +266,6 @@ usbMain関数を呼び出すと動作開始。examplesのファイル達はusb�
 <p>diff -cr examples/xusbps_ch9_storage.c usb/xusbps_ch9_storage.c</p>
 <div class="highlight"><pre>examples/xusbps_ch9_storage.c    2014-04-16 23:53:27.579740500 +0900
 <span class="gd">--- usb/xusbps_ch9_storage.c ...</span></pre></div> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/04/zynq-usb/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>ZynqでのUSBデバイステスト (PC側ソフトウェア)</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/04/zynqusb/">2014-04-30 09:15:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>Zynqに内蔵されているUSBポートをデバイスモードで使用できるかテスト中。</p>
-<p>とりあえず最低限のループバックでは動作したので、汚いがコードを貼っておく。</p>
-<p>まずは、WinUSBを使用したPC側のソース。ほぼMicrosoftのドキュメントをくっつけただけ。インクルードの順番だけは結構重要だったりする。winusb.lib, setupapi.libをリンクすること。</p>
-<p>ドライバはインストール済みの前提。</p>
-<hr />
-<div class="highlight"><pre><span class="cp">#include &quot;stdafx.h&quot;</span>
-<span class="c1">//#include &quot;usb.h&quot;</span>
-<span class="cp">#include &quot;windows.h&quot;</span>
-<span class="cp">#include &quot;usb100.h&quot;</span>
-<span class="cp">#include &quot;usb200.h&quot;</span>
-<span class="cp">#include &quot;SetupAPI.h&quot;</span>
-<span class="cp">#include &quot;winusb.h&quot;</span>
-<span class="cp">#include &quot;winusbio.h&quot;</span>
-<span class="cp">#include &quot;strsafe.h&quot;</span>
-
-<span class="cp">#define MAX_DEVPATH_LENGTH (1024)</span>
-
-<span class="c1">// {9F68AD5A-84E0-4E0F-8EF3-11139532FD22}</span>
-<span class="n">GUID</span> <span class="n">GUID_DEVINTERFACE_OSRUSBFX2</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0x9F68AD5AUL</span><span class="p">,</span> <span class="mh">0x84E0</span><span class="p">,</span> <span class="mh">0x4E0F</span><span class="p">,</span> <span class="p">{</span> <span class="mh">0x8E</span><span class="p">,</span> <span class="mh">0xF3 ...</span></pre></div> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/04/zynqusb/">more…</a>
 	</div>
 </div>	
 

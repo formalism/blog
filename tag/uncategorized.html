@@ -83,7 +83,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/windows.html">Windows (1)</a></li>
@@ -93,6 +93,39 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>Uncategorized</small></h1></div>
+<div class='article'>
+	<h2>2014年のまとめ</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/12/done-in-2014.md/">2014-12-31 21:02:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized</a> </div>
+	<div class="summary"><p>今年コンピュータ関連でやったことの一部を振り返ってみた。</p>
+<ul>
+<li>Zynqまわり<ul>
+<li>VivadoでAXI Master/Slave IP作成</li>
+<li>Vivado HLSの実戦投入<ul>
+<li>これは一度使ってしまうと、手RTLでパイプラインを作成するのが億劫になってしまうという効果があった。ただし、データパスの生成はあまり賢くない(というか思い通りになかなか生成されない)ので、hls::streamでモジュールを分離して合成するなどした方が良さそうに思われた。</li>
+</ul>
+</li>
+<li>Yocto Linux</li>
+<li>IPからDMAするためのドライバ作成<ul>
+<li>dma_alloc_coherentではなく、kmallocとか__get_free_pagesで確保するようにした。これをuser spaceにmmapできるようにもした。少なくとも4MBまでは確保できることを確認した。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Linuxの動くSoCをZynq以外で二つほど使ってみた</li>
+<li>libsvmで画像認識の実験<ul>
+<li>あまり精度が出ないように感じた。このあたりのチューニングはあまり突っ込まなかった。</li>
+<li>DNでは、特徴量の抽出も自動的に行えるというのがウリとよく言われるが、適応領域によって適切なネットワーク構造が変わってくるとしたら、結局そのあたりのチューニングが必要なのでは? このあたりは要調査。</li>
+</ul>
+</li>
+</ul>
+<p>全体としてはZynqをいろいろいじってみた、という印象か。
+最近勉強する気力が衰えていると感じる。どちらかというと実践よりの
+新しい知識は少しだけ増えた気がする。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/12/done-in-2014.md/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>「歩く歩道」は駄洒落では無い</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/04/walking-sidewalk/">2013-04-14 14:09:00+09:00</a>

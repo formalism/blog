@@ -83,7 +83,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/windows.html">Windows (1)</a></li>
@@ -93,6 +93,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>OpenSolaris -> Ubuntu Linux</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/08/opensolaris-ubuntu-linux/">2011-08-27 14:53:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> <a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris</a> </div>
+	<div class="summary"><p>これまでメインのデータストレージはVM上のOpenSolaris 2009.6のZFSファイルシステムであったが、Solarisの今後を考えると少し不安なので(FreeBSD+ZFSという手もあるが)、Ubuntu Linux 10.04LTS上のLVM2+ext4に移行した。ZFSの先進性からすると、ファイルストレージとしては後退した感はあるが、いろいろなオープンソースソフトウェアは、なんだかんだいってLinuxが主なターゲットになっているのが現実であるので、メリットもある。<br /><br />btrfsは安定性を考慮して、今のところ見送り。FreeBSD+ZFSもメモリを食うという情報が多かったので見送り。<br /><br />なかなか現状オープンソースで満足のゆく解はなさそうだ。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/08/opensolaris-ubuntu-linux/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>MacBook Pro</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/06/macbook-pro/">2011-06-10 14:02:00+09:00</a>
@@ -176,15 +185,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
 	<div class="summary"><p>三菱の<a href="http://www.mpuni.co.jp/product/category/ball_pen/jetstream/">jetstream</a>というボールペンを使ってみて、確かに異常になめらかなのだけれど、なめらかすぎて書きにくいようにも感じる。ZEBRAの<a href="http://www.zebra.co.jp/pro/surari/">surari</a>の方が自分には書きやすいように感じた。抵抗感が適度。それに、surariの方が安い。また、同じ0.5mmでもsurariの方が線が細い。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/jetstream-surari/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>MicroBlaze + IPコア(続き)</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/microblaze-ip-endian/">2011-03-18 05:30:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p>Create or Import Peripheralで生成されるuser_logic.vhdでは、データバスがstd_logic_vector(0 to 31)で宣言されている。これはMSBがbit0でLSBがbit31となるというMicroBlazeの仕様のため。<a href="http://www.vhdl-online.de/tutorial/englisch/t_58.htm#pgfId-1016798">http://www.vhdl-online.de/tutorial/englisch/t_58.htm#pgfId-1016798</a>を読んで分かったのは、VHDLでインスタンスを宣言するときの配列ポートは、<u>ビット番号ではなく、ビット並びの順番</u>で接続されるということ。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/microblaze-ip-endian/">more…</a>
 	</div>
 </div>	
 

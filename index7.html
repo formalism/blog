@@ -83,7 +83,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/windows.html">Windows (1)</a></li>
@@ -93,6 +93,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>MicroBlaze + IPコア(続き)</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/microblaze-ip-endian/">2011-03-18 05:30:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>Create or Import Peripheralで生成されるuser_logic.vhdでは、データバスがstd_logic_vector(0 to 31)で宣言されている。これはMSBがbit0でLSBがbit31となるというMicroBlazeの仕様のため。<a href="http://www.vhdl-online.de/tutorial/englisch/t_58.htm#pgfId-1016798">http://www.vhdl-online.de/tutorial/englisch/t_58.htm#pgfId-1016798</a>を読んで分かったのは、VHDLでインスタンスを宣言するときの配列ポートは、<u>ビット番号ではなく、ビット並びの順番</u>で接続されるということ。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/microblaze-ip-endian/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>XPS IPコアでのVerilogモジュールの使用</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/edk-ip/">2011-03-14 03:51:00+09:00</a>
@@ -172,15 +181,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p>NIOS2で計算を高速化するためにカスタム命令を実装してみた。最初は、レイテンシ固定で実装してみたのだが、どうやっても計算結果がおかしい。クロック数がずれているのかと思っていくつか試してみたが、だめ。それで結局、レイテンシ可変にして、START, DONE信号をモジュールで処理するようにしたら動いた。Quartus II 9.0 SP2で実験。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/01/nios2/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>node.js vs Erlang</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/01/nodejs-vs-erlang/">2011-01-03 05:07:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p><a href="http://blog.mysyncpad.com/post/2073441622/node-js-vs-erlang-syncpads-experience">Node.js vs Erlang: SyncPad’s Experience</a>&nbsp;になかなか興味深い結果が掲載されている。node.jsを長時間サーバとして動かしていると、徐々にメモリ使用量が増えてしまうという問題に遭遇したので、同じ機能のサーバをErlangで作成してみた、という記事。node.jsと比較して、CPU, Memory両方とも使用量が少なくて済んだ、という結果。またErlangブームが起きるか？ただ自分としてはErlangはあまり構文が好きになれない。まだJavaScriptの方がきれいにまとまっているように感じる。<br /><br /><a href="http://amix.dk/blog/post/19577">Is node.js best for Comet?</a>&nbsp;この記事も参考になる。V8は現状の所サーバに使用するにはあまり良いアーキテクチャではない、という指摘。全部は読んでいないけれど、コメントも参考になりそう。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/01/nodejs-vs-erlang/">more…</a>
 	</div>
 </div>	
 

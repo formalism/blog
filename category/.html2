@@ -83,7 +83,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/windows.html">Windows (1)</a></li>
@@ -93,6 +93,33 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>ZynqでのUSBデバイステスト (PC側ソフトウェア)</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/04/zynqusb/">2014-04-30 09:15:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>Zynqに内蔵されているUSBポートをデバイスモードで使用できるかテスト中。</p>
+<p>とりあえず最低限のループバックでは動作したので、汚いがコードを貼っておく。</p>
+<p>まずは、WinUSBを使用したPC側のソース。ほぼMicrosoftのドキュメントをくっつけただけ。インクルードの順番だけは結構重要だったりする。winusb.lib, setupapi.libをリンクすること。</p>
+<p>ドライバはインストール済みの前提。</p>
+<hr />
+<div class="highlight"><pre><span class="cp">#include &quot;stdafx.h&quot;</span>
+<span class="c1">//#include &quot;usb.h&quot;</span>
+<span class="cp">#include &quot;windows.h&quot;</span>
+<span class="cp">#include &quot;usb100.h&quot;</span>
+<span class="cp">#include &quot;usb200.h&quot;</span>
+<span class="cp">#include &quot;SetupAPI.h&quot;</span>
+<span class="cp">#include &quot;winusb.h&quot;</span>
+<span class="cp">#include &quot;winusbio.h&quot;</span>
+<span class="cp">#include &quot;strsafe.h&quot;</span>
+
+<span class="cp">#define MAX_DEVPATH_LENGTH (1024)</span>
+
+<span class="c1">// {9F68AD5A-84E0-4E0F-8EF3-11139532FD22}</span>
+<span class="n">GUID</span> <span class="n">GUID_DEVINTERFACE_OSRUSBFX2</span> <span class="o">=</span> <span class="p">{</span> <span class="mh">0x9F68AD5AUL</span><span class="p">,</span> <span class="mh">0x84E0</span><span class="p">,</span> <span class="mh">0x4E0F</span><span class="p">,</span> <span class="p">{</span> <span class="mh">0x8E</span><span class="p">,</span> <span class="mh">0xF3 ...</span></pre></div> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/04/zynqusb/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>WinUSBのinfファイル</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/04/winusbinf/">2014-04-30 05:21:00+09:00</a>
@@ -173,15 +200,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks</a> </div>
 	<div class="summary"><p>先日、某所にてスタバに入った。注文したら、なにやら店員が「****(突然の質問だったので失念)はご存じですか？」と聞いてきた。「いいえ」と答えると、どうやら、スタバには「当たりレシート」なるものが存在するらしい。参考：<a href="http://matome.naver.jp/odai/2133386255732706201">【何でも一杯無料】スターバックス「当たりレシート」の全貌</a>。<br /><br />自分はおそらく100回も利用したことはないのではないかと思うが、この当たりレシートに運良く当選したらしい。あまり個人情報を答えなければならないようなアンケートだったら無視しようかと思ったが、そんなことはなく、利用店舗についてのいろいろな意見を調査するものだった(上のリンク先に質問ページが全部あるようだ)。<br /><br />超ラッキー! 久々にいいことあったなぁ。生きてて良かった! 何を注文するかじっくり考えよう。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/09/lucky-in-starbucks/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>今更ながら無線WAN回線を契約する(予定)</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/08/wan/">2013-08-10 07:27:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
-	<div class="summary"><p>これまではスマホでない方の携帯をずっと使用してきたけれど、利便性を考えて現代の便利品を揃えてみることにした。<br /><br />ただ、スマホは、まだ月額使用料が(自分が感じる価値からして)高いので、SIMフリー端末とMVNOのSIMを試してみよう、ということになった。<br /><br />いろいろ検討したのだけれど、<a href="http://www.expansys.jp/">EXPANSYS</a>というのが日本でSIMフリー端末を購入する店舗として有名らしい。ただ、こちらで販売されている端末は、基本的には技適マークがないものがほとんど。つまり、MVNOのSIMを差して、日本国内で使用するのは、厳密には違法行為ということになるらしい。もちろん、FCCの認可はあったりするので、米国で使用するのは問題ないだろう。<br /><br />---- ここは少し脱線 -----<br />もっとも、海外からの旅行者が、海外で販売されているSIMフリー端末を日本国内で使用するのは例外として認められているっぽい。SIMフリー端末もいろいろな周波数に対応しているわけだけれど、日本国内の電波と干渉してしまう、ということは無いのだろうか？全バンドが国内で使える訳ではないと思う(詳しくは未調査)。それとも、携帯は、基地局からの電波に周波数を合わせて、拾えた場合だけ電波を発信するという仕組みなのだろうか？<br />-------------------------------<br /><br />ということで、法的にも問題ない方法としては、技適マーク付きSIMフリー端末を使用することになる。SIMフリー端末を使用するには、自分でスマホを契約するか、SIMフリーになっているスマホを中古で購入する、(種類は少ないが)国内で販売されている技適あり新品SIMフリー端末を購入する、という方法が考えられる。さんざん考えた末、まずはお手軽に試すことにして、AWR-100TKというWiFIルータにした。端末は、手持ちのNexus7でしのぐ予定。<br /><br /><iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm-fe.amazon-adsystem.com/e/cm?t=formalism-22&amp;o=9&amp;p=8&amp;l=as1&amp;asins=B00AEGM1WK&amp;ref=qf_sp_asin_til&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="height: 240px; width: 120px;"></iframe> <br /><br />そして ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/08/wan/">more…</a>
 	</div>
 </div>	
 

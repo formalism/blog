@@ -83,7 +83,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/windows.html">Windows (1)</a></li>
@@ -93,6 +93,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>CLSQL実験(3)</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2008/06/clsql3/">2008-06-05 07:11:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>CLSQLを使ったWebアプリの実験の続き。<br /><br />前回で、なんとなくCLSQLのリーダマクロが動作していないのでは??ということで終わってしまったが、結論からすると、リーダマクロは動作していた。<br />(setf hunchentoot:<em>catch-errors-p</em> nil)<br />をtop.lispに追加して実験してみたら、<br /><br />debugger invoked on a FLEXI-STREAMS:FLEXI-STREAM-ENCODING-ERROR in thread #<thread>:<br />#\KATAKANA_LETTER_SI is not a LATIN-1 character.<br /><br />というようなエラーがブラウザからのアクセス時に表示されたので、FLEXI-STREAM-ENCODING-ERRORあたりでググってみたら、<br /><br />(setf hunchentoot:<em>hunchentoot-default-external-format</em> :UTF-8)<br /><br />すると良い、という情報を発見。これをtop.lispに追加してみたら、見事に動作した。<br /><br />まだCommon Coldの継続機能は動作していないものの、とりあえず一安心。<br /><br /></thread></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2008/06/clsql3/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>CLSQL実験(2)</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2008/05/clsqlhunchentoot/">2008-05-28 10:16:00+09:00</a>

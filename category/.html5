@@ -83,7 +83,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/windows.html">Windows (1)</a></li>
@@ -93,6 +93,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>位相相関による画像位置合わせ</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/04/image-registration-phase-correlation/">2012-04-05 04:33:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>メモ。<br /><br />平行移動している2つの画像の移動量を検出する方法について調査しいていたら、位相相関法というのが見つかった。<br /><br /><a href="http://nashruddin.com/phase-correlation-function-in-opencv.html">Phase Correlation in OpenCV</a><br /><br /><a href="http://wwww.vis.ne.jp/mt/archives/000680.html">高速フーリエ変換ライブラリ FFTW ver 3 の使い方</a><br /><br /><a href="http://en.wikipedia.org/wiki/Phase_correlation">Phase correlation</a><br /><br /><a href="http://www.aoki.ecei.tohoku.ac.jp/%7Eito/vol1_030.pdf">位相限定相関法に基づく高精度マシンビジョン</a><br /><br />英語ではこのような処理を一般にimage registrationと呼ぶらしい。これを行うには、上記のように周波数領域で行う以外にも、いろいろな方法が提案されている。実際に上記のページのソースを参考にプログラムを作成してみたら、ちゃんとずれ量を検出できた。<br /><br/><SCRIPT charset="utf-8" type="text/javascript" src="http://ws.amazon.co.jp/widgets/q?rt=qf_sp_sr_mfw&ServiceVersion=20070822&MarketPlace=JP&ID=V20070822/JP/formalism-22/8001/d7bb008a-a0a8-4a3e-b024-32fc532c0d5a"> </SCRIPT> <NOSCRIPT><A HREF="http://ws.amazon.co.jp/widgets/q?rt=qf_sp_sr_mfw&ServiceVersion=20070822&MarketPlace=JP&ID=V20070822%2FJP%2Fformalism-22%2F8001%2Fd7bb008a-a0a8-4a3e-b024-32fc532c0d5a&Operation=NoScript">Amazon.co.jp ウィジェット</A></NOSCRIPT></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/04/image-registration-phase-correlation/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>PC買った</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/03/bought-new-vaio/">2012-03-20 14:22:00+09:00</a>
@@ -172,15 +181,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/web.html">Web</a> <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/solr.html">Solr</a> <a href="https://formalism.github.io/blog/tag/lisp.html">Lisp</a> </div>
 	<div class="summary"><p><a href="http://lucene.apache.org/solr/">Apache Solr</a>の検索機能を試してみた。自作Lispアプリから<a href="http://weitz.de/drakma/">drakma</a>を使用してJSONによりデータを追加しようとした。<br /><br /><b>結論からすると、Solrは、JSONの文字列は、シングルクオートではなく、ダブルクオートでないとエラーになる。</b><br /><b><br /></b><br />自分の調べた範囲では、JSONとしてはシングルクオートでもダブルクオートでも文字列としてvalidである(らしい)ので、これはSolr側の問題であると思う。<br /><b><br /></b><br /><a href="http://common-lisp.net/project/parenscript/">Parenscript</a>を使用して文字列を作ると、シングルクオートで囲われてしまう。代わりに、<a href="http://common-lisp.net/project/cl-json/">CL-JSON</a>を使用することにした。こちらはなかなか使い方が難しかったが、<br /><br /><br />(defun get-insert-answer-json (id uid qid ans)<br />&nbsp; (with-output-to-string (stream)<br />&nbsp; &nbsp; &nbsp;(json:with-object (stream)<br />&nbsp; &nbsp; &nbsp; &nbsp;(json:as-object-member (:add stream)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span> (json:with-object (stream)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span> &nbsp; (json:encode-object-member "doc"<br /><span class="Apple-tab-span" style="white-space: pre;">    </span> &nbsp; &nbsp; &nbsp;`((id . ,id) (uid_i . ,uid) (tp_i . 2 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/09/solrjson/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>OpenSolaris -> Ubuntu Linux</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/08/opensolaris-ubuntu-linux/">2011-08-27 14:53:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> <a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris</a> </div>
-	<div class="summary"><p>これまでメインのデータストレージはVM上のOpenSolaris 2009.6のZFSファイルシステムであったが、Solarisの今後を考えると少し不安なので(FreeBSD+ZFSという手もあるが)、Ubuntu Linux 10.04LTS上のLVM2+ext4に移行した。ZFSの先進性からすると、ファイルストレージとしては後退した感はあるが、いろいろなオープンソースソフトウェアは、なんだかんだいってLinuxが主なターゲットになっているのが現実であるので、メリットもある。<br /><br />btrfsは安定性を考慮して、今のところ見送り。FreeBSD+ZFSもメモリを食うという情報が多かったので見送り。<br /><br />なかなか現状オープンソースで満足のゆく解はなさそうだ。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/08/opensolaris-ubuntu-linux/">more…</a>
 	</div>
 </div>	
 
