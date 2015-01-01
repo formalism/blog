@@ -107,9 +107,12 @@ tags: <a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncatego
 <li>これは一度使ってしまうと、手RTLでパイプラインを作成するのが億劫になってしまうという効果があった。ただし、データパスの生成はあまり賢くない(というか思い通りになかなか生成されない)ので、hls::streamでモジュールを分離して合成するなどした方が良さそうに思われた。</li>
 </ul>
 </li>
-<li>Yocto Linux</li>
+<li>Yocto Linux<ul>
+<li>これまた便利極まりない。一々コマンドを入力してLinuxの環境を作るとなると、どうしても手順書をしっかり残さないと再現性が無くなってしまうが、Yoctoではレシピの形で手順が残っているので、再現性が基本的に高い。</li>
+</ul>
+</li>
 <li>IPからDMAするためのドライバ作成<ul>
-<li>dma_alloc_coherentではなく、kmallocとか__get_free_pagesで確保するようにした。これをuser spaceにmmapできるようにもした。少なくとも4MBまでは確保できることを確認した。</li>
+<li>dma_alloc_coherentではなく、kmallocとか__get_free_pagesで確保するようにした。これをuser spaceにmmapできるようにもした。少なくとも4MBまでは確保できることを確認した。また、DMAするためには、確保したバッファに対して、dma_map_single, dma_unmap_singleなどを呼び出せばOK。</li>
 </ul>
 </li>
 </ul>
