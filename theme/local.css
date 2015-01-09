@@ -16,7 +16,7 @@ div.highlight pre {
   font-size: 11px;
 }
 
-.summary * { display: inline; }
+.summary * { display: inherit; }
 .summary pre { display: none; }
 
 .social a[href*='activestate.com']:before {content: url('./images/icons/activestate.png'); margin-right: 2px; vertical-align: -3px;}
