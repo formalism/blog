@@ -33,6 +33,8 @@ NEWEST_FIRST_ARCHIVES = True
 
 GOOGLE_ANALYTICS = True
 
+#SUMMARY_MAX_LENGTH = None
+
 # Blogroll
 # LINKS = (('Pelican', 'http://getpelican.com/'),
 #          ('Python.org', 'http://python.org/'),
