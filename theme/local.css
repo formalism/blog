@@ -17,6 +17,10 @@ div.highlight pre {
   display: inline;
 }
 
+.summary p a {
+    display: inline;
+}
+
 .summary * { display: inherit; }
 .summary pre { display: none; }
 
