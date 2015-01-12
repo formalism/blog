@@ -66,6 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>blaze-htmlでのname属性</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/07/blaze-htmlname/">2012-07-10 14:56:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
+	<div class="summary"><p>blaze-htmlでname属性の値を設定するときに、コンパイルエラーが出てしまった。次のようなエラー。<br /><br /><pre>    Couldn't match expected type <code>H.AttributeValue'&lt;br /&gt;                with actual type</code>[a0]'<br />    In the return type of a call of <code>concat'&lt;br /&gt;    In the second argument of</code>($)', namely<br />      `concat ["s", show y, "-", show m, ....]'<br />    In the expression: A.name $ concat ["s", show y, "-", show m, ....]&nbsp;<br /></pre><br />concatを使って、name属性の値になってほしい文字列を作っているのだが ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/07/blaze-htmlname/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>位相相関による画像位置合わせ</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/04/image-registration-phase-correlation/">2012-04-05 04:33:00+09:00</a>
@@ -172,15 +182,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/clojure.html">clojure</a> </div>
 	<div class="summary"><p>また久しぶりにclojureをいじり始めた。またWebシステムの実装に用いる予定。どうやってJSPやASPのように動的にWebページを生成するのが良いのか、最近の流行を少し調べてみた。<br /><br />結果として、自分には<a href="https://github.com/Flamefork/fleet">fleet</a>が現状良さそうという結論に達した。若干悩んだ点と調べて分かったことのメモ。<br /><br /><ul><li>fleet-nsでテンプレートを生成するときに、引数で指定したディレクトリにあるファイルを 走査して、それぞれの<b>テンプレートファイルに対応するテンプレート関数</b>が作られる。例えば、post.html.fleetというファイルが存在すれば、postという関数が、(同じく引数で指定した名前空間に)作られる。</li><li>post関数の内部(つまり、テンプレートファイルの中)では、dataという名前でテンプレート関数への<b>実引数</b>を参照できる。すなわち、&lt;(:hoge data)&gt;とpost.html.fleetに記述すれば、このテンプレート関数が実行されるときに、実引数として渡されたmapにあるhogeキーの値を出力する。</li></ul></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/11/fleet-clojure/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>SolrをJSONで使うときにはまったことのメモ</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/09/solrjson/">2011-09-17 12:06:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/web.html">Web</a> <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/solr.html">Solr</a> <a href="https://formalism.github.io/blog/tag/lisp.html">Lisp</a> </div>
-	<div class="summary"><p><a href="http://lucene.apache.org/solr/">Apache Solr</a>の検索機能を試してみた。自作Lispアプリから<a href="http://weitz.de/drakma/">drakma</a>を使用してJSONによりデータを追加しようとした。<br /><br /><b>結論からすると、Solrは、JSONの文字列は、シングルクオートではなく、ダブルクオートでないとエラーになる。</b><br /><b><br /></b><br />自分の調べた範囲では、JSONとしてはシングルクオートでもダブルクオートでも文字列としてvalidである(らしい)ので、これはSolr側の問題であると思う。<br /><b><br /></b><br /><a href="http://common-lisp.net/project/parenscript/">Parenscript</a>を使用して文字列を作ると、シングルクオートで囲われてしまう。代わりに、<a href="http://common-lisp.net/project/cl-json/">CL-JSON</a>を使用することにした。こちらはなかなか使い方が難しかったが、<br /><br /><br />(defun get-insert-answer-json (id uid qid ans)<br />&nbsp; (with-output-to-string (stream)<br />&nbsp; &nbsp; &nbsp;(json:with-object (stream)<br />&nbsp; &nbsp; &nbsp; &nbsp;(json:as-object-member (:add stream)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span> (json:with-object (stream)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span> &nbsp; (json:encode-object-member "doc"<br /><span class="Apple-tab-span" style="white-space: pre;">    </span> &nbsp; &nbsp; &nbsp;`((id . ,id) (uid_i . ,uid) (tp_i . 2 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/09/solrjson/">more…</a>
 	</div>
 </div>	
 

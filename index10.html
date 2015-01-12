@@ -66,6 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>SOPC BuilderにてSRAMを使う</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2009/06/sopc-buildersram/">2009-06-11 05:49:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>めも。<br /><br />QuartusIIのSOPC BuilderでSRAMを使いたい。QuartusIIにはCypressのコンポーネントが付いているが、ビット幅などが使用したいものと違うので、コンポーネントを作成する必要があった。<br /><br />Component Editorを起動してAvalon-MM Tristate Slaveをテンプレートから作成すると、とりあえずコンポーネントはできるものの、NIOSIIのメモリとして使用できない。調べた結果、<span style="font-weight: bold;">(コンポーネント名)_hw.tcl</span>にある、<span style="font-weight: bold;">isMemoryDevice</span>というのを、"false"から"true"にすればOKであると分かった。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/06/sopc-buildersram/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>CLSQL実験(3)</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2008/06/clsql3/">2008-06-05 07:11:00+09:00</a>

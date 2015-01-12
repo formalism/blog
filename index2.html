@@ -66,6 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +94,24 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>Zynq USBデバイステスト (ファームウェア)</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/04/zynq-usb/">2014-04-30 09:33:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p><a href="https://formalism.github.io/blog/posts/2014/04/zynqusb/">Zynq USBデバイステスト (PC側ソフトウェア)</a>の続き。</p>
+<p>C:\Xilinx\SDK\2014.1\data\embeddedsw\XilinxProcessorIPLib\drivers\usbps_v2_0 のexamplesに対するパッチ。
+usbMain関数を呼び出すと動作開始。examplesのファイル達はusbフォルダにコピーされたものとする。</p>
+<p>概要としては、examplesはUSB mass storageとして動作するので、バルク転送のTX/RX割り込みがかかるところを
+横取り(XUsbPs_HandleStorageReqをコメントにする)して、所望のデータ処理に置き換える。
+また、サンプルはTX割り込みがかからないようになっているので、TXのビットをorして有効にする。</p>
+<hr />
+<p>diff -cr examples/xusbps_ch9_storage.c usb/xusbps_ch9_storage.c</p>
+<div class="highlight"><pre>examples/xusbps_ch9_storage.c    2014-04-16 23:53:27.579740500 +0900
+<span class="gd">--- usb/xusbps_ch9_storage.c ...</span></pre></div> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/04/zynq-usb/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>ZynqでのUSBデバイステスト (PC側ソフトウェア)</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/04/zynqusb/">2014-04-30 09:15:00+09:00</a>
@@ -191,15 +210,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p>いわゆるWebCamというものを、自分で作成するプログラムはどうすれば作成できるのか、というのを調査している。<br /><br />一番手っ取り早いのは、多分OpenCVを使用してcvQueryFrameで取ってくる方法だと思われるが、USB Video Classの機能をもっと使用することを考えているので(<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560772(v=vs.85).aspx">Extension Units</a>というのを使いたい)、cvQueryFrameは高レベルすぎる。<br /><br />Windows VistaからMedia FoundationというAPIが提供されており、これを使用するのが推奨のようだ。とりあえず<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd743690(v=vs.85).aspx">MFCaptureD3D Sample</a>のページから、サンプルプログラムをダウンロード(<a href="http://go.microsoft.com/fwlink/p/?linkid=163613" style="-webkit-text-stroke-width: 0px; color: #00188f; font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 1.429em; orphans: auto; text-align: start; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px;">Download from MSDN Code Gallery</a>というリンク)し、VS Express for Desktopでビルドして実行したら、正常にWebCamから動画をキャプチャ、表示できることが確認できた。試したカメラはYUV2形式のデータだった。<br /><br /><b>追記:</b> どうやらExtension Unitsは、DirectShowのAPIのようだ。果たしてMedia Foundationを使ったプログラムでも使用できるのか？よく分からない。さっぱりMedia Foundationは諦めて、DirectShowのサンプルでも探した方が良いかも知れない... <br /><br />DirectShowのプログラミングには、良い情報源(体系的な資料)が無いような気がする。知っている人は知っているが ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/10/media-foundationwebcam/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>久々のラッキー</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/09/lucky-in-starbucks/">2013-09-07 14:47:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks</a> </div>
-	<div class="summary"><p>先日、某所にてスタバに入った。注文したら、なにやら店員が「****(突然の質問だったので失念)はご存じですか？」と聞いてきた。「いいえ」と答えると、どうやら、スタバには「当たりレシート」なるものが存在するらしい。参考：<a href="http://matome.naver.jp/odai/2133386255732706201">【何でも一杯無料】スターバックス「当たりレシート」の全貌</a>。<br /><br />自分はおそらく100回も利用したことはないのではないかと思うが、この当たりレシートに運良く当選したらしい。あまり個人情報を答えなければならないようなアンケートだったら無視しようかと思ったが、そんなことはなく、利用店舗についてのいろいろな意見を調査するものだった(上のリンク先に質問ページが全部あるようだ)。<br /><br />超ラッキー! 久々にいいことあったなぁ。生きてて良かった! 何を注文するかじっくり考えよう。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/09/lucky-in-starbucks/">more…</a>
 	</div>
 </div>	
 

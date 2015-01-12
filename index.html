@@ -66,6 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +94,35 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>Vivado HLSについて</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/01/about_vivado_hls/">2015-01-13 00:02:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/hls.html">HLS</a> </div>
+	<div class="summary"><p>現在<a href="http://japan.xilinx.com/products/design-tools/vivado/integration/esl-design.html" title="Vivado 高位合成">Vivado HLS</a>を使用して回路合成の実験をしているが、いろいろと問題に遭遇している。</p>
+<ul>
+<li>バージョン2014.2で合成するとCo-simulationが終了しない。</li>
+<li>バージョン2014.4で合成するとCo-simulationは終了するが、C simulationと結果が一致しない。</li>
+</ul>
+<p>ひょっとしたら合成側ではなく、シミュレータ側に問題があるかと予想し、
+2014.2で合成した結果を2014.4のシミュレータで動かしてみたが、終了しないのは
+変わらなかった。</p>
+<p>また、2014.2で合成した結果をインプリしてみたが、AXI Stream出力なのに、
+TREADYがHighになっていないにも関わらず、TVALIDがHighでTDATAが変化してしまっていたりする
+状況が見られた(FIFO fullなのに書き込み側が止まらずに進んでしまっているような状況)。
+これは明らかにハンドシェークとしておかしい。</p>
+<p>今はC++から合成しているが、自分の意図としては「ここは並列して動いて欲しい」
+というところがツールにちゃんと伝わらないことが多いのも不満がある。
+RTLでの記述は並列に動作するのが前提だが、Cのような言語は逐次実行が前提なので、
+どこまで並列化できるかは、ツールの賢さに完全に依存してしまう。</p>
+<p>細かいところでは、配列はBlock RAMとして実装されることがあるが、
+その場合自動的に変数は複製してくれないので、Block RAMの2ポート制約の
+せいで並列性が犠牲になることがある。自動的に同一のBlock RAMを複数
+コピーするようにしてくれれば嬉しい(あるいは複製数を指定できるとか)。
+仕方ないので ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2015/01/about_vivado_hls/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>2014年のまとめ</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/12/done-in-2014.md/">2014-12-31 21:02:00+09:00</a>
@@ -251,24 +281,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p>今度はZYBOにてLinuxを動作させてみようと挑戦した備忘録。<br /><br />まとまった情報がなかなか見つからなくて苦労したが、基本はMasahiro Yamadaさんの、"<a href="http://masahir0y.blogspot.jp/2014/01/u-boot-linux-kernel-zynq.html">U-Boot と Linux Kernel のメインラインで Zynq を動かす</a>"を参考にした。<br /><br />STEP0: DTCの準備 はそのまま実施した。<br /><br />STEP1: U-Bootのビルド ではまった。結論としては、ARMのクロスコンパイラとして<a href="http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/">CodeSourcery Lite</a>を使用した(単にXilinxからgccをダウンロードするのが面倒だったので。Xilinxのgccで動くかは試していないため不明)。<br /><br />最初は<a href="http://www.linaro.org/downloads/">LinaroのGCC</a>でU-Bootをビルドしていたが、どうしても動作しなかった。U-Bootはlibcにも依存しているようで、LinaroのGCCだとダメだと思われる。<br /><br />さらに、肝心のU-Bootは、オリジナルのものだと動かなかったので、<a href="https://github.com/Digilent/u-boot-Digilent-Dev">DigilentのU-Boot</a>を使用した。この手順は、Ryuzさんの"<a href="http://ryuz.txt-nifty.com/blog/2014/04/zybozynqu-boot-.html">ZYBO(Zynq)のu-bootのビルドまで</a>"に従った。CROSS_COMPILEのところは、(CodeSourceryなので)arm-none-eabi-にした。makeでu-boot.binができた(上記手順だとDTBはできないが、Linuxのブートは可能)。<br /><br />STEP2 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/linux-on-zynq-zybo/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Zynq USBデバイステスト (ファームウェア)</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/04/zynq-usb/">2014-04-30 09:33:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p><a href="https://formalism.github.io/blog/posts/2014/04/zynqusb/">Zynq USBデバイステスト (PC側ソフトウェア)</a>の続き。</p>
-<p>C:\Xilinx\SDK\2014.1\data\embeddedsw\XilinxProcessorIPLib\drivers\usbps_v2_0 のexamplesに対するパッチ。
-usbMain関数を呼び出すと動作開始。examplesのファイル達はusbフォルダにコピーされたものとする。</p>
-<p>概要としては、examplesはUSB mass storageとして動作するので、バルク転送のTX/RX割り込みがかかるところを
-横取り(XUsbPs_HandleStorageReqをコメントにする)して、所望のデータ処理に置き換える。
-また、サンプルはTX割り込みがかからないようになっているので、TXのビットをorして有効にする。</p>
-<hr />
-<p>diff -cr examples/xusbps_ch9_storage.c usb/xusbps_ch9_storage.c</p>
-<div class="highlight"><pre>examples/xusbps_ch9_storage.c    2014-04-16 23:53:27.579740500 +0900
-<span class="gd">--- usb/xusbps_ch9_storage.c ...</span></pre></div> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/04/zynq-usb/">more…</a>
 	</div>
 </div>	
 

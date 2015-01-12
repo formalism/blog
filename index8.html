@@ -66,6 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>NIOS2カスタム命令</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/01/nios2/">2011-01-06 04:44:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>NIOS2で計算を高速化するためにカスタム命令を実装してみた。最初は、レイテンシ固定で実装してみたのだが、どうやっても計算結果がおかしい。クロック数がずれているのかと思っていくつか試してみたが、だめ。それで結局、レイテンシ可変にして、START, DONE信号をモジュールで処理するようにしたら動いた。Quartus II 9.0 SP2で実験。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/01/nios2/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>node.js vs Erlang</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/01/nodejs-vs-erlang/">2011-01-03 05:07:00+09:00</a>
@@ -174,15 +184,6 @@ tags: <a href="https://formalism.github.io/blog/tag/shu-ping.html">書評</a> </
 	<div class="summary"><iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm-jp.amazon.co.jp/e/cm?t=formalism-22&amp;o=9&amp;p=8&amp;l=as1&amp;asins=4480020470&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="height: 240px; width: 120px;"></iframe>
 
 <p>「思考の整理学」という本を買ってみた。まだ読み始めたばかり。Amazonのレビューの批判で、「朝飯前」というのが単なる思い付きだと批判されているが、これは間違っていると思う。なぜなら、著者自ら実践して効果があると判断された上での文章だから。自分がこの手の本に期待するのは、単なる思い付きではなくて、本当に役立つかどうか、ということ。その点で判断すれば、少なくとも著者の場合は役立っているのだから、「単なる思い付き」と片付けるのは早計である。自分でやってみて、役に立たないのであれば、それは指摘すればよい。<br /><br />本書の指摘する「グライダー人間」ということについては自分も耳が痛い。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/03/blog-post_26/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Wi2</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/wi2/">2010-03-11 08:10:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/wi2.html">Wi2</a> </div>
-	<div class="summary"><p>最近になって<a href="http://www.wi2.co.jp/">Wi2</a>を契約した。ビックカメラからの契約で月々380円でマクドナルドなどで無線LANによるインターネット接続ができるというもの。近くのマクドナルドで試してみたところ、10Mbps以上出ていた。以前自宅のADSLでは12Mの契約でも4,5Mbpsだったから、速度的には十分。ただ、これまで4,5回ためした中で、一回だけwi2のログインページが表示されず、使用できないときがあった。<br /><br />基本的には全国で使えるようなので、しばらくは契約しておくことになりそう。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/03/wi2/">more…</a>
 	</div>
 </div>	
 

@@ -66,6 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>Wi2</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/wi2/">2010-03-11 08:10:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/wi2.html">Wi2</a> </div>
+	<div class="summary"><p>最近になって<a href="http://www.wi2.co.jp/">Wi2</a>を契約した。ビックカメラからの契約で月々380円でマクドナルドなどで無線LANによるインターネット接続ができるというもの。近くのマクドナルドで試してみたところ、10Mbps以上出ていた。以前自宅のADSLでは12Mの契約でも4,5Mbpsだったから、速度的には十分。ただ、これまで4,5回ためした中で、一回だけwi2のログインページが表示されず、使用できないときがあった。<br /><br />基本的には全国で使えるようなので、しばらくは契約しておくことになりそう。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/03/wi2/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>プリンタ購入</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/blog-post_04/">2010-03-04 07:06:00+09:00</a>
@@ -179,15 +189,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris</a> </div>
 	<div class="summary"><p>Windowsで使用するファイルなども含めて、すべてのデータはこれまでLinuxで管理<br />してきたが、Solarisに心惹かれるものがあるので、数年ぶりに環境を移行した。<br /><br />使用したのはOpenSolaris 2009.06で、もちろんZFS!最近ファイルシステムが一杯になってきていたので、これで一安心。いくらでもディスク追加ができるのは素晴らしい。<br /><br />でも早速CIFSでWindowsからファイルを共有するのにつまづいた。共有を有効にすること自体は、<br /><a href="http://blogs.sun.com/timthomas/ja/entry/opensolaris_cifs_%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E6%A7%8B%E6%88%90">http://blogs.sun.com/timthomas/ja/entry/opensolaris_cifs_%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B0%E3 ...</a></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/09/zfscifs/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>SOPC BuilderにてSRAMを使う</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2009/06/sopc-buildersram/">2009-06-11 05:49:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p>めも。<br /><br />QuartusIIのSOPC BuilderでSRAMを使いたい。QuartusIIにはCypressのコンポーネントが付いているが、ビット幅などが使用したいものと違うので、コンポーネントを作成する必要があった。<br /><br />Component Editorを起動してAvalon-MM Tristate Slaveをテンプレートから作成すると、とりあえずコンポーネントはできるものの、NIOSIIのメモリとして使用できない。調べた結果、<span style="font-weight: bold;">(コンポーネント名)_hw.tcl</span>にある、<span style="font-weight: bold;">isMemoryDevice</span>というのを、"false"から"true"にすればOKであると分かった。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/06/sopc-buildersram/">more…</a>
 	</div>
 </div>	
 

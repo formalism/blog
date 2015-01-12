@@ -66,6 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>SolrをJSONで使うときにはまったことのメモ</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/09/solrjson/">2011-09-17 12:06:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/web.html">Web</a> <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/solr.html">Solr</a> <a href="https://formalism.github.io/blog/tag/lisp.html">Lisp</a> </div>
+	<div class="summary"><p><a href="http://lucene.apache.org/solr/">Apache Solr</a>の検索機能を試してみた。自作Lispアプリから<a href="http://weitz.de/drakma/">drakma</a>を使用してJSONによりデータを追加しようとした。<br /><br /><b>結論からすると、Solrは、JSONの文字列は、シングルクオートではなく、ダブルクオートでないとエラーになる。</b><br /><b><br /></b><br />自分の調べた範囲では、JSONとしてはシングルクオートでもダブルクオートでも文字列としてvalidである(らしい)ので、これはSolr側の問題であると思う。<br /><b><br /></b><br /><a href="http://common-lisp.net/project/parenscript/">Parenscript</a>を使用して文字列を作ると、シングルクオートで囲われてしまう。代わりに、<a href="http://common-lisp.net/project/cl-json/">CL-JSON</a>を使用することにした。こちらはなかなか使い方が難しかったが、<br /><br /><br />(defun get-insert-answer-json (id uid qid ans)<br />&nbsp; (with-output-to-string (stream)<br />&nbsp; &nbsp; &nbsp;(json:with-object (stream)<br />&nbsp; &nbsp; &nbsp; &nbsp;(json:as-object-member (:add stream)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span> (json:with-object (stream)<br /><span class="Apple-tab-span" style="white-space: pre;"> </span> &nbsp; (json:encode-object-member "doc"<br /><span class="Apple-tab-span" style="white-space: pre;">    </span> &nbsp; &nbsp; &nbsp;`((id . ,id) (uid_i . ,uid) (tp_i . 2 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/09/solrjson/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>OpenSolaris -> Ubuntu Linux</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/08/opensolaris-ubuntu-linux/">2011-08-27 14:53:00+09:00</a>
@@ -176,15 +186,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p>自分のメモ。<br /><br /><b>回路</b><br />Slave Serialモード。XCF32クロックを接続。<br /><br /><b>ソフトウェア</b><br />ISEプロジェクトにELFファイルを追加すると、bitファイルにELFが埋め込まれる。Generate Programming Fileのプロパティで圧縮オプションを有効にする。iMPACTで、Create PROM Fileでbitからmcsファイルを生成。できたmcsファイルをxcf32pにアサインしてProgram。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/xilinx-flash/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>ボールペン</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/jetstream-surari/">2011-03-27 02:48:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
-	<div class="summary"><p>三菱の<a href="http://www.mpuni.co.jp/product/category/ball_pen/jetstream/">jetstream</a>というボールペンを使ってみて、確かに異常になめらかなのだけれど、なめらかすぎて書きにくいようにも感じる。ZEBRAの<a href="http://www.zebra.co.jp/pro/surari/">surari</a>の方が自分には書きやすいように感じた。抵抗感が適度。それに、surariの方が安い。また、同じ0.5mmでもsurariの方が線が細い。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/jetstream-surari/">more…</a>
 	</div>
 </div>	
 

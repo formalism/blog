@@ -94,12 +94,35 @@
 	  </div>
 	  <div class="content">
 	<div class='article'>
-		<div class="page-header"><h1>MicroBlaze + IPコア(続き)</h1></div>
-		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/microblaze-ip-endian/">2011-03-18 05:30:00+09:00</a>
+		<div class="page-header"><h1>Vivado HLSについて</h1></div>
+		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/01/about_vivado_hls/">2015-01-13 00:02:00+09:00</a>
 by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
  in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-		<div><p>Create or Import Peripheralで生成されるuser_logic.vhdでは、データバスがstd_logic_vector(0 to 31)で宣言されている。これはMSBがbit0でLSBがbit31となるというMicroBlazeの仕様のため。<a href="http://www.vhdl-online.de/tutorial/englisch/t_58.htm#pgfId-1016798">http://www.vhdl-online.de/tutorial/englisch/t_58.htm#pgfId-1016798</a>を読んで分かったのは、VHDLでインスタンスを宣言するときの配列ポートは、<u>ビット番号ではなく、ビット並びの順番</u>で接続されるということ。</p></div>
+tags: <a href="https://formalism.github.io/blog/tag/hls.html">HLS</a> </div>
+		<div><p>現在<a href="http://japan.xilinx.com/products/design-tools/vivado/integration/esl-design.html" title="Vivado 高位合成">Vivado HLS</a>を使用して回路合成の実験をしているが、いろいろと問題に遭遇している。</p>
+<ul>
+<li>バージョン2014.2で合成するとCo-simulationが終了しない。</li>
+<li>バージョン2014.4で合成するとCo-simulationは終了するが、C simulationと結果が一致しない。</li>
+</ul>
+<p>ひょっとしたら合成側ではなく、シミュレータ側に問題があるかと予想し、
+2014.2で合成した結果を2014.4のシミュレータで動かしてみたが、終了しないのは
+変わらなかった。</p>
+<p>また、2014.2で合成した結果をインプリしてみたが、AXI Stream出力なのに、
+TREADYがHighになっていないにも関わらず、TVALIDがHighでTDATAが変化してしまっていたりする
+状況が見られた(FIFO fullなのに書き込み側が止まらずに進んでしまっているような状況)。
+これは明らかにハンドシェークとしておかしい。</p>
+<p>今はC++から合成しているが、自分の意図としては「ここは並列して動いて欲しい」
+というところがツールにちゃんと伝わらないことが多いのも不満がある。
+RTLでの記述は並列に動作するのが前提だが、Cのような言語は逐次実行が前提なので、
+どこまで並列化できるかは、ツールの賢さに完全に依存してしまう。</p>
+<p>細かいところでは、配列はBlock RAMとして実装されることがあるが、
+その場合自動的に変数は複製してくれないので、Block RAMの2ポート制約の
+せいで並列性が犠牲になることがある。自動的に同一のBlock RAMを複数
+コピーするようにしてくれれば嬉しい(あるいは複製数を指定できるとか)。
+仕方ないので、今は手動で同一の配列変数を作成している。</p>
+<p>SystemCからの合成もできるようなので、そちらで試してみるかもしれない。
+SystemCはRTLのように並列箇所を明示できるので、ツール側としては
+並列抽出は(Cからの変換よりは)楽なはず。</p></div>
 		<div>
 			<h2>Comments</h2>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
