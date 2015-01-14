@@ -94,7 +94,7 @@
 	  </div>
 	  <div class="content">
 	<div class='article'>
-		<div class="page-header"><h1>Vivado HLSについて</h1></div>
+		<div class="page-header"><h1>Vivado HLSについて：話がうますぎると思ったら、その直感は多分正しい</h1></div>
 		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/01/about_vivado_hls/">2015-01-13 00:02:00+09:00</a>
 by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
  in <a href="https://formalism.github.io/blog/category/.html"></a>
@@ -122,7 +122,20 @@ RTLでの記述は並列に動作するのが前提だが、Cのような言語�
 仕方ないので、今は手動で同一の配列変数を作成している。</p>
 <p>SystemCからの合成もできるようなので、そちらで試してみるかもしれない。
 SystemCはRTLのように並列箇所を明示できるので、ツール側としては
-並列抽出は(Cからの変換よりは)楽なはず。</p></div>
+並列抽出は(Cからの変換よりは)楽なはず。</p>
+<p>印象としては、簡単な回路であれば、ほとんどの場合問題なく合成してくれるが、「高位合成を使いたい」と思うような、
+RTL手コーディングが面倒な場面では、夢のようには機能しない。結局のところ、合成結果を
+(シミュレーション結果の波形を見たりして)眺めて、所望の結果が得られるように
+Cコードレベルで最適化する作業が必要になる。この作業にはもちろん、RTLを書くときに考える
+ようなパイプラインのイメージやらBlock RAMのポート数のイメージやらが必要になる。
+それならば高位合成なんていらないや、という人もいるかもしれないが、
+RTLで書いていてSimまで通したのにインプリしたらタイミングがあと0.02ns間に合わない!といったような
+悲しい場面になってしまったときに、自分でレジスタを追加して再度検証するのは結構手間が
+かかるもの。このような、クロック周波数を考慮した回路の段数も、ある程度適切に
+考慮して合成してくれるのはかなり助かる、と思う。もっとも、ツールが想定する周波数は
+それほど正確ではない、というのもまた事実なのだけれど。また、RTLで記述した
+回路のためのテストベンチを書くのも結構手間がかかるものだが、Cベースで検証できるという
+メリットも相当大きい。</p></div>
 		<div>
 			<h2>Comments</h2>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
