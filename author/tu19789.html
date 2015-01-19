@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +93,17 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>思考の整理学</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/blog-post_26/">2010-03-26 06:06:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/shu-ping.html">書評</a> </div>
+	<div class="summary"><iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm-jp.amazon.co.jp/e/cm?t=formalism-22&amp;o=9&amp;p=8&amp;l=as1&amp;asins=4480020470&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="height: 240px; width: 120px;"></iframe>
+
+<p>「思考の整理学」という本を買ってみた。まだ読み始めたばかり。Amazonのレビューの批判で、「朝飯前」というのが単なる思い付きだと批判されているが、これは間違っていると思う。なぜなら、著者自ら実践して効果があると判断された上での文章だから。自分がこの手の本に期待するのは、単なる思い付きではなくて、本当に役立つかどうか、ということ。その点で判断すれば、少なくとも著者の場合は役立っているのだから、「単なる思い付き」と片付けるのは早計である。自分でやってみて、役に立たないのであれば、それは指摘すればよい。<br /><br />本書の指摘する「グライダー人間」ということについては自分も耳が痛い。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/03/blog-post_26/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>Wi2</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/wi2/">2010-03-11 08:10:00+09:00</a>
@@ -179,15 +190,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p><span style="font-weight: bold;">画像のデジタルズームの方法について<br /><br /></span>きれいに画像を拡大するためのアルゴリズムとしてよく用いられるのはバイキュービック法というものです。それを実際に実装しようとしたときのメモです。<br /><br /><span style="font-weight: bold;">バイキュービックの係数の使い方</span><br /><br /><a href="http://yoffy.dyndns.org/2006/02/lanczos.html">ここ</a>を初めとしていろいろな場所でバイキュービック関数というのが取り上げられていますが、関数だけ見せられても??となってしまいます。説明を試みてみたいと思います。<br /><br />まず、ここでは、バイキュービック法でズームをするという場合、4x4のオリジナル画像を使用し、その16画素を元にして、新しいズーム後の画素値を計算する、ということを前提とします。そのとき、ズーム後の画素値は、要するに4x4の画素のそれぞれに重みを乗じて加えることによって得られます。その重みの係数をバイキュービック関数というのが決定しています。<br /><br />まず、1次元だけを考えてみます。例として、2倍のズームをするとします。補間元となるオリジナル画像が、左から順にd0,d1,d2,d3と並んでいるとします。すると、d1,d2の間で2つの補間画素を求めることになります。初めの補間画素は、実質d1となります。2番目の補間画素はd1とd2のちょうど真ん中にあると考えるわけです。すると、その画素からd0までの距離は1.5、d1までの距離は0.5、d2までの距離は0.5、d3までの距離は1.5となります。それで、これらの距離を<a href="http://yoffy.dyndns.org/2006/02/lanczos.html">先ほどの</a><a href="http://yoffy.dyndns.org/2006/02/lanczos.html">URL</a>にあるグラフのx座標とし、対応するyの値を係数とするわけです ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/10/digital-zoom-bicubic/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>ZFSでのCIFS共有</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2009/09/zfscifs/">2009-09-07 04:26:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris</a> </div>
-	<div class="summary"><p>Windowsで使用するファイルなども含めて、すべてのデータはこれまでLinuxで管理<br />してきたが、Solarisに心惹かれるものがあるので、数年ぶりに環境を移行した。<br /><br />使用したのはOpenSolaris 2009.06で、もちろんZFS!最近ファイルシステムが一杯になってきていたので、これで一安心。いくらでもディスク追加ができるのは素晴らしい。<br /><br />でも早速CIFSでWindowsからファイルを共有するのにつまづいた。共有を有効にすること自体は、<br /><a href="http://blogs.sun.com/timthomas/ja/entry/opensolaris_cifs_%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E6%A7%8B%E6%88%90">http://blogs.sun.com/timthomas/ja/entry/opensolaris_cifs_%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B0%E3 ...</a></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/09/zfscifs/">more…</a>
 	</div>
 </div>	
 

@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +93,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>今日の実験 - Media Foundationを使ってWebCamキャプチャ</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/10/media-foundationwebcam/">2013-10-13 15:25:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>いわゆるWebCamというものを、自分で作成するプログラムはどうすれば作成できるのか、というのを調査している。<br /><br />一番手っ取り早いのは、多分OpenCVを使用してcvQueryFrameで取ってくる方法だと思われるが、USB Video Classの機能をもっと使用することを考えているので(<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560772(v=vs.85).aspx">Extension Units</a>というのを使いたい)、cvQueryFrameは高レベルすぎる。<br /><br />Windows VistaからMedia FoundationというAPIが提供されており、これを使用するのが推奨のようだ。とりあえず<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd743690(v=vs.85).aspx">MFCaptureD3D Sample</a>のページから、サンプルプログラムをダウンロード(<a href="http://go.microsoft.com/fwlink/p/?linkid=163613" style="-webkit-text-stroke-width: 0px; color: #00188f; font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 1.429em; orphans: auto; text-align: start; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px;">Download from MSDN Code Gallery</a>というリンク)し、VS Express for Desktopでビルドして実行したら、正常にWebCamから動画をキャプチャ、表示できることが確認できた。試したカメラはYUV2形式のデータだった。<br /><br /><b>追記:</b> どうやらExtension Unitsは、DirectShowのAPIのようだ。果たしてMedia Foundationを使ったプログラムでも使用できるのか？よく分からない。さっぱりMedia Foundationは諦めて、DirectShowのサンプルでも探した方が良いかも知れない... <br /><br />DirectShowのプログラミングには、良い情報源(体系的な資料)が無いような気がする。知っている人は知っているが ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/10/media-foundationwebcam/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>久々のラッキー</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/09/lucky-in-starbucks/">2013-09-07 14:47:00+09:00</a>
@@ -180,15 +189,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p>最近モチベーションが下がっている。ネットを徘徊していたら、ちょっと面白いネタを見つけた：<br /><br /><a href="http://d.hatena.ne.jp/kazunori_279/20130107/1357521548">文字通り「ネットワークがコンピューター」な金融HFTでのFPGAの使われ方</a><br /><br />ここ数年HFTの分野では、FPGAで処理を実装するのがはやってきている、ということ。リンク先の記事からもリンクされている、<a href="http://cufp.org/videos/parallel-scientific-awesome-haskell-fpga-compiler">Parallel Scientific: The Awesome Haskell FPGA Compiler</a>は以前すこし眺めていたが、今回の記事を読んで全体像の理解が少し進んだ。なるほど、こんなところでも回路設計をしてしまう時代になったのね、という感じ。<br /><br />10Gbpsのネットワークスイッチに入れてしまうというのであれば、当然Alteraで言えばStratixクラスの1個何十万もするFPGAを使うのだろう。外付けメモリもDDRみたいなレイテンシの大きいものではなく、RLDRAMやQDRといった、個人的には使用しているのをあまり見聞きしないタイプのメモリを使っているのではなかろうか。<br /><br />もしこういったものがTCP/IPで通信をしているとすれば、Ethernet MACのIPから出てくるパケットをステートマシンでTCP/IP部分をデコードしてやり、中身のデータに基づいてガリガリ計算し、その結果に基づいてこれまたステートマシンでEthernet MAC IPに売買パケットを流し込む、というような流れになっているのだろう。そして売買の結果は、メモリに書き込んでおき、ログとして保存。これでソフトウェアは一切介在せずに株式やら為替の売買を実行する、と。もちろん、売買条件の設定などの初期化操作はソフトウェアで行うはずだが。<br /><br />妄想するとなかなか面白そうな分野だなぁ。クオンツの元でブイブイ(死語)いわせるプログラマのイメージが。なるほど、金融業界は計算機分野でも ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/03/fpgahft/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>OpenCLの参考書籍</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/03/opencl-reference-docs/">2013-03-11 14:43:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL</a> </div>
-	<div class="summary"><p>最近自分で技術的な文章を書く気力が減退気味。googleで"OpenCL 入門"とかで検索してみても、和書に関連するページがヒットするものの、OpenCLの入門的なページはほとんどヒットしない。なので、参考までに：<a href="http://it-ebooks.info/book/1620/">OpenCL in Action</a>のリンク。ざっと眺めてみた感じでは、OpenCLの入門にふさわしい内容になっていると思う。データ型、カーネル記述方法、実例など、まんべんなく扱っている。ちなみに、リンク先サイトはすごい充実している。<div><br /></div><div>気が向いたらもう少しOpenCLについて取り上げたいと思うけれど、いつになることやら。はっきり言って、ここまでCPUが早くなってしまった現在、映像処理やシミュレーション、データマイニングといった分野でしかGPGPUは必要ないのではなかろうか？</div></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/03/opencl-reference-docs/">more…</a>
 	</div>
 </div>	
 

@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +93,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>Microsoft Surface</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/07/microsoft-surface/">2012-07-26 12:20:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/pc.html">PC</a> <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
+	<div class="summary"><p><a href="http://www.microsoft.com/surface/en/us/default.aspx">Microsoft Surface</a>についてしばらく前に報道されたときには、それほど興味を持たずにいた。しかし、最近かなり気になる存在になってきた(といってもまだ発売すらされていないのだが)。<br /><br />ここにきて、<a href="http://pc.watch.impress.co.jp/docs/column/win8cd/20120725_548816.html">Office 365 CPで想像するWindows 8のコンセプト</a>という記事を読んで、さらに期待が高まった。この記事の最後のところに出ているが、Windows 8では、これまで通りのデスクトップでの操作は継承しつつ、Metroスタイルのタッチパネル操作が新たに加わるイメージのようである。これにより、Windows PC一台だけあればiPadのようなタブレットが不要になる、という使い方を提案しているのでは？ということが書かれている。<br /><br />ソフトウェアを開発する人間であれば、ノートパソコンを持ち歩くのは最近ではごく一般的であると思う。タブレットがはやっていても、やはりタブレットではノートパソコンの代替にはならない。かといって、両方持ち歩くといのも(少なくとも自分は)嫌である。<br /><br />ところが、Surface一台で、例えば、電車の中ではタブレットとして使い、仕事場ではノートパソコンとして使う、ということが可能になりそうである。自分は、コーディング時には、ノートパソコンにディスプレイ+キーボード+マウスを接続した環境で作業することも多い。これがノートの代わりにSurfaceになっても構わない。本気でコーディングする環境でなければ、ひとまず使えるキーボードがあれば良い。<br /><br />というわけで、SurfaceとWindows8の出来次第では、自分の利用方法ではかなり魅力的なアイテムになるのではないかと思う。発売されるのが楽しみだ。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/07/microsoft-surface/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>blaze-htmlでのname属性</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/07/blaze-htmlname/">2012-07-10 14:56:00+09:00</a>
@@ -172,15 +181,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p>Webアプリにおいてセッション管理を行うときに、昔からJSPなどで行われている、セッションIDを何らかのデータに結びつける手法がある。一方、例えば<a href="http://www.ogis-ri.co.jp/otc/hiroba/technical/seaside/seaside1/index.html">Seaside</a>のように、継続を使用してセッション管理を行うという方法もある。継続ベースというのは技術的にもおもしろいし、上のURLでも指摘しているように、二度押しなどの対策もしやすい、というメリットがある。<br /><br />しかし、単純に実装してしまうと、URLがユーザにとって意味不明の文字列になってしまう。セッションと強く結びついているので、ブックマークをすることができない。もちろん、「ログインが必要な画面など、セッション内のページについてはブックマークができなくても良い」という考え方もあるが、「どうせ継続で制御できるのだから、リクエストURLはいつも固定でいい」などという安直な考えを推し進め、ログインが不要なページまで継続で実装してしまうと、意味不明なURLが大量生産されることになってしまう。<br /><br />そう考えると、JSPスタイルで実装するのも悪くない。ユーザ(主語)が、ある「対象」にある「操作」を行う、というのを実装するのであれば、リクエストURLは「動作」と「対象」を表し、認証情報(「主語」)のためにセッションを用いる、というのが良い解ではないかと考えた。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/11/web/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>fleet (clojureによるテンプレートシステム)</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/11/fleet-clojure/">2011-11-19 16:06:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/clojure.html">clojure</a> </div>
-	<div class="summary"><p>また久しぶりにclojureをいじり始めた。またWebシステムの実装に用いる予定。どうやってJSPやASPのように動的にWebページを生成するのが良いのか、最近の流行を少し調べてみた。<br /><br />結果として、自分には<a href="https://github.com/Flamefork/fleet">fleet</a>が現状良さそうという結論に達した。若干悩んだ点と調べて分かったことのメモ。<br /><br /><ul><li>fleet-nsでテンプレートを生成するときに、引数で指定したディレクトリにあるファイルを 走査して、それぞれの<b>テンプレートファイルに対応するテンプレート関数</b>が作られる。例えば、post.html.fleetというファイルが存在すれば、postという関数が、(同じく引数で指定した名前空間に)作られる。</li><li>post関数の内部(つまり、テンプレートファイルの中)では、dataという名前でテンプレート関数への<b>実引数</b>を参照できる。すなわち、&lt;(:hoge data)&gt;とpost.html.fleetに記述すれば、このテンプレート関数が実行されるときに、実引数として渡されたmapにあるhogeキーの値を出力する。</li></ul></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/11/fleet-clojure/">more…</a>
 	</div>
 </div>	
 

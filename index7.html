@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +93,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>Xilinx Flashコンフィグレーション</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/xilinx-flash/">2011-03-29 10:01:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>自分のメモ。<br /><br /><b>回路</b><br />Slave Serialモード。XCF32クロックを接続。<br /><br /><b>ソフトウェア</b><br />ISEプロジェクトにELFファイルを追加すると、bitファイルにELFが埋め込まれる。Generate Programming Fileのプロパティで圧縮オプションを有効にする。iMPACTで、Create PROM Fileでbitからmcsファイルを生成。できたmcsファイルをxcf32pにアサインしてProgram。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/xilinx-flash/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>ボールペン</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/jetstream-surari/">2011-03-27 02:48:00+09:00</a>
@@ -172,15 +181,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p>node.jsからMySQLを使用して、昔にRoRで作成したアプリと同等のものを(同じデータベースを使って)作ろうとしているが、いろいろやっても文字化けが解決できなかった。ひたすら検索し、<a href="http://www.gcd.org/blog/2009/09/177/">仙石浩明の日記  2009年9月14日 文字化けしていなくても MySQL 内の文字コードが正しくない場合がある</a>を見て、ついに原因が判明した。結局、既存のRoRで作成したアプリが、latin1でMySQLとやりとりしているのが原因だった。実際に、mysqldumpでデータベースをダンプする際に、--default-character-set=latin1を追加したら、文字化けしなかった。というわけで、根本的に解決するには、データベースのデータをちゃんとUTF8にすることだけれど、ひとまず、node.jsのプログラム側で、set names latin1というクエリを送って、RoRと同じ動作にさせたら、文字化けが直った。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/01/nodejsmysql/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>C#のScrollBar</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/01/cscrollbar/">2011-01-17 07:01:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/c.html">C#</a> <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>ScrollBarの値をユーザが操作して変更すると、Scrollイベントが発生するが、プログラムコードでValueプロパティを変更するとScrollイベントは発生しない。ValueChangedイベントを使用すれば、Valueプロパティをコードで変更しても捕捉できる。分かってしまえばどうということは無いけれど、ちょっと調べる必要があった。<br /><br /># Delphiは確かコードで変更してもC#でいうところのValueChangedイベントのような動作がデフォルトだったように思った。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/01/cscrollbar/">more…</a>
 	</div>
 </div>	
 

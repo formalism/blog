@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +93,48 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>言うことを聞かないVivado HLSを手なずける</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/01/taming_vivado_hls/">2015-01-19 23:30:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/hls.html">HLS</a> </div>
+	<div class="summary"><p><a href="https://formalism.github.io/blog/posts/2015/01/about_vivado_hls/">前回</a>、Vivado HLSにていろいろと問題に遭遇していることを書いたが、
+いくらか前進できた。</p>
+<p>まず、Co-simulationとC simulationの結果が一致しないという問題。大体以下のような形のコードになっていた。topが合成したい関数のトップレベル。</p>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">int</span> <span class="n">A</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{...};</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">B</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{...};</span>
+
+<span class="kt">int</span> <span class="nf">g</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">array</span><span class="p">){</span>
+    <span class="p">....</span>
+    <span class="n">use</span> <span class="n">array</span> <span class="n">element</span>
+    <span class="p">....</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">array</span><span class="p">){</span>
+     <span class="p">....</span>
+     <span class="n">g</span><span class="p">(</span><span class="n">array</span><span class="p">);</span>
+     <span class="p">....</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">top</span><span class="p">(){</span>
+     <span class="p">....</span>
+     <span class="n">f</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+     <span class="n">f</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+     <span class="n">f</span><span class="p">(</span><span class="n">B</span><span class="p">);</span>
+     <span class="n">f</span><span class="p">(</span><span class="n">B</span><span class="p">);</span>
+     <span class="p">....</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>これを、次のように書き換えた。</p>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">int</span> <span class="n">A</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{...};</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">B</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{...};</span>
+
+<span class="kt">int</span> <span class="nf">g</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">array ...</span></pre></div> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2015/01/taming_vivado_hls/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>Vivado HLSについて：話がうますぎると思ったら、その直感は多分正しい</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/01/about_vivado_hls/">2015-01-13 00:02:00+09:00</a>
@@ -282,15 +324,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> <a href="https://formalism.github.io/blog/tag/tcf.html">TCF</a> </div>
 	<div class="summary"><p>やっとZYBO上でLinuxが(Ethernetも含めて)動作するようになった。これについては別の記事でまとめることにするが、一番気になっていたのは、LinuxアプリケーションのデバッグがXilinxのSDKから簡単に可能かどうかだった。<br /><br />現在(2014.1)のSDKにはGDB, System Debuggerという2種類のデバッグ方法が用意されている。GDBでのデバッグは可能だったが、System Debuggerでは出来なかった。こちらの<a href="http://t.co/pq8oQ2lBwx">ビデオ</a>によると、System DebuggerでLinuxアプリケーションをデバッグしている。スレッド単位でブレークを掛けたりすることもできる様子で、なかなか強力だと思う。<br /><br />一方、<a href="http://t.co/VrNdQfhC09">System Debugger Limitations, Known Issues, and FAQs</a>によると、2013.4の時点ではSystem DebuggerでのLinuxアプリケーションのデバッグはできないように思われる。2014.1については情報は見つからなかった。<br /><br />上記のビデオでは実現できていることからすると、これが可能になったのはごく最近のことであると思われる。ビデオをよく見てみると、Yocto Linuxが起動しているのが分かる。また、TCF(System Debuggerが使用するフレームワークの仕様)のためのagentが最後の方で起動しているのも分かる。<br /><br />とりあえず自分の要件としてはGDBでも良いが、System Debuggerについても時間があるときに調査してみたい。<br /><br />また ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/zynqlinux/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Linux on Zynq (ZYBO)</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/linux-on-zynq-zybo/">2014-05-06 09:39:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p>今度はZYBOにてLinuxを動作させてみようと挑戦した備忘録。<br /><br />まとまった情報がなかなか見つからなくて苦労したが、基本はMasahiro Yamadaさんの、"<a href="http://masahir0y.blogspot.jp/2014/01/u-boot-linux-kernel-zynq.html">U-Boot と Linux Kernel のメインラインで Zynq を動かす</a>"を参考にした。<br /><br />STEP0: DTCの準備 はそのまま実施した。<br /><br />STEP1: U-Bootのビルド ではまった。結論としては、ARMのクロスコンパイラとして<a href="http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/">CodeSourcery Lite</a>を使用した(単にXilinxからgccをダウンロードするのが面倒だったので。Xilinxのgccで動くかは試していないため不明)。<br /><br />最初は<a href="http://www.linaro.org/downloads/">LinaroのGCC</a>でU-Bootをビルドしていたが、どうしても動作しなかった。U-Bootはlibcにも依存しているようで、LinaroのGCCだとダメだと思われる。<br /><br />さらに、肝心のU-Bootは、オリジナルのものだと動かなかったので、<a href="https://github.com/Digilent/u-boot-Digilent-Dev">DigilentのU-Boot</a>を使用した。この手順は、Ryuzさんの"<a href="http://ryuz.txt-nifty.com/blog/2014/04/zybozynqu-boot-.html">ZYBO(Zynq)のu-bootのビルドまで</a>"に従った。CROSS_COMPILEのところは、(CodeSourceryなので)arm-none-eabi-にした。makeでu-boot.binができた(上記手順だとDTBはできないが、Linuxのブートは可能)。<br /><br />STEP2 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/linux-on-zynq-zybo/">more…</a>
 	</div>
 </div>	
 

@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +93,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>C#のScrollBar</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/01/cscrollbar/">2011-01-17 07:01:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/c.html">C#</a> <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>ScrollBarの値をユーザが操作して変更すると、Scrollイベントが発生するが、プログラムコードでValueプロパティを変更するとScrollイベントは発生しない。ValueChangedイベントを使用すれば、Valueプロパティをコードで変更しても捕捉できる。分かってしまえばどうということは無いけれど、ちょっと調べる必要があった。<br /><br /># Delphiは確かコードで変更してもC#でいうところのValueChangedイベントのような動作がデフォルトだったように思った。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/01/cscrollbar/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>NIOS2カスタム命令</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/01/nios2/">2011-01-06 04:44:00+09:00</a>
@@ -172,17 +181,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p>最近、ちょっとしたWeb+DBアプリケーションを書きたいと思った。数年前は、Java+Struts+MySQLのような組み合わせがはやっていたと思う。その後もJavaのフレームワークはSpringやらSeasarやらたくさん提案されてきたし、自分もSeasarは一時期使って便利だと思った。でもやっぱり記述量が多く、面倒くさい。<br /><br />近頃はLLブームということもあって、Ruby on Railsに始まるLL言語系フレームワークがある。RoRは自分で使ってみて、家計簿のWebアプリを作成し、今でも現役で使っている。ただ、個人的にはバージョンアップなどが手間で、あまり好きではない。<br /><br />自分の中での最近はやりの言語はCommon Lispである。その実装としてSBCLなどがあり、SBCL+MySQLでも簡単なWebアプリを作ってみた。が、Lisp系言語はライブラリをいちいちインストールするのが面倒に思う。特にWindowsは弱い。Linux, Windows, Solarisなどの環境で、ひとつのものから別のものへすぐに移行するのは難しい。あるいは、最近であればGoogle App Engineを使って、環境の管理は全部Google様におまかせ、というのが流行なのであろうか。でもGAEは基本的にはRDBは使えないし、Lispも使えない。 <br /><br />以上のような遍歴を経て、現状において最善の折衷案として自分的に浮上しているのは、<a href="http://clojure.org/">clojure</a>である。Lispとまではいかないが、Lisp風味であり、<a href="http://github.com/weavejester/compojure">compojure</a>というWebフレームワークもある。これに ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/03/clojure/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>思考の整理学</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/blog-post_26/">2010-03-26 06:06:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/shu-ping.html">書評</a> </div>
-	<div class="summary"><iframe frameborder="0" marginheight="0" marginwidth="0" scrolling="no" src="http://rcm-jp.amazon.co.jp/e/cm?t=formalism-22&amp;o=9&amp;p=8&amp;l=as1&amp;asins=4480020470&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=000000&amp;bg1=FFFFFF&amp;f=ifr" style="height: 240px; width: 120px;"></iframe>
-
-<p>「思考の整理学」という本を買ってみた。まだ読み始めたばかり。Amazonのレビューの批判で、「朝飯前」というのが単なる思い付きだと批判されているが、これは間違っていると思う。なぜなら、著者自ら実践して効果があると判断された上での文章だから。自分がこの手の本に期待するのは、単なる思い付きではなくて、本当に役立つかどうか、ということ。その点で判断すれば、少なくとも著者の場合は役立っているのだから、「単なる思い付き」と片付けるのは早計である。自分でやってみて、役に立たないのであれば、それは指摘すればよい。<br /><br />本書の指摘する「グライダー人間」ということについては自分も耳が痛い。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/03/blog-post_26/">more…</a>
 	</div>
 </div>	
 

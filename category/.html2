@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
@@ -93,6 +93,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>Linux on Zynq (ZYBO)</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/linux-on-zynq-zybo/">2014-05-06 09:39:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>今度はZYBOにてLinuxを動作させてみようと挑戦した備忘録。<br /><br />まとまった情報がなかなか見つからなくて苦労したが、基本はMasahiro Yamadaさんの、"<a href="http://masahir0y.blogspot.jp/2014/01/u-boot-linux-kernel-zynq.html">U-Boot と Linux Kernel のメインラインで Zynq を動かす</a>"を参考にした。<br /><br />STEP0: DTCの準備 はそのまま実施した。<br /><br />STEP1: U-Bootのビルド ではまった。結論としては、ARMのクロスコンパイラとして<a href="http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/">CodeSourcery Lite</a>を使用した(単にXilinxからgccをダウンロードするのが面倒だったので。Xilinxのgccで動くかは試していないため不明)。<br /><br />最初は<a href="http://www.linaro.org/downloads/">LinaroのGCC</a>でU-Bootをビルドしていたが、どうしても動作しなかった。U-Bootはlibcにも依存しているようで、LinaroのGCCだとダメだと思われる。<br /><br />さらに、肝心のU-Bootは、オリジナルのものだと動かなかったので、<a href="https://github.com/Digilent/u-boot-Digilent-Dev">DigilentのU-Boot</a>を使用した。この手順は、Ryuzさんの"<a href="http://ryuz.txt-nifty.com/blog/2014/04/zybozynqu-boot-.html">ZYBO(Zynq)のu-bootのビルドまで</a>"に従った。CROSS_COMPILEのところは、(CodeSourceryなので)arm-none-eabi-にした。makeでu-boot.binができた(上記手順だとDTBはできないが、Linuxのブートは可能)。<br /><br />STEP2 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/linux-on-zynq-zybo/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>Zynq USBデバイステスト (ファームウェア)</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/04/zynq-usb/">2014-04-30 09:33:00+09:00</a>
@@ -200,15 +209,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/windows.html">Windows</a> </div>
 	<div class="summary"><p>高速にメモリ上のデータをWindowsで表示する方法について調査してみた。<br /><br />経験上OpenCVは余り高速ではない。OpenGLでテクスチャに貼り付ける、という方法は高速で、プラットフォームにもあまり依存しない方法なのだが、カメラと対象物との位置関係で、勝手に変形されてしまう(これはOpenGLの目的からして当然であるが、ちゃんとデータを1対1で画像ピクセルに反映させたい、というような場合には問題となる)、という問題がある。<br /><br />また、OpenGLを使用する場合、ウィンドウ管理はGLUTに任せてしまうと、自分で作成するWindows上のウィンドウに描画するときに問題になる(理論上は可能なはずだが、面倒なのであまり調べていない)。<br /><b><br /></b><b>目標としては、Windowsで、自分で管理するウィンドウの内部に、高速にメモリ上のデータを表示したい。</b><br /><br />少し調べてみた結果、Vista以降のWindowsであれば、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd370990(v=vs.85).aspx">Direct2D</a>を使用するのが目的にかなっているようだ。もちろんWindowsにべったりになってしまうのだが、仕方がない。<br /><br />なんとなく、ID2D1HwndRenderTargetでBitmapを作成し、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd371155(v=vs.85).aspx">CopyFromMemory</a>を行って<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd742844(v=vs.85).aspx">DrawBitmap</a>という流れで出来そうな気がしてきた。これだとオフスクリーンではないかも知れない。でも、この応用で何とかなりそうな気がする。<br /><br />今度実験してみよう。<br /><br />===================<br />ちなみに、調べてみると、MacではOpenGLの<a href="https://developer.apple.com/library/mac/documentation/graphicsimaging/conceptual/opengl-macprogguide/opengl_offscreen/opengl_offscreen.html">Framebuffer object</a>という方法があるようだ。自分がWindows上のOpenGLで試したときには、FBOはそれほどパフォーマンスが良くなかった印象がある。Macだとまた違うかも知れないが。 </p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/10/fast-bitmap-drawing-in-windows/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>今日の実験 - Media Foundationを使ってWebCamキャプチャ</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/10/media-foundationwebcam/">2013-10-13 15:25:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>いわゆるWebCamというものを、自分で作成するプログラムはどうすれば作成できるのか、というのを調査している。<br /><br />一番手っ取り早いのは、多分OpenCVを使用してcvQueryFrameで取ってくる方法だと思われるが、USB Video Classの機能をもっと使用することを考えているので(<a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff560772(v=vs.85).aspx">Extension Units</a>というのを使いたい)、cvQueryFrameは高レベルすぎる。<br /><br />Windows VistaからMedia FoundationというAPIが提供されており、これを使用するのが推奨のようだ。とりあえず<a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd743690(v=vs.85).aspx">MFCaptureD3D Sample</a>のページから、サンプルプログラムをダウンロード(<a href="http://go.microsoft.com/fwlink/p/?linkid=163613" style="-webkit-text-stroke-width: 0px; color: #00188f; font-family: 'Segoe UI Semibold', 'Segoe UI', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; font-size: 15px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 1.429em; orphans: auto; text-align: start; text-decoration: none; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px;">Download from MSDN Code Gallery</a>というリンク)し、VS Express for Desktopでビルドして実行したら、正常にWebCamから動画をキャプチャ、表示できることが確認できた。試したカメラはYUV2形式のデータだった。<br /><br /><b>追記:</b> どうやらExtension Unitsは、DirectShowのAPIのようだ。果たしてMedia Foundationを使ったプログラムでも使用できるのか？よく分からない。さっぱりMedia Foundationは諦めて、DirectShowのサンプルでも探した方が良いかも知れない... <br /><br />DirectShowのプログラミングには、良い情報源(体系的な資料)が無いような気がする。知っている人は知っているが ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/10/media-foundationwebcam/">more…</a>
 	</div>
 </div>	
 

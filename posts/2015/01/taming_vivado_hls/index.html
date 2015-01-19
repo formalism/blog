@@ -92,14 +92,13 @@
 		</div>
 	  </div>
 	  <div class="content">
-<div class="page-header"><h1>思いつきメモ <small>HLS</small></h1></div>
-<div class='article'>
-	<h2>言うことを聞かないVivado HLSを手なずける</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/01/taming_vivado_hls/">2015-01-19 23:30:00+09:00</a>
+	<div class='article'>
+		<div class="page-header"><h1>言うことを聞かないVivado HLSを手なずける</h1></div>
+		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/01/taming_vivado_hls/">2015-01-19 23:30:00+09:00</a>
 by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/hls.html">HLS</a> </div>
-	<div class="summary"><p><a href="https://formalism.github.io/blog/posts/2015/01/about_vivado_hls/">前回</a>、Vivado HLSにていろいろと問題に遭遇していることを書いたが、
+		<div><p><a href="https://formalism.github.io/blog/posts/2015/01/about_vivado_hls/">前回</a>、Vivado HLSにていろいろと問題に遭遇していることを書いたが、
 いくらか前進できた。</p>
 <p>まず、Co-simulationとC simulationの結果が一致しないという問題。大体以下のような形のコードになっていた。topが合成したい関数のトップレベル。</p>
 <div class="highlight"><pre><span class="k">static</span> <span class="kt">int</span> <span class="n">A</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{...};</span>
@@ -132,40 +131,53 @@ tags: <a href="https://formalism.github.io/blog/tag/hls.html">HLS</a> </div>
 <div class="highlight"><pre><span class="k">static</span> <span class="kt">int</span> <span class="n">A</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{...};</span>
 <span class="k">static</span> <span class="kt">int</span> <span class="n">B</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{...};</span>
 
-<span class="kt">int</span> <span class="nf">g</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">array ...</span></pre></div> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2015/01/taming_vivado_hls/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Vivado HLSについて：話がうますぎると思ったら、その直感は多分正しい</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/01/about_vivado_hls/">2015-01-13 00:02:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/hls.html">HLS</a> </div>
-	<div class="summary"><p>現在<a href="http://japan.xilinx.com/products/design-tools/vivado/integration/esl-design.html" title="Vivado 高位合成">Vivado HLS</a>を使用して回路合成の実験をしているが、いろいろと問題に遭遇している。</p>
-<ul>
-<li>バージョン2014.2で合成するとCo-simulationが終了しない。</li>
-<li>バージョン2014.4で合成するとCo-simulationは終了するが、C simulationと結果が一致しない。</li>
-</ul>
-<p>ひょっとしたら合成側ではなく、シミュレータ側に問題があるかと予想し、
-2014.2で合成した結果を2014.4のシミュレータで動かしてみたが、終了しないのは
-変わらなかった。</p>
-<p>また、2014.2で合成した結果をインプリしてみたが、AXI Stream出力なのに、
-TREADYがHighになっていないにも関わらず、TVALIDがHighでTDATAが変化してしまっていたりする
-状況が見られた(FIFO fullなのに書き込み側が止まらずに進んでしまっているような状況)。
-これは明らかにハンドシェークとしておかしい。</p>
-<p>今はC++から合成しているが、自分の意図としては「ここは並列して動いて欲しい」
-というところがツールにちゃんと伝わらないことが多いのも不満がある。
-RTLでの記述は並列に動作するのが前提だが、Cのような言語は逐次実行が前提なので、
-どこまで並列化できるかは、ツールの賢さに完全に依存してしまう。</p>
-<p>細かいところでは、配列はBlock RAMとして実装されることがあるが、
-その場合自動的に変数は複製してくれないので、Block RAMの2ポート制約の
-せいで並列性が犠牲になることがある。自動的に同一のBlock RAMを複数
-コピーするようにしてくれれば嬉しい(あるいは複製数を指定できるとか)。
-仕方ないので ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2015/01/about_vivado_hls/">more…</a>
-	</div>
-</div>	
+<span class="kt">int</span> <span class="nf">g</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">array</span><span class="p">){</span>
+    <span class="p">....</span>
+    <span class="n">use</span> <span class="n">array</span> <span class="n">element</span>
+    <span class="p">....</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">f_a</span><span class="p">(){</span>
+     <span class="p">....</span>
+     <span class="n">g</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
+     <span class="p">....</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">f_b</span><span class="p">(){</span>
+     <span class="p">....</span>
+     <span class="n">g</span><span class="p">(</span><span class="n">B</span><span class="p">);</span>
+     <span class="p">....</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">top</span><span class="p">(){</span>
+     <span class="p">....</span>
+     <span class="n">f_a</span><span class="p">();</span>
+     <span class="n">f_a</span><span class="p">();</span>
+     <span class="n">f_b</span><span class="p">();</span>
+     <span class="n">f_b</span><span class="p">();</span>
+     <span class="p">....</span>
+<span class="p">}</span>
+</pre></div>
 
 
+<p>f_a, f_bはfと処理は同じだけれど、下位関数に渡す配列を引数にするのではなく、関数内で固定した。これでC simulationと
+一致するRTLが生成された。もちろん、いつもこのようにすれば大丈夫という保証はないので一例として理解して欲しい。</p>
+<p>これにたどり着くのも色々試行錯誤したのだけれど、間違ったSim結果を見ている限り、A,Bに対するインデックスの生成が
+そもそも間違っていたので、なんとなく当たりを付けて等価変換したところ、やっと正しい結果となった。</p>
+<p>次に、Co-simが終了しないという問題。こちらは最初の問題よりも対処方法は適当だったが、ある関数にINLINE
+ディレクティブを付けると終了するようになった。回路規模としては増大したが、それでもこちらの方が
+正しい回路になっているようだ。</p>
+<p>この、Co-simが終了しない問題はかなりやっかいだと思った。</p>
+<p>なお、Co-simの結果の波形は、Verilogでシミュレーションするとwdb, wcfgというファイルがsim/verilogディレクトリに
+できるので、これをVivadoから開けば見ることができる。</p>
+<p>いずれにせよ、Vivado HLSを使うには、C simulationだけでなくCo-simulationまでしっかりと動かして
+結果を確認することが必須だ。高速でなくてもせめて等価なコードを100%生成して欲しいところだが、
+現状そのレベルには達していないようだ。</p></div>
+		<div>
+			<h2>Comments</h2>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+		<div>
+	</div>
 		<footer>
 		  <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>.</p>
 		  <p>&copy; tu1978</p>
