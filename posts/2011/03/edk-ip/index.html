@@ -102,7 +102,8 @@ tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programmin
 		<div><p>EDKで自作IPコアの使用を試している。Create or Import Peripheralを使用し、VHDLでuser_logic.vhdを作成する。user_logic.vhdからVerilogで記述された回路を使用したい。PAOファイルにVerilogファイルを記述したり、MPDファイルにVerilogも使用する設定の記述などを行ったが、どうやってもISEでコンパイルできなかった。<br /><br />結局、IPコアとして埋め込むのはあきらめて、MicroBlazeのxmpがISEでトップレベルファイルになっていたのをやめて、MicroBlazeのstubファイルをトップレベルにし、普通にISEプロジェクトにVerilogのファイルを追加したらOKになった。<br /><br /><b>後日記</b><br /><b><br /></b><br />上記の方法でまたおかしくなってしまったのが、もう一度挑戦したら、最初に試みた方法でできるようになった。ただし、verilogのソースを変更したときは、implementationフォルダにあるngcファイルと、その中のcacheフォルダにあるファイルを削除してからgenerate netlistしないと、変更が反映されない。</p></div>
 		<div>
 			<h2>Comments</h2>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		<div>
 	</div>
 		<footer>

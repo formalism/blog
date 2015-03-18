@@ -102,7 +102,8 @@ tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 		<div><p>XilinxとAlteraのFPGAで、特に外部との高速信号をやりとりをするときの考え方の違いについてまとめてみる。ただしGTPなどのGigabit Transceiverは考えない(まだ使ったことがないので)。<br /><br />Xilinxは、基本的にはIOモジュールにあるI(O)DELAYや、I(O)DDR, I(O)SERDESなどを自分でインスタンス化して使用するのが一般的な方法に思われる。これらを使用することで、動作時に信号のタイミングを動かすことができる。また、これらを使用するとシリアライズ/デシリアライズ部分の回路のタイミングはコンパイル毎にほぼ変化しないので、実際に動作させて、ちょうど良いタップを見つける、ということが可能である。<br /><br />また、ツールとしても、入出力のタイミング制約は、たとえ掛けたとしても、これらのモジュールの配置制約の方が優先される。したがって、あくまでもタイミング制約は、指示した配置をしたうえで、条件を満たすかどうかの確認の意味しかない。<br /><br />一方Alteraの場合は、タイミング制約ドリブンで配置配線が可能である。クロックとデータとの関係をちゃんと制約すれば、それを(入力の場合)内部のレジスタで正しくラッチできるようにレジスタを配置配線してくれる。レジスタはIOにあるものを使用するかもしれないし、そうでないかも知れない。また、動作時にIOのタイミングを変化させることはできないようだ(少なくともCycloneは)。ちなみに、AlteraのIOにも、スタティックに遅延量が決定する遅延ブロックが存在する。この遅延量もタイミング制約を満たせるようにツールが自動設定してくれる。<br /><br />以上から、自分の印象としては、静的にタイミング制約をすることで動作可能な場合はAlteraが便利で、動作時にタイミングを変化させることが必須であればXilinxが便利、という理解である。つまり、ちゃんと外部ICのデータシート通りにタイミング制約をかけて、コンパイラ任せでもしっかり動くAlteraは好感を持つが、DDR3のように動作時のキャリブレーションが必須である場合はXilinx、という感じ。<br /><br /></p></div>
 		<div>
 			<h2>Comments</h2>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		<div>
 	</div>
 		<footer>

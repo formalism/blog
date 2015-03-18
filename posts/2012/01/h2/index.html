@@ -102,7 +102,8 @@ tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programmin
 		<div><p>H2データベース(バージョンは1.3.161)で、selectクエリを実行するときに、予想より時間がかかっていると思われた。それで、explainを使って、どのようにクエリが実行されているのか調べてみたら、案の定インデックスが使われないで全レコードサーチになっていた。<br /><br />問題となったのは、select * from tbl where YEAR(date)=2012のように、日付型を持つフィールドにYEAR演算を施し、その結果が定数になるレコードを取得するクエリ。それで、このクエリを、select * from tbl where date&gt;='2012-1-1' and date&lt;='2012/12/31'と書き換えた。そうしたらちゃんとdateフィールドに設定してあるインデックスを使用するようになり、速度も改善された。<br /><br />これくらいの最適化は自動的にやってくれると思っていたが、そうでもないらしい。確かに、YEARではなくて、select * from tbl where MONTH(date)=1のように、MONTH演算であれば、単純にdateフィールドでインデックスを持っていても検索は簡単ではない。だから同じようにYEAR演算に対しても最適化が効かないのかも知れない、と考えた。</p></div>
 		<div>
 			<h2>Comments</h2>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		<div>
 	</div>
 		<footer>

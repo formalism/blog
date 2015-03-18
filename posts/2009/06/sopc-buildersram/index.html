@@ -102,7 +102,8 @@ tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 		<div><p>めも。<br /><br />QuartusIIのSOPC BuilderでSRAMを使いたい。QuartusIIにはCypressのコンポーネントが付いているが、ビット幅などが使用したいものと違うので、コンポーネントを作成する必要があった。<br /><br />Component Editorを起動してAvalon-MM Tristate Slaveをテンプレートから作成すると、とりあえずコンポーネントはできるものの、NIOSIIのメモリとして使用できない。調べた結果、<span style="font-weight: bold;">(コンポーネント名)_hw.tcl</span>にある、<span style="font-weight: bold;">isMemoryDevice</span>というのを、"false"から"true"にすればOKであると分かった。</p></div>
 		<div>
 			<h2>Comments</h2>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		<div>
 	</div>
 		<footer>

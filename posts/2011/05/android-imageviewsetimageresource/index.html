@@ -106,7 +106,8 @@ tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programmin
 <p>上記で、image配列はあらかじめ用意されているリソース。numが0-48の間は、postDelayedを呼び出すことで、再度runメソッドが呼ばれるようにする。<p><p>そして、onClickハンドラには次の記述を追加する。</p><pre class="prettyprint"><br />imageView.postDelayed(new ImageControl(imageView), 10);<br /></pre><br />つまり、メソッドは次のように繰り返して呼び出される。 <br /><pre>onClick-&gt;imageView#postDelayed-&gt;imageControl#run-&gt;imageView#postDelayed-&gt;imageControl#run-&gt;..</pre><p>画像を切替える必要がある間は、runメソッドの中で再度postDelayedを呼び出してやる。そうすればまたrunメソッドが呼ばれる、という仕組み。そしてrunメソッドの中ではsetImageResourceを呼び出すことで、1枚だけ画像を切り替える。</p><p>これで、ボタンをクリックすると映像が連続して切り替わる動作が実装できた。</p> <SCRIPT charset="utf-8" type="text/javascript" src="http://ws.amazon.co.jp/widgets/q?rt=qf_sp_sr_mfw&ServiceVersion=20070822&MarketPlace=JP&ID=V20070822/JP/formalism-22/8001/f7793475-9567-4d49-8a1f-818a5692b3e2"> </SCRIPT> <NOSCRIPT><A HREF="http://ws.amazon.co.jp/widgets/q?rt=qf_sp_sr_mfw&ServiceVersion=20070822&MarketPlace=JP&ID=V20070822%2FJP%2Fformalism-22%2F8001%2Ff7793475-9567-4d49-8a1f-818a5692b3e2&Operation=NoScript">Amazon.co.jp ウィジェット</A></NOSCRIPT></div>
 		<div>
 			<h2>Comments</h2>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		<div>
 	</div>
 		<footer>

@@ -102,7 +102,8 @@ tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programmin
 		<div><p>CLSQLを使ったWebアプリの実験の続き。<br /><br />前回で、なんとなくCLSQLのリーダマクロが動作していないのでは??ということで終わってしまったが、結論からすると、リーダマクロは動作していた。<br />(setf hunchentoot:<em>catch-errors-p</em> nil)<br />をtop.lispに追加して実験してみたら、<br /><br />debugger invoked on a FLEXI-STREAMS:FLEXI-STREAM-ENCODING-ERROR in thread #<thread>:<br />#\KATAKANA_LETTER_SI is not a LATIN-1 character.<br /><br />というようなエラーがブラウザからのアクセス時に表示されたので、FLEXI-STREAM-ENCODING-ERRORあたりでググってみたら、<br /><br />(setf hunchentoot:<em>hunchentoot-default-external-format</em> :UTF-8)<br /><br />すると良い、という情報を発見。これをtop.lispに追加してみたら、見事に動作した。<br /><br />まだCommon Coldの継続機能は動作していないものの、とりあえず一安心。<br /><br /></thread></p></div>
 		<div>
 			<h2>Comments</h2>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		<div>
 	</div>
 		<footer>

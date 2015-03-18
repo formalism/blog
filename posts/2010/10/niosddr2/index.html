@@ -102,7 +102,8 @@ tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programmin
 		<div><p>これまでNIOS2を使ったシステムでDDR2コントローラを使うときには、コントローラはAvalonバスに接続せずに、CPU外に置いていた。今回、ちょっと思い立ってAvalonバスに接続して試してみることにした。<br /><br />しかしはまった点がある。インプリメントしたSOFをボードにダウンロードするまでは良いのだが、Nios II IDEからファームをダウンロードして実行しようとしても、target processor not responding(正確ではないかも)のようなメッセージが出て、CPUが動作しない。いろいろ試して検索してみた結果、DDR2コントローラのポートglobal_reset_n_to_the_altmemddr_0をCPUからPIOで操作しようとしているのが悪さをしているらしいと分かった。これをFPGA端子に入力されているRSTnピンにしたら、ファームのダウンロードもできるようになった。これで半日つぶれてしまった。</p></div>
 		<div>
 			<h2>Comments</h2>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		<div>
 	</div>
 		<footer>

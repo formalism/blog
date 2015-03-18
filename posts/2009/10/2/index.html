@@ -102,7 +102,8 @@ tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programmin
 		<div><p>前回の続き<br /><br />前回はバイキュービック関数から、画素補間に使用する係数をどのように求めるのかということを記述しました。<br /><br />今回は、「画素補間に使用する元画素をどのように求めるのか」ということについて記述します。前回と同じように、ズーム前の画素がd0,d1,d2,d3,...と並んでいるとします。すると、ズームのために参照する画素としては、1倍(ズームなし)の場合は、最初はd0,d1,d2,d3、次はd1,d2,d3,d4、その次はd2,d3,d4,d5、...以下同様となります。これは当たり前ですね。<br /><br />次に<span style="font-weight: bold;">2倍</span>の場合は、最初はd0,d1,d2,d3、次もd0,d1,d2,d3、その次はd1,d2,d3,d4、その次もd1,d2,d3,d4、その次はd2,d3,d4,d5、...以下同様となります。つまり、同じ4画素が<span style="font-weight: bold;">2回</span>使用されることになるわけです。もちろん、同じ組み合わせでも、積算するための係数が1回目と2回目で異なるのでズームができるのです。1回目は0,1,0,0、2回目は-0.1,0.6,0.6,-0.1のように。<br /><br />同様に<span style="font-weight: bold;">3倍</span>の場合は、同じ4画素が<span style="font-weight: bold;">3回</span>使用され、...となります。倍率が小数点を含むような場合でも考え方は全く同じです。<br /><br />プログラム的に考えると、参照元となる画素の左端のインデックスをi(の<span style="font-weight: bold;">整数部分</span>)が保持するとすると、<br />i = 0;<br />for (1ライン分){<br />    適切な係数で画素を補間して出力;<br />    i += 1/(倍率);<br />}<br />となります。iを使えば、各ステップにおける参照元画素までの距離が分かるので、バイキュービック補間の係数が求まることになります。<br /><br />以上がズームの考え方です。これを回路とする場合、iを固定小数点数とし、バイキュービックの係数をテーブルを作成して参照してゆけば実装できます。</p></div>
 		<div>
 			<h2>Comments</h2>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		<div>
 	</div>
 		<footer>

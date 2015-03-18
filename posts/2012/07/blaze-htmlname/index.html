@@ -102,7 +102,8 @@ tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programmin
 		<div><p>blaze-htmlでname属性の値を設定するときに、コンパイルエラーが出てしまった。次のようなエラー。<br /><br /><pre>    Couldn't match expected type <code>H.AttributeValue'&lt;br /&gt;                with actual type</code>[a0]'<br />    In the return type of a call of <code>concat'&lt;br /&gt;    In the second argument of</code>($)', namely<br />      `concat ["s", show y, "-", show m, ....]'<br />    In the expression: A.name $ concat ["s", show y, "-", show m, ....]&nbsp;<br /></pre><br />concatを使って、name属性の値になってほしい文字列を作っているのだが、これがAttributeValue型にならないと言われる。例によってStackOverflowに解決策が出ていた：<a href="http://stackoverflow.com/questions/3313056/how-does-one-get-strings-not-string-literals-into-blazehtml-attributes-element">how does one get strings (not string literals) into blazehtml attributes/element contents?</a><br /><br />AttributeValue型はIsStringのインスタンスだが、OverloadedStringsを宣言したファイルの文字列リテラルはOKでも、プログラムで作るString型は受け付けない。それで代わりにtoValue :: a -&gt; AttributeValueを用いればよい(一番最後のMagnus Kronqvistさんのコメント)。<br /><br />解決するのに1時間くらいはかかってしまった。</p></div>
 		<div>
 			<h2>Comments</h2>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		<div>
 	</div>
 		<footer>

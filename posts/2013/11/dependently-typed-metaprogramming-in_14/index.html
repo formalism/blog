@@ -102,7 +102,8 @@ tags: <a href="https://formalism.github.io/blog/tag/agda.html">Agda</a> </div>
 		<div><p>まだExercise 1.5の続き。<br /><br />tabulate : forall {n X} -&gt; (Fin n -&gt; X) -&gt; Vec X n<br />tabulate {n} f = ?<br /><br />を完成させる。{n}0としてC-cC-cをして、後はひたすらC-cC-aをすると、型としては正しい式が完成する。<br /><br />tabulate {zero} f = &lt;&gt;<br />tabulate {suc y} f = f fzero , tabulate (\ _ -&gt; f fzero)<br /><br />というもの。fにずっとfzeroを与えたものをn個集めたVecを答えとしている。でも多分これは問題の答えとしては期待通りのものではない。イメージとしては、fにfzero, fsuc fzero, fsuc (fsuc fzero), ... を引数に与えたものをn個集めたものを得たい。つまり、f 0, f 1, f 2,..., f (n-1)を集めるというイメージ。Fin nに含まれるすべての要素をfに渡した結果をVecに集める。<br /><br />実は答えはData.Vecに既にあった。<br /><br />tabulate {zero} f = &lt;&gt;<br />tabulate {suc y} f = f fzero , tabulate {y} (\ n -&gt; f (fsuc n))<br /><br />も型を満たす。実際にtabulate {3} fなどを展開してみると、上記の期待通りとなっていることが確認できる。再帰を繰り返す毎に、fzeroに適用されるfsucが一つずつ増えていく。F (n-1), F (n-2), ..., F 0を作ろうとすると難しいが、逆に0からはじめて1ずつ加えていくのを再帰と共に行うところがミソか。</p></div>
 		<div>
 			<h2>Comments</h2>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="@tu1978">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		<div>
 	</div>
 		<footer>
