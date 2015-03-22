@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
@@ -94,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>Clojureが素敵な件</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/clojure/">2010-03-26 07:00:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>最近、ちょっとしたWeb+DBアプリケーションを書きたいと思った。数年前は、Java+Struts+MySQLのような組み合わせがはやっていたと思う。その後もJavaのフレームワークはSpringやらSeasarやらたくさん提案されてきたし、自分もSeasarは一時期使って便利だと思った。でもやっぱり記述量が多く、面倒くさい。<br /><br />近頃はLLブームということもあって、Ruby on Railsに始まるLL言語系フレームワークがある。RoRは自分で使ってみて、家計簿のWebアプリを作成し、今でも現役で使っている。ただ、個人的にはバージョンアップなどが手間で、あまり好きではない。<br /><br />自分の中での最近はやりの言語はCommon Lispである。その実装としてSBCLなどがあり、SBCL+MySQLでも簡単なWebアプリを作ってみた。が、Lisp系言語はライブラリをいちいちインストールするのが面倒に思う。特にWindowsは弱い。Linux, Windows, Solarisなどの環境で、ひとつのものから別のものへすぐに移行するのは難しい。あるいは、最近であればGoogle App Engineを使って、環境の管理は全部Google様におまかせ、というのが流行なのであろうか。でもGAEは基本的にはRDBは使えないし、Lispも使えない。 <br /><br />以上のような遍歴を経て、現状において最善の折衷案として自分的に浮上しているのは、<a href="http://clojure.org/">clojure</a>である。Lispとまではいかないが、Lisp風味であり、<a href="http://github.com/weavejester/compojure">compojure</a>というWebフレームワークもある。これに ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/03/clojure/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>思考の整理学</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/blog-post_26/">2010-03-26 06:06:00+09:00</a>
@@ -182,15 +191,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p>前回の続き<br /><br />前回はバイキュービック関数から、画素補間に使用する係数をどのように求めるのかということを記述しました。<br /><br />今回は、「画素補間に使用する元画素をどのように求めるのか」ということについて記述します。前回と同じように、ズーム前の画素がd0,d1,d2,d3,...と並んでいるとします。すると、ズームのために参照する画素としては、1倍(ズームなし)の場合は、最初はd0,d1,d2,d3、次はd1,d2,d3,d4、その次はd2,d3,d4,d5、...以下同様となります。これは当たり前ですね。<br /><br />次に<span style="font-weight: bold;">2倍</span>の場合は、最初はd0,d1,d2,d3、次もd0,d1,d2,d3、その次はd1,d2,d3,d4、その次もd1,d2,d3,d4 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/10/2/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>デジタルズーム</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2009/10/digital-zoom-bicubic/">2009-10-22 08:49:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p><span style="font-weight: bold;">画像のデジタルズームの方法について<br /><br /></span>きれいに画像を拡大するためのアルゴリズムとしてよく用いられるのはバイキュービック法というものです。それを実際に実装しようとしたときのメモです。<br /><br /><span style="font-weight: bold;">バイキュービックの係数の使い方</span><br /><br /><a href="http://yoffy.dyndns.org/2006/02/lanczos.html">ここ</a>を初めとしていろいろな場所でバイキュービック関数というのが取り上げられていますが、関数だけ見せられても??となってしまいます。説明を試みてみたいと思います。<br /><br />まず、ここでは、バイキュービック法でズームをするという場合、4x4のオリジナル画像を使用し、その16画素を元にして、新しいズーム後の画素値を計算する、ということを前提とします。そのとき、ズーム後の画素値は、要するに4x4の画素のそれぞれに重みを乗じて加えることによって得られます。その重みの係数をバイキュービック関数というのが決定しています。<br /><br />まず、1次元だけを考えてみます。例として、2倍のズームをするとします。補間元となるオリジナル画像が、左から順にd0,d1,d2,d3と並んでいるとします。すると、d1,d2の間で2つの補間画素を求めることになります。初めの補間画素は、実質d1となります。2番目の補間画素はd1とd2のちょうど真ん中にあると考えるわけです。すると、その画素からd0までの距離は1.5、d1までの距離は0.5、d2までの距離は0.5、d3までの距離は1.5となります。それで、これらの距離を<a href="http://yoffy.dyndns.org/2006/02/lanczos.html">先ほどの</a><a href="http://yoffy.dyndns.org/2006/02/lanczos.html">URL</a>にあるグラフのx座標とし、対応するyの値を係数とするわけです ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/10/digital-zoom-bicubic/">more…</a>
 	</div>
 </div>	
 

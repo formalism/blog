@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
@@ -94,6 +94,16 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>Haskellにて変更可能配列(mutable vector)の実験</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/03/mutable_vector_in_haskell/">2015-03-22 23:10:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
+	<div class="summary"><p>自分用のメモ。Haskellにてmutable vectorを使う方法。STモナドの中であれば変更できる。STモナドは
+PrimMonad ST, PrimState STとなっている。<a href="https://gist.github.com/formalism/f6efc93df8e90cfd39b0" title="DctQuant.hs">実装はここ</a>. DctQuantという名前なのにDCTしか実装していない。ijgjpegのfloatバージョンを元にして変更。あまり確認していないので、計算に間違いがあるかも。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2015/03/mutable_vector_in_haskell/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>言うことを聞かないVivado HLSを手なずける</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/01/taming_vivado_hls/">2015-01-19 23:30:00+09:00</a>
@@ -316,15 +326,6 @@ Status = XScuGic_Connect(IntcInstancePtr, XPS_FPGA0_INT_ID,(Xil_ExceptionHandler
 XScuGic_Enable(IntcInstancePtr, XPS_FPGA0_INT_ID);
 </pre></p>
 <p>これでXPS_FPGA0_INT_ID(61)番の割り込みが発生すると、 IrqHandler関数が呼ばれる。IrqHandler関数の中で、PLロジックにアクセスして、割り込みをクリアしている。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/zynq-pl-arm/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Zynq上でのLinuxアプリケーションのデバッグ方法</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/zynqlinux/">2014-05-07 14:40:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> <a href="https://formalism.github.io/blog/tag/tcf.html">TCF</a> </div>
-	<div class="summary"><p>やっとZYBO上でLinuxが(Ethernetも含めて)動作するようになった。これについては別の記事でまとめることにするが、一番気になっていたのは、LinuxアプリケーションのデバッグがXilinxのSDKから簡単に可能かどうかだった。<br /><br />現在(2014.1)のSDKにはGDB, System Debuggerという2種類のデバッグ方法が用意されている。GDBでのデバッグは可能だったが、System Debuggerでは出来なかった。こちらの<a href="http://t.co/pq8oQ2lBwx">ビデオ</a>によると、System DebuggerでLinuxアプリケーションをデバッグしている。スレッド単位でブレークを掛けたりすることもできる様子で、なかなか強力だと思う。<br /><br />一方、<a href="http://t.co/VrNdQfhC09">System Debugger Limitations, Known Issues, and FAQs</a>によると、2013.4の時点ではSystem DebuggerでのLinuxアプリケーションのデバッグはできないように思われる。2014.1については情報は見つからなかった。<br /><br />上記のビデオでは実現できていることからすると、これが可能になったのはごく最近のことであると思われる。ビデオをよく見てみると、Yocto Linuxが起動しているのが分かる。また、TCF(System Debuggerが使用するフレームワークの仕様)のためのagentが最後の方で起動しているのも分かる。<br /><br />とりあえず自分の要件としてはGDBでも良いが、System Debuggerについても時間があるときに調査してみたい。<br /><br />また ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/zynqlinux/">more…</a>
 	</div>
 </div>	
 

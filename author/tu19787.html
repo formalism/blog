@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
@@ -94,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>Webサーバのパフォーマンス比較</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/04/node-vs-clozurecl/">2011-04-18 08:17:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>node.js(+express)とClozureCL(+hunchentoot)の速度を比較してみた。<br /><br />node.jsの環境<br />$ node -v<br />v0.2.4<br /><br />node.jsのプログラム(関係する部分だけ)<br /><br /><div><div>app.get('/hello', function(req, res){</div><div><span class="Apple-tab-span" style="white-space: pre;"> </span>res.render('hello.ejs');</div><div>&nbsp;&nbsp; &nbsp;});</div></div><div><br /></div><div>単にファイルからデータを返すだけ。abの結果：</div><div><br /></div><div><div>This is ApacheBench, Version 1.3d &lt;$Revision: 1.73 $&gt; apache-1.3</div><div>Copyright (c) 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech ...</div></div></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/04/node-vs-clozurecl/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>Xilinx Flashコンフィグレーション</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/xilinx-flash/">2011-03-29 10:01:00+09:00</a>
@@ -173,15 +182,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p><a href="http://c-to-verilog.com/index.html">C to Verilog</a>というサイトを見つけた。最近はいろいろ高位合成ツールもあるようだけれど、きっと高価なものだと想像してしまう。このサイトだと、無料でCコードからVerilogコードを生成してくれる。試しに、サイトにもあるpop countのコードをverilogに変換してシミュレーションしてみた。<br /><br />ちなみに、ポップカウントというのは、変数中の1の数のこと。例えば、a=0x12だと、二進数で00010010だから、ポップカウントは2になる。<br /><br />ポップカウントを計算したいデータ(モジュールへの入力)は、mem_BというBRAMに格納されている。また、計算結果はmem_Aに格納する。<br /><br /><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;">シミュレーションの様子を次に示す。まずはシミュレーション開始時。</div><div style="margin-bottom: 0px; margin-left: 0px; margin-right: 0px; margin-top: 0px;"><br /></div>resetをテストベンチから入力すると、rdyがLになる。生成されたモジュールがmem_B_addr0を順次カウントアップしている。mem_B_outから得るデータでモジュールが計算を行う。最初の方はmem_B_addr0が1clkごとに7になるまでカウントアップしているのに注目できる。これはこのモジュールがパイプラインで計算しているから。<br /><br />120nsでmem_A_mode0がHになる。これは最初のデータ0に対するポップカウントが計算でき、mem_Aに結果を格納するためのWrite Enable信号である。mem_Aのアドレス0に0(mem_A_in0に出力されている)をライトしている。160nsでもまたmem_A_mode0がHである。これはアドレス1にデータ1のポップカウント1をライトするための信号。<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_HtI0taDGSV0/TUuTWCcMMpI/AAAAAAAABSE/VEOmnMsRHgY/s1600/popcnt1.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="198" src="http://4.bp.blogspot.com/_HtI0taDGSV0/TUuTWCcMMpI/AAAAAAAABSE/VEOmnMsRHgY/s320/popcnt1.png" width="320" /></a></div><div class="separator" style="clear: both; text-align: center;"><br /></div><div class="separator" style="clear: both; text-align: left;">次にシミュレーション最後の部分を示す。rdyがHになると終了。最後の出力は、データ0x3FFに対するポップカウント10(=0x0a)である。</div><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_HtI0taDGSV0/TUuTYxbGUzI/AAAAAAAABSI/WP-gMBYACy0/s1600/popcnt2.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="198" src="http://3.bp.blogspot.com/_HtI0taDGSV0/TUuTYxbGUzI/AAAAAAAABSI/WP-gMBYACy0/s320/popcnt2.png" width="320" /></a></div><br />正しく求められていることが分かる。<br /><br />少し試して見ただけだが ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/02/c-to-verilog/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>node.js+MySQLで文字化け</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/01/nodejsmysql/">2011-01-21 08:57:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>node.jsからMySQLを使用して、昔にRoRで作成したアプリと同等のものを(同じデータベースを使って)作ろうとしているが、いろいろやっても文字化けが解決できなかった。ひたすら検索し、<a href="http://www.gcd.org/blog/2009/09/177/">仙石浩明の日記  2009年9月14日 文字化けしていなくても MySQL 内の文字コードが正しくない場合がある</a>を見て、ついに原因が判明した。結局、既存のRoRで作成したアプリが、latin1でMySQLとやりとりしているのが原因だった。実際に、mysqldumpでデータベースをダンプする際に、--default-character-set=latin1を追加したら、文字化けしなかった。というわけで、根本的に解決するには、データベースのデータをちゃんとUTF8にすることだけれど、ひとまず、node.jsのプログラム側で、set names latin1というクエリを送って、RoRと同じ動作にさせたら、文字化けが直った。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/01/nodejsmysql/">more…</a>
 	</div>
 </div>	
 

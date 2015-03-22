@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
@@ -94,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>FPGA+HFT</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/03/fpgahft/">2013-03-29 14:53:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>最近モチベーションが下がっている。ネットを徘徊していたら、ちょっと面白いネタを見つけた：<br /><br /><a href="http://d.hatena.ne.jp/kazunori_279/20130107/1357521548">文字通り「ネットワークがコンピューター」な金融HFTでのFPGAの使われ方</a><br /><br />ここ数年HFTの分野では、FPGAで処理を実装するのがはやってきている、ということ。リンク先の記事からもリンクされている、<a href="http://cufp.org/videos/parallel-scientific-awesome-haskell-fpga-compiler">Parallel Scientific: The Awesome Haskell FPGA Compiler</a>は以前すこし眺めていたが、今回の記事を読んで全体像の理解が少し進んだ。なるほど、こんなところでも回路設計をしてしまう時代になったのね、という感じ。<br /><br />10Gbpsのネットワークスイッチに入れてしまうというのであれば、当然Alteraで言えばStratixクラスの1個何十万もするFPGAを使うのだろう。外付けメモリもDDRみたいなレイテンシの大きいものではなく、RLDRAMやQDRといった、個人的には使用しているのをあまり見聞きしないタイプのメモリを使っているのではなかろうか。<br /><br />もしこういったものがTCP/IPで通信をしているとすれば、Ethernet MACのIPから出てくるパケットをステートマシンでTCP/IP部分をデコードしてやり、中身のデータに基づいてガリガリ計算し、その結果に基づいてこれまたステートマシンでEthernet MAC IPに売買パケットを流し込む、というような流れになっているのだろう。そして売買の結果は、メモリに書き込んでおき、ログとして保存。これでソフトウェアは一切介在せずに株式やら為替の売買を実行する、と。もちろん、売買条件の設定などの初期化操作はソフトウェアで行うはずだが。<br /><br />妄想するとなかなか面白そうな分野だなぁ。クオンツの元でブイブイ(死語)いわせるプログラマのイメージが。なるほど、金融業界は計算機分野でも ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/03/fpgahft/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>OpenCLの参考書籍</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/03/opencl-reference-docs/">2013-03-11 14:43:00+09:00</a>
@@ -177,15 +186,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
 	<div class="summary"><p>最近Haskellで趣味のプログラムを作成することが増えた。一度型のラクさに慣れてしまうと、Lisp系言語でプログラムを作るのはおっくうになってしまう。自分も歳を取ったものだ。しかも、少なくともWebアプリに限ってだが、プログラムのメモリ使用量や実行速度でもJavaに勝っていると思う。  その割には、Webで調べてみても、あまりHaskellでガチにアプリを作りました、という記事を多く見つけられない。どちらかというと、Haskellを触ってみましたという記事が多いように感じる。もちろん、探せば多少はあって、<a href="http://en.wikipedia.org/wiki/High_frequency_trading">HFT</a>システムをHaskellで実装しました、とか。でも他の言語と比べて全般的に記事が少ないと感じる。  もっとHaskellが使われてもいいのではないのかな、と思った次第。それだけ。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/08/haskell/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>数学ガール読んだ</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/08/math-girl/">2012-08-12 13:43:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/math.html">Math</a> </div>
-	<div class="summary"><p>最近、<a href="http://www.amazon.co.jp/gp/product/4797367547/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4797367547&amp;linkCode=as2&amp;tag=formalism-22">数学ガール ガロア理論 (数学ガールシリーズ 5)</a><img alt="" border="0" height="1" src="http://www.assoc-amazon.jp/e/ir?t=formalism-22&amp;l=as2&amp;o=9&amp;a=4797367547" style="border: none !important; margin: 0px !important;" width="1" />を購入した。割と分厚かったが、読みやすかったので2週間くらいで読めた。個人的には登場人物のやりとりは不要だと思うが、内容は全般的にわかりやすく書かれていると思った。<br /><br />1-9章はとてもわかりやすい。 1のn乗根、体の拡大、拡大次数、正規部分群、巡回群、3次方程式の解の公式(これはまともに学んだのは初めてだった)、作図問題といった内容が説明されている。10章でガロアの第一論文を要約しているが、自分はここは消化不良だった。著者もあとがきでこの章は悩んだところだと告白している。10章までの説明はとても詳細で、例も多かったが、10章は少しこなれていないと感じた。<br /><br />ただ、全体的には著者の説明のうまさが際だっていると感じた。大学以来、数学書はとにかく読むのがつらくて、歯を食いしばって1ページ1ページゆっくり理解してゆくというイメージがあった。でも、この本はページ数を惜しまずに、少しの内容をたくさんの文章と図で説明している。いわば、「自分で数学書を読んでいるときにどう考えながら理解してゆくか」というその"声"を登場人物の会話に織り込んでいるので、すらすらと読み進められる。このラクさはうれしい。数学の内容とは別にして、こう書けば良いのか！という発見がある。<br /><br />とりあえず、1-9章までで、ある程度知識が得られたので、時間があれば以前購入して以来積ん読だった<a href="http://www.amazon.co.jp/gp/product/4480092838/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4480092838&amp;linkCode=as2&amp;tag=formalism-22">ガロア理論入門 (ちくま学芸文庫)</a><img alt="" border="0" height="1" src="http://www.assoc-amazon.jp/e/ir?t=formalism-22&amp;l=as2&amp;o=9&amp;a=4480092838" style="border: none !important; margin: 0px !important;" width="1" />を読んでみたいと思う ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/08/math-girl/">more…</a>
 	</div>
 </div>	
 

@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
@@ -94,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>node.js+MySQLで文字化け</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/01/nodejsmysql/">2011-01-21 08:57:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>node.jsからMySQLを使用して、昔にRoRで作成したアプリと同等のものを(同じデータベースを使って)作ろうとしているが、いろいろやっても文字化けが解決できなかった。ひたすら検索し、<a href="http://www.gcd.org/blog/2009/09/177/">仙石浩明の日記  2009年9月14日 文字化けしていなくても MySQL 内の文字コードが正しくない場合がある</a>を見て、ついに原因が判明した。結局、既存のRoRで作成したアプリが、latin1でMySQLとやりとりしているのが原因だった。実際に、mysqldumpでデータベースをダンプする際に、--default-character-set=latin1を追加したら、文字化けしなかった。というわけで、根本的に解決するには、データベースのデータをちゃんとUTF8にすることだけれど、ひとまず、node.jsのプログラム側で、set names latin1というクエリを送って、RoRと同じ動作にさせたら、文字化けが直った。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/01/nodejsmysql/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>C#のScrollBar</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/01/cscrollbar/">2011-01-17 07:01:00+09:00</a>
@@ -173,15 +182,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
 	<div class="summary"><p>今年二台目のプリンタを購入した。<a href="http://www.amazon.co.jp/gp/product/B002OB3OE2?ie=UTF8&amp;tag=formalism-22&amp;linkCode=as2&amp;camp=247&amp;creative=1211&amp;creativeASIN=B002OB3OE2">Canon PIXUS インクジェット複合機 MP270</a><img alt="" border="0" height="1" src="http://www.assoc-amazon.jp/e/ir?t=formalism-22&amp;l=as2&amp;o=9&amp;a=B002OB3OE2" style="border: none !important; margin: 0px !important;" width="1" />。個人的にはレーザプリンタで十分なのだけれど、レーザだと薄い用紙に印刷することはできない。紙を巻き込んでしまう。それで仕方なくインクジェットを購入。この機種は安い上にスキャナの機能もついているので、自分にとっては役だった。手書きの文書をスキャンしたりしたいときもあるので。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/09/pixus-mp270/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Clojureが素敵な件</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/clojure/">2010-03-26 07:00:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>最近、ちょっとしたWeb+DBアプリケーションを書きたいと思った。数年前は、Java+Struts+MySQLのような組み合わせがはやっていたと思う。その後もJavaのフレームワークはSpringやらSeasarやらたくさん提案されてきたし、自分もSeasarは一時期使って便利だと思った。でもやっぱり記述量が多く、面倒くさい。<br /><br />近頃はLLブームということもあって、Ruby on Railsに始まるLL言語系フレームワークがある。RoRは自分で使ってみて、家計簿のWebアプリを作成し、今でも現役で使っている。ただ、個人的にはバージョンアップなどが手間で、あまり好きではない。<br /><br />自分の中での最近はやりの言語はCommon Lispである。その実装としてSBCLなどがあり、SBCL+MySQLでも簡単なWebアプリを作ってみた。が、Lisp系言語はライブラリをいちいちインストールするのが面倒に思う。特にWindowsは弱い。Linux, Windows, Solarisなどの環境で、ひとつのものから別のものへすぐに移行するのは難しい。あるいは、最近であればGoogle App Engineを使って、環境の管理は全部Google様におまかせ、というのが流行なのであろうか。でもGAEは基本的にはRDBは使えないし、Lispも使えない。 <br /><br />以上のような遍歴を経て、現状において最善の折衷案として自分的に浮上しているのは、<a href="http://clojure.org/">clojure</a>である。Lispとまではいかないが、Lisp風味であり、<a href="http://github.com/weavejester/compojure">compojure</a>というWebフレームワークもある。これに ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/03/clojure/">more…</a>
 	</div>
 </div>	
 

@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
@@ -94,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>Zynq上でのLinuxアプリケーションのデバッグ方法</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/zynqlinux/">2014-05-07 14:40:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> <a href="https://formalism.github.io/blog/tag/tcf.html">TCF</a> </div>
+	<div class="summary"><p>やっとZYBO上でLinuxが(Ethernetも含めて)動作するようになった。これについては別の記事でまとめることにするが、一番気になっていたのは、LinuxアプリケーションのデバッグがXilinxのSDKから簡単に可能かどうかだった。<br /><br />現在(2014.1)のSDKにはGDB, System Debuggerという2種類のデバッグ方法が用意されている。GDBでのデバッグは可能だったが、System Debuggerでは出来なかった。こちらの<a href="http://t.co/pq8oQ2lBwx">ビデオ</a>によると、System DebuggerでLinuxアプリケーションをデバッグしている。スレッド単位でブレークを掛けたりすることもできる様子で、なかなか強力だと思う。<br /><br />一方、<a href="http://t.co/VrNdQfhC09">System Debugger Limitations, Known Issues, and FAQs</a>によると、2013.4の時点ではSystem DebuggerでのLinuxアプリケーションのデバッグはできないように思われる。2014.1については情報は見つからなかった。<br /><br />上記のビデオでは実現できていることからすると、これが可能になったのはごく最近のことであると思われる。ビデオをよく見てみると、Yocto Linuxが起動しているのが分かる。また、TCF(System Debuggerが使用するフレームワークの仕様)のためのagentが最後の方で起動しているのも分かる。<br /><br />とりあえず自分の要件としてはGDBでも良いが、System Debuggerについても時間があるときに調査してみたい。<br /><br />また ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/zynqlinux/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>Linux on Zynq (ZYBO)</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/linux-on-zynq-zybo/">2014-05-06 09:39:00+09:00</a>
@@ -201,15 +210,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/agda.html">Agda</a> </div>
 	<div class="summary"><p><a href="http://www.cl.cam.ac.uk/~ok259/agda-course-13/">Dependently Typed Metaprogramming (in Agda)</a>のメモ <br /><br /><b>Agdaの編集方法：</b> <br />Emacsのagda-modeを使えば、TeXの感覚で記号を入力できる。例：<br />太字のN : \bn <br />下付の数字 : _0, _1など<br />× : \times<br />→ : \rightarrow<br /><br />それと型構成子×は、open import Data.Productを書かないと使えなかった。また、最初はData.Productが開けなかったので、(custom-set-variables '(agda2-include-dirs (quote ("." "agda-lib-folder/src"))))を.emacs.elに追加する必要があった。<br /><br />------------------------------------<br />C-cC-lで現在開いているagdaファイルをロードしてチェックしてくれる。<br /><br />zip : forall {n S T} -&gt; Vec S n -&gt; Vec T n -&gt; Vec (S × T) n ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>高速ビットマップ描画方法を調査</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/10/fast-bitmap-drawing-in-windows/">2013-10-19 14:56:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/windows.html">Windows</a> </div>
-	<div class="summary"><p>高速にメモリ上のデータをWindowsで表示する方法について調査してみた。<br /><br />経験上OpenCVは余り高速ではない。OpenGLでテクスチャに貼り付ける、という方法は高速で、プラットフォームにもあまり依存しない方法なのだが、カメラと対象物との位置関係で、勝手に変形されてしまう(これはOpenGLの目的からして当然であるが、ちゃんとデータを1対1で画像ピクセルに反映させたい、というような場合には問題となる)、という問題がある。<br /><br />また、OpenGLを使用する場合、ウィンドウ管理はGLUTに任せてしまうと、自分で作成するWindows上のウィンドウに描画するときに問題になる(理論上は可能なはずだが、面倒なのであまり調べていない)。<br /><b><br /></b><b>目標としては、Windowsで、自分で管理するウィンドウの内部に、高速にメモリ上のデータを表示したい。</b><br /><br />少し調べてみた結果、Vista以降のWindowsであれば、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd370990(v=vs.85).aspx">Direct2D</a>を使用するのが目的にかなっているようだ。もちろんWindowsにべったりになってしまうのだが、仕方がない。<br /><br />なんとなく、ID2D1HwndRenderTargetでBitmapを作成し、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd371155(v=vs.85).aspx">CopyFromMemory</a>を行って<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd742844(v=vs.85).aspx">DrawBitmap</a>という流れで出来そうな気がしてきた。これだとオフスクリーンではないかも知れない。でも、この応用で何とかなりそうな気がする。<br /><br />今度実験してみよう。<br /><br />===================<br />ちなみに、調べてみると、MacではOpenGLの<a href="https://developer.apple.com/library/mac/documentation/graphicsimaging/conceptual/opengl-macprogguide/opengl_offscreen/opengl_offscreen.html">Framebuffer object</a>という方法があるようだ。自分がWindows上のOpenGLで試したときには、FBOはそれほどパフォーマンスが良くなかった印象がある。Macだとまた違うかも知れないが。 </p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/10/fast-bitmap-drawing-in-windows/">more…</a>
 	</div>
 </div>	
 

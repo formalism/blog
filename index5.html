@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
@@ -94,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>数学ガール読んだ</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/08/math-girl/">2012-08-12 13:43:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/math.html">Math</a> </div>
+	<div class="summary"><p>最近、<a href="http://www.amazon.co.jp/gp/product/4797367547/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4797367547&amp;linkCode=as2&amp;tag=formalism-22">数学ガール ガロア理論 (数学ガールシリーズ 5)</a><img alt="" border="0" height="1" src="http://www.assoc-amazon.jp/e/ir?t=formalism-22&amp;l=as2&amp;o=9&amp;a=4797367547" style="border: none !important; margin: 0px !important;" width="1" />を購入した。割と分厚かったが、読みやすかったので2週間くらいで読めた。個人的には登場人物のやりとりは不要だと思うが、内容は全般的にわかりやすく書かれていると思った。<br /><br />1-9章はとてもわかりやすい。 1のn乗根、体の拡大、拡大次数、正規部分群、巡回群、3次方程式の解の公式(これはまともに学んだのは初めてだった)、作図問題といった内容が説明されている。10章でガロアの第一論文を要約しているが、自分はここは消化不良だった。著者もあとがきでこの章は悩んだところだと告白している。10章までの説明はとても詳細で、例も多かったが、10章は少しこなれていないと感じた。<br /><br />ただ、全体的には著者の説明のうまさが際だっていると感じた。大学以来、数学書はとにかく読むのがつらくて、歯を食いしばって1ページ1ページゆっくり理解してゆくというイメージがあった。でも、この本はページ数を惜しまずに、少しの内容をたくさんの文章と図で説明している。いわば、「自分で数学書を読んでいるときにどう考えながら理解してゆくか」というその"声"を登場人物の会話に織り込んでいるので、すらすらと読み進められる。このラクさはうれしい。数学の内容とは別にして、こう書けば良いのか！という発見がある。<br /><br />とりあえず、1-9章までで、ある程度知識が得られたので、時間があれば以前購入して以来積ん読だった<a href="http://www.amazon.co.jp/gp/product/4480092838/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4480092838&amp;linkCode=as2&amp;tag=formalism-22">ガロア理論入門 (ちくま学芸文庫)</a><img alt="" border="0" height="1" src="http://www.assoc-amazon.jp/e/ir?t=formalism-22&amp;l=as2&amp;o=9&amp;a=4480092838" style="border: none !important; margin: 0px !important;" width="1" />を読んでみたいと思う ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/08/math-girl/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>Microsoft Surface</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/07/microsoft-surface/">2012-07-26 12:20:00+09:00</a>
@@ -173,15 +182,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p>H2データベース(バージョンは1.3.161)で、selectクエリを実行するときに、予想より時間がかかっていると思われた。それで、explainを使って、どのようにクエリが実行されているのか調べてみたら、案の定インデックスが使われないで全レコードサーチになっていた。<br /><br />問題となったのは、select * from tbl where YEAR(date)=2012のように、日付型を持つフィールドにYEAR演算を施し、その結果が定数になるレコードを取得するクエリ。それで、このクエリを、select * from tbl where date&gt;='2012-1-1' and date&lt;='2012/12/31'と書き換えた。そうしたらちゃんとdateフィールドに設定してあるインデックスを使用するようになり、速度も改善された。<br /><br />これくらいの最適化は自動的にやってくれると思っていたが、そうでもないらしい。確かに、YEARではなくて、select * from tbl where MONTH(date)=1のように、MONTH演算であれば、単純にdateフィールドでインデックスを持っていても検索は簡単ではない ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/01/h2/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>継続ベースWebアプリについて少し考えた</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/11/web/">2011-11-27 13:51:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>Webアプリにおいてセッション管理を行うときに、昔からJSPなどで行われている、セッションIDを何らかのデータに結びつける手法がある。一方、例えば<a href="http://www.ogis-ri.co.jp/otc/hiroba/technical/seaside/seaside1/index.html">Seaside</a>のように、継続を使用してセッション管理を行うという方法もある。継続ベースというのは技術的にもおもしろいし、上のURLでも指摘しているように、二度押しなどの対策もしやすい、というメリットがある。<br /><br />しかし、単純に実装してしまうと、URLがユーザにとって意味不明の文字列になってしまう。セッションと強く結びついているので、ブックマークをすることができない。もちろん、「ログインが必要な画面など、セッション内のページについてはブックマークができなくても良い」という考え方もあるが、「どうせ継続で制御できるのだから、リクエストURLはいつも固定でいい」などという安直な考えを推し進め、ログインが不要なページまで継続で実装してしまうと、意味不明なURLが大量生産されることになってしまう。<br /><br />そう考えると、JSPスタイルで実装するのも悪くない。ユーザ(主語)が、ある「対象」にある「操作」を行う、というのを実装するのであれば、リクエストURLは「動作」と「対象」を表し、認証情報(「主語」)のためにセッションを用いる、というのが良い解ではないかと考えた。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/11/web/">more…</a>
 	</div>
 </div>	
 

@@ -94,12 +94,13 @@
 	  </div>
 	  <div class="content">
 	<div class='article'>
-		<div class="page-header"><h1>ZYBOのSDカードブート</h1></div>
-		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/zybosd/">2014-05-21 14:47:00+09:00</a>
+		<div class="page-header"><h1>Haskellにて変更可能配列(mutable vector)の実験</h1></div>
+		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/03/mutable_vector_in_haskell/">2015-03-22 23:10:00+09:00</a>
 by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
  in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> </div>
-		<div><p>引き続き、SDカードからのLinuxブートを試してみた。<br /><br /><a href="https://github.com/Digilent/u-boot-Digilent-Dev">Digilentのu-boot</a>のxilinx-v2013.4をチェックアウトしたものでは、ZYBOのu-bootはSD起動にジャンパ設定されていると、SDカード内にuImage, devicetree.dtb, uramdisk.image.gzというファイルを探して、それをメモリに展開、Linuxをブートしてくれるようになっている(printenvで確認可能)。<br /><br />したがって、BOOT.binにはカーネルやramdisk, devicetreeは必要ではなくて、FSBLと(必要であれば)FPGAのbitstream, u-bootだけが入っていればよい。BOOT.binの作り方については、基本的に<a href="http://www.wiki.xilinx.com/Prepare+Boot+Image">こちらに記載されている方法</a>に従えばよい。<br /><br />以上でSDカードからのブートが出来るようになった。<br /><br /></p></div>
+tags: <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
+		<div><p>自分用のメモ。Haskellにてmutable vectorを使う方法。STモナドの中であれば変更できる。STモナドは
+PrimMonad ST, PrimState STとなっている。<a href="https://gist.github.com/formalism/f6efc93df8e90cfd39b0" title="DctQuant.hs">実装はここ</a>. DctQuantという名前なのにDCTしか実装していない。ijgjpegのfloatバージョンを元にして変更。あまり確認していないので、計算に間違いがあるかも。</p></div>
 		<div>
 			<h2>Comments</h2>
 <a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>

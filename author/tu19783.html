@@ -66,7 +66,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (5)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
@@ -94,6 +94,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>高速ビットマップ描画方法を調査</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/10/fast-bitmap-drawing-in-windows/">2013-10-19 14:56:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/windows.html">Windows</a> </div>
+	<div class="summary"><p>高速にメモリ上のデータをWindowsで表示する方法について調査してみた。<br /><br />経験上OpenCVは余り高速ではない。OpenGLでテクスチャに貼り付ける、という方法は高速で、プラットフォームにもあまり依存しない方法なのだが、カメラと対象物との位置関係で、勝手に変形されてしまう(これはOpenGLの目的からして当然であるが、ちゃんとデータを1対1で画像ピクセルに反映させたい、というような場合には問題となる)、という問題がある。<br /><br />また、OpenGLを使用する場合、ウィンドウ管理はGLUTに任せてしまうと、自分で作成するWindows上のウィンドウに描画するときに問題になる(理論上は可能なはずだが、面倒なのであまり調べていない)。<br /><b><br /></b><b>目標としては、Windowsで、自分で管理するウィンドウの内部に、高速にメモリ上のデータを表示したい。</b><br /><br />少し調べてみた結果、Vista以降のWindowsであれば、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd370990(v=vs.85).aspx">Direct2D</a>を使用するのが目的にかなっているようだ。もちろんWindowsにべったりになってしまうのだが、仕方がない。<br /><br />なんとなく、ID2D1HwndRenderTargetでBitmapを作成し、<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd371155(v=vs.85).aspx">CopyFromMemory</a>を行って<a href="http://msdn.microsoft.com/ja-jp/library/windows/desktop/dd742844(v=vs.85).aspx">DrawBitmap</a>という流れで出来そうな気がしてきた。これだとオフスクリーンではないかも知れない。でも、この応用で何とかなりそうな気がする。<br /><br />今度実験してみよう。<br /><br />===================<br />ちなみに、調べてみると、MacではOpenGLの<a href="https://developer.apple.com/library/mac/documentation/graphicsimaging/conceptual/opengl-macprogguide/opengl_offscreen/opengl_offscreen.html">Framebuffer object</a>という方法があるようだ。自分がWindows上のOpenGLで試したときには、FBOはそれほどパフォーマンスが良くなかった印象がある。Macだとまた違うかも知れないが。 </p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/10/fast-bitmap-drawing-in-windows/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>今日の実験 - Media Foundationを使ってWebCamキャプチャ</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/10/media-foundationwebcam/">2013-10-13 15:25:00+09:00</a>
@@ -181,15 +190,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized</a> </div>
 	<div class="summary"><p>つい先日、「動く歩道」、つまり下のようなものがある町で、ゆっくり自転車を走らせていたら、数m離れたところにいた数名の人たちのうちの一名が「歩く歩道」という言葉を発した。もちろん自分はそこを平常心で通り過ぎたのだが、「え、"歩く歩道"って...。動く歩道のことやろ！歩道は歩くためのものなので、なんという同義反復。これこそトートロジー。」と思って内心笑っていた。が、しかし、<a href="http://netallica.yahoo.co.jp/news/20130207-00000032-cobs">地方あるある・大阪編</a>を読んで、実は大阪では、関東でいう「動く歩道」は「歩く歩道」と呼ばれている、という驚愕の事実を人生初めて知った。いやはや、これが単なる駄洒落や間違いではなかったとは...。かなり衝撃を受けた。 <br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="240" src="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" width="320" /></a></div><br /></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/04/walking-sidewalk/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>FPGA+HFT</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/03/fpgahft/">2013-03-29 14:53:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p>最近モチベーションが下がっている。ネットを徘徊していたら、ちょっと面白いネタを見つけた：<br /><br /><a href="http://d.hatena.ne.jp/kazunori_279/20130107/1357521548">文字通り「ネットワークがコンピューター」な金融HFTでのFPGAの使われ方</a><br /><br />ここ数年HFTの分野では、FPGAで処理を実装するのがはやってきている、ということ。リンク先の記事からもリンクされている、<a href="http://cufp.org/videos/parallel-scientific-awesome-haskell-fpga-compiler">Parallel Scientific: The Awesome Haskell FPGA Compiler</a>は以前すこし眺めていたが、今回の記事を読んで全体像の理解が少し進んだ。なるほど、こんなところでも回路設計をしてしまう時代になったのね、という感じ。<br /><br />10Gbpsのネットワークスイッチに入れてしまうというのであれば、当然Alteraで言えばStratixクラスの1個何十万もするFPGAを使うのだろう。外付けメモリもDDRみたいなレイテンシの大きいものではなく、RLDRAMやQDRといった、個人的には使用しているのをあまり見聞きしないタイプのメモリを使っているのではなかろうか。<br /><br />もしこういったものがTCP/IPで通信をしているとすれば、Ethernet MACのIPから出てくるパケットをステートマシンでTCP/IP部分をデコードしてやり、中身のデータに基づいてガリガリ計算し、その結果に基づいてこれまたステートマシンでEthernet MAC IPに売買パケットを流し込む、というような流れになっているのだろう。そして売買の結果は、メモリに書き込んでおき、ログとして保存。これでソフトウェアは一切介在せずに株式やら為替の売買を実行する、と。もちろん、売買条件の設定などの初期化操作はソフトウェアで行うはずだが。<br /><br />妄想するとなかなか面白そうな分野だなぁ。クオンツの元でブイブイ(死語)いわせるプログラマのイメージが。なるほど、金融業界は計算機分野でも ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/03/fpgahft/">more…</a>
 	</div>
 </div>	
 
