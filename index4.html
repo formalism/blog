@@ -84,6 +84,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/type-theory.html">Type Theory (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
@@ -94,6 +95,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>「歩く歩道」は駄洒落では無い</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/04/walking-sidewalk/">2013-04-14 14:09:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized</a> </div>
+	<div class="summary"><p>つい先日、「動く歩道」、つまり下のようなものがある町で、ゆっくり自転車を走らせていたら、数m離れたところにいた数名の人たちのうちの一名が「歩く歩道」という言葉を発した。もちろん自分はそこを平常心で通り過ぎたのだが、「え、"歩く歩道"って...。動く歩道のことやろ！歩道は歩くためのものなので、なんという同義反復。これこそトートロジー。」と思って内心笑っていた。が、しかし、<a href="http://netallica.yahoo.co.jp/news/20130207-00000032-cobs">地方あるある・大阪編</a>を読んで、実は大阪では、関東でいう「動く歩道」は「歩く歩道」と呼ばれている、という驚愕の事実を人生初めて知った。いやはや、これが単なる駄洒落や間違いではなかったとは...。かなり衝撃を受けた。 <br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="240" src="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" width="320" /></a></div><br /></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/04/walking-sidewalk/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>FPGA+HFT</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/03/fpgahft/">2013-03-29 14:53:00+09:00</a>
@@ -177,15 +187,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p><p>MySQLなどとは異なり、SQLiteにはDate型が存在しない。そのため、SQLiteで日付データを扱う場合、文字列として、あるいは数値として扱うのが一般的であると思われる。</p> <p>文字列の場合、'2012-09-12'のようになるが、気をつけなくてはいけないのは、'2012-9-12'などとしてはいけないことだ。つまり、月日は、2ケタに達しない場合、0を左につけなければならない。次のような実験をしてみる：</p> <pre class="prettyprint"><br />sqlite&gt; select strftime('%Y-%m', '2012-09-12');<br />2012-09<br />sqlite&gt; select strftime('%Y-%m', '2012-9-12');<br />(何も表示されない)<br /></pre> <p>strftimeによって年月を得ようとしても、0が抜けていると思うように動作しない。また、strftimeで取得しなくても、例えば日付データでorder byをする場合、2ケタ化していないと、例えば09より1のほうが大きいとみなされてしまう。つまり、9月より1月のほうが後、とみなされてしまう。そのため、2ケタ化は必須の作業となる。<p> <p>もう一つ、数値として日付を扱う場合を考える。この場合も、どの時刻を基準とするか、という選択肢があるが、個人的にはユリウス日を使用するのが最も良いと思う ...</p></p></p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/09/handling-dates-in-sqlite-is-confusing/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Haskellって</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/08/haskell/">2012-08-12 14:05:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
-	<div class="summary"><p>最近Haskellで趣味のプログラムを作成することが増えた。一度型のラクさに慣れてしまうと、Lisp系言語でプログラムを作るのはおっくうになってしまう。自分も歳を取ったものだ。しかも、少なくともWebアプリに限ってだが、プログラムのメモリ使用量や実行速度でもJavaに勝っていると思う。  その割には、Webで調べてみても、あまりHaskellでガチにアプリを作りました、という記事を多く見つけられない。どちらかというと、Haskellを触ってみましたという記事が多いように感じる。もちろん、探せば多少はあって、<a href="http://en.wikipedia.org/wiki/High_frequency_trading">HFT</a>システムをHaskellで実装しました、とか。でも他の言語と比べて全般的に記事が少ないと感じる。  もっとHaskellが使われてもいいのではないのかな、と思った次第。それだけ。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/08/haskell/">more…</a>
 	</div>
 </div>	
 

@@ -94,20 +94,69 @@
 		</div>
 	  </div>
 	  <div class="content">
-<div class="page-header"><h1>思いつきメモ <small>Center Exam</small></h1></div>
-<div class='article'>
-	<h2>センター試験を1X年ぶりに解いてみた</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/01/1x/">2013-01-21 15:33:00+09:00</a>
+	<div class='article'>
+		<div class="page-header"><h1>型理論のお勉強</h1></div>
+		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/05/programming_in_martin_loef_type_theory/">2015-05-16 17:00:00+09:00</a>
 by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
  in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam</a> </div>
-	<div class="summary"><p>昨日(もう一昨日か)センター試験二日目が実施されました。<a href="http://www.toshin.com/center/sugaku-1a_mondai_0.html">リンク</a></p>
-
-<p><p>私も1X年前にセンター試験を受けました。それ以来、新聞に掲載される問題を取っておくことはあったのですが、実際に解くことはしていませんでした。今年は何を思ったか少しだけ解いてみました。数学I/Aです。しかも問1,2だけ。</p> <p>いやはや、これだけでも結構大変でした。時間は正確に計りませんでしたが、多分30分くらいは掛かってしまった。問題自体はそれほど難しくはなかったものの、計算ミス1つと、引っかけにはまったミスが1つありました。間違えたのは、第一問<a href="3">2</a>と第二問(1)ケコサシのところ。後者は計算ミス。前者は考えが足りなかった。しかし、第一問<a href="3">2</a>は結構良問ではないかと思いました。私はまんまと罠にはまったわけですが。よーく考えればわかります。悔しいので以下に記します。</p> <p>「rは(pまたはq)であるための必要条件なのか、十分条件なのか」、という問いです。 これを確認するには、まずr=&gt;p\/qが成立するか、を確認する必要があります。成立するならrは「十分条件」でpまたはqは「必要条件」となります ...</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/01/1x/">more…</a>
+tags: <a href="https://formalism.github.io/blog/tag/type-theory.html">Type Theory</a> </div>
+		<div><p>型理論で良く出てくるのが、依存型である。これは、ある型が別の型に依存して
+いたり、ある型の値に依存して決まったりできるような型のこと。</p>
+<p>これにはdependent sum(Σ)というのとdependent product(Π)というのがある。
+何となく説明を読んだりして分かった気になるのだけれど、人に説明できる
+ほどではないような気がするので、<a href="http://www.cse.chalmers.se/research/group/logic/book/">Programming in Martin-Löf's Type Theory</a>
+を元に勉強してまとめる。</p>
+<p>CoqとかAgdaを使えるようになるには、このあたりの最低限の理解が必要だと思う。</p>
+<hr />
+<p>2章の導入をまず読んでみる。</p>
+<p>大切な考え方は、命題を集合と同一視するということ。普通の数学でするように、命題は
+必ず真か偽かどちらか一方である、という考え方ではなく、命題が真であるのは、それを証明できるとき
+だけである、とする考え方に基づいている。</p>
+<p>A∨¬Aという命題は、Aが真か偽かのどちらかなので、いずれにせよ真である、と考えることも出来る。
+一方、論理和の一方が証明できたときに、上記命題が真である、とする立場もある。
+これが型理論が元とする考え方となる。</p>
+<p>この考え方を進めて、</p>
+<blockquote>
+<p>A⊃Bの証明とは、Aの証明を与えたときに、Bの証明を与える関数(あるいは手続き)である</p>
+</blockquote>
+<p>と考える。この考え方だと、λx. xというのは、A⊃Aの証明と考えられる。なぜなら、与えられた
+入力(A)をそのまま返すからである。同様に、</p>
+<blockquote>
+<p>A&amp;Bの証明とは、Aの証明とBの証明のペア(つまり直積)である</p>
+</blockquote>
+<p>と考える。命題を、その<strong>証明の集合</strong>と同一視するというのがミソである。そのため、命題が真
+であるのは、その命題に<strong>対応する集合が空集合ではない</strong>ときである。</p>
+<p>否定は次のように定義できる：</p>
+<blockquote>
+<p>¬A ≡ A⊃⊥</p>
+</blockquote>
+<p>⊥は矛盾、つまり空集合に対応させる。</p>
+<p>命題論理を表現するには、多くの関数型プログラミング言語に存在する型を使うことで
+足りる。でも限量子を表現するには、集合の集まりについての操作が必要になる。存在記号は
+次のように解釈する。</p>
+<blockquote>
+<p>(∃x∈A)B(x)の証明とは、集合Aの要素aとB(a)の証明とからなるペアのことである</p>
+</blockquote>
+<p>ここで、ペア〈a, b〉ただし、a∈A, b∈B(a)からなる集合を(Σx∈A)B(x)と書くことにすると、</p>
+<blockquote>
+<p>(∃x∈A)B(x)は、集合(Σx∈A)B(x)と同一視される</p>
+</blockquote>
+<p>となる。同じように、全量化についても、</p>
+<blockquote>
+<p>(∀x∈A)B(x)の証明とは、集合Aの各要素aについて、B(a)の証明を与える関数である</p>
+</blockquote>
+<p>と考える。この「集合Aの要素aを与えると、B(a)の要素を返す関数」を要素とする
+集合を(Πx∈A)B(x)と書くことにする。したがって、</p>
+<blockquote>
+<p>(∀x∈A)B(x)は、集合(Πx∈A)B(x)と同一視される</p>
+</blockquote>
+<p>となる。</p></div>
+		<div>
+			<h2>Comments</h2>
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		<div>
 	</div>
-</div>	
-
-
 	  </div>
 	</div>
 	<footer>

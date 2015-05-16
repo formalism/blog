@@ -84,6 +84,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/type-theory.html">Type Theory (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
@@ -94,6 +95,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>Haskellって</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/08/haskell/">2012-08-12 14:05:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
+	<div class="summary"><p>最近Haskellで趣味のプログラムを作成することが増えた。一度型のラクさに慣れてしまうと、Lisp系言語でプログラムを作るのはおっくうになってしまう。自分も歳を取ったものだ。しかも、少なくともWebアプリに限ってだが、プログラムのメモリ使用量や実行速度でもJavaに勝っていると思う。  その割には、Webで調べてみても、あまりHaskellでガチにアプリを作りました、という記事を多く見つけられない。どちらかというと、Haskellを触ってみましたという記事が多いように感じる。もちろん、探せば多少はあって、<a href="http://en.wikipedia.org/wiki/High_frequency_trading">HFT</a>システムをHaskellで実装しました、とか。でも他の言語と比べて全般的に記事が少ないと感じる。  もっとHaskellが使われてもいいのではないのかな、と思った次第。それだけ。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/08/haskell/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>数学ガール読んだ</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/08/math-girl/">2012-08-12 13:43:00+09:00</a>
@@ -173,15 +183,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
 	<div class="summary"><p>パソコンなどから出るブルーライトから目を守るという触れ込みの<a href="http://hb.afl.rakuten.co.jp/hgc/0f21cc00.c519976b.0f21cc01.54e6319a/?pc=http%3a%2f%2fitem.rakuten.co.jp%2fjins-ec%2fpc-01%2f%3fscid%3daf_ich_link_txt&amp;m=http%3a%2f%2fm.rakuten.co.jp%2fjins-ec%2fi%2f10001835%2f">JINS PC</a>を購入した。以前購入したMacBook Proの画面を長時間見ていると、どうも目が疲れるように感じていたので。<br /><br />意外だったのは、これを掛けると画面が少しよく(くっきりと)見えるようになること。このレンズは度なしだが、青い波長の光がカットされることで、目の焦点が合わせやすくなったからだと想像する。光は波長が異なると屈折率が異なるので、色によって焦点が合う位置が微妙に違う。だから一色でも波長が抜けると、ぼけた感じが軽減されるのだと思う。<br /><br />また、当然目に進入する光量が減るので、眠くなる。よく言えば落ち着く。<br /><br />効果は「まぁあるのかな」という感じだけれども、少なくともサングラスとしても機能するので、しばらく使い続けてみようと思う。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/02/jins-pc/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>H2クエリを少し最適化</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/01/h2/">2012-01-22 09:21:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>H2データベース(バージョンは1.3.161)で、selectクエリを実行するときに、予想より時間がかかっていると思われた。それで、explainを使って、どのようにクエリが実行されているのか調べてみたら、案の定インデックスが使われないで全レコードサーチになっていた。<br /><br />問題となったのは、select * from tbl where YEAR(date)=2012のように、日付型を持つフィールドにYEAR演算を施し、その結果が定数になるレコードを取得するクエリ。それで、このクエリを、select * from tbl where date&gt;='2012-1-1' and date&lt;='2012/12/31'と書き換えた。そうしたらちゃんとdateフィールドに設定してあるインデックスを使用するようになり、速度も改善された。<br /><br />これくらいの最適化は自動的にやってくれると思っていたが、そうでもないらしい。確かに、YEARではなくて、select * from tbl where MONTH(date)=1のように、MONTH演算であれば、単純にdateフィールドでインデックスを持っていても検索は簡単ではない ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/01/h2/">more…</a>
 	</div>
 </div>	
 

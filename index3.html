@@ -84,6 +84,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/type-theory.html">Type Theory (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
@@ -94,6 +95,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>Dependently Typed Metaprogramming (in Agda) メモ</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in/">2013-11-13 09:42:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/agda.html">Agda</a> </div>
+	<div class="summary"><p><a href="http://www.cl.cam.ac.uk/~ok259/agda-course-13/">Dependently Typed Metaprogramming (in Agda)</a>のメモ <br /><br /><b>Agdaの編集方法：</b> <br />Emacsのagda-modeを使えば、TeXの感覚で記号を入力できる。例：<br />太字のN : \bn <br />下付の数字 : _0, _1など<br />× : \times<br />→ : \rightarrow<br /><br />それと型構成子×は、open import Data.Productを書かないと使えなかった。また、最初はData.Productが開けなかったので、(custom-set-variables '(agda2-include-dirs (quote ("." "agda-lib-folder/src"))))を.emacs.elに追加する必要があった。<br /><br />------------------------------------<br />C-cC-lで現在開いているagdaファイルをロードしてチェックしてくれる。<br /><br />zip : forall {n S T} -&gt; Vec S n -&gt; Vec T n -&gt; Vec (S × T) n ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>高速ビットマップ描画方法を調査</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/10/fast-bitmap-drawing-in-windows/">2013-10-19 14:56:00+09:00</a>
@@ -181,15 +191,6 @@ tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programmin
 	<div class="summary"><p>SQLiteでselect julianday('now')とすると、整数部と小数部からなる値が表示される。これはユリウス日と言われる値になるそうだが、この小数部の精度がどうなっているのか気になったので調査した。</p>
 
 <p><p><span style="font-size: large;"><u>結論からすると、x86アーキテクチャのLinuxで動作している場合、<b>ミリ秒単位</b>が限界となりそうだ。</u></span></p> <p>SQLiteのソースだと、unixCurrentTimeInt64という関数で現在時刻を取得するようだ。この関数のコメントには、</p><br />/<em><br /><strong> Find the current time (in Universal Coordinated Time). &nbsp;Write into *piNow<br /></strong> the current time and date as a Julian Day number times 86_400_000. &nbsp;In<br /><strong> other words, write into *piNow the number of milliseconds since the Julian ...</strong></em></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/05/sqlite/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>「歩く歩道」は駄洒落では無い</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/04/walking-sidewalk/">2013-04-14 14:09:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized</a> </div>
-	<div class="summary"><p>つい先日、「動く歩道」、つまり下のようなものがある町で、ゆっくり自転車を走らせていたら、数m離れたところにいた数名の人たちのうちの一名が「歩く歩道」という言葉を発した。もちろん自分はそこを平常心で通り過ぎたのだが、「え、"歩く歩道"って...。動く歩道のことやろ！歩道は歩くためのものなので、なんという同義反復。これこそトートロジー。」と思って内心笑っていた。が、しかし、<a href="http://netallica.yahoo.co.jp/news/20130207-00000032-cobs">地方あるある・大阪編</a>を読んで、実は大阪では、関東でいう「動く歩道」は「歩く歩道」と呼ばれている、という驚愕の事実を人生初めて知った。いやはや、これが単なる駄洒落や間違いではなかったとは...。かなり衝撃を受けた。 <br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="240" src="http://pds.exblog.jp/pds/1/200811/22/82/b0042282_23314957.jpg" width="320" /></a></div><br /></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/04/walking-sidewalk/">more…</a>
 	</div>
 </div>	
 

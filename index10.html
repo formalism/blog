@@ -84,6 +84,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/type-theory.html">Type Theory (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
@@ -94,6 +95,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>デジタルズーム(2)</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2009/10/2/">2009-10-30 04:55:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>前回の続き<br /><br />前回はバイキュービック関数から、画素補間に使用する係数をどのように求めるのかということを記述しました。<br /><br />今回は、「画素補間に使用する元画素をどのように求めるのか」ということについて記述します。前回と同じように、ズーム前の画素がd0,d1,d2,d3,...と並んでいるとします。すると、ズームのために参照する画素としては、1倍(ズームなし)の場合は、最初はd0,d1,d2,d3、次はd1,d2,d3,d4、その次はd2,d3,d4,d5、...以下同様となります。これは当たり前ですね。<br /><br />次に<span style="font-weight: bold;">2倍</span>の場合は、最初はd0,d1,d2,d3、次もd0,d1,d2,d3、その次はd1,d2,d3,d4、その次もd1,d2,d3,d4 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/10/2/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>デジタルズーム</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2009/10/digital-zoom-bicubic/">2009-10-22 08:49:00+09:00</a>

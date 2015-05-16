@@ -84,6 +84,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/type-theory.html">Type Theory (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
@@ -94,6 +95,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>再びプリンタ購入</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/09/pixus-mp270/">2010-09-18 13:15:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
+	<div class="summary"><p>今年二台目のプリンタを購入した。<a href="http://www.amazon.co.jp/gp/product/B002OB3OE2?ie=UTF8&amp;tag=formalism-22&amp;linkCode=as2&amp;camp=247&amp;creative=1211&amp;creativeASIN=B002OB3OE2">Canon PIXUS インクジェット複合機 MP270</a><img alt="" border="0" height="1" src="http://www.assoc-amazon.jp/e/ir?t=formalism-22&amp;l=as2&amp;o=9&amp;a=B002OB3OE2" style="border: none !important; margin: 0px !important;" width="1" />。個人的にはレーザプリンタで十分なのだけれど、レーザだと薄い用紙に印刷することはできない。紙を巻き込んでしまう。それで仕方なくインクジェットを購入。この機種は安い上にスキャナの機能もついているので、自分にとっては役だった。手書きの文書をスキャンしたりしたいときもあるので。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/09/pixus-mp270/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>Clojureが素敵な件</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/03/clojure/">2010-03-26 07:00:00+09:00</a>
@@ -182,15 +192,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p><span>Cのライブラリの動作の解析のため</span><span>のメモ</span><span style="font-weight: bold;"><span style="font-weight: bold;"><br /><br /></span>参考リンク<br /><br /></span><a href="http://docs.sun.com/app/docs/doc/819-0391/chapter4-49922?l=ja&amp;a=view">共有オブジェクトのプロファイリング<span style="font-weight: bold;"></span><br /></a><a href="http://d.hatena.ne.jp/ousttrue/20091017/1255754733">gprofでコールグラフ</a></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/11/c/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>デジタルズーム(2)</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2009/10/2/">2009-10-30 04:55:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p>前回の続き<br /><br />前回はバイキュービック関数から、画素補間に使用する係数をどのように求めるのかということを記述しました。<br /><br />今回は、「画素補間に使用する元画素をどのように求めるのか」ということについて記述します。前回と同じように、ズーム前の画素がd0,d1,d2,d3,...と並んでいるとします。すると、ズームのために参照する画素としては、1倍(ズームなし)の場合は、最初はd0,d1,d2,d3、次はd1,d2,d3,d4、その次はd2,d3,d4,d5、...以下同様となります。これは当たり前ですね。<br /><br />次に<span style="font-weight: bold;">2倍</span>の場合は、最初はd0,d1,d2,d3、次もd0,d1,d2,d3、その次はd1,d2,d3,d4、その次もd1,d2,d3,d4 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/10/2/">more…</a>
 	</div>
 </div>	
 

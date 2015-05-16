@@ -94,16 +94,31 @@
 		</div>
 	  </div>
 	  <div class="content">
-<div class="page-header"><h1>思いつきメモ <small>Center Exam</small></h1></div>
+<div class="page-header"><h1>思いつきメモ <small>Type Theory</small></h1></div>
 <div class='article'>
-	<h2>センター試験を1X年ぶりに解いてみた</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/01/1x/">2013-01-21 15:33:00+09:00</a>
+	<h2>型理論のお勉強</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/05/programming_in_martin_loef_type_theory/">2015-05-16 17:00:00+09:00</a>
 by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
  in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam</a> </div>
-	<div class="summary"><p>昨日(もう一昨日か)センター試験二日目が実施されました。<a href="http://www.toshin.com/center/sugaku-1a_mondai_0.html">リンク</a></p>
-
-<p><p>私も1X年前にセンター試験を受けました。それ以来、新聞に掲載される問題を取っておくことはあったのですが、実際に解くことはしていませんでした。今年は何を思ったか少しだけ解いてみました。数学I/Aです。しかも問1,2だけ。</p> <p>いやはや、これだけでも結構大変でした。時間は正確に計りませんでしたが、多分30分くらいは掛かってしまった。問題自体はそれほど難しくはなかったものの、計算ミス1つと、引っかけにはまったミスが1つありました。間違えたのは、第一問<a href="3">2</a>と第二問(1)ケコサシのところ。後者は計算ミス。前者は考えが足りなかった。しかし、第一問<a href="3">2</a>は結構良問ではないかと思いました。私はまんまと罠にはまったわけですが。よーく考えればわかります。悔しいので以下に記します。</p> <p>「rは(pまたはq)であるための必要条件なのか、十分条件なのか」、という問いです。 これを確認するには、まずr=&gt;p\/qが成立するか、を確認する必要があります。成立するならrは「十分条件」でpまたはqは「必要条件」となります ...</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/01/1x/">more…</a>
+tags: <a href="https://formalism.github.io/blog/tag/type-theory.html">Type Theory</a> </div>
+	<div class="summary"><p>型理論で良く出てくるのが、依存型である。これは、ある型が別の型に依存して
+いたり、ある型の値に依存して決まったりできるような型のこと。</p>
+<p>これにはdependent sum(Σ)というのとdependent product(Π)というのがある。
+何となく説明を読んだりして分かった気になるのだけれど、人に説明できる
+ほどではないような気がするので、<a href="http://www.cse.chalmers.se/research/group/logic/book/">Programming in Martin-Löf's Type Theory</a>
+を元に勉強してまとめる。</p>
+<p>CoqとかAgdaを使えるようになるには、このあたりの最低限の理解が必要だと思う。</p>
+<hr />
+<p>2章の導入をまず読んでみる。</p>
+<p>大切な考え方は、命題を集合と同一視するということ。普通の数学でするように、命題は
+必ず真か偽かどちらか一方である、という考え方ではなく、命題が真であるのは、それを証明できるとき
+だけである、とする考え方に基づいている。</p>
+<p>A∨¬Aという命題は、Aが真か偽かのどちらかなので、いずれにせよ真である、と考えることも出来る。
+一方、論理和の一方が証明できたときに、上記命題が真である、とする立場もある。
+これが型理論が元とする考え方となる。</p>
+<p>この考え方を進めて、</p>
+<blockquote>
+<p>A⊃Bの証明とは、Aの証明を与えたときに ...</p></blockquote> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2015/05/programming_in_martin_loef_type_theory/">more…</a>
 	</div>
 </div>	
 

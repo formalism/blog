@@ -84,6 +84,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/sqlite3.html">SQLite3 (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/starbucks.html">Starbucks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/tcf.html">TCF (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/type-theory.html">Type Theory (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/uncategorized.html">Uncategorized (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/web.html">Web (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/wi2.html">Wi2 (2)</a></li>
@@ -94,6 +95,32 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>型理論のお勉強</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/05/programming_in_martin_loef_type_theory/">2015-05-16 17:00:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/type-theory.html">Type Theory</a> </div>
+	<div class="summary"><p>型理論で良く出てくるのが、依存型である。これは、ある型が別の型に依存して
+いたり、ある型の値に依存して決まったりできるような型のこと。</p>
+<p>これにはdependent sum(Σ)というのとdependent product(Π)というのがある。
+何となく説明を読んだりして分かった気になるのだけれど、人に説明できる
+ほどではないような気がするので、<a href="http://www.cse.chalmers.se/research/group/logic/book/">Programming in Martin-Löf's Type Theory</a>
+を元に勉強してまとめる。</p>
+<p>CoqとかAgdaを使えるようになるには、このあたりの最低限の理解が必要だと思う。</p>
+<hr />
+<p>2章の導入をまず読んでみる。</p>
+<p>大切な考え方は、命題を集合と同一視するということ。普通の数学でするように、命題は
+必ず真か偽かどちらか一方である、という考え方ではなく、命題が真であるのは、それを証明できるとき
+だけである、とする考え方に基づいている。</p>
+<p>A∨¬Aという命題は、Aが真か偽かのどちらかなので、いずれにせよ真である、と考えることも出来る。
+一方、論理和の一方が証明できたときに、上記命題が真である、とする立場もある。
+これが型理論が元とする考え方となる。</p>
+<p>この考え方を進めて、</p>
+<blockquote>
+<p>A⊃Bの証明とは、Aの証明を与えたときに ...</p></blockquote> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2015/05/programming_in_martin_loef_type_theory/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>Haskellにて変更可能配列(mutable vector)の実験</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/03/mutable_vector_in_haskell/">2015-03-22 23:10:00+09:00</a>
@@ -306,26 +333,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> </div>
 	<div class="summary"><p>LinuxにおいてZynqのPL部に作成したレジスタを操作するための方法について調査したところ、カーネルドライバを作成する以外に、UIOという枠組みを使用することで簡易に行うことができるということが分かった。これを使用すると、ユーザプログラムでレジスタの読み書きだけではなく、割り込みの検出も行うことが出来る。<br /><br />まず、カーネルコンフィグにおいてUIOを有効にしてビルドする必要がある。<br /><br />CONFIG_UIO=y<br />CONFIG_UIO_PDRV_GENIRQ=y<br /><br />あたりが最低限必要と思われる。(自分の場合は元から有効になっていたので、カーネルの再ビルドは不要だった。)<br /><br />次に、デバイスツリーに次のような記述を追加する。自分の場合では、arch/arm/boot/dts/zynq-zed.dtsのamba@0ノードの一番下に追加した。<br /><br />foo_bar_device: foo-bar-device@44000000 {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; compatible = "generic-uio";<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reg = &lt; 0x44000000 0x4000 &gt;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interrupts = &lt; 0 29 4 &gt;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interrupt-parent = &lt;&amp;ps7_scugic_0&gt;;<br />};<br /><br />まず、compatibleでgeneric-uioと記述する。これが、あらかじめ用意されているカーネル側のUIOドライバを使用するための文字列。こうすることで、drivers/uio/uio_pdrv_genirq.cが使用される。<br /><br />次に、regにおける ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/zynqpllinux-dts/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>ZynqのPLロジックからARMへの割り込み実験</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/zynq-pl-arm/">2014-05-13 13:32:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> </div>
-	<div class="summary"><p>Zynq上のPLに作成した回路からARMへ割り込むときに、割り込みレイテンシがどれくらいになるのかを計測してみた。</p>
-<p>ZYBOを使用しているので、ARMは650MHzで動作。結論は次の画像：<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-h5KhqquhE_o/U3Idw7Om3vI/AAAAAAAABq8/W7L_-P4Zjhw/s1600/irq.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-h5KhqquhE_o/U3Idw7Om3vI/AAAAAAAABq8/W7L_-P4Zjhw/s1600/irq.png" height="227" width="400" /></a></div><br /><br /></p>
-<p>1クロックは10ns(100MHz)。一番下のIRQがHighになるとCPUに割り込みがかかる。AXIバスを通してレジスタをクリアするとIRQがLowになる。これを見ると、たったの<strong>31クロック(=310ns)で割り込みがクリアされている</strong>。</p>
-<p>これはStandalone(Linuxではなく、ベアメタル)で実験した。割り込みを有効にする部分だけ、参考に貼っておく。
-<pre>
-Status = XScuGic_Connect(IntcInstancePtr, XPS_FPGA0_INT_ID,(Xil_ExceptionHandler)IrqHandler, NULL);
-    if (Status != XST_SUCCESS){
-        return Status;
-    }
-XScuGic_Enable(IntcInstancePtr, XPS_FPGA0_INT_ID);
-</pre></p>
-<p>これでXPS_FPGA0_INT_ID(61)番の割り込みが発生すると、 IrqHandler関数が呼ばれる。IrqHandler関数の中で、PLロジックにアクセスして、割り込みをクリアしている。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/zynq-pl-arm/">more…</a>
 	</div>
 </div>	
 
