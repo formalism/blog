@@ -59,6 +59,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/bookmarks.html">Bookmarks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -95,6 +96,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>MicroBlaze + IPコア</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/02/microblaze-ip/">2011-02-18 02:47:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>XilinxのMicroblazeに自作IPコアをどのように接続するかを調査中。いろいろ検索してみたが、要領よくまとまっている資料が見つからなかった。<div><br /><div>最新はAXIというARMのバスらしい。しかしこれは最新のFPGAにしか対応していないようだ。AlteraはAvalonかCustom Instructionくらいしかなかったが、Xilinxはしょっちゅうバスを入れ替えている。OPB, PLB, AXI, FSL。FSLはMicroBlazeにPoint-to-Pointで接続するので、残りとは少し違う。AlteraのCustom Instructionと同じような目的で使うために準備しているらしい。FSLのI/Fを使ってやりとりするのが一番簡単そうではある。でもこれだとCPUの介在がワードごとに必要なので、DMAで使えない。でも<a href="http://www.xilinx.com/support/documentation/ip_documentation/plb2fsl_bridge.pdf">PLB to FSL bridge</a>というのがあるので、FSL I/Fで作ったIPコアをPLBに接続することもできるっぽい。これでやってみようかと思う。ただ、PLB to FSL bridgeのデータシートは古いので、最新のISE12.4でも使えるのか、というのが少し不安。</div></div></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/02/microblaze-ip/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>C to Verilog</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/02/c-to-verilog/">2011-02-04 06:03:00+09:00</a>
@@ -174,15 +184,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p>以前のエントリで、clojure+compojure+h2は最強の組み合わせではないか、と書きましたが、また最近この組み合わせでお手軽アプリを作成しようかと考えました。<br /><br />以前にインストールしたバージョンで作成しても良かったのですが、いろいろと新しくなっているだろうと思い、最新版で試してみました。そうしたら、相当以前とはインストールの仕方なども異なっているようです。まず、<a href="http://github.com/technomancy/leiningen">Leiningen</a>をインストールします。そして、プロジェクトを作成し、project.cljを編集して必要なライブラリをインストールするよう指示します。次のような感じになりました。<br /><br /><br />(defproject myproject "1.0.0-SNAPSHOT"<br />&nbsp;&nbsp;:description "FIXME: write"<br />&nbsp;&nbsp;:dependencies [[org.clojure/clojure "1.2.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [org.clojure/clojure-contrib "1.2.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ring "0.3.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [com.h2database/h2 "1.2.142 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/09/compojure/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Wi2解約</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/09/finish-wi2/">2010-09-18 13:19:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/wi2.html">Wi2</a> </div>
-	<div class="summary"><p>以前Wi2という無線LANによる接続サービスを使用していることを書いたが、結局やめてしまいました。近所のマクドナルドがどんどん無くなっているのと、マックに行くこと自体が少なくなっているので。サービス自体には不満はなかったのですけれど。このサービスはいつでも加入/解約できるので、そのあたりは嬉しい。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/09/finish-wi2/">more…</a>
 	</div>
 </div>	
 

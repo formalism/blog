@@ -59,6 +59,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/bookmarks.html">Bookmarks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -95,6 +96,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>ZynqのPLを操作するLinuxドライバ (DTS設定編)</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/zynqpllinux-dts/">2014-05-14 08:33:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> </div>
+	<div class="summary"><p>LinuxにおいてZynqのPL部に作成したレジスタを操作するための方法について調査したところ、カーネルドライバを作成する以外に、UIOという枠組みを使用することで簡易に行うことができるということが分かった。これを使用すると、ユーザプログラムでレジスタの読み書きだけではなく、割り込みの検出も行うことが出来る。<br /><br />まず、カーネルコンフィグにおいてUIOを有効にしてビルドする必要がある。<br /><br />CONFIG_UIO=y<br />CONFIG_UIO_PDRV_GENIRQ=y<br /><br />あたりが最低限必要と思われる。(自分の場合は元から有効になっていたので、カーネルの再ビルドは不要だった。)<br /><br />次に、デバイスツリーに次のような記述を追加する。自分の場合では、arch/arm/boot/dts/zynq-zed.dtsのamba@0ノードの一番下に追加した。<br /><br />foo_bar_device: foo-bar-device@44000000 {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; compatible = "generic-uio";<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reg = &lt; 0x44000000 0x4000 &gt;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interrupts = &lt; 0 29 4 &gt;;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interrupt-parent = &lt;&amp;ps7_scugic_0&gt;;<br />};<br /><br />まず、compatibleでgeneric-uioと記述する。これが、あらかじめ用意されているカーネル側のUIOドライバを使用するための文字列。こうすることで、drivers/uio/uio_pdrv_genirq.cが使用される。<br /><br />次に、regにおける ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/zynqpllinux-dts/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>ZynqのPLロジックからARMへの割り込み実験</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/zynq-pl-arm/">2014-05-13 13:32:00+09:00</a>
@@ -212,16 +222,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/agda.html">Agda</a> </div>
 	<div class="summary"><p>まだExercise 1.5の続き。<br /><br />tabulate : forall {n X} -&gt; (Fin n -&gt; X) -&gt; Vec X n<br />tabulate {n} f = ?<br /><br />を完成させる。{n}0としてC-cC-cをして、後はひたすらC-cC-aをすると、型としては正しい式が完成する。<br /><br />tabulate {zero} f = &lt;&gt;<br />tabulate {suc y} f = f fzero , tabulate (\ _ -&gt; f fzero)<br /><br />というもの。fにずっとfzeroを与えたものをn個集めたVecを答えとしている。でも多分これは問題の答えとしては期待通りのものではない。イメージとしては、fにfzero, fsuc fzero, fsuc (fsuc fzero), ... を引数に与えたものをn個集めたものを得たい。つまり、f 0, f 1 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in_14/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Dependently Typed Metaprogramming (in Agda) メモ (2) 有限集合Finについて</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in_13/">2013-11-13 14:25:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/agda.html">Agda</a> </div>
-	<div class="summary"><p><a href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in/">Dependently Typed Metaprogramming (in Agda) メモ</a>の続き。</p>
-<p>Exercise 1.5では、有限集合を表す型Finを定義している。<br /><br />data Fin : N -&gt; Set where<br />&nbsp;&nbsp; fzero : {n : N} -&gt; Fin (suc n)<br />&nbsp;&nbsp; fsuc : {n : N} -&gt; Fin n -&gt; Fin (suc n)<br /><br />ここで、fzero, fsucとしたのは、自然数の型で使用しているzero, sucと区別しやすいようにするため。<br /><br />有限集合Finは、依存型言語で良く取り上げられる例題のようだが、理解するのは簡単ではないように思う。次のように考えると良いと分かった：<br /><br /><div style="text-align: left;">まず、Fin 0という型の要素があるか？と考えると、fzero, fsucどちらの構成子も、構成される型はFin (suc n)の形であるから、実際はFin ...</div></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in_13/">more…</a>
 	</div>
 </div>	
 

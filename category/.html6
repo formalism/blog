@@ -59,6 +59,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/bookmarks.html">Bookmarks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -95,6 +96,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>JINS PC購入</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/02/jins-pc/">2012-02-02 15:06:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets</a> </div>
+	<div class="summary"><p>パソコンなどから出るブルーライトから目を守るという触れ込みの<a href="http://hb.afl.rakuten.co.jp/hgc/0f21cc00.c519976b.0f21cc01.54e6319a/?pc=http%3a%2f%2fitem.rakuten.co.jp%2fjins-ec%2fpc-01%2f%3fscid%3daf_ich_link_txt&amp;m=http%3a%2f%2fm.rakuten.co.jp%2fjins-ec%2fi%2f10001835%2f">JINS PC</a>を購入した。以前購入したMacBook Proの画面を長時間見ていると、どうも目が疲れるように感じていたので。<br /><br />意外だったのは、これを掛けると画面が少しよく(くっきりと)見えるようになること。このレンズは度なしだが、青い波長の光がカットされることで、目の焦点が合わせやすくなったからだと想像する。光は波長が異なると屈折率が異なるので、色によって焦点が合う位置が微妙に違う。だから一色でも波長が抜けると、ぼけた感じが軽減されるのだと思う。<br /><br />また、当然目に進入する光量が減るので、眠くなる。よく言えば落ち着く。<br /><br />効果は「まぁあるのかな」という感じだけれども、少なくともサングラスとしても機能するので、しばらく使い続けてみようと思う。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/02/jins-pc/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>H2クエリを少し最適化</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/01/h2/">2012-01-22 09:21:00+09:00</a>
@@ -174,19 +184,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/lisp.html">Lisp</a> </div>
 	<div class="summary"><p>自分用のメモ。<br /><br />quicklispでmysqlに接続するには、cl-msyqlというパッケージかclsqlを使う。cl-mysqlはまだprepared statementが実装されていなさそう(嘘かも)。なのでclsqlを使う。<br /><br />(ql:quickload "clsql")ではuffi(lispからC関数を呼び出すためのライブラリ?)やmysqlへの接続用ダイナミックライブラリを作るのに<b>Cコンパイラとmakeが必要</b>。それと<b>mysql.h</b>が無いと、clsqlに含まれているclsql_mysql.cのコンパイルができない(これはdb-mysqlディレクトリにclsql_mysql.soが存在するかで確認する)。しかし、これらのコンパイルに失敗しても(ql:quickload "clsql")自体はエラーを出力しないようだ。実際にclsql:connectをするときにエラーになる。とにかく原因追求が大変だった。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/05/quicklisp-mysql/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>[Android] ImageViewのsetImageResourceでの描画処理</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/05/android-imageviewsetimageresource/">2011-05-20 10:57:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/android.html">Android</a> </div>
-	<div class="summary"><p>ボタンが押されたときのonClickハンドラで、何回もImageView#setImageResourceを呼び出しても、画像は更新されなかった。調べてみたら、onClickのハンドラが抜けてUIスレッドに制御が渡らないと描画されないらしい。それで、結局次のようにして解決した。まず、Runnableを実装するImageControlクラスを作成する。</p>
-
-<pre class="prettyprint"><br />public class ImageControl implements Runnable{<br />    private ImageView iv;<br />    private int num = 0;<br />    ImageControl(ImageView v){ iv = v; }<br /><br />    @Override<br />    public void run() {<br />        iv.setImageResource(image[num]);<br /><br />        if (num &gt;= 48){<br />            num = 0;<br />        }else{<br />            num++;<br />            iv.postDelayed(this, 10);<br />        }<br />    }<br />}<br /></pre>
-
-<p>上記で、image配列はあらかじめ用意されているリソース。numが0-48の間は、postDelayedを呼び出すことで ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/05/android-imageviewsetimageresource/">more…</a>
 	</div>
 </div>	
 

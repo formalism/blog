@@ -59,6 +59,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/bookmarks.html">Bookmarks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -95,6 +96,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>Wi2解約</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/09/finish-wi2/">2010-09-18 13:19:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/wi2.html">Wi2</a> </div>
+	<div class="summary"><p>以前Wi2という無線LANによる接続サービスを使用していることを書いたが、結局やめてしまいました。近所のマクドナルドがどんどん無くなっているのと、マックに行くこと自体が少なくなっているので。サービス自体には不満はなかったのですけれど。このサービスはいつでも加入/解約できるので、そのあたりは嬉しい。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/09/finish-wi2/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>再びプリンタ購入</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/09/pixus-mp270/">2010-09-18 13:15:00+09:00</a>
@@ -183,15 +193,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p>またメモ。<br /><br /><span style="font-weight: bold;">一般</span><br />http://www.ceres.dti.ne.jp/~ykuroda/oyaj/bone/basic3d.html<br />http://www012.upp.so-net.ne.jp/flab/3d/<br />http://www.mech.tohoku-gakuin.ac.jp/rde/contents/course/robotics/coordtrans.html<br /><br /><span style="font-weight: bold;">OpenGL</span><br />http://verygood.aid.design.kyushu-u.ac.jp/opengl2005/index.html</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/11/3d/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Cプログラムのコールグラフ作成</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2009/11/c/">2009-11-02 02:15:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p><span>Cのライブラリの動作の解析のため</span><span>のメモ</span><span style="font-weight: bold;"><span style="font-weight: bold;"><br /><br /></span>参考リンク<br /><br /></span><a href="http://docs.sun.com/app/docs/doc/819-0391/chapter4-49922?l=ja&amp;a=view">共有オブジェクトのプロファイリング<span style="font-weight: bold;"></span><br /></a><a href="http://d.hatena.ne.jp/ousttrue/20091017/1255754733">gprofでコールグラフ</a></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/11/c/">more…</a>
 	</div>
 </div>	
 

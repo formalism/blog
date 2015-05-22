@@ -59,6 +59,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/bookmarks.html">Bookmarks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -95,6 +96,19 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>[Android] ImageViewのsetImageResourceでの描画処理</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/05/android-imageviewsetimageresource/">2011-05-20 10:57:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/android.html">Android</a> </div>
+	<div class="summary"><p>ボタンが押されたときのonClickハンドラで、何回もImageView#setImageResourceを呼び出しても、画像は更新されなかった。調べてみたら、onClickのハンドラが抜けてUIスレッドに制御が渡らないと描画されないらしい。それで、結局次のようにして解決した。まず、Runnableを実装するImageControlクラスを作成する。</p>
+
+<pre class="prettyprint"><br />public class ImageControl implements Runnable{<br />    private ImageView iv;<br />    private int num = 0;<br />    ImageControl(ImageView v){ iv = v; }<br /><br />    @Override<br />    public void run() {<br />        iv.setImageResource(image[num]);<br /><br />        if (num &gt;= 48){<br />            num = 0;<br />        }else{<br />            num++;<br />            iv.postDelayed(this, 10);<br />        }<br />    }<br />}<br /></pre>
+
+<p>上記で、image配列はあらかじめ用意されているリソース。numが0-48の間は、postDelayedを呼び出すことで ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/05/android-imageviewsetimageresource/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>jQuery.ajax関数のsuccessコールバック内でHTTPリダイレクトか否かを判定する方法</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/05/jqueryhttp/">2011-05-15 14:42:00+09:00</a>
@@ -174,15 +188,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p>Xilinx Platform StudioでLMBのサイズを変更するには、dlmb_cntlr, ilmb_cntlrを右クリックし、Configure IP....を選択 &gt; LMBのアドレスレンジを設定。このレンジの幅でメモリサイズが決まるようだ。LMBバス幅が32bitの場合は、lmb_bramの最大サイズは256Kbytes(Virtex-5の場合)。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/lmb/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>MicroBlaze + IPコア</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/02/microblaze-ip/">2011-02-18 02:47:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p>XilinxのMicroblazeに自作IPコアをどのように接続するかを調査中。いろいろ検索してみたが、要領よくまとまっている資料が見つからなかった。<div><br /><div>最新はAXIというARMのバスらしい。しかしこれは最新のFPGAにしか対応していないようだ。AlteraはAvalonかCustom Instructionくらいしかなかったが、Xilinxはしょっちゅうバスを入れ替えている。OPB, PLB, AXI, FSL。FSLはMicroBlazeにPoint-to-Pointで接続するので、残りとは少し違う。AlteraのCustom Instructionと同じような目的で使うために準備しているらしい。FSLのI/Fを使ってやりとりするのが一番簡単そうではある。でもこれだとCPUの介在がワードごとに必要なので、DMAで使えない。でも<a href="http://www.xilinx.com/support/documentation/ip_documentation/plb2fsl_bridge.pdf">PLB to FSL bridge</a>というのがあるので、FSL I/Fで作ったIPコアをPLBに接続することもできるっぽい。これでやってみようかと思う。ただ、PLB to FSL bridgeのデータシートは古いので、最新のISE12.4でも使えるのか、というのが少し不安。</div></div></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/02/microblaze-ip/">more…</a>
 	</div>
 </div>	
 

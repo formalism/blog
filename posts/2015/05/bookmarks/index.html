@@ -96,12 +96,66 @@
 	  </div>
 	  <div class="content">
 	<div class='article'>
-		<div class="page-header"><h1>blaze-htmlでのname属性</h1></div>
-		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/07/blaze-htmlname/">2012-07-10 14:56:00+09:00</a>
+		<div class="page-header"><h1>ブックマーク</h1></div>
+		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2015/05/bookmarks/">2015-05-22 23:58:00+09:00</a>
 by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
  in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
-		<div><p>blaze-htmlでname属性の値を設定するときに、コンパイルエラーが出てしまった。次のようなエラー。<br /><br /><pre>    Couldn't match expected type <code>H.AttributeValue'&lt;br /&gt;                with actual type</code>[a0]'<br />    In the return type of a call of <code>concat'&lt;br /&gt;    In the second argument of</code>($)', namely<br />      `concat ["s", show y, "-", show m, ....]'<br />    In the expression: A.name $ concat ["s", show y, "-", show m, ....]&nbsp;<br /></pre><br />concatを使って、name属性の値になってほしい文字列を作っているのだが、これがAttributeValue型にならないと言われる。例によってStackOverflowに解決策が出ていた：<a href="http://stackoverflow.com/questions/3313056/how-does-one-get-strings-not-string-literals-into-blazehtml-attributes-element">how does one get strings (not string literals) into blazehtml attributes/element contents?</a><br /><br />AttributeValue型はIsStringのインスタンスだが、OverloadedStringsを宣言したファイルの文字列リテラルはOKでも、プログラムで作るString型は受け付けない。それで代わりにtoValue :: a -&gt; AttributeValueを用いればよい(一番最後のMagnus Kronqvistさんのコメント)。<br /><br />解決するのに1時間くらいはかかってしまった。</p></div>
+tags: <a href="https://formalism.github.io/blog/tag/bookmarks.html">Bookmarks</a> </div>
+		<div><p>自分も参照できるようにブックマークをまとめます。随時更新。</p>
+<h2>Haskell関連</h2>
+<ul>
+<li><a href="https://www.fpcomplete.com/user/bartosz/understanding-algebras">Understanding F-Algebras</a><ul>
+<li>カタモルフィズムについて分かりやすい</li>
+</ul>
+</li>
+<li><a href="http://www.haskellforall.com/2014/09/morte-intermediate-language-for-super.html">Morte: an intermediate language for super-optimizing functional programs</a><ul>
+<li>CoCで正規化。Literatureのリンクが有益。</li>
+</ul>
+</li>
+<li><a href="http://www.jucs.org/jucs_10_7/total_functional_programming">Total Functional Programming</a><ul>
+<li>構造的帰納法とCovariantな高階函数に制限して⊥の無い型にすれば停止性が保証できるよね、という文献。Codataはこれから読む。</li>
+</ul>
+</li>
+<li><a href="http://www.stephendiehl.com/what/">What I Wish I Knew When Learning Haskell</a><ul>
+<li>Haskellのマニアックな部分も説明している</li>
+</ul>
+</li>
+<li><a href="http://blog.jle.im/entry/auto-as-category-applicative-arrow-intro-to-machines">Auto as Category, Applicative &amp; Arrow (Intro to Machines/Arrows Part 2)</a></li>
+</ul>
+<h2>Agda関連</h2>
+<ul>
+<li><a href="http://oxij.org/note/BrutalDepTypes/">Brutal [Meta]Introduction to Dependent Types in Agda</a><ul>
+<li>網羅的な情報</li>
+</ul>
+</li>
+<li><a href="http://agda.wiki.fc2.com/wiki/%E3%83%88%E3%83%83%E3%83%97%E3%83%9A%E3%83%BC%E3%82%B8">みんなのAgda Wiki</a><ul>
+<li>多分お茶大講義のまとめ情報</li>
+</ul>
+</li>
+</ul>
+<h2>機械学習</h2>
+<ul>
+<li><a href="https://class.coursera.org/ml-003/lecture">Machine Learning by Andrew Ng</a><ul>
+<li>Octaveの説明もある。Linear Regression, Logistic Regression, NN, SVM。</li>
+</ul>
+</li>
+<li><a href="https://staff.aist.go.jp/y-ichisugi/brain-archi/j-index.html">全脳アーキテクチャ解明に向けて</a></li>
+</ul>
+<h2>その他</h2>
+<ul>
+<li><a href="http://www.aosabook.org/en/index.html">The Architecture of Open Source Applications</a><ul>
+<li>後で読む</li>
+</ul>
+</li>
+<li><a href="http://docs.getpelican.com/en/3.5.0/index.html">Pelican 3.5.0</a><ul>
+<li>ブログジェネレータ?</li>
+</ul>
+</li>
+<li><a href="https://www.udemy.com/computervision/#/">ベイズ推定とグラフィカルモデル：コンピュータビジョン基礎1</a><ul>
+<li>すいません途中です</li>
+</ul>
+</li>
+</ul></div>
 		<div>
 			<h2>Comments</h2>
 <a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>

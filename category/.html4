@@ -59,6 +59,7 @@
 			  <li><a href="https://formalism.github.io/blog/tag/agda.html">Agda (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/android.html">Android (4)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/blogging.html">Blogging (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/bookmarks.html">Bookmarks (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c.html">C# (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/c-amp.html">C++ AMP (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/center-exam.html">Center Exam (1)</a></li>
@@ -95,6 +96,17 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>SQLiteの時刻取得精度について調査した</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/05/sqlite/">2013-05-01 09:32:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>SQLiteでselect julianday('now')とすると、整数部と小数部からなる値が表示される。これはユリウス日と言われる値になるそうだが、この小数部の精度がどうなっているのか気になったので調査した。</p>
+
+<p><p><span style="font-size: large;"><u>結論からすると、x86アーキテクチャのLinuxで動作している場合、<b>ミリ秒単位</b>が限界となりそうだ。</u></span></p> <p>SQLiteのソースだと、unixCurrentTimeInt64という関数で現在時刻を取得するようだ。この関数のコメントには、</p><br />/<em><br /><strong> Find the current time (in Universal Coordinated Time). &nbsp;Write into *piNow<br /></strong> the current time and date as a Julian Day number times 86_400_000. &nbsp;In<br /><strong> other words, write into *piNow the number of milliseconds since the Julian ...</strong></em></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/05/sqlite/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>「歩く歩道」は駄洒落では無い</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/04/walking-sidewalk/">2013-04-14 14:09:00+09:00</a>
@@ -178,15 +190,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL</a> </div>
 	<div class="summary"><p>OpenCLの実装メモ。 <br /><br /><b>- カーネルのコンパイルエラーを見つける方法</b><br />カーネルの記述が間違っていると、clBuildProgramが失敗する。clGetProgramBuildInfoを使うと、コンパイルエラーを取得できるが、もっと便利なのは、AMD APP KernelAnalyzerを使う方法。Source Codeのところに問題のソースを貼り付け、Compileボタンを押すと、エラーがある場合はCompiler Outputのところに、エラーが出力される。<br /><br /><b>- プロファイリングの方法</b><br />Code XLを使用する。新しいプロジェクトを作成し、プロファイルを取得したいプログラムを指定する。ProfileメニューからStart  Profilingを実行。GPU プロファイルにはApplication TraceとPerformance Countersの2種類がある。<br /><br />これはApplicatoin Traceの実行結果：<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-Vk8f61wd3TE/UKX9idkMIQI/AAAAAAAABiM/rAUVTWmfxUw/s1600/CodeXL.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="457" src="http://2.bp.blogspot.com/-Vk8f61wd3TE/UKX9idkMIQI/AAAAAAAABiM/rAUVTWmfxUw/s640/CodeXL.png" width="640" /></a></div><br />プログラム実行中に使用したOpenCL関数や、それに掛かった時間などがグラフ表示される。<br /><br />これがPerformance Countersの実行結果：<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-I1qaFWGYko8/UKX-FYSOaHI/AAAAAAAABiU/lJq6GmY00kw/s1600/PerformanceCounters.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="440" src="http://1.bp.blogspot.com/-I1qaFWGYko8/UKX-FYSOaHI/AAAAAAAABiU/lJq6GmY00kw/s640/PerformanceCounters.png" width="640" /></a></div><br />使用したカーネルや、カーネルを実行したときのworkgroup sizeもわかる。<br /><br />-<b> 雑感</b><br /><br />やっと一通りカーネルを実行できるようになった。実行時間だけをみると、CPUの5倍程度高速であるように思われるが、前後のメモリ転送が遅いので(とりわけCPU-&gt;GPU)、結局CPUで計算した方が3倍程度高速な状態。ちなみに、CPUのプログラムはVisual C++ Express 2012で64bitバイナリでO2最適化/AVX有効の場合 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/11/opencl/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>SQLiteで日付を扱うのって悩ましい</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/09/handling-dates-in-sqlite-is-confusing/">2012-09-12 14:14:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p><p>MySQLなどとは異なり、SQLiteにはDate型が存在しない。そのため、SQLiteで日付データを扱う場合、文字列として、あるいは数値として扱うのが一般的であると思われる。</p> <p>文字列の場合、'2012-09-12'のようになるが、気をつけなくてはいけないのは、'2012-9-12'などとしてはいけないことだ。つまり、月日は、2ケタに達しない場合、0を左につけなければならない。次のような実験をしてみる：</p> <pre class="prettyprint"><br />sqlite&gt; select strftime('%Y-%m', '2012-09-12');<br />2012-09<br />sqlite&gt; select strftime('%Y-%m', '2012-9-12');<br />(何も表示されない)<br /></pre> <p>strftimeによって年月を得ようとしても、0が抜けていると思うように動作しない。また、strftimeで取得しなくても、例えば日付データでorder byをする場合、2ケタ化していないと、例えば09より1のほうが大きいとみなされてしまう。つまり、9月より1月のほうが後、とみなされてしまう。そのため、2ケタ化は必須の作業となる。<p> <p>もう一つ、数値として日付を扱う場合を考える。この場合も、どの時刻を基準とするか、という選択肢があるが、個人的にはユリウス日を使用するのが最も良いと思う ...</p></p></p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/09/handling-dates-in-sqlite-is-confusing/">more…</a>
 	</div>
 </div>	
 
