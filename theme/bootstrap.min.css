@@ -25,7 +25,12 @@ body{background-color:#ffffff;margin:0;font-family:"Helvetica Neue",Helvetica,Ar
 .container:after{clear:both;}
 .container-fluid{position:relative;padding-left:20px;padding-right:20px;zoom:1;}.container-fluid:before,.container-fluid:after{display:table;content:"";zoom:1;}
 .container-fluid:after{clear:both;}
-.container-fluid>.sidebar{top:0;left:20px;float:left;width:20%;}
+@media screen and (max-width: 640px){
+    .container-fluid>.sidebar{ display: none; }
+}
+@media screen and (min-width: 640px){
+    .container-fluid>.sidebar{top:0;left:20px;float:left;width:20%;}
+}
 .container-fluid>.content{float:right;width:75%;}
 a{color:#0069d6;text-decoration:none;line-height:inherit;font-weight:inherit;}a:hover{color:#00438a;text-decoration:underline;}
 .pull-right{float:right;}
