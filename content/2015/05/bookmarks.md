@@ -16,6 +16,10 @@ Tags: Bookmarks
 + [What I Wish I Knew When Learning Haskell](http://www.stephendiehl.com/what/)
     + Haskellのマニアックな部分も説明している
 + [Auto as Category, Applicative & Arrow (Intro to Machines/Arrows Part 2)](http://blog.jle.im/entry/auto-as-category-applicative-arrow-intro-to-machines)
++ [A Modern Architecture for FP](http://degoes.net/articles/modern-fp/)
+	+ Freeモナドの使い方が比較的分かりやすく記述されている。
++ [Free play, part two](http://therning.org/magnus/posts/2016-01-15-000-free-play--part-two.html)
+	+ 上記よりもう少しFreeモナドが分かりやすいかも。
 
 ## Agda関連
 
