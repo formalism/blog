@@ -67,13 +67,14 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/mac.html">Mac (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/math.html">Math (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/ocaml.html">OCaml (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/pc.html">PC (4)</a></li>
@@ -96,6 +97,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>Mac OS XでGHCのコンパイルエラー</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/02/mac-os-xghc/">2012-02-07 14:41:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
+	<div class="summary"><p>あるプログラムをMac OS X(10.6)上のGHC7.0.4(Haskell Platform 2011.04でインストールした)でコンパイルしようとしたら、<br /><br />Linking main ...<br />Undefined symbols:<br />&nbsp; "_locale_charset", referenced from:<br />&nbsp; &nbsp; &nbsp; _localeEncoding in libHSbase-4.3.1.0.a(PrelIOUtils.o)<br />&nbsp; "_iconv_close", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv_close in libHSbase-4.3.1.0.a(iconv.o)<br />&nbsp; &nbsp; &nbsp;(maybe you meant: _hs_iconv_close)<br />&nbsp; "_iconv", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv in ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/02/mac-os-xghc/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>JINS PC購入</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/02/jins-pc/">2012-02-02 15:06:00+09:00</a>
@@ -175,15 +185,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/android.html">Android</a> </div>
 	<div class="summary"><p>ブックマーク<br /><br /><a href="http://yktmnb.b.sourceforge.jp/2011/01/04/android%E7%AB%AF%E6%9C%AB%E3%81%ABwifi%E7%B5%8C%E7%94%B1%E3%81%A7adb%E6%8E%A5%E7%B6%9A%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/">WIFI&amp;adbでの接続</a><br /><a href="http://ht03a.seesaa.net/article/132074419.html">端末IPアドレスの確認方法</a><br /><a href="http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1451737194">eclipseからadbを経由し実行する方法</a></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/05/android/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>quicklisp + mysql メモ</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/05/quicklisp-mysql/">2011-05-23 14:45:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/lisp.html">Lisp</a> </div>
-	<div class="summary"><p>自分用のメモ。<br /><br />quicklispでmysqlに接続するには、cl-msyqlというパッケージかclsqlを使う。cl-mysqlはまだprepared statementが実装されていなさそう(嘘かも)。なのでclsqlを使う。<br /><br />(ql:quickload "clsql")ではuffi(lispからC関数を呼び出すためのライブラリ?)やmysqlへの接続用ダイナミックライブラリを作るのに<b>Cコンパイラとmakeが必要</b>。それと<b>mysql.h</b>が無いと、clsqlに含まれているclsql_mysql.cのコンパイルができない(これはdb-mysqlディレクトリにclsql_mysql.soが存在するかで確認する)。しかし、これらのコンパイルに失敗しても(ql:quickload "clsql")自体はエラーを出力しないようだ。実際にclsql:connectをするときにエラーになる。とにかく原因追求が大変だった。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/05/quicklisp-mysql/">more…</a>
 	</div>
 </div>	
 

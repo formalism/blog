@@ -67,13 +67,14 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/mac.html">Mac (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/math.html">Math (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/ocaml.html">OCaml (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/pc.html">PC (4)</a></li>
@@ -96,6 +97,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>LMBの使い方</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/lmb/">2011-03-03 09:09:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
+	<div class="summary"><p>Xilinx Platform StudioでLMBのサイズを変更するには、dlmb_cntlr, ilmb_cntlrを右クリックし、Configure IP....を選択 &gt; LMBのアドレスレンジを設定。このレンジの幅でメモリサイズが決まるようだ。LMBバス幅が32bitの場合は、lmb_bramの最大サイズは256Kbytes(Virtex-5の場合)。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/lmb/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>MicroBlaze + IPコア</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/02/microblaze-ip/">2011-02-18 02:47:00+09:00</a>
@@ -175,15 +185,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
 	<div class="summary"><p><span class="Apple-style-span" style="font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif; font-size: 13px;">H2データベースとJSONを使用するために必要な、<a href="http://github.com/technomancy/leiningen" style="color: #de7008;">Leiningen</a>を使ったプロジェクトファイルは結局次のようになりました。</span><div><span class="Apple-style-span" style="font-family: 'Trebuchet MS', Trebuchet, Verdana, sans-serif; font-size: 13px;"><div><br /></div><div>(defproject myproject "1.0.0-SNAPSHOT"</div><div>&nbsp;&nbsp;:description "FIXME: write"</div><div>&nbsp;&nbsp;:dependencies [[org.clojure/clojure "1.2.0"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [org.clojure/clojure-contrib "1.2.0"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ring "0.3.0"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [com.h2database/h2 "1.2.142"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [org.danlarkin/clojure-json "1.1"]</div><div>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [compojure "0.4.1"]])</div><div><br /></div><div>JSONを使うには、<a href="http://techbehindtech.com/2010/08/24/compojure-demystified-with-an-example-part-4/" style="color: #de7008;">Compojure Demystified with an example</a>でも説明されていますが ...</div></span></div></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/09/compojure2/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>compojureなどの実験</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/09/compojure/">2010-09-20 05:54:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>以前のエントリで、clojure+compojure+h2は最強の組み合わせではないか、と書きましたが、また最近この組み合わせでお手軽アプリを作成しようかと考えました。<br /><br />以前にインストールしたバージョンで作成しても良かったのですが、いろいろと新しくなっているだろうと思い、最新版で試してみました。そうしたら、相当以前とはインストールの仕方なども異なっているようです。まず、<a href="http://github.com/technomancy/leiningen">Leiningen</a>をインストールします。そして、プロジェクトを作成し、project.cljを編集して必要なライブラリをインストールするよう指示します。次のような感じになりました。<br /><br /><br />(defproject myproject "1.0.0-SNAPSHOT"<br />&nbsp;&nbsp;:description "FIXME: write"<br />&nbsp;&nbsp;:dependencies [[org.clojure/clojure "1.2.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [org.clojure/clojure-contrib "1.2.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ring "0.3.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [com.h2database/h2 "1.2.142 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/09/compojure/">more…</a>
 	</div>
 </div>	
 

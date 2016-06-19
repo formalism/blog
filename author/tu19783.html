@@ -67,13 +67,14 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/mac.html">Mac (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/math.html">Math (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/ocaml.html">OCaml (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/pc.html">PC (4)</a></li>
@@ -96,6 +97,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small>tu1978</small></h1></div>
+<div class='article'>
+	<h2>Dependently Typed Metaprogramming (in Agda) メモ (3) tabulate</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in_14/">2013-11-14 11:45:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/agda.html">Agda</a> </div>
+	<div class="summary"><p>まだExercise 1.5の続き。<br /><br />tabulate : forall {n X} -&gt; (Fin n -&gt; X) -&gt; Vec X n<br />tabulate {n} f = ?<br /><br />を完成させる。{n}0としてC-cC-cをして、後はひたすらC-cC-aをすると、型としては正しい式が完成する。<br /><br />tabulate {zero} f = &lt;&gt;<br />tabulate {suc y} f = f fzero , tabulate (\ _ -&gt; f fzero)<br /><br />というもの。fにずっとfzeroを与えたものをn個集めたVecを答えとしている。でも多分これは問題の答えとしては期待通りのものではない。イメージとしては、fにfzero, fsuc fzero, fsuc (fsuc fzero), ... を引数に与えたものをn個集めたものを得たい。つまり、f 0, f 1 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in_14/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>Dependently Typed Metaprogramming (in Agda) メモ (2) 有限集合Finについて</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in_13/">2013-11-13 14:25:00+09:00</a>
@@ -180,17 +190,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/android.html">Android</a> </div>
 	<div class="summary"><p>Androidのアプリケーションを開発しているときに、昨日までは普通にIDE(IntelliJ/IDEA)からUSB接続した実機にアプリケーションをダウンロードして実行できていたのに、今日になって、できなくなってしまった。エラーとして、  <pre><br />Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]<br /></pre> というのがIDEに表示されている。</p> <p>困ったので色々検索してみると、どうやらWindowsの場合、C:\Users\(ユーザ名)\.androidの下に、debug.keystoreというのが自動的に作成されるらしい。ここに、アプリケーションの署名に必要な証明書が格納されている。Androidでは、たとえデバッグであっても、アプリケーションは署名を付けないといけない。さらに、少なくとも次の場合は、一度インストールしたアプリケーションを再インストールしようとしても、上記メッセージが表示されて失敗する。</p> <ul><li>アプリケーションを異なる証明書で署名した。 <li>アプリケーションの署名に使用された証明書の期限が切れた。 </ul> <p>自動生成されるdebug.keystoreの証明書には有効期限があり、デフォルトの有効期間は1年間であるようだ。自分の場合、上記の2番目の原因でエラーが発生していた。</p> <p>いろいろ対処法があるらしいが、とりあえず怠惰なプログラマとしては、もっとも楽な方法を使用した：インストールしたアプリケーションを一度アンインストールし、再度(<b>削除後に再生成されたdebug.keystoreで署名して</b>)インストールする。</p> <p>ただ、この方法の欠点は、アプリケーションで作成されていたデータもすべて削除されてしまうことである。それが許容できれば、とりあえず一番簡単な対処法であると思う。いずれにせよ、リリースするときには正式に署名を付けるので ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/05/android-failure-installparsefailedincon/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>androidのHttpURLConnection::getInputStreamでjava.io.FileNotFoundException</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/05/androidhttpurlconnectiongetinputstreamj/">2013-05-15 14:39:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/android.html">Android</a> </div>
-	<div class="summary"><p>androidで、HttpURLConnectionクラスを使って、リモートサーバにGETリクエストを送り、結果を取得しようとした。だが、なぜかgetInputStreamを呼び出したところでjava.io.FileNotFoundExceptionが発生する。そのURLをブラウザでアクセスすることはできるのに。</p>
-
-<p><p>検索してみたところ、いつもの<a href="http://stackoverflow.com/questions/5178947/filenotfoundexception-when-calling-webservice">StackOverflow</a>に答えがあった。HTTPのレスポンスコードが400以上であると、HttpURLConnectionはFileNotFoundExceptionを投げる、ということが原因だった。ブラウザでアクセスできていると思っていたが、レスポンスコードを見てみると、403 Forbiddenだった。</p> <p>というわけで、同じ回答では、<a href="http://developer.android.com/reference/java/net/HttpURLConnection.html#getResponseCode%28%29">getResponseCode()</a>を使って問題を特定する、ということが勧められていた。</p></p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/05/androidhttpurlconnectiongetinputstreamj/">more…</a>
 	</div>
 </div>	
 

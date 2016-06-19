@@ -67,13 +67,14 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/mac.html">Mac (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/math.html">Math (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/ocaml.html">OCaml (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/pc.html">PC (4)</a></li>
@@ -96,6 +97,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>quicklisp + mysql メモ</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/05/quicklisp-mysql/">2011-05-23 14:45:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/lisp.html">Lisp</a> </div>
+	<div class="summary"><p>自分用のメモ。<br /><br />quicklispでmysqlに接続するには、cl-msyqlというパッケージかclsqlを使う。cl-mysqlはまだprepared statementが実装されていなさそう(嘘かも)。なのでclsqlを使う。<br /><br />(ql:quickload "clsql")ではuffi(lispからC関数を呼び出すためのライブラリ?)やmysqlへの接続用ダイナミックライブラリを作るのに<b>Cコンパイラとmakeが必要</b>。それと<b>mysql.h</b>が無いと、clsqlに含まれているclsql_mysql.cのコンパイルができない(これはdb-mysqlディレクトリにclsql_mysql.soが存在するかで確認する)。しかし、これらのコンパイルに失敗しても(ql:quickload "clsql")自体はエラーを出力しないようだ。実際にclsql:connectをするときにエラーになる。とにかく原因追求が大変だった。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/05/quicklisp-mysql/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>[Android] ImageViewのsetImageResourceでの描画処理</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/05/android-imageviewsetimageresource/">2011-05-20 10:57:00+09:00</a>
@@ -179,15 +189,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p><b><span class="Apple-style-span" style="font-size: large;">合成の問題(?)について</span></b><br />C to Verilogを試していると、メモリの制御信号がDon't Careになってしまうことがあると分かった。いろいろ入力となるCプログラムを変えてみたら、どうやらfor<b>ループの中にcontinueがあるとうまくいかない</b>らしい、ということが分かった。ひょっとしたらbreakもだめなのかな？<br /><br /><b><span class="Apple-style-span" style="font-size: large;">メモリ(RAM)の使用について</span></b><br />C to Verilogでは、ポインタはRAMとして生成され、テストベンチの中にはRAMの宣言もある。このRAMはポート数は可変のようだが、タイミングは固定されてしまっている。つまり、同期書き込み、<b>非同期読み出し</b>のメモリでないと、期待したタイミングとずれてしまう。そして、Xilinxの場合、BRAMは<b>同期読み出し</b>である。したがって、C to Verilogで生成されたプログラムを使用する場合は、<b>BRAMは使用できない。</b>その代わりに、分散RAMを使用する。これであればdual-portメモリもOK。でも、dual-port設定時にC to Verilogで生成されるRAMのモジュールは、Write Enable信号が2つある。分散RAMは、書き込みは1ポートだけしか使えない ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/c-to-verilog-2/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>LMBの使い方</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2011/03/lmb/">2011-03-03 09:09:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
-	<div class="summary"><p>Xilinx Platform StudioでLMBのサイズを変更するには、dlmb_cntlr, ilmb_cntlrを右クリックし、Configure IP....を選択 &gt; LMBのアドレスレンジを設定。このレンジの幅でメモリサイズが決まるようだ。LMBバス幅が32bitの場合は、lmb_bramの最大サイズは256Kbytes(Virtex-5の場合)。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2011/03/lmb/">more…</a>
 	</div>
 </div>	
 

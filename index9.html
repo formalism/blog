@@ -67,13 +67,14 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/mac.html">Mac (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/math.html">Math (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/ocaml.html">OCaml (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/pc.html">PC (4)</a></li>
@@ -96,6 +97,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>compojureなどの実験</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/09/compojure/">2010-09-20 05:54:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
+	<div class="summary"><p>以前のエントリで、clojure+compojure+h2は最強の組み合わせではないか、と書きましたが、また最近この組み合わせでお手軽アプリを作成しようかと考えました。<br /><br />以前にインストールしたバージョンで作成しても良かったのですが、いろいろと新しくなっているだろうと思い、最新版で試してみました。そうしたら、相当以前とはインストールの仕方なども異なっているようです。まず、<a href="http://github.com/technomancy/leiningen">Leiningen</a>をインストールします。そして、プロジェクトを作成し、project.cljを編集して必要なライブラリをインストールするよう指示します。次のような感じになりました。<br /><br /><br />(defproject myproject "1.0.0-SNAPSHOT"<br />&nbsp;&nbsp;:description "FIXME: write"<br />&nbsp;&nbsp;:dependencies [[org.clojure/clojure "1.2.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [org.clojure/clojure-contrib "1.2.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ring "0.3.0"]<br />&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [com.h2database/h2 "1.2.142 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2010/09/compojure/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>Wi2解約</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2010/09/finish-wi2/">2010-09-18 13:19:00+09:00</a>
@@ -184,15 +194,6 @@ tags: <a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolari
 提供されていない(?)OpenSolarisの優位性が自分にとっては少なくなってきてしまいました。ちなみに、
 ZFS for Linuxは、Ubuntu 8.04で簡単にコンパイルできました。まだdaemonを動かしただけでディスクを
 使った実験はしていないので、性能などについては何ともいえませんが。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/12/zfscifs2/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>3Dのリンク</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2009/11/3d/">2009-11-05 07:10:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> </div>
-	<div class="summary"><p>またメモ。<br /><br /><span style="font-weight: bold;">一般</span><br />http://www.ceres.dti.ne.jp/~ykuroda/oyaj/bone/basic3d.html<br />http://www012.upp.so-net.ne.jp/flab/3d/<br />http://www.mech.tohoku-gakuin.ac.jp/rde/contents/course/robotics/coordtrans.html<br /><br /><span style="font-weight: bold;">OpenGL</span><br />http://verygood.aid.design.kyushu-u.ac.jp/opengl2005/index.html</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2009/11/3d/">more…</a>
 	</div>
 </div>	
 

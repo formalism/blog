@@ -67,13 +67,14 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/mac.html">Mac (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/math.html">Math (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/ocaml.html">OCaml (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/pc.html">PC (4)</a></li>
@@ -96,6 +97,15 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1> 思いつきメモ </h1></div>
+<div class='article'>
+	<h2>OpenCLメモ</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/11/opencl/">2012-11-16 09:04:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL</a> </div>
+	<div class="summary"><p>OpenCLの実装メモ。 <br /><br /><b>- カーネルのコンパイルエラーを見つける方法</b><br />カーネルの記述が間違っていると、clBuildProgramが失敗する。clGetProgramBuildInfoを使うと、コンパイルエラーを取得できるが、もっと便利なのは、AMD APP KernelAnalyzerを使う方法。Source Codeのところに問題のソースを貼り付け、Compileボタンを押すと、エラーがある場合はCompiler Outputのところに、エラーが出力される。<br /><br /><b>- プロファイリングの方法</b><br />Code XLを使用する。新しいプロジェクトを作成し、プロファイルを取得したいプログラムを指定する。ProfileメニューからStart  Profilingを実行。GPU プロファイルにはApplication TraceとPerformance Countersの2種類がある。<br /><br />これはApplicatoin Traceの実行結果：<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://2.bp.blogspot.com/-Vk8f61wd3TE/UKX9idkMIQI/AAAAAAAABiM/rAUVTWmfxUw/s1600/CodeXL.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="457" src="http://2.bp.blogspot.com/-Vk8f61wd3TE/UKX9idkMIQI/AAAAAAAABiM/rAUVTWmfxUw/s640/CodeXL.png" width="640" /></a></div><br />プログラム実行中に使用したOpenCL関数や、それに掛かった時間などがグラフ表示される。<br /><br />これがPerformance Countersの実行結果：<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-I1qaFWGYko8/UKX-FYSOaHI/AAAAAAAABiU/lJq6GmY00kw/s1600/PerformanceCounters.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="440" src="http://1.bp.blogspot.com/-I1qaFWGYko8/UKX-FYSOaHI/AAAAAAAABiU/lJq6GmY00kw/s640/PerformanceCounters.png" width="640" /></a></div><br />使用したカーネルや、カーネルを実行したときのworkgroup sizeもわかる。<br /><br />-<b> 雑感</b><br /><br />やっと一通りカーネルを実行できるようになった。実行時間だけをみると、CPUの5倍程度高速であるように思われるが、前後のメモリ転送が遅いので(とりわけCPU-&gt;GPU)、結局CPUで計算した方が3倍程度高速な状態。ちなみに、CPUのプログラムはVisual C++ Express 2012で64bitバイナリでO2最適化/AVX有効の場合 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/11/opencl/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>SQLiteで日付を扱うのって悩ましい</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/09/handling-dates-in-sqlite-is-confusing/">2012-09-12 14:14:00+09:00</a>
@@ -175,15 +185,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
 	<div class="summary"><p>HaskellでMySQLを使うのにどのライブラリが良いか調べた。結果としては<a href="http://hackage.haskell.org/packages/archive/mysql-simple/0.2.2.3/doc/html/Database-MySQL-Simple.html">mysql-simple</a>が良さそうだ。<a href="http://hackage.haskell.org/package/HDBC-mysql-0.6.6.0">HDBC-mysql</a>も試して見たが、こちらは日本語が文字化けしてしまった。ソースを見る限りちゃんとUTF8の変換を行っているように思えたのだが。とりあえず使えるものが見つかったので今日の所はここまで。<br /><br />2012/2/14 追記<br /><br />Mac OS Xの方でmysql-simpleをインストールしたが、コンパイル/リンクされたファイルを実行しようとしたら、libmysqlclient.18.dylibが見つからないというエラーが発生した。このファイルがあるディレクトリをDYLD_LIBRARY_PATH環境変数で指定してみたが、なぜか解決しなかったので、<a href="http://d.hatena.ne.jp/yinkyweb/20111108/1320725744">"Library not loaded: libmysqlclient.18.dylib"の解消方法</a>にあった方法を使って、/usr/libにシンボリックリンクを作成して逃げた。<br /><br />どうにもMac OS XはLinuxと比べて面倒に遭遇する場合が多いと感じる。</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/02/haskellmysql/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Mac OS XでGHCのコンパイルエラー</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2012/02/mac-os-xghc/">2012-02-07 14:41:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> </div>
-	<div class="summary"><p>あるプログラムをMac OS X(10.6)上のGHC7.0.4(Haskell Platform 2011.04でインストールした)でコンパイルしようとしたら、<br /><br />Linking main ...<br />Undefined symbols:<br />&nbsp; "_locale_charset", referenced from:<br />&nbsp; &nbsp; &nbsp; _localeEncoding in libHSbase-4.3.1.0.a(PrelIOUtils.o)<br />&nbsp; "_iconv_close", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv_close in libHSbase-4.3.1.0.a(iconv.o)<br />&nbsp; &nbsp; &nbsp;(maybe you meant: _hs_iconv_close)<br />&nbsp; "_iconv", referenced from:<br />&nbsp; &nbsp; &nbsp; _hs_iconv in ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2012/02/mac-os-xghc/">more…</a>
 	</div>
 </div>	
 

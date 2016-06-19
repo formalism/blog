@@ -96,21 +96,32 @@
 		</div>
 	  </div>
 	  <div class="content">
-	<div class='article'>
-		<div class="page-header"><h1>androidのHttpURLConnection::getInputStreamでjava.io.FileNotFoundException</h1></div>
-		<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/05/androidhttpurlconnectiongetinputstreamj/">2013-05-15 14:39:00+09:00</a>
+<div class="page-header"><h1>思いつきメモ <small>OCaml</small></h1></div>
+<div class='article'>
+	<h2>SpockとOpiumのベンチマーク</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2016/06/benchmarking_spock_and_opium/">2016-06-19 22:37:00+09:00</a>
 by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
  in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/programming.html">Programming</a> <a href="https://formalism.github.io/blog/tag/android.html">Android</a> </div>
-		<div><p>androidで、HttpURLConnectionクラスを使って、リモートサーバにGETリクエストを送り、結果を取得しようとした。だが、なぜかgetInputStreamを呼び出したところでjava.io.FileNotFoundExceptionが発生する。そのURLをブラウザでアクセスすることはできるのに。</p>
+tags: <a href="https://formalism.github.io/blog/tag/haskell.html">Haskell</a> <a href="https://formalism.github.io/blog/tag/ocaml.html">OCaml</a> </div>
+	<div class="summary"><p>思い立って、HaskellとOCamlそれぞれでWebアプリを開発するにあたって、どれくらいの性能が出る
+ものなのか、まずはベンチマークをとってみることにした。フレームワークとして、Haskellに
+ついては<a href="https://github.com/agrafix/Spock">Spock</a>, OCamlについては<a href="https://github.com/rgrinberg/opium">Opium</a>
+を選んだ。</p>
+<p>Spockは、GHC7.6.3とcabal-installを使用してビルドした。Spockは0.10.0.1を使用した。
+まずは、src/Main.hsを示す(ほぼGitHubにあるもののまま)。</p>
+<div class="highlight"><pre><span class="p">{</span><span class="o">-</span><span class="err">#</span> <span class="n">LANGUAGE</span> <span class="n">OverloadedStrings</span> <span class="err">#</span><span class="o">-</span><span class="p">}</span>
+<span class="n">import</span> <span class="n">Web</span><span class="p">.</span><span class="n">Spock</span>
 
-<p><p>検索してみたところ、いつもの<a href="http://stackoverflow.com/questions/5178947/filenotfoundexception-when-calling-webservice">StackOverflow</a>に答えがあった。HTTPのレスポンスコードが400以上であると、HttpURLConnectionはFileNotFoundExceptionを投げる、ということが原因だった。ブラウザでアクセスできていると思っていたが、レスポンスコードを見てみると、403 Forbiddenだった。</p> <p>というわけで、同じ回答では、<a href="http://developer.android.com/reference/java/net/HttpURLConnection.html#getResponseCode%28%29">getResponseCode()</a>を使って問題を特定する、ということが勧められていた。</p></p></div>
-		<div>
-			<h2>Comments</h2>
-<a href="https://twitter.com/share" class="twitter-share-button" data-via="@tu1978">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-		<div>
+<span class="n">import</span> <span class="n">qualified</span> <span class="n">Data</span><span class="p">.</span><span class="n">Text</span> <span class="n">as</span> <span class="n">T</span>
+
+<span class="n">main</span> <span class="o">=</span>
+  <span class="n">runSpock</span> <span class="mi">7777</span> <span class="err">$</span> <span class="n">spockT</span> <span class="n">id</span> <span class="err">$</span>
+    <span class="k">do</span> <span class="n">get</span> <span class="p">(</span><span class="s">&quot;echo&quot;</span> <span class="o">&lt;</span><span class="c1">//&gt; var) $ \something -&gt;</span>
+        <span class="n">text</span> <span class="err">$</span> <span class="n">T</span><span class="p">.</span><span class="n">concat</span> <span class="p">[</span><span class="s">&quot;Echo ...</span></pre></div> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2016/06/benchmarking_spock_and_opium/">more…</a>
 	</div>
+</div>	
+
+
 	  </div>
 	</div>
 	<footer>

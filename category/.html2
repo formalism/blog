@@ -67,13 +67,14 @@
 			  <li><a href="https://formalism.github.io/blog/tag/clsql.html">CLSQL (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/fpga.html">FPGA (20)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/gadgets.html">Gadgets (6)</a></li>
-			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (6)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/haskell.html">Haskell (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/hls.html">HLS (2)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/linux.html">Linux (7)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/liquor.html">Liquor (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/lisp.html">Lisp (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/mac.html">Mac (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/math.html">Math (1)</a></li>
+			  <li><a href="https://formalism.github.io/blog/tag/ocaml.html">OCaml (1)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opencl.html">OpenCL (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/opensolaris.html">OpenSolaris (3)</a></li>
 			  <li><a href="https://formalism.github.io/blog/tag/pc.html">PC (4)</a></li>
@@ -96,6 +97,34 @@
 	  </div>
 	  <div class="content">
 <div class="page-header"><h1>思いつきメモ <small></small></h1></div>
+<div class='article'>
+	<h2>ZynqのPLを操作するLinuxドライバ (ユーザプログラム編)</h2>
+	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/zynqpllinux/">2014-05-14 08:52:00+09:00</a>
+by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
+ in <a href="https://formalism.github.io/blog/category/.html"></a>
+tags: <a href="https://formalism.github.io/blog/tag/zynq.html">Zynq</a> <a href="https://formalism.github.io/blog/tag/linux.html">Linux</a> </div>
+	<div class="summary"><p><a href="https://formalism.github.io/blog/posts/2014/05/zynqpllinux-dts/">ZynqのPLを操作するLinuxドライバ (DTS設定編)</a>の続き。これは見た方が早いと思うので、コードを示す。</p>
+<hr />
+<div class="highlight"><pre><span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;unistd.h&gt;</span>
+<span class="cp">#include &lt;sys/types.h&gt;</span>
+<span class="cp">#include &lt;sys/stat.h&gt;</span>
+<span class="cp">#include &lt;sys/mman.h&gt;</span>
+<span class="cp">#include &lt;fcntl.h&gt;</span>
+<span class="cp">#include &lt;errno.h&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">uiofd</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="n">icount</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span><span class="o">*</span> <span class="n">map_addr</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">cnt</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">int ...</span></pre></div> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/05/zynqpllinux/">more…</a>
+	</div>
+</div>	
 <div class='article'>
 	<h2>ZynqのPLを操作するLinuxドライバ (DTS設定編)</h2>
 	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2014/05/zynqpllinux-dts/">2014-05-14 08:33:00+09:00</a>
@@ -213,15 +242,6 @@ by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">
  in <a href="https://formalism.github.io/blog/category/.html"></a>
 tags: <a href="https://formalism.github.io/blog/tag/fpga.html">FPGA</a> </div>
 	<div class="summary"><p>XilinxとAlteraのFPGAで、特に外部との高速信号をやりとりをするときの考え方の違いについてまとめてみる。ただしGTPなどのGigabit Transceiverは考えない(まだ使ったことがないので)。<br /><br />Xilinxは、基本的にはIOモジュールにあるI(O)DELAYや、I(O)DDR, I(O)SERDESなどを自分でインスタンス化して使用するのが一般的な方法に思われる。これらを使用することで、動作時に信号のタイミングを動かすことができる。また、これらを使用するとシリアライズ/デシリアライズ部分の回路のタイミングはコンパイル毎にほぼ変化しないので、実際に動作させて、ちょうど良いタップを見つける、ということが可能である。<br /><br />また、ツールとしても、入出力のタイミング制約は、たとえ掛けたとしても、これらのモジュールの配置制約の方が優先される。したがって、あくまでもタイミング制約は、指示した配置をしたうえで、条件を満たすかどうかの確認の意味しかない。<br /><br />一方Alteraの場合は、タイミング制約ドリブンで配置配線が可能である。クロックとデータとの関係をちゃんと制約すれば、それを(入力の場合)内部のレジスタで正しくラッチできるようにレジスタを配置配線してくれる。レジスタはIOにあるものを使用するかもしれないし、そうでないかも知れない。また、動作時にIOのタイミングを変化させることはできないようだ(少なくともCycloneは)。ちなみに、AlteraのIOにも、スタティックに遅延量が決定する遅延ブロックが存在する。この遅延量もタイミング制約を満たせるようにツールが自動設定してくれる。<br /><br />以上から、自分の印象としては、静的にタイミング制約をすることで動作可能な場合はAlteraが便利で ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2014/02/altera/">more…</a>
-	</div>
-</div>	
-<div class='article'>
-	<h2>Dependently Typed Metaprogramming (in Agda) メモ (3) tabulate</h2>
-	<div class="well small">Permalink: <a class="more" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in_14/">2013-11-14 11:45:00+09:00</a>
-by <a class="url fn" href="https://formalism.github.io/blog/author/tu1978.html">tu1978 </a>
- in <a href="https://formalism.github.io/blog/category/.html"></a>
-tags: <a href="https://formalism.github.io/blog/tag/agda.html">Agda</a> </div>
-	<div class="summary"><p>まだExercise 1.5の続き。<br /><br />tabulate : forall {n X} -&gt; (Fin n -&gt; X) -&gt; Vec X n<br />tabulate {n} f = ?<br /><br />を完成させる。{n}0としてC-cC-cをして、後はひたすらC-cC-aをすると、型としては正しい式が完成する。<br /><br />tabulate {zero} f = &lt;&gt;<br />tabulate {suc y} f = f fzero , tabulate (\ _ -&gt; f fzero)<br /><br />というもの。fにずっとfzeroを与えたものをn個集めたVecを答えとしている。でも多分これは問題の答えとしては期待通りのものではない。イメージとしては、fにfzero, fsuc fzero, fsuc (fsuc fzero), ... を引数に与えたものをn個集めたものを得たい。つまり、f 0, f 1 ...</p> <a class="btn primary xsmall" href="https://formalism.github.io/blog/posts/2013/11/dependently-typed-metaprogramming-in_14/">more…</a>
 	</div>
 </div>	
 
